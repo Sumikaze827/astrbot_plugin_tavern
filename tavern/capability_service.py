@@ -3,15 +3,11 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from typing import Any
 
-from .candidates import (
-    GRANT_POLICIES,
-    candidate_rule_apply_signature,
-    candidate_rule_view,
-    normalize_candidate_rules,
-)
 from .condition_engine import ConditionEngine
 from .entity_registry import EntityRegistry, module_value, split_ref
-from .stat_generation import apply_resource_modifiers, normalize_runtime_state_snapshot
+
+
+GRANT_POLICIES = frozenset({"ignore", "refresh", "stack", "modify", "transition"})
 
 
 class CapabilityService:
@@ -114,9 +110,7 @@ class CapabilityService:
                     raise ValueError(f"目标不满足能力选择条件：{target_ref}")
 
     def initial_grants(self, preset_refs: Mapping[str, Any]) -> list[dict[str, Any]]:
-        # D1 编译后的能力作者数据属于 capability_effects 模块。
-        # 不再读取已经废弃的 rules.capabilities 入口。
-        module = module_value(self.world, "capability_effects", {})
+        module = module_value(self.world, "capabilities", {})
         module = module if isinstance(module, Mapping) else {}
         grants = module.get("initial_grants", [])
         result: list[dict[str, Any]] = []
@@ -125,22 +119,15 @@ class CapabilityService:
         context = {"actor": {"refs": dict(preset_refs)}}
         for grant in grants:
             if not isinstance(grant, Mapping): continue
-            evaluation = self.conditions.evaluate(grant.get("when", {}), context)
-            if evaluation.matched:
+            if self.conditions.evaluate(grant.get("when", {}), context).matched:
                 ref = str(grant.get("capability_ref") or grant.get("target_ref") or "")
                 self.registry.resolve(ref, "capability")
-                # 记录命中的预设维度（支持多选集合），供授予来源与去重。
-                preset_keys = sorted({
-                    str(read.get("ref") or "")
-                    for read in evaluation.reads
-                    if str(read.get("ref") or "").startswith("custom:preset.")
-                })
-                result.append({**dict(grant), "preset_keys": preset_keys})
+                result.append(dict(grant))
         return result
 
     def progression_cycles(self) -> list[list[str]]:
         graph: dict[str, set[str]] = {}
-        module = module_value(self.world, "capability_effects", {})
+        module = module_value(self.world, "capabilities", {})
         module = module if isinstance(module, Mapping) else {}
         transitions = module.get("transitions", [])
         if not isinstance(transitions, Sequence) or isinstance(transitions, (str, bytes)):
@@ -168,108 +155,5 @@ class CapabilityService:
         for node in graph: visit(node)
         return cycles
 
-    def validate_candidate_rules(self, raw: Any) -> dict[str, Any]:
-        """Registry-aware validation of one candidate's D1 rules.
 
-        Capability/resource/runtime-effect references must resolve in the
-        active world snapshot; ability tracks are syntax-checked only (they
-        are declared by the author source, not the runtime registry).
-        """
-
-        rules = normalize_candidate_rules(candidate_rule_view(raw))
-
-        def require_registered(ref: str, expected_type: str) -> None:
-            if not self.registry.contains(ref):
-                raise ValueError(f"候选规则引用了未注册的 {expected_type}：{ref}")
-            item = self.registry.resolve(ref, expected_type)
-            if item.entity_type != expected_type:
-                raise ValueError(
-                    f"候选规则引用类型不匹配：{ref} 期望 {expected_type}"
-                )
-
-        for ref, _label in (*rules["ability_pool_add"], *rules["ability_pool_remove"]):
-            require_registered(ref, "capability")
-        for grant in rules["grants"]:
-            kind = str(grant.get("kind") or "")
-            if kind in {"capability", "resource", "runtime_effect"}:
-                require_registered(str(grant.get("ref") or ""), kind)
-            elif kind == "ability_track":
-                split_ref(str(grant.get("ref") or ""))
-        for unlock in rules["unlocks"]:
-            kind = str(unlock.get("kind") or "")
-            if kind in {"capability", "resource", "runtime_effect"}:
-                require_registered(str(unlock.get("ref") or ""), kind)
-            elif kind == "ability_track":
-                split_ref(str(unlock.get("ref") or ""))
-        for modifier in rules["resource_modifiers"]:
-            require_registered(str(modifier.get("resource_ref") or ""), "resource")
-        for ref, _label in rules["runtime_effect_refs"]:
-            require_registered(ref, "runtime_effect")
-        return rules
-
-
-def apply_candidate_rules(
-    raw: Any,
-    runtime_state: Mapping[str, Any],
-    *,
-    applied: set[str] | None = None,
-) -> dict[str, Any]:
-    """Apply one candidate's D1 rules onto a runtime snapshot, purely.
-
-    Returns a new snapshot; the input is never mutated.  When ``applied`` is
-    provided, re-applying a candidate with an identical effect signature
-    raises instead of double-counting resources or duplicating grants.
-    """
-
-    if applied is not None:
-        signature = candidate_rule_apply_signature(raw)
-        if signature in applied:
-            raise ValueError("该候选的效果已经应用过，不能重复应用")
-        applied.add(signature)
-    rules = normalize_candidate_rules(candidate_rule_view(raw))
-    state = normalize_runtime_state_snapshot(runtime_state)
-
-    abilities = [dict(item) for item in state["abilities"]]
-    for ref, label in rules["ability_pool_add"]:
-        if not any(str(item.get("ref")) == ref for item in abilities):
-            abilities.append({"ref": ref, "label": label})
-    for ref, _label in rules["ability_pool_remove"]:
-        abilities = [
-            item for item in abilities if str(item.get("ref")) != ref
-        ]
-    state["abilities"] = abilities
-
-    state["resources"] = apply_resource_modifiers(
-        state["resources"], rules["resource_modifiers"]
-    )
-
-    grants = [dict(item) for item in state["grants"]]
-    for grant in rules["grants"]:
-        identity = (str(grant.get("kind") or ""), str(grant.get("ref") or ""))
-        if not any(
-            (str(item.get("kind") or ""), str(item.get("ref") or "")) == identity
-            for item in grants
-        ):
-            grants.append(dict(grant))
-    state["grants"] = grants
-
-    unlocks = [dict(item) for item in state["combination_unlocks"]]
-    for unlock in rules["unlocks"]:
-        ref = str(unlock.get("ref") or "")
-        if not any(str(item.get("ref")) == ref for item in unlocks):
-            unlocks.append(dict(unlock))
-    state["combination_unlocks"] = unlocks
-
-    runtime_states = [dict(item) for item in state["runtime_states"]]
-    for ref, label in rules["runtime_effect_refs"]:
-        if not any(str(item.get("ref")) == ref for item in runtime_states):
-            runtime_states.append({"ref": ref, "label": label})
-    state["runtime_states"] = runtime_states
-    return state
-
-
-__all__ = [
-    "CapabilityService",
-    "GRANT_POLICIES",
-    "apply_candidate_rules",
-]
+__all__ = ["CapabilityService", "GRANT_POLICIES"]

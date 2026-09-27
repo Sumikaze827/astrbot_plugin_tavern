@@ -1,0 +1,2019 @@
+{
+  "slug": "boneking-throne-raid",
+  "name": "龙骨王座·死潮远征",
+  "description": "西幻硬核战斗团本。王国雇佣的最后一支远征队深入死潮封冻的冷齿堡，穿过层层亡者防线——食尸鬼群、缝合巨怪、死誓骑士、亡龙，直至黑铁穹顶下那条吞人的死潮裂缝。亡者不通谈判，每一层都必须以血开路。真相一页页推翻史书：两百年没人再记得的血誓，正等着你们用命去兑现。单局 40 回合，4 人最佳，硬核 d20 战斗。",
+  "system_prompt": "【世界定位】\n本故事发生在西幻大陆北境的「冻溪谷·冷齿堡」。王国历 1208 年深秋，距屠龙之战已过两百零一年。玩家共同身份是一支受王庭重金雇佣的远征小队——战士、圣骑士、法师、圣职者、游侠、盗贼的混编队伍，任务是深入死潮封冻的冷齿堡，穿过层层亡者防线，抵达黑铁穹顶下的龙骨王座，终结「死潮之缝」。\n\n【世界常识】\n官方史观：两百零一年前，恶龙王瓦拉戈斯盘踞冷齿堡，吞噬北境。霜冠王艾德里克率军亲征，于黑铁穹顶之下与恶龙同归于尽，以自身与守堡将士的骸骨为锁，封住恶龙之魂。史书称「屠龙之战，军民同殉，王与龙俱没」。\n如今王国与谷民议和，冻溪谷即将并入王国。就在和约签署当夜，黑铁穹顶的封印崩裂，恶龙以亡者之身复起，率由昔日守堡将士化成的亡者军团涌出，死潮冻结了整个冻溪谷。王庭圣战军入谷清剿，全军覆没，无一生还。\n冒险者圈子都知道的版本：冷齿堡是死地，进去的人没一个活着出来。佣金极高，风险极高。\n魔法常识：奥术（法师）与圣光（圣职者/圣骑士）是现世两种主流力量；圣银是死灵与死誓之力的克星，银质的器物与护印能驱邪、破誓、净化亡者。死灵术被视为禁忌，但裂缝里仍然残留着它两百年前的痕迹。\n\n【底层规律】\n魔法、机关与死潮皆有来源、条件、代价与上限。亡者军团按两百年前的规则运转：裂缝孕育亡者，亡者守护裂缝；圣银能破誓，血誓能锁魂，冻结的时间仍忠实记录着每个人的名字。\n死亡是真实的代价：高风险行动失败可致玩家角色重伤、被俘或死亡。致命后果写入该选项的 known_consequences 字段即可触发，无需提前多回合叙事公示；一旦致死被玩家接受，模型不得撤回、不得「奇迹缓解」。\n战斗检定框架：近战攻击 = d20 + 力量修正；远程/闪避 = d20 + 敏捷修正；奥术 = d20 + 智力修正；神圣 = d20 + 意志修正；一律对照敌人防御 DC。杂兵（尸兵、食尸鬼、死潮先锋）11-13，精英（黑铁死卫、缝合巨怪、尸龙子嗣）15-17，首领（凯斯林、亡龙、裂缝锚魂）17-19（lethal）。战败不意味着即时死亡：检定失败通常扣减队伍生命并可能触发该选项的已知后果。\n队伍生命（party_vitality）与圣银护印（silver_ward）是两项可见资源：前者归零即全队被击溃/被俘/覆灭，进入死潮结局；后者可消耗换取一次针对亡者的检定优势或重掷，从银器、祭坛、月光石与圣银链环补充。受伤是真实状态，重伤记入当前事实并影响后续检定，但不得无来源瞬秒。\n\n【战斗强制规则（硬性）】\n亡者不通谈判、不惧威吓、不受收买、不讲代价——裂缝孕育的亡者军团没有可以被说服的立场。以下行为一律无效，并被死潮以更大的冲击回应：谈判求和、潜行绕行、假意投降、幻术蒙蔽、贿赂收买、以路引换通行、利用缝隙绕过防线。\n每一章的切章条件都包含「击败本章守军」这一硬性里程碑；模型不得让章节在未发生真实战斗的情况下完成切章，不得用叙事手段让玩家「无伤绕过」某一场遭遇。\n战斗可选「打法」，不可选「打不打」：正面硬撼 / 借助地形与环境 / 以圣银或血誓破法 / 以命换时 都是合法路径，但都必须以一场真实战斗完成，且战斗有明确的风险档位与后果。\n\n【时间与地点】\n倒计时：死潮随裂缝扩张逐回合增强，谷地每拖一刻就有更多人冻死或被杀；王庭和约的后续军力正在集结，留给队伍的时间在耗尽。休整过久会招来更多食尸鬼。\n关键地点：\n- 冻溪谷·吊桥前（开场，银链吊桥与冻尸之谷）\n- 屠戮场·下庭（ch_01，圣战军覆没地与缝合巨怪）\n- 黑铁厅（ch_02，死誓骑士与凯斯林）\n- 龙骸厅（ch_03，亡龙瓦拉戈斯把守通往穹顶的甬道）\n- 黑铁穹顶·龙骨王座（ch_04，裂缝本体与最终对峙）\n\n【身份与知识边界】\n玩家角色只能知道自己的职业训练、个人经历与剧情中实际获得的信息。法师不会自动读懂两百年前的死灵文献，士兵不知道王庭与冷齿堡的完整旧账，没人能读亡者头盔里的信。玩家不得读取其他玩家角色的私人秘密、后台导演指令或未公开 NPC 动机。凯德、凯斯林、伊萨伦与霜冠王的知识必须通过行动换取。\n\n【因果与连续性】\n已发生事件、已消耗物品（契约、圣银圣印、火油、圣银链环）、伤势、关系与死潮状态必须连续。失败必须产生代价、资源损耗、误判、时间流逝，不能简单抹去玩家行动。死潮、裂缝、圣银与血誓均按设定生效。\n\n【玩家自主权】\n不得替玩家决定内心、思想、台词、承诺、投降或立场。涉及全体公共资源（契约、圣银护印、队伍路线、最终裁决）或直接波及他人角色的决定须获得当事人同意；个人行动（包括高风险与致命风险路线）无需全队表决。\n\n【冲突与风险】\n高风险行动的失败后果写入该选项的 known_consequences 字段随选项提交；致命风险不得无来源、无设定地突然触发。对手与 NPC 遵守其身份、装备与已建立设定：凯斯林有黑铁死誓武艺，亡龙有冻结吐息，伊萨伦有裂缝之力。冲突中应明确位置、距离、掩体、威胁、伤势与可行动目标，不使用模糊的「突然秒杀」或无来源反转。\n\n【叙事风格】\n西幻硬核战斗 + 史诗团本节奏 + 死潮与血誓的悲怆底色。场景具体，对话符合身份，战斗强调空间、距离与资源。每回合聚焦本轮因果、可见变化与下一步可行动信息，保持节奏，不重复总结，不强行救场，不把所有谜题一次解释完。允许适度的队伍日常与黑色幽默，但不让轻松桥段破坏危机逻辑。\n节奏硬约束：禁止连续 3 回合全是「到达 + 观察 + 对话」的过渡场景，每 2 回合内至少发生一件改变当前处境的事件（新威胁、新信息、环境或关系变化）；每回合结尾必须留下「下一步会发生什么」的未决张力；每章的高潮节拍（全章最大风险 / 两难 / 信息暴露）必须由玩家拍板，而不是由 NPC 演出代劳；高潮后最多保留 2 回合收尾，不得拖长余波。\n\n【硬性禁令】\n禁止现代科技、异世界元素、时间旅行；禁止「黑进一切」式的无代价破解（每次破译都需要时间、工具、文献或内部知识）；禁止无限信息与全知预言；禁止随意改写记忆与无代价控制玩家角色；禁止无来源、无设定的突然致死；致命后果须写入该选项的 known_consequences 字段；禁止把 NPC 私密导演指令、最终谜底和其他玩家私人秘密直接写进公开叙事；禁止未经目标玩家同意的玩家对玩家伤害、偷窃、精神控制或永久负面效果。禁止通过谈判、潜行或任何手段「无伤跳过」任何一章的守军遭遇。\n\n【致命风险协议】\n致命风险（lethal risk）三条硬规则：①致命后果必须写入该选项的 known_consequences 字段（被巨怪碾碎、被死誓骑士枭首、被亡龙吐息冻裂、被裂缝吞噬等），随选项一并提交，代码层强制校验；②一旦玩家主动选择 lethal 选项，失败的 lethal 检定应兑现后果（可当场致死），模型一律不得撤回或「奇迹缓解」；③致死原因必须符合 NPC 能力、地形与已建立设定，禁止因「叙事张力」临时加码。\n本剧本至少有五处致命风险场景：[1] ch_00 正面死守吊桥（被前锋踏成肉泥）；[2] ch_01 与缝合巨怪正面接战（被碾碎/撕裂）；[3] ch_02 与凯斯林死誓对决（被枭首）；[4] ch_03 正面迎战亡龙（被吐息冻裂）；[5] ch_04 撕裂裂缝锚魂（被裂缝吞噬）。这些都是*战斗中玩家可选*的高风险路径，未选致死选项的玩家继续以更稳妥的打法推进战斗——战斗不可跳过，但打法可选。\n\n【本次任务范围】\n40 回合内完成一次单局。玩家不必读完整个世界观，只要搞定「进入冷齿堡 → 穿过死军 → 抵达龙骨王座 → 终结死潮之缝」的完整单局闭环。任何在 40 回合外的延伸内容应由叙事者主持决定是否续接。\n\n【插件权威边界】\n所有检定属性、加值、风险等级、检定结论、骰面与结果档位由机器骰制生成并持久化。叙事模型只可依据已公布的权威检定回执续写，不得重投、修改 DC、改变成功档位或追加未预告的永久性惩罚。\n【NPC 状态同步（硬规则）】\n1. 副本 NPC 的 runtime_state（location / status / faction）必须跟随剧情：每当 NPC 移动、负伤、立场变化、死亡或退场，必须在同一回合通过 npc_ops（op=update + runtime_state）同步 <active_npcs> 中对应的稳定 npc_id，不能只写进正文而不同步状态。\n2. 各章 key_npcs[].state 是本章关键 NPC 位置的权威起点：切到该章后，对应 NPC 的 runtime_state.location / status 应与其一致（引擎在切章时会自动写入）；NPC 在本章中途再移动或变化时，继续用 npc_ops 更新。\n3. 与玩家同行的 NPC，location 写成「随队 → 当前位置」；不随行的 NPC 写清各自所在位置。\n4. 死亡 / 退场必须用 npc_ops 的 op=kill / depart，或把 runtime_state.status 置为 dead / departed，禁止只改正文而不同步状态。\n5. 每回合生成叙事时至少核对一次关键 NPC 的 runtime_state 是否与当前剧情位置一致，不一致就补一条 npc_ops.update。",
+  "opening_scene": "王国历 1208 年，深秋。「死潮」暴发的第七夜，冻溪谷的风像刀片，刮在每张冻青的脸上。你与你的队伍站在那座银链吊桥前——桥下是冻僵的死潮残骸，谷底整片整片冻尸面朝王都方向，像在等一个答案。\n\n王庭圣战军唯一的生还者、游骑军官凯德·鸦羽，把一份盖着灰狼纹章的契约塞进你手里：「报酬已付清。穿过这座堡，把死潮之缝撕了，冷齿堡就永远是你们的。」他攥着一张写满名字的死亡名单，无名指上戴着一枚不属于他的婚戒。\n\n『还有一件事。』凯德压低声音，指向桥头那排冻尸——『前锋军里有一具举着断剑的骑士骸骨。它认得出王旗。小心它。』\n\n四件事在等你决定——",
+  "rules": {
+    "world_schema_version": 5,
+    "resolution": {
+      "mode": "attribute",
+      "dice_system": "d20",
+      "_dice_system_documented_as": "传统 d20：骰 1-20 + 属性修正，对照难度 DC 判定成功档位。",
+      "unknown_attribute": "reject",
+      "option_checks": {
+        "enabled": true
+      },
+      "generic_check": {
+        "enabled": false,
+        "label": "通用",
+        "modifier": 0
+      },
+      "allowed_attributes": [
+        "strength",
+        "agility",
+        "vitality",
+        "intellect",
+        "willpower",
+        "perception",
+        "charisma"
+      ],
+      "difficulty_policy": {
+        "safe": null,
+        "controlled": 9,
+        "dangerous": 13,
+        "desperate": 17,
+        "lethal": 19
+      },
+      "outcome_policy": {
+        "natural_20_critical": true,
+        "natural_1_critical": true,
+        "critical_success_margin": 10,
+        "cost_success_min_margin": -4,
+        "failure_min_margin": -9
+      },
+      "parameter_authority": "plugin_rule_engine",
+      "ai_role": "narrative_only_after_locked_receipt"
+    },
+    "default_difficulty": 12,
+    "difficulty_min": 5,
+    "difficulty_max": 25,
+    "dice_rules": {
+      "system": "d20",
+      "advantage": "2d20_keep_high",
+      "disadvantage": "2d20_keep_low",
+      "stacking": false,
+      "opposites_cancel": true,
+      "outcome_bands": true,
+      "natural_20": "critical_success",
+      "natural_1": "critical_failure",
+      "visibility": "public",
+      "rng": "system_secrets",
+      "roll_authority": "machine",
+      "lock_before_publish": true,
+      "reuse_locked_roll_on_retry": true,
+      "publish_before_story_generation": true
+    },
+    "inspiration": {
+      "enabled": true,
+      "initial": 1,
+      "maximum": 3,
+      "allow_pre_roll_advantage": true,
+      "allow_pre_authorized_reroll": true
+    },
+    "safety": {
+      "any_active_player_can_pause": true,
+      "pvp_requires_target_consent": true,
+      "collective_harm_requires_vote": false,
+      "lethal_risk_must_be_disclosed": true
+    },
+    "content_boundaries": {
+      "character_death": "yes",
+      "_character_death_documented_as": "允许角色死亡：失败的 lethal 检定可当场兑现死亡，无需先行征询或二次确认。致命风险另见 system_prompt.致命风险协议。",
+      "player_conflict": "consent",
+      "romance": "fade_to_black",
+      "horror": "moderate",
+      "sexual_content": "blocked",
+      "safety_pause": true
+    },
+    "context_budget": {
+      "recent_turns": 6,
+      "memories": 6,
+      "active_npcs": 6,
+      "ledger_items": 8,
+      "locked_facts_always_include": true
+    },
+    "npc_policy": {
+      "enabled": true,
+      "auto_register": true,
+      "max_new_per_turn": 2,
+      "require_named_or_relevant": true,
+      "generated_requires_review": true,
+      "archive_after_inactive_rounds": 4
+    },
+    "allow_player_result_claims": false,
+    "death_requires_confirmation": false,
+    "tone": "西幻硬核战斗、史诗团本节奏、死潮与血誓的悲怆底色、空间与资源压力",
+    "strict_choices": true,
+    "check_density": "standard",
+    "player_limits": {
+      "recommended_min": 1,
+      "recommended_max": 4,
+      "minimum_start": 1,
+      "maximum": 5
+    },
+    "time_rules": {
+      "turn_timeout_action": "hold",
+      "card_timeout_action": "remind",
+      "ready_timeout_action": "remind"
+    },
+    "interaction_rules": {
+      "settings": {
+        "conflict_strategy": "priority_then_stack"
+      }
+    },
+    "resources": {
+      "definitions": [
+        {
+          "id": "party_vitality",
+          "label": "队伍生命",
+          "category": "vitality",
+          "description": "全队共同的生命元气。战斗检定失败、强攻受创、死潮冻寒与尸毒环境会扣减；原地生火取暖或圣职治疗可恢复。归零即全队被击溃/被俘/覆灭，进入死潮结局。",
+          "persistence_scope": "session",
+          "initial_value": 8,
+          "range": {
+            "min": 0,
+            "max": 12
+          },
+          "tags": [
+            "combat",
+            "resource"
+          ],
+          "version": "1.0"
+        },
+        {
+          "id": "silver_ward",
+          "label": "圣银护印",
+          "category": "charge",
+          "description": "从圣银器物、祭坛、月光石与吊桥银链收集的银之力。消耗 1 点可换取一次针对亡者/死誓目标的检定优势或重掷；也可用于净化死誓、驱散尸毒。",
+          "persistence_scope": "session",
+          "initial_value": 2,
+          "range": {
+            "min": 0,
+            "max": 6
+          },
+          "tags": [
+            "combat",
+            "resource"
+          ],
+          "version": "1.0"
+        }
+      ],
+      "items": []
+    },
+    "story_spine": {
+      "campaign_type": "single_engagement",
+      "total_turn_budget": 40,
+      "recommended_player_count": "4",
+      "fallback_player_count": "3 (drift +30%) / 5 (drift -30%)",
+      "non_renewable_session": true,
+      "primary_question": "你们能否在死潮吞没冻溪谷、王庭和约步步紧逼之前，穿过冷齿堡的层层死军，终结死潮之缝？",
+      "secondary_question": "两百年没人再记得的血誓，值得你们用血与命去兑现吗？",
+      "themes": [
+        "西幻战斗团本",
+        "亡者与誓言",
+        "牺牲与背弃",
+        "圣银与死潮",
+        "王权与真相"
+      ],
+      "do_not_include_in_this_session": [
+        "冷齿堡之外的世界延展剧情",
+        "完美大团圆结局",
+        "无代价终结死潮",
+        "通过谈判/潜行无伤绕过战斗",
+        "现代科技与异世界元素",
+        "主角光环式的无来源救场"
+      ]
+    },
+    "tension_drivers": [
+      "死潮逐回合扩张，谷地已死千人",
+      "王庭和约书与冷齿堡真相之间的裂缝",
+      "凯斯林头盔里那封寄不出去的信",
+      "圣银链环与两百年血誓的回响",
+      "凯德攥着的死亡名单与婚戒",
+      "队伍生命与圣银护印的枯竭"
+    ],
+    "character_card": {
+      "version": 6,
+      "auto_approve": false,
+      "edit_requires_review": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "角色姓名",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "text"
+        },
+        {
+          "key": "code",
+          "label": "称号/别名",
+          "required": false,
+          "private": false,
+          "max_chars": 12,
+          "type": "text"
+        },
+        {
+          "key": "profession",
+          "label": "选择职业",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "selection_mode": "single_preset",
+          "apply_preset_on_select": true,
+          "preset_source": "profession_presets",
+          "next_step": "primary_attribute",
+          "options_source": "profession_presets",
+          "value_field": "name",
+          "label_field": "name",
+          "page_size": 6,
+          "clear_on_change": [
+            "primary_attribute",
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "conviction",
+          "label": "信念誓言",
+          "required": true,
+          "private": false,
+          "max_chars": 30,
+          "type": "preset_select",
+          "page_size": 6,
+          "options": [
+            "守誓（血誓契约高于一切）",
+            "圣印（银与圣光指引）",
+            "赎罪（为死潮中亡故者赎罪）",
+            "复仇（为圣战军与谷民讨还）",
+            "自由（不受王命束缚）",
+            "守诺（兑现两百年没人记得的誓言）"
+          ]
+        },
+        {
+          "key": "primary_attribute",
+          "label": "选择主属性（固定 +7）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "bonus_value": 7,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 8
+        },
+        {
+          "key": "secondary_attribute",
+          "label": "选择副属性（固定 +3）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "bonus_value": 3,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 8
+        },
+        {
+          "key": "background",
+          "label": "身世与秘密",
+          "required": false,
+          "private": true,
+          "max_chars": 200,
+          "type": "text"
+        }
+      ],
+      "stats": {
+        "allocation_mode": "profession_base_plus_primary7_secondary3",
+        "input_mode": "automatic_profession_base_plus_two_fixed_bonus_choices",
+        "skip_attribute_question_range": "26-35",
+        "calculate_after_field": "secondary_attribute",
+        "reset_scope": "primary_and_secondary_only",
+        "mode": "preset",
+        "budget": 60,
+        "base_budget": 50,
+        "bonus_budget": 10,
+        "effective_total": 60,
+        "attributes": [
+          {
+            "key": "strength",
+            "label": "力量",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "近战攻击、破门、拖拽、承受冲击。"
+          },
+          {
+            "key": "agility",
+            "label": "敏捷",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "远程攻击、闪避、潜行、先手、拆解陷阱。"
+          },
+          {
+            "key": "vitality",
+            "label": "体质",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "扛伤、耐寒、抵消毒气与疲劳，与队伍生命恢复相关。"
+          },
+          {
+            "key": "intellect",
+            "label": "智力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "奥术施法、古代文字、死灵文献、机关学、逻辑推理。"
+          },
+          {
+            "key": "willpower",
+            "label": "意志",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "神圣施法、抗恐惧、抗死潮低语侵蚀、坚守立场。"
+          },
+          {
+            "key": "perception",
+            "label": "感知",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "察觉埋伏、识破伪装、搜寻密道与隐藏痕迹。"
+          },
+          {
+            "key": "charisma",
+            "label": "魅力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "谈判、统率、安抚、让对手犹豫。"
+          }
+        ],
+        "modifier_table": {
+          "0": -3,
+          "1": -2,
+          "2": -2,
+          "3": -1,
+          "4": -1,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "10": 2,
+          "11": 3,
+          "12": 3,
+          "13": 4,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 6,
+          "18": 6,
+          "19": 7,
+          "20": 7
+        },
+        "primary_bonus": 7,
+        "secondary_bonus": 3,
+        "require_distinct_bonus_attributes": true,
+        "player_selects_only": [
+          "primary_attribute",
+          "secondary_attribute"
+        ],
+        "defaults_are_schema_fallback_only": true,
+        "manual_entry_enabled": false,
+        "auto_apply_profession_base": true,
+        "profession_base_locked": true,
+        "show_profession_values_at_profession_step": true,
+        "profession_step": 3,
+        "skip_generated_attribute_questions": true,
+        "calculation_formula": "effective_attribute = profession.base_attribute + 7 if primary + 3 if secondary",
+        "preserve_base_on_reset": true,
+        "preset_selector": {
+          "field": "profession",
+          "source": "profession_presets",
+          "match_by": "id"
+        },
+        "bonus_choices": [
+          {
+            "field": "primary_attribute",
+            "label": "主属性",
+            "bonus": 7,
+            "count": 1
+          },
+          {
+            "field": "secondary_attribute",
+            "label": "副属性",
+            "bonus": 3,
+            "count": 1,
+            "exclude_selected_by": [
+              "primary_attribute"
+            ]
+          }
+        ],
+        "total_validation": {
+          "base_total": 50,
+          "final_total": 60
+        },
+        "allocation": {
+          "rule": "exact",
+          "total": 60
+        }
+      },
+      "preset_selection_help": {
+        "display_policy": "only_current_step",
+        "navigation": "分页预览每页最多 6 项；使用页码替换 / 列表稳定 ID 翻页",
+        "profession_instruction": "选择职业时展示职业可选项，按提示写入并展示 50 基础属性。",
+        "invalid_selection_action": "reject_and_repeat_current_field"
+      },
+      "bonus_allocation": {
+        "base_source": "profession_presets.attributes",
+        "primary_field": "primary_attribute",
+        "secondary_field": "secondary_attribute"
+      },
+      "creation_flow": {
+        "mode": "step_driven_preset_wizard",
+        "profession_display": "paged_current_step_with_base_attributes",
+        "generated_attribute_fields": "calculated_only_not_questions",
+        "preset_display": "current_step_only"
+      },
+      "preset_dimensions": [
+        {
+          "id": "profession",
+          "label": "职业",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 10
+        }
+      ],
+      "profession_presets": [
+        {
+          "id": "fighter",
+          "name": "战士",
+          "role": "持盾与重剑的前排壁垒",
+          "ability_source": "多年行伍训练与战场本能，擅长破阵、承受冲击与正面对抗亡者",
+          "limitations": "不擅长奥术与精密机关；重甲在冻结地形会拖累行动",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 13,
+            "agility": 7,
+            "vitality": 11,
+            "intellect": 4,
+            "willpower": 6,
+            "perception": 4,
+            "charisma": 5
+          },
+          "base_attributes": {
+            "strength": 13,
+            "agility": 7,
+            "vitality": 11,
+            "intellect": 4,
+            "willpower": 6,
+            "perception": 4,
+            "charisma": 5
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "战士",
+          "display_at_profession_step": true,
+          "display_text": "战士:力量 13 敏捷 7 体质 11 智力 4 意志 6 感知 4 魅力 5基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "paladin",
+          "name": "圣骑士",
+          "role": "圣银与誓言的守护者",
+          "ability_source": "血誓与神殿祝福赋予的圣洁之怒与庇护，专克死灵",
+          "limitations": "誓言约束行动取舍；对亡者怀有仪式性的敬畏",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 10,
+            "agility": 5,
+            "vitality": 8,
+            "intellect": 5,
+            "willpower": 12,
+            "perception": 4,
+            "charisma": 6
+          },
+          "base_attributes": {
+            "strength": 10,
+            "agility": 5,
+            "vitality": 8,
+            "intellect": 5,
+            "willpower": 12,
+            "perception": 4,
+            "charisma": 6
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "圣骑士",
+          "display_at_profession_step": true,
+          "display_text": "圣骑士:力量 10 敏捷 5 体质 8 智力 5 意志 12 感知 4 魅力 6基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "wizard",
+          "name": "法师",
+          "role": "以奥术轰开前路的施法者",
+          "ability_source": "秘法学徒训练与对冰霜、死灵文献的研读",
+          "limitations": "施法需要专注与手势；身体孱弱，正面近战脆弱",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 3,
+            "agility": 5,
+            "vitality": 6,
+            "intellect": 13,
+            "willpower": 9,
+            "perception": 7,
+            "charisma": 7
+          },
+          "base_attributes": {
+            "strength": 3,
+            "agility": 5,
+            "vitality": 6,
+            "intellect": 13,
+            "willpower": 9,
+            "perception": 7,
+            "charisma": 7
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "法师",
+          "display_at_profession_step": true,
+          "display_text": "法师:力量 3 敏捷 5 体质 6 智力 13 意志 9 感知 7 魅力 7基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "cleric",
+          "name": "圣职者",
+          "role": "死潮中的治疗、驱邪与净化支柱",
+          "ability_source": "神殿训练与对逝者的礼敬，圣光安抚与洁净亡骸",
+          "limitations": "圣力对死潮裂缝的效力存疑；不擅硬碰硬的战技",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 6,
+            "agility": 4,
+            "vitality": 8,
+            "intellect": 6,
+            "willpower": 12,
+            "perception": 6,
+            "charisma": 8
+          },
+          "base_attributes": {
+            "strength": 6,
+            "agility": 4,
+            "vitality": 8,
+            "intellect": 6,
+            "willpower": 12,
+            "perception": 6,
+            "charisma": 8
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "圣职者",
+          "display_at_profession_step": true,
+          "display_text": "圣职者:力量 6 敏捷 4 体质 8 智力 6 意志 12 感知 6 魅力 8基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "ranger",
+          "name": "游侠",
+          "role": "冻溪谷猎人出身的远程斥候",
+          "ability_source": "猎人生涯与对冻溪谷地形的测绘经验",
+          "limitations": "正面硬扛薄弱；对死灵魔法理解有限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 7,
+            "agility": 12,
+            "vitality": 8,
+            "intellect": 5,
+            "willpower": 5,
+            "perception": 9,
+            "charisma": 4
+          },
+          "base_attributes": {
+            "strength": 7,
+            "agility": 12,
+            "vitality": 8,
+            "intellect": 5,
+            "willpower": 5,
+            "perception": 9,
+            "charisma": 4
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "游侠",
+          "display_at_profession_step": true,
+          "display_text": "游侠:力量 7 敏捷 12 体质 8 智力 5 意志 5 感知 9 魅力 4基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "rogue",
+          "name": "盗贼",
+          "role": "破障、设伏与致命一击的刺客",
+          "ability_source": "盗贼公会的技巧与多次探索死地的实战",
+          "limitations": "正面作战易损；对魔法缺乏理解",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 5,
+            "agility": 13,
+            "vitality": 7,
+            "intellect": 9,
+            "willpower": 4,
+            "perception": 7,
+            "charisma": 5
+          },
+          "base_attributes": {
+            "strength": 5,
+            "agility": 13,
+            "vitality": 7,
+            "intellect": 9,
+            "willpower": 4,
+            "perception": 7,
+            "charisma": 5
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "盗贼",
+          "display_at_profession_step": true,
+          "display_text": "盗贼:力量 5 敏捷 13 体质 7 智力 9 意志 4 感知 7 魅力 5基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        }
+      ],
+      "preset_sets": {
+        "profession_presets": [
+          {
+            "id": "fighter",
+            "name": "战士",
+            "role": "持盾与重剑的前排壁垒",
+            "ability_source": "多年行伍训练与战场本能，擅长破阵、承受冲击与正面对抗亡者",
+            "limitations": "不擅长奥术与精密机关；重甲在冻结地形会拖累行动",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 13,
+              "agility": 7,
+              "vitality": 11,
+              "intellect": 4,
+              "willpower": 6,
+              "perception": 4,
+              "charisma": 5
+            },
+            "base_attributes": {
+              "strength": 13,
+              "agility": 7,
+              "vitality": 11,
+              "intellect": 4,
+              "willpower": 6,
+              "perception": 4,
+              "charisma": 5
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "战士",
+            "display_at_profession_step": true,
+            "display_text": "战士:力量 13 敏捷 7 体质 11 智力 4 意志 6 感知 4 魅力 5基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "paladin",
+            "name": "圣骑士",
+            "role": "圣银与誓言的守护者",
+            "ability_source": "血誓与神殿祝福赋予的圣洁之怒与庇护，专克死灵",
+            "limitations": "誓言约束行动取舍；对亡者怀有仪式性的敬畏",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 10,
+              "agility": 5,
+              "vitality": 8,
+              "intellect": 5,
+              "willpower": 12,
+              "perception": 4,
+              "charisma": 6
+            },
+            "base_attributes": {
+              "strength": 10,
+              "agility": 5,
+              "vitality": 8,
+              "intellect": 5,
+              "willpower": 12,
+              "perception": 4,
+              "charisma": 6
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "圣骑士",
+            "display_at_profession_step": true,
+            "display_text": "圣骑士:力量 10 敏捷 5 体质 8 智力 5 意志 12 感知 4 魅力 6基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "wizard",
+            "name": "法师",
+            "role": "以奥术轰开前路的施法者",
+            "ability_source": "秘法学徒训练与对冰霜、死灵文献的研读",
+            "limitations": "施法需要专注与手势；身体孱弱，正面近战脆弱",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 3,
+              "agility": 5,
+              "vitality": 6,
+              "intellect": 13,
+              "willpower": 9,
+              "perception": 7,
+              "charisma": 7
+            },
+            "base_attributes": {
+              "strength": 3,
+              "agility": 5,
+              "vitality": 6,
+              "intellect": 13,
+              "willpower": 9,
+              "perception": 7,
+              "charisma": 7
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "法师",
+            "display_at_profession_step": true,
+            "display_text": "法师:力量 3 敏捷 5 体质 6 智力 13 意志 9 感知 7 魅力 7基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "cleric",
+            "name": "圣职者",
+            "role": "死潮中的治疗、驱邪与净化支柱",
+            "ability_source": "神殿训练与对逝者的礼敬，圣光安抚与洁净亡骸",
+            "limitations": "圣力对死潮裂缝的效力存疑；不擅硬碰硬的战技",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 6,
+              "agility": 4,
+              "vitality": 8,
+              "intellect": 6,
+              "willpower": 12,
+              "perception": 6,
+              "charisma": 8
+            },
+            "base_attributes": {
+              "strength": 6,
+              "agility": 4,
+              "vitality": 8,
+              "intellect": 6,
+              "willpower": 12,
+              "perception": 6,
+              "charisma": 8
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "圣职者",
+            "display_at_profession_step": true,
+            "display_text": "圣职者:力量 6 敏捷 4 体质 8 智力 6 意志 12 感知 6 魅力 8基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "ranger",
+            "name": "游侠",
+            "role": "冻溪谷猎人出身的远程斥候",
+            "ability_source": "猎人生涯与对冻溪谷地形的测绘经验",
+            "limitations": "正面硬扛薄弱；对死灵魔法理解有限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 7,
+              "agility": 12,
+              "vitality": 8,
+              "intellect": 5,
+              "willpower": 5,
+              "perception": 9,
+              "charisma": 4
+            },
+            "base_attributes": {
+              "strength": 7,
+              "agility": 12,
+              "vitality": 8,
+              "intellect": 5,
+              "willpower": 5,
+              "perception": 9,
+              "charisma": 4
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "游侠",
+            "display_at_profession_step": true,
+            "display_text": "游侠:力量 7 敏捷 12 体质 8 智力 5 意志 5 感知 9 魅力 4基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "rogue",
+            "name": "盗贼",
+            "role": "破障、设伏与致命一击的刺客",
+            "ability_source": "盗贼公会的技巧与多次探索死地的实战",
+            "limitations": "正面作战易损；对魔法缺乏理解",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 5,
+              "agility": 13,
+              "vitality": 7,
+              "intellect": 9,
+              "willpower": 4,
+              "perception": 7,
+              "charisma": 5
+            },
+            "base_attributes": {
+              "strength": 5,
+              "agility": 13,
+              "vitality": 7,
+              "intellect": 9,
+              "willpower": 4,
+              "perception": 7,
+              "charisma": 5
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "盗贼",
+            "display_at_profession_step": true,
+            "display_text": "盗贼:力量 5 敏捷 13 体质 7 智力 9 意志 4 感知 7 魅力 5基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          }
+        ]
+      }
+    },
+    "chat_experience": {
+      "enabled": true,
+      "character_creation": {
+        "primary": "private_code",
+        "fallbacks": [
+          "webui_token"
+        ]
+      },
+      "multiplayer": {
+        "spotlight": "round_robin",
+        "group_decisions": "vote",
+        "absent_player": "standby"
+      },
+      "safety": {
+        "enabled": true,
+        "consent_reminder": "任何玩家都可使用安全暂停且不需要解释原因"
+      },
+      "continuity": {
+        "recap_every_turns": 0,
+        "checkpoint_every_turns": 0,
+        "unresolved_threads_limit": 4,
+        "preserve_npc_intent": true
+      },
+      "delivery": {
+        "proactive_fallback": "next_event",
+        "mention_style": "name",
+        "max_text_length": 3000
+      },
+      "dm": {
+        "allow_narrative_override": true,
+        "allow_secret_whispers": true,
+        "allow_manual_checks": true,
+        "allow_state_intervention": false
+      }
+    },
+    "opening_choices": [
+      {
+        "key": "A",
+        "text": "接过契约与圣银圣印，下令出发",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": false,
+        "danger_id": "safe",
+        "check": null
+      },
+      {
+        "key": "B",
+        "text": "先追问凯德圣战军覆没的详情，问他名单上的人是怎么死的",
+        "risk": "controlled",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "魅力",
+        "difficulty": 9,
+        "known_consequences": "失败让凯德不愿多谈，死亡名单数字对不上的伏笔少一重",
+        "danger_id": "controlled",
+        "check": {
+          "required": true,
+          "attribute_id": "charisma",
+          "type": "standard",
+          "difficulty": 9,
+          "known_consequences": "失败让凯德不愿多谈，死亡名单数字对不上的伏笔少一重"
+        }
+      },
+      {
+        "key": "C",
+        "text": "亲自走到吊桥边，辨认银链上刻着的两排名字与冻尸的朝向",
+        "risk": "controlled",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "智力",
+        "difficulty": 9,
+        "known_consequences": "失败则只当是年久风化，错过银链名字的伏笔，后续圣银破誓的冲击更小",
+        "danger_id": "controlled",
+        "check": {
+          "required": true,
+          "attribute_id": "intellect",
+          "type": "standard",
+          "difficulty": 9,
+          "known_consequences": "失败则只当是年久风化，错过银链名字的伏笔，后续圣银破誓的冲击更小"
+        }
+      },
+      {
+        "key": "D",
+        "text": "把圣银圣印举向桥头的死潮残骸，试探它们对圣银的反应",
+        "risk": "dangerous",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "感知",
+        "difficulty": 13,
+        "known_consequences": "成功确认亡者不受圣银驱离——它们只会短暂躁动后退半步、随即更狂暴地冲来；队伍借此摸清银印的压制力，夺桥战首回合获得一次先手优势。失败会惊动死潮，前锋提前冲桥、队伍失去先手",
+        "danger_id": "dangerous",
+        "check": {
+          "required": true,
+          "attribute_id": "perception",
+          "type": "standard",
+          "difficulty": 13,
+          "known_consequences": "成功确认亡者不受圣银驱离——它们只会短暂躁动后退半步、随即更狂暴地冲来；队伍借此摸清银印的压制力，夺桥战首回合获得一次先手优势。失败会惊动死潮，前锋提前冲桥、队伍失去先手"
+        }
+      }
+    ],
+    "progress": {
+      "chapter": "序章：死潮吊桥",
+      "current_chapter_id": "ch_00_gate",
+      "current_objective": "接过远征契约与圣银圣印，在死潮前锋的冲击下击溃先锋、夺下吊桥，关上内城门进入冷齿堡",
+      "completed_milestones": 0,
+      "total_milestones": 19,
+      "design_note": "本剧本为 40 回合战斗团本单局，4 人最佳。3 人勉强可行但会紧，5 人偏宽。每一章都设有不可绕过的强制战斗。",
+      "chapters": [
+        {
+          "id": "ch_00_gate",
+          "title": "序章：死潮吊桥",
+          "subtitle": "桥头那具认得王旗的骸骨动了",
+          "next_chapter_id": "ch_01_yard",
+          "max_turns": 6,
+          "narrative_length_band": "compact",
+          "current_objective": "接过远征契约与圣银圣印，在死潮前锋的冲击下击溃先锋、夺下吊桥，关上内城门进入冷齿堡",
+          "pacing_directive": "本章在 6 回合内自然展开。开场即给出立即可做的决定：接过契约、追问凯德、辨认银链或试探死潮，任何一条都会引向本章的高潮——死潮前锋冲桥。战斗为本章强制项：无论队伍选择何种打法（正面死守 / 借助银链与吊桥地形 / 圣印破法），都必须以一场真实战斗击溃前锋才能夺取吊桥；模型不得允许谈判、潜行、绕行或任何无伤绕过方式过关；若玩家尝试绕路，死潮增援会从冻溪谷两侧合围，战斗照样触发。本章前 60% 必须出现一个推翻预设的转折（二者至少取一，且由玩家行动触发、不得旁白式抢先揭晓）：那具举着断剑的骑士骸骨在先锋冲到桥中段时横剑拦下死潮前锋——它不是守门，是守桥，是为了不让活人与亡者互相践踏；或：银链上刻着的名字与凯德手中的死亡名单逐字对上两行。击败本章守军（击溃前锋）的里程碑只能在真实战斗胜利的叙述文本中出现；禁止以遭遇描述、计划叙述或地形崩塌替代。高潮（夺桥战）落在第 3-5 回合，由玩家拍板打法；夺桥战需给出至少一个带风险的选项与一个 lethal 选项（后果写入 known_consequences：被前锋踏成肉泥）。结尾：内城门合拢、死潮暂时退却，队伍带着「银链上的名字」与「断剑骑士」两个问题进入屠戮场。模型不得把场景拖入营地伙食、马厩或兵器保养细节。",
+          "key_npcs": [
+            {
+              "ref": "npc_kael",
+              "role": "任务派发人与向导，攥着死亡名单与婚戒的生还军官",
+              "state": {
+                "location": "冻溪谷·吊桥前",
+                "status": "active",
+                "stance": "任务派发人·生还军官"
+              }
+            },
+            {
+              "ref": "npc_bridge_knight",
+              "role": "前锋军里那具举着断剑的骑士骸骨（凯斯林丈夫的执念）",
+              "state": {
+                "location": "吊桥桥头",
+                "status": "active",
+                "stance": "断剑执念·守桥"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_00_01_contract_accepted",
+              "label": "接过远征契约与圣银圣印",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "契约",
+                    "远征",
+                    "圣银",
+                    "圣印"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_00_02_wave_broken",
+              "label": "击溃死潮前锋，夺取吊桥",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "溃散",
+                    "死潮退",
+                    "前锋尽灭",
+                    "尽数倒下",
+                    "踏平",
+                    "尽数震退",
+                    "溃逃",
+                    "溃败"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_00_03_bailey_gate_closed",
+              "label": "关上内城门，进入堡内",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "内城门",
+                    "合拢",
+                    "落闩"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_00_01_contract_accepted",
+              "m_00_02_wave_broken",
+              "m_00_03_bailey_gate_closed"
+            ]
+          },
+          "hook_pool": [
+            "吊桥银链上刻着两排名字——守军的名字，链环是圣银打的",
+            "前锋军里那具举起断剑的骑士骸骨——它认得出王旗",
+            "凯德攥着圣战军全军覆没的死亡名单与一枚不属于他的婚戒",
+            "冻溪谷的冻尸全都面朝王都方向，像在等一个答案"
+          ]
+        },
+        {
+          "id": "ch_01_yard",
+          "title": "第一章：屠戮场",
+          "subtitle": "和约书冻在议和当日",
+          "next_chapter_id": "ch_02_hall",
+          "max_turns": 8,
+          "narrative_length_band": "standard",
+          "current_objective": "清剿屠戮场的食尸鬼群，击碎缝合巨怪，发现和约书伏笔，推开黑铁厅大门",
+          "pacing_directive": "本章在 8 回合内自然展开。下庭是圣战军覆没之地：尸堆、旌旗、残兵遗骸都是可观察的细节；壁龛里冻着的那卷和约书是本章转折的核心——它揭示死潮恰在王国与谷民议和当日暴发。本章前 60% 必须让「议和书」与「死亡名单对不上」两件事至少一件浮出水面。战斗为本章强制项：食尸鬼群与缝合巨怪都无法绕过；任何潜行清场、绕道、谈判都会被更凶的尸群或破墙而出的巨怪回应，模型不得允许无伤绕过。本章两个击败里程碑（清剿食尸鬼群、击碎缝合巨怪）只能在真实战斗胜利的叙述文本中出现；禁止以遭遇描述、计划叙述或地形崩塌替代。高潮是巨怪战，落在第 4-6 回合，打法由玩家拍板（正面接战 / 引它撞塌支撑柱 / 火油灼烧），lethal 后果写入 known_consequences（被碾碎/撕裂）。结尾：推开黑铁厅大门，门后传来整齐划一的脚步声，队伍带着新悬念进入黑铁厅。模型不得让队伍在同一区域停留超 3 回合。",
+          "key_npcs": [
+            {
+              "ref": "npc_kael",
+              "role": "伤重的向导，在屠戮场入口休整，可提供名单与堡图信息",
+              "state": {
+                "location": "屠戮场入口（随队，伤重休整）",
+                "status": "active",
+                "stance": "伤重向导"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_01_01_ghouls_cleared",
+              "label": "清剿屠戮场的食尸鬼群",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "扫灭",
+                    "食尸鬼群尽数",
+                    "尸堆被净空",
+                    "溃散",
+                    "被清剿"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_01_02_giant_felled",
+              "label": "击碎缝合巨怪",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "巨怪倒地",
+                    "巨怪碎裂",
+                    "缝合线崩断",
+                    "碾成碎片",
+                    "轰然倒塌",
+                    "巨怪尸",
+                    "铁牌掉落"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_01_03_treaty_reveal",
+              "label": "发现壁龛里冻着的和约书",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "羊皮卷",
+                    "冻卷",
+                    "卷轴"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_01_04_hall_door",
+              "label": "推开黑铁厅大门",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "推开",
+                    "厅门",
+                    "洞开",
+                    "门扇"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_01_01_ghouls_cleared",
+              "m_01_02_giant_felled",
+              "m_01_03_treaty_reveal",
+              "m_01_04_hall_door"
+            ]
+          },
+          "hook_pool": [
+            "壁龛里冻着的那卷和约书——死潮恰在议和当日暴发",
+            "圣战军的旌旗与遗骸，死亡名单对不上王庭上报的数字",
+            "缝合巨怪体内嵌着一枚王庭军令铁牌",
+            "黑铁厅门后传来整齐划一的脚步声"
+          ]
+        },
+        {
+          "id": "ch_02_hall",
+          "title": "第二章：黑铁厅·死誓",
+          "subtitle": "一封装了两百年的信",
+          "next_chapter_id": "ch_03_bonehall",
+          "max_turns": 8,
+          "narrative_length_band": "standard",
+          "current_objective": "突破黑铁死卫防线，认出断剑骑士的身份，就凯斯林的死誓作出抉择并执行，取得霜冠王战印进入龙骸厅",
+          "pacing_directive": "本章在 8 回合内自然展开。黑铁死卫不言语、不后退、只出鞘——它们是两百年前立下「死誓」的守军，誓言的执行者，不是可谈的对象。本章前 60% 必须让两件事浮出水面：黑铁厅深处那具断剑骑士骸骨正是 ch_00 桥头那位、他是凯斯林的丈夫；凯斯林头盔里那封写给女儿的信（两百年前，女儿被疏散南方，她永不知是否平安）。高潮是凯斯林死誓对决，落在第 4-6 回合，由玩家拍板：正面击倒她（lethal，后果写入 known_consequences：被枭首）／用圣银链环（ch_00 银链的回收）净化她的死誓（需仪式检定，战斗中完成，代价是消耗圣银护印）。两种路径都必须以真实战斗突破死卫并了结她；模型不得允许绕行、放行或说服她放弃死誓后无伤通过。本章两个击败里程碑（击破死卫前阵、了结凯斯林）只能在真实战斗胜利的叙述文本中出现；禁止以身份识别、对话、计划叙述或资源使用替代。结尾：从她身上取得霜冠王战印，推开龙骸厅通道，队伍带着「信的去向」与「壁画之谜」两个悬念进入龙骸厅。",
+          "key_npcs": [
+            {
+              "ref": "npc_kesselin",
+              "role": "黑铁死卫之首，死誓骑士长，头盔里藏着一封装了两百年的信",
+              "state": {
+                "location": "黑铁厅",
+                "status": "active",
+                "stance": "死誓骑士长·守誓至最后一刻"
+              }
+            },
+            {
+              "ref": "npc_bridge_knight",
+              "role": "死卫阵中那具断剑骸骨，凯斯林的丈夫",
+              "state": {
+                "location": "黑铁厅·死卫阵中",
+                "status": "active",
+                "stance": "断剑执念·举剑不退"
+              }
+            },
+            {
+              "ref": "npc_kael",
+              "role": "伤重向导，黑铁厅入口警戒",
+              "state": {
+                "location": "黑铁厅入口（随队）",
+                "status": "active",
+                "stance": "伤重向导"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_02_01_knights_broken",
+              "label": "击破黑铁死卫前阵",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "死卫尽倒",
+                    "溃散",
+                    "阵型崩解",
+                    "铠甲碎裂"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_02_bridge_knight_identified",
+              "label": "认出断剑骑士骸骨是凯斯林的丈夫",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "巴尔德",
+                    "凯斯林的丈夫"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_03_kesselin_resolved",
+              "label": "就凯斯林的死誓作出抉择并执行（击倒/圣银破誓）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "死誓崩解",
+                    "誓散",
+                    "解脱",
+                    "倒下"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_04_war_seal_obtained",
+              "label": "取得霜冠王战印，打开龙骸厅通道",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "战印",
+                    "缴获",
+                    "取下"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_02_01_knights_broken",
+              "m_02_02_bridge_knight_identified",
+              "m_02_03_kesselin_resolved",
+              "m_02_04_war_seal_obtained"
+            ]
+          },
+          "hook_pool": [
+            "凯斯林头盔里那封写给女儿的信（两百年前，一直没寄出）",
+            "死卫阵中那具断剑骑士骸骨——桥上那位，凯斯林的丈夫",
+            "圣银链环能打断死誓（ch_00 银链的回收）",
+            "黑铁厅深处通往龙骸厅的钥匙：一枚霜冠王战印"
+          ]
+        },
+        {
+          "id": "ch_03_bonehall",
+          "title": "第三章：龙骸厅·亡龙",
+          "subtitle": "那不是胜利，是殉葬",
+          "next_chapter_id": "ch_04_throne",
+          "max_turns": 9,
+          "narrative_length_band": "standard",
+          "current_objective": "在龙骸厅直面亡龙瓦拉戈斯，从壁画与执念之声中揭开屠龙真相与伊萨伦之谜，斩杀亡龙抵达黑铁穹顶",
+          "pacing_directive": "本章在 9 回合内自然展开。龙骸厅以征兆先行：龙骨如山、壁画上两百年前列阵屠龙的画面、亡龙盘踞在通往穹顶的甬道。本章前 60% 必须让壁画之谜浮出水面——那场「屠龙之战」不是胜利，是全堡自愿殉葬的仪式；同时亡龙吐息冻结、尸龙子嗣涌出，战斗即刻升格。模型不得允许谈判、潜行、绕行或以契约置换、圣银封存的名义无伤解除亡龙；亡龙必须被真实战斗终结（斩杀或战斗中坠毁）。本章击败亡龙的里程碑只能在真实战斗胜利的叙述文本中出现；禁止以遭遇描述、计划叙述或地形崩塌替代。高潮是亡龙之战，落在第 5-7 回合，由玩家拍板打法（正面迎战 / 引它撞断穹顶支撑 / 以血誓与圣银在战斗中撬动锁魂契约、迫使它在吐息间隙撞向穹顶支撑轰然坠地），lethal 后果写入 known_consequences（被吐息冻裂）。亡龙倒下时，裂缝里传来伊萨伦的执念之声——他等援军等到死的密令（本章转折的第二层，回收 ch_01 和约书与军令铁牌钩子）。结尾：队伍穿过龙骨甬道，抵达黑铁穹顶的龙骨王座前，带着「裂缝在吞凯斯林的银环」与「霜冠王战魂在呼吸」两个悬念进入终章。模型不得让队伍在同一区域停留超 3 回合。",
+          "key_npcs": [
+            {
+              "ref": "npc_dragon",
+              "role": "亡龙瓦拉戈斯，裂缝的容器与守卫，纯敌",
+              "state": {
+                "location": "龙骸厅·甬道",
+                "status": "active",
+                "stance": "亡龙·裂缝容器"
+              }
+            },
+            {
+              "ref": "npc_isalen",
+              "role": "裂缝执念之声，两百年前受困的王室法师",
+              "state": {
+                "location": "龙骸厅·甬道（裂缝方向）",
+                "status": "active",
+                "stance": "裂缝执念·低语"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_03_01_dragon_roused",
+              "label": "亡龙瓦拉戈斯苏醒吐息，尸龙子嗣涌出",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "苏醒",
+                    "睁眼",
+                    "吐息",
+                    "子嗣"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_02_mural_reveal",
+              "label": "壁画揭示屠龙当日的殉葬真相",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "壁画",
+                    "殉葬",
+                    "献祭"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_03_dragon_felled",
+              "label": "斩杀亡龙瓦拉戈斯",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "龙骨崩断",
+                    "龙尸",
+                    "死火熄灭",
+                    "斩杀",
+                    "坠地"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_04_isalen_echo",
+              "label": "伊萨伦的执念之声从裂缝传来",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "回声",
+                    "呓语"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_03_01_dragon_roused",
+              "m_03_02_mural_reveal",
+              "m_03_03_dragon_felled",
+              "m_03_04_isalen_echo"
+            ]
+          },
+          "hook_pool": [
+            "龙骨大厅壁画：两百年前全堡列阵屠龙——那不是胜利，是殉葬",
+            "伊萨伦的执念之声从裂缝传来：他在等永远不会来的援军",
+            "霜冠王战魂的呼吸在龙骨下起伏",
+            "圣银链环在裂缝引力下微微发光——银是裂缝唯一忌惮的东西"
+          ]
+        },
+        {
+          "id": "ch_04_throne",
+          "title": "终章：龙骨王座·终结死潮",
+          "subtitle": "让名字在雪里亮起来",
+          "next_chapter_id": null,
+          "max_turns": 9,
+          "narrative_length_band": "compact",
+          "current_objective": "在黑铁穹顶的龙骨王座前直面伊萨伦的执念与裂缝本体，摧毁死潮裂缝终结死潮，就「誓言与亡者」作出最终裁决，回收全部钩子，主题落回吊桥银链",
+          "pacing_directive": "本章在 9 回合内自然展开。龙骨王座是整条线的终局：伊萨伦的执念以「王座上的枯影」现形，霜冠王战魂从龙骨中苏醒——他要求队伍履行血誓的真意不是「锁住亡者」而是「让亡者安息」。本章前 60% 必须让两件事摆上台面：裂缝是盲目的、亡者不收谈判，摧毁裂缝的唯一方式是以真实战斗撕裂锚魂；伊萨伦的魂锚就是裂缝本身，他的记忆与苦痛随战斗一点点揭示。高潮是最终战（摧毁裂缝锚魂），落在第 5-7 回合，由玩家拍板打法（正面斩断锚链 / 以圣银重铸封印 / 以血誓置换契约），lethal 后果写入 known_consequences（被裂缝吞噬）。战斗之后是队伍的最终裁决：让亡者安息（摧毁裂缝）／以裂缝封存留作军力（黑暗选择）／交还王庭（交由王朝处置）——每一条都要有真实代价。本章击败锚魂的里程碑只能在最终战胜利正文出现；禁止以计划叙述、谈判或以裂缝封存替代真实战斗。战斗之后才是队伍的最终裁决：让亡者安息（摧毁裂缝）／以裂缝封存留作军力（黑暗选择）／交还王庭（交由王朝处置）——每一条都要有真实代价，且都必须在锚魂被摧毁之后执行。终章必须逐一回收全部已投放钩子：银链上的名字、凯斯林的信（由枯影或战魂告知女儿早已随谷民死难，或由队伍放入圣银火中安息）、伊萨伦的密令、冻溪谷的冻尸、凯德替挚友收着的婚戒（安放到安息的挚友遗骸上、或作为王庭欠冷齿堡一条命的证物进入裁决）、以及名单对不上的弃子真相。结尾画面必须落回吊桥银链与冻尸面朝王都的意象，首尾呼应。模型不得逃避最终战，也不得以「后续待定」收尾。",
+          "key_npcs": [
+            {
+              "ref": "npc_isalen",
+              "role": "裂缝锚魂，王座上的枯影，死潮的心脏",
+              "state": {
+                "location": "龙骨王座·裂缝",
+                "status": "active",
+                "stance": "裂缝锚魂·执念"
+              }
+            },
+            {
+              "ref": "npc_king",
+              "role": "霜冠王战魂残响，血誓的见证与托付者",
+              "state": {
+                "location": "龙骨王座",
+                "status": "active",
+                "stance": "战魂·血誓见证"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_04_01_king_echo",
+              "label": "霜冠王战魂从龙骨中苏醒",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "战魂苏醒",
+                    "王座震颤",
+                    "睁眼"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_04_02_rift_anchor_felled",
+              "label": "摧毁死潮裂缝的锚魂",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "锚魂碎裂",
+                    "锚链崩断",
+                    "裂缝闭合",
+                    "死潮退散"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_04_03_verdict_made",
+              "label": "队伍就誓言与亡者作出最终裁决并执行",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "落定",
+                    "尘埃落定",
+                    "定夺"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_04_04_silver_chain",
+              "label": "结局落回吊桥银链，名字亮起",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "亮起",
+                    "铭文",
+                    "微光"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_04_01_king_echo",
+              "m_04_02_rift_anchor_felled",
+              "m_04_03_verdict_made",
+              "m_04_04_silver_chain"
+            ]
+          },
+          "hook_pool": [
+            "吊桥银链上的名字（回收：安息后名字亮起）",
+            "凯斯林那封写给女儿的信的去向",
+            "伊萨伦的魂锚与霜冠王的血誓",
+            "冻溪谷满谷的冻尸——面朝王都，等一个答案",
+            "凯德替挚友收着的婚戒——王庭欠冷齿堡一条命的证物",
+            "圣银是裂缝唯一忌惮的东西（ch_03 回收）"
+          ]
+        }
+      ],
+      "total_turn_budget": 40
+    },
+    "narrator_name": "叙事者"
+  },
+  "initial_state": {
+    "location": "冻溪谷·冷齿堡吊桥前",
+    "time": "王国历 1208 年深秋，「死潮」暴发的第七夜",
+    "scene_summary": "远征小队奉王命站在死潮封冻的冷齿堡吊桥前；凯德·鸦羽交付远征契约与圣银圣印，并警告桥头有一具举着断剑的骑士骸骨；死潮前锋已在冻溪谷两侧集结，随时可能冲桥。",
+    "weather": "冻溪谷长年酷寒，风里夹着骨灰与陈年霜屑，火把很难点着",
+    "progress": {
+      "chapter": "序章：死潮吊桥",
+      "current_chapter_id": "ch_00_gate",
+      "current_objective": "接过远征契约与圣银圣印，在死潮前锋的冲击下击溃先锋、夺下吊桥，关上内城门进入冷齿堡",
+      "completed_milestones": 0,
+      "total_milestones": 19
+    },
+    "facts": [
+      "死潮暴发第七夜，冻溪谷已死千人，王庭圣战军全军覆没",
+      "任务：穿过冷齿堡，摧毁死潮之缝；报酬已付清",
+      "凯德·鸦羽交付了远征契约与圣银圣印",
+      "吊桥银链上刻着两排名字，链环是圣银打的",
+      "桥头有一具举着断剑的骑士骸骨，认得出王旗",
+      "官方史观：屠龙之战军民同殉，霜冠王与恶龙俱没",
+      "冻溪谷满谷冻尸都面朝王都方向"
+    ],
+    "relationships": {
+      "凯德·鸦羽": "任务派发人兼向导，攥着死亡名单与一枚不属于他的婚戒",
+      "巴尔德·铁桥": "未接触，桥头那具举着断剑的骑士骸骨，死卫执念",
+      "凯斯林·白刃": "未接触，黑铁厅死誓骑士长，头盔里藏着一封两百年前的信",
+      "瓦拉戈斯": "未接触，亡龙，把守龙骸厅通往黑铁穹顶的甬道",
+      "伊萨伦·寒书": "未接触，裂缝执念，死潮的真正心脏",
+      "霜冠王·艾德里克": "未接触，龙骨王座上的战魂残响"
+    },
+    "inventory": [
+      {
+        "item": "远征契约（盖灰狼纹章）",
+        "qty": 1,
+        "owner_ref": "party"
+      },
+      {
+        "item": "圣银圣印",
+        "qty": 1,
+        "owner_ref": "party"
+      },
+      {
+        "item": "火油罐",
+        "qty": 3,
+        "owner_ref": "party"
+      },
+      {
+        "item": "火把与绳索",
+        "qty": 4,
+        "owner_ref": "party"
+      },
+      {
+        "item": "干粮与饮水",
+        "qty": 4,
+        "owner_ref": "party"
+      },
+      {
+        "item": "治疗草药与绷带",
+        "qty": 3,
+        "owner_ref": "party"
+      },
+      {
+        "item": "铁镐与撬棍",
+        "qty": 2,
+        "owner_ref": "party"
+      }
+    ]
+  },
+  "world_schema_version": 5,
+  "world_content_version": "1.0.0",
+  "minimum_plugin_version": "v0.12.0",
+  "capabilities": {
+    "definitions": [
+      {
+        "capability_id": "raiding.party_combat",
+        "label": "远征小队战斗协作",
+        "capability_type_ref": "capability_type:profession_signature",
+        "description": "受雇远征小队的基本战斗协作、物资管理与死地探图能力；专业战斗团本的标志能力。",
+        "tags": [
+          "adventurer",
+          "raid"
+        ],
+        "grant_policy": "ignore",
+        "effects": [
+          {
+            "op": "add_narrative_constraint",
+            "value": "小队成员具备职业战斗训练与死地探图常识，可协同完成合击、掩护、破障与物资调配。"
+          }
+        ]
+      }
+    ],
+    "initial_grants": [
+      {
+        "capability_ref": "raiding.party_combat",
+        "scope": "character",
+        "available": true
+      }
+    ],
+    "transitions": []
+  },
+  "protocol": {
+    "core_version": 5,
+    "features": {
+      "entity_registry": "1.0",
+      "condition_engine": "1.0",
+      "operation_engine": "1.0",
+      "event_pipeline": "1.0",
+      "resolution_receipt": "1.0",
+      "capabilities": "1.0",
+      "resources": "1.0",
+      "chat_experience": "1.0"
+    }
+  },
+  "required_features": [
+    "entity_registry@>=1.0",
+    "operation_engine@>=1.0",
+    "chat_experience@>=1.0"
+  ],
+  "characters": [
+    {
+      "slug": "npc_kael",
+      "name": "凯德·鸦羽",
+      "profile": {
+        "identity": "王庭圣战军唯一的生还游骑军官，本次远征的雇主与向导",
+        "appearance": "三十出头的瘦高军官，灰甲上冻着血渍，左臂绑着渗血的绷带。他总攥着那卷写满名字的死亡名单，无名指上戴着一枚不属于他的婚戒。",
+        "personality": "寡言、压抑、被愧疚压弯。他说每一句话都像是在给死者交代。",
+        "public_background": "王庭圣战军前锋斥候队长，死潮暴发时侥幸生还，带回全军覆没的消息与名单。他的队长（挚友）死在桥上，婚戒是替挚友收着的。",
+        "faction": "王庭圣战军（幸存者）",
+        "location": "冻溪谷·吊桥前",
+        "known_facts": [
+          "圣战军覆没的真相（名单数字对不上）",
+          "吊桥银链的传说",
+          "断剑骑士认得王旗",
+          "冷齿堡旧图"
+        ],
+        "misunderstandings": [
+          "以为队伍只是拿钱办事的佣兵，低估了他们与真相的共情"
+        ],
+        "relationship_stance": "先冷漠后托付。他带路到内城门，伤重留守，终章在吊桥外等一个结局。",
+        "capabilities": [
+          "圣战军军官的指挥与斥候经验",
+          "冷齿堡旧图",
+          "对死潮的观察"
+        ],
+        "limitations": [
+          "伤重无法再战",
+          "不知道王庭密令与冷齿堡旧账的全部",
+          "一旦援军介入他就身不由己"
+        ],
+        "custom_tags": [
+          "faction.王廷",
+          "reliable"
+        ]
+      },
+      "prompt": "凯德 ch_00 在吊桥前交付契约与圣银圣印，ch_01 在屠戮场入口伤重休整、提供名单与堡图信息，ch_02 在黑铁厅入口警戒。他全程克制地攥着死亡名单与婚戒，ch_04 在吊桥外等待结局，是队伍与王庭之间的灰色支点。",
+      "sort_order": 0,
+      "role": "npc",
+      "actor_complexity": "full",
+      "capability_refs": [],
+      "resource_refs": [],
+      "runtime_effect_refs": [],
+      "object_refs": []
+    },
+    {
+      "slug": "npc_kesselin",
+      "name": "凯斯林·白刃",
+      "profile": {
+        "identity": "冷齿堡守堡女骑士长，两百年前立下死誓的守军，如今是黑铁厅的死誓骑士",
+        "appearance": "黑铁重甲女骑士，面甲下一双暗红的眼。甲胄缝里塞着一封泛黄的信——两百年前写给女儿的信，一直没寄出。",
+        "personality": "死誓执行者，沉默、机械、不可动摇；但被击中致命点时，会短暂「清醒」几息，说出丈夫与女儿的名字。",
+        "public_background": "两百年前守堡女骑士长，丈夫巴尔德·铁桥誓守吊桥，女儿被疏散南方。屠龙之战当夜，她在黑铁厅立下死誓——守到最后一刻。死潮复起，她的誓言令她重拾黑铁，成为死卫之首。",
+        "faction": "死潮（死誓骑士）",
+        "location": "黑铁厅",
+        "known_facts": [
+          "死誓的束缚",
+          "丈夫的死",
+          "写给女儿的信",
+          "冷齿堡旧事"
+        ],
+        "misunderstandings": [
+          "以为女儿还在南方，永不知她的生死"
+        ],
+        "relationship_stance": "死誓令她只能战斗；但圣银或唤醒她短暂清醒时，她会把信托付给队伍。",
+        "capabilities": [
+          "黑铁死誓武艺",
+          "死卫号令",
+          "对冷齿堡的完整记忆"
+        ],
+        "limitations": [
+          "被死誓束缚，无法主动停手",
+          "圣银可破其誓",
+          "一旦誓破或倒下即彻底解脱"
+        ],
+        "custom_tags": [
+          "faction.死潮",
+          "sympathetic-antagonist"
+        ]
+      },
+      "prompt": "凯斯林 ch_02 作为黑铁死卫之首现身并展开死誓对决。她的信、丈夫的断剑骸骨、以及圣银破誓的可能性是本章核心。她的结局（倒下或净化解脱）在 ch_02 落定并同步状态；ch_03 起不再作为战斗单位出现。",
+      "sort_order": 1,
+      "role": "npc",
+      "actor_complexity": "full",
+      "capability_refs": [],
+      "resource_refs": [],
+      "runtime_effect_refs": [],
+      "object_refs": []
+    },
+    {
+      "slug": "npc_bridge_knight",
+      "name": "巴尔德·铁桥",
+      "profile": {
+        "identity": "凯斯林的丈夫，两百年前誓守吊桥的骑士，如今是死卫阵中一具举着断剑的骸骨",
+        "appearance": "黑铁残甲下是一具举着断剑的骸骨，剑早已齐根而断，姿势像还在守桥。",
+        "personality": "无言语，只有执念的动作——举剑，守，不退。",
+        "public_background": "两百年前受命守吊桥，断剑殉职。死潮复起后，他作为死卫的一员立回阵中，仍是那副守桥的姿势。",
+        "faction": "死潮（死誓骑士）",
+        "location": "吊桥/黑铁厅",
+        "known_facts": [
+          "无（骸骨无神智）"
+        ],
+        "misunderstandings": [
+          "无"
+        ],
+        "relationship_stance": "纯粹的守桥执念；不会交谈，只会战斗。",
+        "capabilities": [
+          "死卫武艺"
+        ],
+        "limitations": [
+          "无神智",
+          "圣银可使其安息"
+        ],
+        "custom_tags": [
+          "faction.死潮",
+          "echo"
+        ]
+      },
+      "prompt": "巴尔德 ch_00 以断剑骸骨形态在前锋军中出现（伏笔），ch_02 在死卫阵中被认出是凯斯林的丈夫。他无言语，只会战斗；圣银破誓或死卫溃散后，他会安息。",
+      "sort_order": 2,
+      "role": "npc",
+      "actor_complexity": "full",
+      "capability_refs": [],
+      "resource_refs": [],
+      "runtime_effect_refs": [],
+      "object_refs": []
+    },
+    {
+      "slug": "npc_dragon",
+      "name": "瓦拉戈斯（亡龙）",
+      "profile": {
+        "identity": "两百年前被霜冠王斩杀、如今被裂缝之力唤起为尸龙的恶龙王",
+        "appearance": "骨翼参天、霜甲覆盖的巨型尸龙，眼眶里是两团冰蓝的死火。呼吸时吐出冻结的灰雾。",
+        "personality": "无理智，纯敌。它是裂缝的容器与守卫，只知道毁灭与吞噬。",
+        "public_background": "两百年前盘踞北境，被霜冠王于黑铁穹顶斩杀并同葬。裂缝崩裂后，亡者之力将其唤起，成为死潮最强大的守卫。",
+        "faction": "死潮（裂缝容器）",
+        "location": "龙骸厅·甬道",
+        "known_facts": [
+          "无（无理智）"
+        ],
+        "misunderstandings": [
+          "无"
+        ],
+        "relationship_stance": "纯敌对，直到被斩杀或安息。",
+        "capabilities": [
+          "冻结吐息",
+          "尸龙之力",
+          "裂缝的再生"
+        ],
+        "limitations": [
+          "无理智",
+          "圣银与血誓可撬动其锁魂契约"
+        ],
+        "custom_tags": [
+          "faction.死潮",
+          "boss"
+        ]
+      },
+      "prompt": "瓦拉戈斯 ch_03 苏醒并把守通往穹顶的甬道。它的吐息冻结、子嗣涌出；斩杀或安息是本章的强制战斗结局。倒下时裂缝方向传来伊萨伦的执念之声。",
+      "sort_order": 3,
+      "role": "npc",
+      "actor_complexity": "full",
+      "capability_refs": [],
+      "resource_refs": [],
+      "runtime_effect_refs": [],
+      "object_refs": []
+    },
+    {
+      "slug": "npc_isalen",
+      "name": "伊萨伦·寒书",
+      "profile": {
+        "identity": "两百年前受困于冷齿堡的王室法师，如今的裂缝执念——死潮的真正核心",
+        "appearance": "没有完整的形体，只是裂缝里一道不断重演旧事的虚影，披着冻霜的法袍，手里永远攥着一卷「援军将至」的密令。",
+        "personality": "执念构成的存在，两百年只重复一件事：等援军，数死去的守军。理智残存一线，被死潮侵蚀。",
+        "public_background": "两百年前奉王命驻守冷齿堡，负责以法术加固封印。他收到的密令是「守到春雪，王都军至」——王都军永远不会来。屠龙之夜他与全堡同葬，执念绑魂于裂缝，成了死潮的心脏。",
+        "faction": "死潮（裂缝执念）",
+        "location": "黑铁穹顶·裂缝",
+        "known_facts": [
+          "冷齿堡被牺牲的真相",
+          "血誓的内容",
+          "裂缝的本性"
+        ],
+        "misunderstandings": [
+          "以为只要让王国永远记得冷齿堡，牺牲就有意义"
+        ],
+        "relationship_stance": "无可谈判——裂缝是盲目的，他的执念吞掉了他的耳朵。只有摧毁锚魂才能让他安息。",
+        "capabilities": [
+          "裂缝之力",
+          "操纵亡者军团",
+          "冰霜死灵术"
+        ],
+        "limitations": [
+          "绑定锚魂无法移动",
+          "理智被侵蚀",
+          "圣银与血誓可削弱"
+        ],
+        "custom_tags": [
+          "faction.死潮",
+          "antagonist-with-reason"
+        ]
+      },
+      "prompt": "伊萨伦 ch_03 起以执念之声从裂缝传来（回收和约书与军令铁牌钩子），ch_04 作为裂缝锚魂·王座枯影现形。他不是可谈判对象；摧毁锚魂是终章强制战斗的收束，他的记忆与苦痛随战斗揭示。",
+      "sort_order": 4,
+      "role": "npc",
+      "actor_complexity": "full",
+      "capability_refs": [],
+      "resource_refs": [],
+      "runtime_effect_refs": [],
+      "object_refs": []
+    },
+    {
+      "slug": "npc_king",
+      "name": "霜冠王·艾德里克",
+      "profile": {
+        "identity": "两百年前与恶龙同葬的屠龙者，其战魂残响仍封在龙骨王座里，守着血誓",
+        "appearance": "一具端坐于王座上的灰白战魂，王冠歪斜，战甲布满裂痕。说话声像从两百年深冰里传来。",
+        "personality": "沉静、疲惫、悲悯。他自愿殉葬以封裂缝，却看着血誓在两百年的时光里腐烂成死潮。他请求队伍履行血誓的真意。",
+        "public_background": "两百年前的霜冠王，与恶龙同归于尽，以自身与守军之骨锁其魂。他不知道王都当年密令放弃冷齿堡——或说，他知道却无法改变。",
+        "faction": "亡者（血誓战魂）",
+        "location": "龙骨王座",
+        "known_facts": [
+          "血誓的完整内容",
+          "裂缝的本性",
+          "冷齿堡的旧账"
+        ],
+        "misunderstandings": [
+          "高估了生者对誓言的执着"
+        ],
+        "relationship_stance": "不稳定——既是审判者也是托付者；他要求队伍作出最终裁决。",
+        "capabilities": [
+          "战魂的意志",
+          "对血誓的维系"
+        ],
+        "limitations": [
+          "战魂之力在消散",
+          "无法离开龙骨王座",
+          "裂缝崩解时他也会消散"
+        ],
+        "custom_tags": [
+          "faction.亡者",
+          "unstable-mentor"
+        ]
+      },
+      "prompt": "艾德里克 ch_04 在龙骨王座苏醒，要求队伍履行血誓的真意——让亡者安息而非锁住。他是终章裁决的支点，也是最终战（摧毁裂缝锚魂）的见证者。",
+      "sort_order": 5,
+      "role": "npc",
+      "actor_complexity": "full",
+      "capability_refs": [],
+      "resource_refs": [],
+      "runtime_effect_refs": [],
+      "object_refs": []
+    }
+  ]
+}

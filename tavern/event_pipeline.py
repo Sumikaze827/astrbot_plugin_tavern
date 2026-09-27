@@ -81,57 +81,6 @@ class EventPipeline:
             matched = matched[:limit]
         return self._aggregate(matched), reads
 
-    def match_with_details(
-        self,
-        event_name: str,
-        phase: str,
-        context: Mapping[str, Any],
-    ) -> dict[str, Any]:
-        """D1 统一结果契约：命中规则 + 每条规则的条件诊断。
-
-        返回结构：{matched_rules, aggregated_rules, condition_results,
-        operations, reads}。condition_results 与命中的规则一一对应，
-        每项包含 allowed/code/message/recovery/technical_refs。
-        """
-
-        if phase not in EVENT_PHASES:
-            raise ValueError(f"不支持的事件阶段：{phase}")
-        rules, limit = self._rules()
-        matched: list[dict[str, Any]] = []
-        condition_results: list[dict[str, Any]] = []
-        reads: list[dict[str, Any]] = []
-        for rule in rules:
-            if not bool(rule.get("enabled", True)) or not self._triggered(
-                rule, event_name, phase
-            ):
-                continue
-            result = self.conditions.evaluate_with_detail(
-                rule.get("when", {}), context
-            )
-            reads.extend(result.reads)
-            payload = result.to_payload()
-            payload["rule_id"] = str(rule.get("rule_id") or "")
-            payload["priority"] = int(rule.get("priority", 0) or 0)
-            condition_results.append(payload)
-            if result.matched:
-                matched.append(rule)
-        matched.sort(
-            key=lambda item: (
-                -int(item.get("priority", 0) or 0),
-                str(item.get("rule_id") or ""),
-            )
-        )
-        if len(matched) > limit:
-            matched = matched[:limit]
-        aggregated = self._aggregate(matched)
-        return {
-            "matched_rules": [dict(item) for item in matched],
-            "aggregated_rules": [dict(item) for item in aggregated],
-            "condition_results": condition_results,
-            "operations": self.operations(aggregated),
-            "reads": reads,
-        }
-
     def _aggregate(self, rules: list[dict[str, Any]]) -> list[dict[str, Any]]:
         ungrouped: list[dict[str, Any]] = []
         groups: dict[str, list[dict[str, Any]]] = {}

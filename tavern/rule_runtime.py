@@ -7,12 +7,8 @@ from typing import Any
 
 from .capability_service import CapabilityService
 from .entity_registry import EntityRegistry, module_value
-from .event_pipeline import EventPipeline
-from .operation_engine import (
-    OperationEngine,
-    build_operation_envelope,
-    build_rollback_plan,
-)
+from .event_pipeline import EVENT_PHASES, EventPipeline
+from .operation_engine import OperationEngine
 from .resolution_receipts import ResolutionMethodEngine, new_receipt
 
 
@@ -46,7 +42,6 @@ class RuleRuntime:
         operation_id: str | None = None,
         world_snapshot_id: str = "",
         dry_run: bool = True,
-        envelope: Mapping[str, Any] | None = None,
     ) -> dict[str, Any]:
         operation_id = str(operation_id or f"op_{uuid.uuid4().hex}")
         actor_ref = str(intent.get("actor_ref") or "")
@@ -64,16 +59,12 @@ class RuleRuntime:
         matched_rules: list[dict[str, Any]] = []
         condition_reads: list[dict[str, Any]] = []
         planned_operations: list[dict[str, Any]] = []
-        condition_results: list[dict[str, Any]] = []
 
         for phase in ("before_event", "validation", "before_resolution"):
-            details = self.pipeline.match_with_details(
-                event_name, phase, enriched
-            )
-            matched_rules.extend(details["matched_rules"])
-            condition_reads.extend(details["reads"])
-            condition_results.extend(details["condition_results"])
-            planned_operations.extend(details["operations"])
+            matched, reads = self.pipeline.match(event_name, phase, enriched)
+            matched_rules.extend(matched)
+            condition_reads.extend(reads)
+            planned_operations.extend(self.pipeline.operations(matched))
 
         if definition:
             costs = definition.get("costs", [])
@@ -110,72 +101,15 @@ class RuleRuntime:
             "after_commit",
             "before_narration",
         ):
-            details = self.pipeline.match_with_details(
-                event_name, phase, enriched
-            )
-            matched_rules.extend(details["matched_rules"])
-            condition_reads.extend(details["reads"])
-            condition_results.extend(details["condition_results"])
-            planned_operations.extend(details["operations"])
+            matched, reads = self.pipeline.match(event_name, phase, enriched)
+            matched_rules.extend(matched)
+            condition_reads.extend(reads)
+            planned_operations.extend(self.pipeline.operations(matched))
 
         current_state = enriched.get("state")
         current_state = current_state if isinstance(current_state, Mapping) else {}
         committed_state, changes, narrative = self.operations.apply(
             planned_operations, current_state, dry_run=dry_run
-        )
-        if envelope is not None:
-            actor_data = (
-                envelope.get("actor")
-                if isinstance(envelope.get("actor"), Mapping)
-                else {}
-            )
-            operation_envelope = build_operation_envelope(
-                command_id=str(
-                    envelope.get("command_id")
-                    or f"intent:{intent.get('action_type') or event_name}"
-                ),
-                session_id=str(
-                    envelope.get("session_id")
-                    or (context.get("session") or {}).get("id")
-                    or (context.get("session") or {}).get("session_id")
-                    or ""
-                ),
-                idempotency_key=str(
-                    envelope.get("idempotency_key") or operation_id
-                ),
-                actor={
-                    "kind": str(actor_data.get("kind") or "ai"),
-                    "ref": str(actor_data.get("ref") or actor_ref),
-                },
-                payload=dict(intent),
-                request_id=str(envelope.get("request_id") or ""),
-                expected_revision=(
-                    int(envelope["expected_revision"])
-                    if envelope.get("expected_revision") is not None
-                    else None
-                ),
-                preview_only=bool(envelope.get("preview_only", dry_run)),
-                allow_empty_session=True,
-            )
-        else:
-            operation_envelope = build_operation_envelope(
-                command_id=f"intent:{intent.get('action_type') or event_name}",
-                session_id=str(
-                    (context.get("session") or {}).get("id")
-                    or (context.get("session") or {}).get("session_id")
-                    or ""
-                ),
-                idempotency_key=operation_id,
-                actor={"kind": str(intent.get("actor_kind") or "ai"), "ref": actor_ref},
-                payload=dict(intent),
-                expected_revision=None,
-                preview_only=bool(dry_run),
-                allow_empty_session=True,
-            )
-        rollback_plan = build_rollback_plan(
-            planned_operations,
-            changes,
-            operation_id=operation_id,
         )
         unique_rules: list[dict[str, Any]] = []
         seen_rules: set[str] = set()
@@ -204,13 +138,10 @@ class RuleRuntime:
             "dry_run": dry_run,
             "operation_id": operation_id,
             "outcome_id": outcome_id,
-            "envelope": operation_envelope,
-            "condition_results": condition_results,
             "planned_operations": planned_operations,
             "changes": changes,
             "state": committed_state,
             "narrative_projection": narrative,
-            "rollback_plan": rollback_plan,
             "receipt": receipt,
         }
 

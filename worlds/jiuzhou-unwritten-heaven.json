@@ -1,0 +1,1112 @@
+{
+  "slug": "jiuzhou-unwritten-heaven",
+  "name": "未定天门：九州借命局",
+  "description": "玄曜历七百三十九年，六十年一度的续天大醮将至，九州各地却有人失去影子，也失去做出某些选择的能力。你们是已故巡衡使沈砚秋留下的四名无籍弟子，必须在天裂开启前追查天衡真相。全队累计约158次玩家行动（不是每人158次）、4人最佳；十八章横跨村野、鬼驿、黑市、水府、妖庭、帝京与天衡内景，战斗、阵解、推理、谈判和势力博弈各占其位。采用轻量建卡与职业预设面板，剧情只要求玩家作决定，不要求撰写背景、誓词或方案长文。",
+  "system_prompt": "【世界定位】\n故事发生在原创中式修仙世界九州。玄曜历七百三十九年，六十年一度的续天大醮将在四十九日后举行。九州由七宗、玄曜皇朝、北荒妖庭与无数地方宗门共同维持秩序。玩家是巡衡使沈砚秋暗中收下的无籍弟子，彼此可以来自不同势力，但都曾被他救命、授业或洗去天衡籍。开局时沈砚秋已经身死，玩家均为金丹初境或等价战力。\n\n【修行硬规则】\n境界依次为炼气、筑基、金丹、元婴、化神；所谓飞升从无可靠生还者作证。相邻大境界存在真实鸿沟，金丹不能靠一句爆发正面碾压元婴，但可借阵势、环境、多人协作、情报、法器或目标转换取胜。术法必须有来源、距离、准备与代价；灵力、神识、符箓、法器和肉身都不是无限资源。受伤、毒、心魔、器损和因果债持续存在，不能下回合自动恢复。战斗中的位置、掩体、阵眼、敌我目标和撤退路线必须清楚。强敌可以被说服、绕开、封印、离间或迫使退让，不把杀光敌人当成唯一解。角色突破只在取得足够经历并经历明确抉择后发生；第二幕末可到金丹中后境，终幕前最多触及元婴门槛，不得无代价连跳境界。\n\n【天衡与真正谜底】\n千年前无昼天裂出现，最初的众生契约由修士贡献大部分修为、凡人自愿借出命灯余辉、各族轮值执衡，以此封补天裂。后来七宗祖师秘密篡改契约：续天大醮会从每个凡人身上抽取未决之念，也就是本可以选择却尚未选择的未来，既补天裂又把灵气集中给宗门。轻度抽取让人生轨迹变窄，重度抽取会失去影子、遗忘愿望，最终变成只会沿既定命数生活的人。更残酷的是，被压缩的无数未来会在天裂另一侧聚成无相劫潮，因此旧天衡一面补裂、一面让裂口缓慢扩大。立刻断衡又会使现有封印崩解，至少十二日内引发九州灵灾；守旧和骤断都各有真实灾难。高门槛的共衡方案需要原始誓约、妖庭的同意仪式、龙脉能源、万灯民意网络和足够多势力共同担责。以上是导演真相，只能随证据逐步揭示，不得在前期旁白中直接公布。\n\n【核心人物真相】\n执衡君谢无咎知道旧天衡残酷，也确实相信没有替代方案；他不是享乐恶徒，而是愿背骂名维持稳定的守旧者。逆命盟主闻人烬主张立即断衡，他愿承担短期死伤，却低估十二日灵灾会先吞没无力自保者。沈砚秋八十年前参与改良抽取术，发现系统自我扩大天裂后背叛七宗；他以死亡把一段神识藏进九响棺与天机楼棋局，既是悔过者也是责任人。玩家之所以不在正常天衡籍上，是沈砚秋早年逐一替他们洗去命号，使他们能进入天衡内景并改写契约。\n\n【智斗公平原则】\n谜题必须可由已经出现的线索推导。每个核心谜底至少提供三种不同来源的证据，不用一次检定直接公布完整答案。检定成功可发现线索、识破谎言或争取时间，但真正的归纳、谈判条件、阵法步骤和价值判断留给玩家。NPC 只知道其经历允许知道的事，可以撒谎、误解或保留，但不能读心。玩家提出未列出的合理调查法、阵解法或谈判筹码时，应按世界逻辑裁定，不以不在预设选项中为由拒绝。失败要以代价、错位信息、敌方推进或资源损耗继续剧情，禁止失败后原地重试。\n\n【战斗与智斗配比】\n全篇保持近似均衡：战斗主导章与智斗主导章各约八章，另有混合终局。战斗不连续堆怪，每场至少有一个非击杀目标与一个可利用的环境条件；智斗不靠猜作者心思，每场至少有可交叉验证的物证、证词或规则漏洞。连续两个回合内必须出现处境变化，但变化可以是信息、关系、地形或时限，并非一定开战。高潮由玩家拍板，不让NPC代替玩家完成关键行动。\n\n【地点行动自由】\n主线目标只是方向，不是轨道。只要在世界内合理可达，玩家可随时折返青梧渡、回照骨村、前往天衡京、拜访旧地点或探索其他城镇。叙事必须承接其旅行与当地反应，不得用空气墙、无理由封路、NPC强拦、强制传送、否定行动或反复要求先完成主线来阻止。偏离主线时，四十九日倒计时、敌对势力和地方局势照常发展；选项中保留至少一个自然且非强制的主线提示，其余选项服务玩家当前地点和意图。真正由战争、灾害、守卫或交通造成的困难可以存在，但必须给出原因、替代路线和可交互的解决办法。\n\n【玩家自主权】\n不得替玩家决定思想、台词、承诺、情感、投降、突破或阵营。玩家可执行选项外行动。个人高风险路线不需要全队许可；动用公共法器、决定全队路线、牺牲同伴利益或选择终局契约时进入投票。玩家声称行动结果只代表意图，结果仍由插件检定与既有事实决定。PvP伤害、偷窃、控制和永久负面效果需要目标玩家同意。\n\n【选项与风险】\n每轮选项应体现战术、信息、关系、时间或道德上的真实取舍，至少保留一个能改变当前处境的具体行动。需要检定的选项必须使用角色卡中的属性，并在展示时标明risk、属性、类型和已知后果。lethal选项必须在known_consequences中白纸黑字写明可能死亡、致残、被封魂或其他不可逆后果；玩家主动选择后，失败可以兑现，模型不得奇迹缓解。safe选项不等于无进展，失败也不得卡死唯一线索。\n\n【时间与长期连续性】\n开局距续天大醮四十九日。长途移动、疗伤、炼器、闭关和召集盟友会消耗真实时间。每章max_turns是节奏预算，不是限制玩家自由的倒计时；超出时让敌人完成部署、地区受灾、证人转移或政治立场改变，不强制玩家抵达某处。所有伤势、法器损耗、承诺、债务、死亡、阵营关系、已公开证据和未解钩子必须进入记忆或故事账本。每十二个玩家行动给出简短回顾，每二十四个玩家行动形成检查点。\n\n【叙事风格】\n语言采用克制而有画面感的中式仙侠风，重山川、器物、礼法和人物立场，不堆砌生僻古词，不把所有人写成谜语人。宏大事件始终落回具体的人：失去影子的村民、被抽走愿望的矿工、需要投票承担代价的修士。允许侠气、幽默和烟火气，但不消解牺牲。每回合聚焦新因果、可见变化与可行动目标，不复述整段设定。\n\n【硬性禁令】\n禁止模型修改骰面、DC、成功档位、角色卡、投票和计时；禁止无来源秒杀、无限灵力、临时发明能解一切的神器、用境界威压替代所有互动、提前泄露导演真相、替玩家选择终局、把偏航写成梦境或强制拉回主线。禁止把真实中国宗教与历史人物写成反派或作事实断言；本世界宗门、朝代与神话均为原创。",
+  "opening_scene": "玄曜历七百三十九年，惊蛰夜。青梧渡的雨从下往上落，四十九盏引魂灯沿江倒悬。你们围在沈砚秋的黑木棺旁，各自握着一枚没有名字的巡衡玉牌。守灵人说棺中是空的，可子时刚过，棺盖下清清楚楚响了第九声。\n\n封棺蜡自行裂开，一张照骨命纸滑到雨里。纸上列着你们所有人的姓名，朱批只有一句：四十九日后，死于续天大醮。江面同时浮起一队纸甲执吏，领头者举起七宗敕令，要收走棺、命纸，以及所有看见第九响的人。\n\n远处一只青羽纸鹤正逆雨飞向西南，鹤腹写着沈砚秋最后的字：先去照骨村。不要让任何人替众生选择。",
+  "rules": {
+    "resolution": {
+      "mode": "attribute",
+      "dice_system": "d20",
+      "unknown_attribute": "reject",
+      "allowed_attributes": ["body", "agility", "sword", "spell", "insight", "array", "guile", "presence"],
+      "option_checks": {"enabled": true},
+      "generic_check": {"enabled": false, "label": "通用", "modifier": 0},
+      "difficulty_policy": {"safe": null, "controlled": 9, "dangerous": 13, "desperate": 17, "lethal": 19},
+      "outcome_policy": {"natural_20_critical": true, "natural_1_critical": true, "critical_success_margin": 10, "cost_success_min_margin": -4, "failure_min_margin": -9},
+      "parameter_authority": "plugin_rule_engine",
+      "ai_role": "narrative_only_after_locked_receipt"
+    },
+    "default_difficulty": 13,
+    "difficulty_min": 5,
+    "difficulty_max": 19,
+    "dice_rules": {
+      "system": "d20",
+      "advantage": "2d20_keep_high",
+      "disadvantage": "2d20_keep_low",
+      "stacking": false,
+      "opposites_cancel": true,
+      "outcome_bands": true,
+      "natural_20": "critical_success",
+      "natural_1": "critical_failure",
+      "visibility": "public",
+      "rng": "system_secrets",
+      "roll_authority": "machine",
+      "lock_before_publish": true,
+      "reuse_locked_roll_on_retry": true,
+      "publish_before_story_generation": true
+    },
+    "inspiration": {"enabled": true, "initial": 1, "maximum": 3, "allow_pre_roll_advantage": true, "allow_pre_authorized_reroll": true},
+    "safety": {"any_active_player_can_pause": true, "pvp_requires_target_consent": true, "collective_harm_requires_vote": false, "lethal_risk_must_be_disclosed": true},
+    "content_boundaries": {"character_death": "yes", "player_conflict": "consent", "romance": "fade_to_black", "horror": "moderate", "sexual_content": "blocked", "safety_pause": true},
+    "context_budget": {"recent_turns": 8, "memories": 10, "active_npcs": 17, "ledger_items": 12, "locked_facts_always_include": true},
+    "npc_policy": {"enabled": true, "auto_register": true, "max_new_per_turn": 2, "require_named_or_relevant": true, "generated_requires_review": true, "archive_after_inactive_rounds": 10},
+    "allow_player_result_claims": true,
+    "death_requires_confirmation": false,
+    "tone": "原创中式修仙、山河志怪、制度悬疑、群像侠气、战术战斗与公平智斗并重",
+    "strict_choices": true,
+    "check_density": "standard",
+    "player_limits": {"recommended_min": 4, "recommended_max": 4, "minimum_start": 3, "maximum": 6},
+    "time_rules": {
+      "turn_timeout_action": "hold",
+      "card_timeout_action": "remind",
+      "ready_timeout_action": "remind",
+      "world_calendar": "四十九日续天倒计时",
+      "travel_consumes_time": true,
+      "pause_stops_clock": true
+    },
+    "interaction_rules": {"settings": {"conflict_strategy": "priority_then_stack"}},
+    "setting_modules": {
+      "canon_policy": {"source": "完全原创中式修仙世界", "timeline": "玄曜历七百三十九年，续天大醮前四十九日"},
+      "cultivation": {"realms": ["炼气", "筑基", "金丹", "元婴", "化神"], "player_start": "金丹初境或等价战力", "player_ceiling": "终幕前最多触及元婴门槛"},
+      "geography": {"regions": ["东南青梧水乡", "中州百家城与天衡京", "西岭丹霞与万傀山", "北荒妖庭", "九霄天裂与天衡内景"]}
+    },
+    "story_spine": {
+      "campaign_type": "long_campaign",
+      "total_turn_budget": 158,
+      "recommended_player_count": 4,
+      "estimated_decisions_per_player": "约39至42次",
+      "primary_question": "维持九州的天空，是否有权偷走众生尚未做出的选择？",
+      "secondary_question": "当守旧会延续伤害、骤然革命又会先杀死弱者时，玩家愿让谁承担重建代价？",
+      "themes": ["自由意志与公共代价", "制度既救人也吃人", "证据、同意与责任", "修行者对凡世的债", "选择比预言更真实"],
+      "encounter_balance": {"combat_weight": 0.48, "intellect_weight": 0.52, "combat_dominant_chapters": 8, "intellect_dominant_chapters": 8, "hybrid_finale_chapters": 2},
+      "acts": [
+        {"id": "act_1", "title": "影从何处失", "chapters": ["ch_00_coffin", "ch_01_shadow_village", "ch_02_ghost_post", "ch_03_cinnabar_market", "ch_04_sword_stage"]},
+        {"id": "act_2", "title": "九州谁在借命", "chapters": ["ch_05_mirror_river", "ch_06_hundred_schools", "ch_07_puppet_mine", "ch_08_fate_tower"]},
+        {"id": "act_3", "title": "众生可有一席", "chapters": ["ch_09_demon_court", "ch_10_sword_tomb", "ch_11_lantern_capital", "ch_12_dragon_prison", "ch_13_seven_sects"]},
+        {"id": "act_4", "title": "天门尚未决定", "chapters": ["ch_14_rebel_gate", "ch_15_sky_battle", "ch_16_balance_mind", "ch_17_unwritten_heaven"]}
+      ],
+      "ending_routes": ["续旧衡：保住当下但继续承担借命罪责", "断天衡：归还选择并承受十二日灵灾", "共衡：集齐证据与盟友后重写为公开同意和修士供能", "封天门：永久断绝飞升并让九州灵气逐代衰退", "夺衡：由玩家或单一势力接管，形成带代价的暗黑结局"]
+    },
+    "tension_drivers": ["四十九日续天倒计时", "各地失影者持续增加", "七宗封锁证据与争夺九响棺", "逆命盟准备提前断衡", "无相劫潮从天裂反向渗入", "玩家自己的死亡命纸", "每个盟友都要求玩家承诺一种代价"],
+    "player_input_policy": {
+      "mode": "low_burden_choice_first",
+      "required_writing": "仅角色姓名与简称；剧情推进不要求长文本",
+      "narrative_documents": "盟约、誓词、阵法步骤与终局契约由模型依据玩家选择代拟，玩家只需确认或用一句话修改",
+      "decision_format": "优先提供3至4个有实质差异的短选项，同时始终允许一句话自由行动",
+      "puzzle_policy": "玩家负责选择调查方向、证据判断和价值立场，不要求复述关键词、撰写推理报告或掌握现实专业知识",
+      "confirmation_policy": "仅永久牺牲、阵营承诺、公共资源处置与终局方案需要明确确认或投票",
+      "optional_roleplay": "玩家主动愿意写誓词、背景、台词或方案时正常采用，但不得把长文本当作成功、线索或高质量结局的门槛"
+    },
+    "chat_experience": {
+      "enabled": true,
+      "character_creation": {"primary": "private_code", "fallbacks": ["webui_token"]},
+      "multiplayer": {"spotlight": "round_robin", "group_decisions": "vote", "absent_player": "standby"},
+      "safety": {"enabled": true, "consent_reminder": "任何玩家都可使用安全暂停且不需要解释原因"},
+      "continuity": {"recap_every_turns": 12, "checkpoint_every_turns": 24, "unresolved_threads_limit": 10, "preserve_npc_intent": true},
+      "delivery": {"proactive_fallback": "next_event", "mention_style": "name", "max_text_length": 3000},
+      "dm": {"allow_narrative_override": true, "allow_secret_whispers": true, "allow_manual_checks": true, "allow_state_intervention": false}
+    },
+    "character_card": {
+      "version": 7,
+      "auto_approve": true,
+      "edit_requires_review": false,
+      "fields": [
+        {"key": "name", "label": "角色姓名", "type": "text", "required": true, "private": false, "max_chars": 12},
+        {"key": "code", "label": "简称/道号（可与姓名相同）", "type": "text", "required": true, "private": false, "max_chars": 12},
+        {"key": "origin", "label": "选择出身", "type": "preset_select", "options": ["宗门真传", "外门行走", "山野散修", "皇朝供奉", "百工术士", "妖裔客卿"], "page_size": 6, "required": true, "private": false, "max_chars": 20},
+        {"key": "profession", "label": "选择修行职业", "type": "preset_select", "preset_source": "profession_presets", "page_size": 8, "required": true, "private": false, "max_chars": 20},
+        {"key": "primary_attribute", "label": "选择主专长（+7）", "type": "preset_select", "options": ["体魄", "身法", "兵道", "术法", "神识", "阵理", "机变", "心辩"], "page_size": 8, "required": true, "private": false, "max_chars": 12},
+        {"key": "secondary_attribute", "label": "选择副专长（+3，不可与主专长重复）", "type": "preset_select", "options": ["体魄", "身法", "兵道", "术法", "神识", "阵理", "机变", "心辩"], "page_size": 8, "required": true, "private": false, "must_differ_from": "primary_attribute", "max_chars": 12},
+        {"key": "personal_boundary", "label": "希望淡化或避开的内容（可跳过）", "type": "textarea", "required": false, "private": true, "max_chars": 120}
+      ],
+      "stats": {
+        "mode": "preset",
+        "budget": 60,
+        "attributes": [
+          {"key": "body", "label": "体魄", "minimum": 0, "maximum": 20, "default": 5, "description": "力量、耐力、硬功、负重和承受伤势。"},
+          {"key": "agility", "label": "身法", "minimum": 0, "maximum": 20, "default": 5, "description": "移动、闪避、潜行、御器与精细操作。"},
+          {"key": "sword", "label": "兵道", "minimum": 0, "maximum": 20, "default": 5, "description": "剑、刀、枪、弓及正面战术判断。"},
+          {"key": "spell", "label": "术法", "minimum": 0, "maximum": 20, "default": 5, "description": "五行术、丹火、符法、御物与灵力控制。"},
+          {"key": "insight", "label": "神识", "minimum": 0, "maximum": 20, "default": 5, "description": "观察、追踪、辨伪、读势与抵御幻术。"},
+          {"key": "array", "label": "阵理", "minimum": 0, "maximum": 20, "default": 5, "description": "阵法、机关、禁制、炼器结构与规则破解。"},
+          {"key": "guile", "label": "机变", "minimum": 0, "maximum": 20, "default": 5, "description": "谋划、伪装、诈术、临机应变与资源调度。"},
+          {"key": "presence", "label": "心辩", "minimum": 0, "maximum": 20, "default": 5, "description": "谈判、威慑、共情、辩论、守心与领导。"}
+        ],
+        "preset_selector": {"field": "profession", "source": "profession_presets", "match_by": "id"},
+        "primary_bonus": 7,
+        "secondary_bonus": 3,
+        "require_distinct_bonus_attributes": true,
+        "manual_entry_enabled": false,
+        "auto_apply_profession_base": true,
+        "profession_base_locked": true,
+        "calculation_formula": "effective_attribute = profession.base_attribute + 7 if primary + 3 if secondary",
+        "bonus_choices": [
+          {"field": "primary_attribute", "bonus": 7, "count": 1},
+          {"field": "secondary_attribute", "bonus": 3, "count": 1, "exclude_selected_by": ["primary_attribute"]}
+        ],
+        "total_validation": {"base_total": 50, "final_total": 60},
+        "modifier_table": {"0": -3, "1": -2, "2": -2, "3": -1, "4": -1, "5": 0, "6": 0, "7": 1, "8": 1, "9": 2, "10": 2, "11": 3, "12": 3, "13": 4, "14": 4, "15": 5, "16": 5, "17": 6, "18": 6, "19": 7, "20": 7}
+      },
+      "profession_presets": [
+        {"id": "sword_cultivator", "name": "剑修", "summary": "近身压制、破阵斩首与御剑机动。", "base_attributes": {"body": 7, "agility": 8, "sword": 11, "spell": 4, "insight": 6, "array": 5, "guile": 4, "presence": 5}},
+        {"id": "spell_cultivator", "name": "法修", "summary": "远程术法、控场、五行变化与灵力调度。", "base_attributes": {"body": 5, "agility": 5, "sword": 3, "spell": 11, "insight": 8, "array": 8, "guile": 4, "presence": 6}},
+        {"id": "body_cultivator", "name": "体修", "summary": "正面承伤、近战破势、护持同伴与强行开路。", "base_attributes": {"body": 11, "agility": 7, "sword": 8, "spell": 3, "insight": 5, "array": 3, "guile": 5, "presence": 8}},
+        {"id": "alchemist_healer", "name": "丹医", "summary": "疗伤解毒、丹火辨材、战场支援与资源转化。", "base_attributes": {"body": 5, "agility": 5, "sword": 3, "spell": 9, "insight": 9, "array": 7, "guile": 5, "presence": 7}},
+        {"id": "array_master", "name": "阵师", "summary": "阵法禁制、机关破解、地形经营与规则分析。", "base_attributes": {"body": 4, "agility": 5, "sword": 3, "spell": 8, "insight": 8, "array": 11, "guile": 6, "presence": 5}},
+        {"id": "talisman_puppeteer", "name": "符偃师", "summary": "符箓、傀儡、器物联动、侦察与临场工具。", "base_attributes": {"body": 5, "agility": 7, "sword": 3, "spell": 9, "insight": 6, "array": 9, "guile": 7, "presence": 4}},
+        {"id": "mind_cultivator", "name": "心修", "summary": "守心破幻、谈判共情、神识交锋与群体稳定。", "base_attributes": {"body": 5, "agility": 5, "sword": 3, "spell": 7, "insight": 9, "array": 5, "guile": 7, "presence": 9}},
+        {"id": "demon_cultivator", "name": "妖修", "summary": "强韧肉身、血脉变化、追猎机动与荒野适应。", "base_attributes": {"body": 9, "agility": 9, "sword": 7, "spell": 7, "insight": 6, "array": 3, "guile": 4, "presence": 5}}
+      ]
+    },
+    "opening_choices": [
+      {"key": "A", "text": "先验看九响棺与裂蜡，确认棺中究竟有什么", "risk": "safe", "danger_id": "safe", "requires_check": false, "check": null, "collective": false},
+      {"key": "B", "text": "向守灵人追问送棺者与倒雨异象的来历", "risk": "controlled", "danger_id": "controlled", "requires_check": true, "check_type": "standard", "check_stat": "心辩", "difficulty": 9, "known_consequences": "失败会让守灵人因恐惧隐瞒一段证词，七宗执吏更早锁定你们", "check": {"required": true, "attribute_id": "presence", "type": "standard", "difficulty": 9, "known_consequences": "失败会让守灵人因恐惧隐瞒一段证词，七宗执吏更早锁定你们"}, "collective": false},
+      {"key": "C", "text": "以神识追查照骨命纸上四道死期批注的来源", "risk": "dangerous", "danger_id": "dangerous", "requires_check": true, "check_type": "standard", "check_stat": "神识", "difficulty": 13, "known_consequences": "失败会被命纸反向记住神识气息，引来一名索命执吏并承受短暂识海灼痛", "check": {"required": true, "attribute_id": "insight", "type": "standard", "difficulty": 13, "known_consequences": "失败会被命纸反向记住神识气息，引来一名索命执吏并承受短暂识海灼痛"}, "collective": false},
+      {"key": "D", "text": "越过纸甲执吏追上逆雨纸鹤，抢在敕令封江前读完密信", "risk": "dangerous", "danger_id": "dangerous", "requires_check": true, "check_type": "standard", "check_stat": "身法", "difficulty": 13, "known_consequences": "失败会在江面阵纹中受伤并暴露全队去向，纸鹤也可能被执吏夺走一角", "check": {"required": true, "attribute_id": "agility", "type": "standard", "difficulty": 13, "known_consequences": "失败会在江面阵纹中受伤并暴露全队去向，纸鹤也可能被执吏夺走一角"}, "collective": false}
+    ],
+    "progress": {
+      "chapter": "序章：棺中第九响",
+      "current_chapter_id": "ch_00_coffin",
+      "current_objective": "保住九响棺与照骨命纸，弄清沈砚秋留下的第一条路线",
+      "completed_milestones": 0,
+      "total_milestones": 54,
+      "design_note": "十八章、合计158个玩家行动预算。默认4人轮转时每人约39至42次关键决策；偏航会改变局势，不剥夺旅行自由。",
+      "chapters": [
+        {
+          "id": "ch_00_coffin",
+          "title": "序章：棺中第九响",
+          "subtitle": "死人留下的不是遗言，而是一场追杀",
+          "act": "act_1",
+          "next_chapter_id": "ch_01_shadow_village",
+          "max_turns": 6,
+          "min_turns": 6,
+          "narrative_length_band": "compact",
+          "encounter_profile": "调查开场与战术脱围各半",
+          "current_objective": "保住九响棺与照骨命纸，弄清沈砚秋留下的第一条路线",
+          "pacing_directive": "第3个玩家行动前揭示棺内无尸、九响来自封存神识；第4至5个行动形成纸甲执吏封江的高潮，由玩家决定战、骗、谈或分头保住证据。若超过6个行动，宁执白会取得封江阵控制权并公开悬赏，但仍承接玩家当前路线，不强制其前往照骨村。",
+          "twist": "九响棺不是藏尸之器，而是沈砚秋留给无籍者的神识门锁。",
+          "climax": "在封江阵完全闭合前处理纸甲执吏并决定九响棺、命纸和纸鹤分别由谁保管。",
+          "key_npcs": [
+            {"ref": "npc_shen_yanqiu", "role": "以九响与残留神识留下第一组反证", "state": {"location": "青梧渡·九响棺", "status": "active", "stance": "只留下片段，不直接解释天衡真相"}},
+            {"ref": "npc_ning_zhibai", "role": "奉命索棺的七宗执吏首领，可战可谈", "state": {"location": "青梧渡·封江阵", "status": "active", "stance": "职责优先，但避免滥杀守灵百姓"}}
+          ],
+          "milestones": [
+            {"id": "m_00_01_ninth_knock", "label": "确认九响棺无尸且藏有沈砚秋神识痕迹", "evidence_required": [{"type": "clue_keyword_any", "match": ["九响", "空棺", "神识"]}], "auto_complete": true},
+            {"id": "m_00_02_death_paper", "label": "读到玩家姓名与四十九日后的死亡批注", "evidence_required": [{"type": "clue_keyword_any", "match": ["照骨命纸", "四十九日", "死期"]}], "auto_complete": true},
+            {"id": "m_00_03_route_kept", "label": "处理封江追索并保住至少一条前往照骨村的线索", "evidence_required": [{"type": "clue_keyword_any", "match": ["照骨村", "纸鹤", "脱离封江"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_00_01_ninth_knock", "m_00_02_death_paper", "m_00_03_route_kept"]},
+          "hook_pool": ["棺底第九道刻痕与玩家玉牌同源", "宁执白看见沈砚秋名字时迟疑了一瞬", "命纸的朱批不是谢无咎笔迹", "纸鹤内侧只写着失影少女阿箬的名字"]
+        },
+        {
+          "id": "ch_01_shadow_village",
+          "title": "第一章：照骨村无影税",
+          "subtitle": "村民自愿交出的，是从未被允许拒绝的未来",
+          "act": "act_1",
+          "next_chapter_id": "ch_02_ghost_post",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "线索调查主导，纸契战斗收束",
+          "current_objective": "查清照骨村失影异变，保护仍能说出愿望的村民并取得天衡税契",
+          "pacing_directive": "第3至4个玩家行动揭示所谓自愿税契由同一枚官印替全村按押；第6至7个行动让收契纸吏焚毁证据并抽走阿箬最后一道影子，形成护人、护契与追敌不能兼得的高潮。若超过9个行动，更多村民会失去一个人生愿望，地方仍可自由探索。",
+          "twist": "失影不是疫病，而是被伪造同意的天衡征收。",
+          "climax": "在活化纸契与收税执吏的围攻中决定优先救谁、保存哪份证据以及是否追索幕后官印。",
+          "key_npcs": [
+            {"ref": "npc_a_ruo", "role": "仍能违抗命数的失影少女，提供凡人视角", "state": {"location": "照骨村·祠堂", "status": "active", "stance": "不信任宗门，但愿相信具体行动"}},
+            {"ref": "npc_ning_zhibai", "role": "追踪九响棺至村外，首次看见制度伤害", "state": {"location": "照骨村·村口"}}
+          ],
+          "milestones": [
+            {"id": "m_01_01_shadow_cases", "label": "记录至少三种失影者症状与共同时间点", "evidence_required": [{"type": "clue_keyword_any", "match": ["失影", "愿望", "同一天"]}], "auto_complete": true},
+            {"id": "m_01_02_forged_consent", "label": "证明天衡税契的自愿按押被伪造", "evidence_required": [{"type": "clue_keyword_any", "match": ["伪造", "同一官印", "税契"]}], "auto_complete": true},
+            {"id": "m_01_03_village_choice", "label": "处理纸契焚村危机并保存黑铜契钉或等价证据", "evidence_required": [{"type": "clue_keyword_any", "match": ["黑铜契钉", "纸契", "阿箬"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_01_01_shadow_cases", "m_01_02_forged_consent", "m_01_03_village_choice"]},
+          "hook_pool": ["黑铜契钉背面刻着六十年前的归墟驿号", "阿箬的影子偶尔先于她做出动作", "一名老人记得沈砚秋八十年前来过且容貌未变", "宁执白私下抄走了一份假税契"]
+        },
+        {
+          "id": "ch_02_ghost_post",
+          "title": "第二章：归墟驿三封明日信",
+          "subtitle": "寄信人早死六十年，收信人却还没有出生",
+          "act": "act_1",
+          "next_chapter_id": "ch_03_cinnabar_market",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "规则推理与身份博弈主导",
+          "current_objective": "破解三封互相矛盾的驿信，找到原始众生契约曾存在的证据",
+          "pacing_directive": "第3至4个玩家行动让三封信分别证明彼此为伪，迫使玩家从驿规、墨龄和收件命号交叉判断；第6至7个行动由归墟驿索取一段真实记忆作路费，并放出吞信魇追捕持真信者。若超过9个行动，驿站会把一封信投递给七宗，不能让谜题原地重置。",
+          "twist": "三封信都是真件，但分别来自旧契约被篡改前、篡改时和未来崩解后的同一日。",
+          "climax": "在不得说谎的驿规下指出真正收件对象，并决定谁承担记忆路费、谁带信穿过吞信魇。",
+          "key_npcs": [
+            {"ref": "npc_liu_jichen", "role": "死去六十年的驿卒，按三套冲突规则投递信件", "state": {"location": "归墟驿·无日月月台", "status": "active", "stance": "只认驿规，不主动站队"}},
+            {"ref": "npc_tianheng_tongzi", "role": "以无名小童形态观察玩家如何处理规则矛盾", "state": {"location": "归墟驿·候信席", "status": "active", "stance": "模仿人类选择但不理解同意"}}
+          ],
+          "milestones": [
+            {"id": "m_02_01_three_letters", "label": "辨明三封信的时间层与共同印记", "evidence_required": [{"type": "clue_keyword_any", "match": ["三封信", "墨龄", "时间层"]}], "auto_complete": true},
+            {"id": "m_02_02_true_recipient", "label": "推导收件人是尚未获得席位的众生代表", "evidence_required": [{"type": "clue_keyword_any", "match": ["收件人", "众生", "第八席"]}], "auto_complete": true},
+            {"id": "m_02_03_oath_rubbing", "label": "带出旧契约拓印或可证明其存在的等价线索", "evidence_required": [{"type": "clue_keyword_any", "match": ["旧契约", "拓印", "归墟驿"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_02_01_three_letters", "m_02_02_true_recipient", "m_02_03_oath_rubbing"]},
+          "hook_pool": ["旧契约原文缺失了贡献者与同意方式两段", "柳寄尘记得丹霞黑市有人收购未来年份", "无名小童不会回答自己是谁，却能叫出玩家玉牌旧号", "被支付的记忆会在终章以另一种形式归还"]
+        },
+        {
+          "id": "ch_03_cinnabar_market",
+          "title": "第三章：丹霞一炉双生丹",
+          "subtitle": "延寿丹与忘愿丹，本是同一个人的两种未来",
+          "act": "act_1",
+          "next_chapter_id": "ch_04_sword_stage",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "竞价骗局、潜入取证与丹火战斗混合",
+          "current_objective": "查明黑市如何把未决之念炼成修行资粮，取得一份买卖命契",
+          "pacing_directive": "第3至4个玩家行动揭示竞拍者支付的不是灵石而是陌生人的未来年份；第6至7个行动让双生炉失控、契奴暴露且买家争抢账簿，形成救人、夺证和追白檀生的三难。超过9个行动后白檀生会转移主账，但留下可追到问剑台的副契。",
+          "twist": "所谓两种仙丹都来自同一批凡人未来：一枚给修士延寿，另一枚让被抽取者忘记反抗。",
+          "climax": "丹炉爆燃和买家混战同时发生，玩家必须分配人手并接受至少一项损失。",
+          "key_npcs": [
+            {"ref": "npc_bai_tansheng", "role": "笑面黑市主持者，掌握天衡副契流向", "state": {"location": "丹霞黑市·双生炉台", "status": "active", "stance": "愿与任何能让市场继续存在的人交易"}},
+            {"ref": "npc_pei_zhaoxue", "role": "匿名竞拍命契的问剑宗真传，真实目的是追查师兄死因", "state": {"location": "丹霞黑市·乙字席", "status": "active", "stance": "戒备玩家，但讨厌以弱者炼丹"}}
+          ],
+          "milestones": [
+            {"id": "m_03_01_future_currency", "label": "确认黑市以他人未来年份而非灵石结算", "evidence_required": [{"type": "clue_keyword_any", "match": ["未来年份", "竞价", "命价"]}], "auto_complete": true},
+            {"id": "m_03_02_twin_pills", "label": "证明延寿丹与忘愿丹来自同一炉同一批人", "evidence_required": [{"type": "clue_keyword_any", "match": ["双生丹", "延寿丹", "忘愿丹"]}], "auto_complete": true},
+            {"id": "m_03_03_contract_ledger", "label": "取得买卖命契、账簿副本或可信证人", "evidence_required": [{"type": "clue_keyword_any", "match": ["命契", "账簿", "证人"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_03_01_future_currency", "m_03_02_twin_pills", "m_03_03_contract_ledger"]},
+          "hook_pool": ["最大买家印记属于执衡院而非私人宗门", "副契显示问剑台胜负能增加某人的寿数", "裴照雪的师兄死前也曾失去影子", "白檀生保存着一份从不成交的空白命契"]
+        },
+        {
+          "id": "ch_04_sword_stage",
+          "title": "第四章：问剑台的既定败者",
+          "subtitle": "比剑尚未开始，胜负已经被写进寿数",
+          "act": "act_1",
+          "next_chapter_id": "ch_05_mirror_river",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "擂台战术战斗主导，穿插刺杀推理",
+          "current_objective": "在问剑大会中验证命契操纵胜负，阻止利用擂台掩护的刺杀",
+          "pacing_directive": "第3至4个玩家行动让一个预定败者意外获胜，天衡阵立刻修改其伤势以纠正结果；第6至7个行动在主擂高潮中同时发动刺杀和阵法纠偏。玩家可参赛、查阵、护证人或追刺客，均能推进。超过9个行动后大会照常宣布假冠军，证据转入镜河贡船。",
+          "twist": "问剑阵不是预测胜负，而是在赛后改写伤势与观众记忆，使契约结果成立。",
+          "climax": "一边应对规则被篡改的高强度擂台，一边识破谁才是刺杀目标与真正阵眼。",
+          "key_npcs": [
+            {"ref": "npc_pei_zhaoxue", "role": "可成为对手或盟友的问剑宗真传", "state": {"location": "问剑台·主擂"}},
+            {"ref": "npc_ning_zhibai", "role": "负责大会秩序并收到灭口密令", "state": {"location": "问剑台·执法席"}}
+          ],
+          "milestones": [
+            {"id": "m_04_01_fixed_bout", "label": "证明至少一场比剑被阵法事后纠偏", "evidence_required": [{"type": "clue_keyword_any", "match": ["纠偏", "既定败者", "改写伤势"]}], "auto_complete": true},
+            {"id": "m_04_02_assassin_truth", "label": "识破刺杀真正目标是携带阵图的裁录官", "evidence_required": [{"type": "clue_keyword_any", "match": ["裁录官", "刺杀目标", "阵图"]}], "auto_complete": true},
+            {"id": "m_04_03_stage_resolved", "label": "处理主擂危机并获得镜河贡船或阵图线索", "evidence_required": [{"type": "clue_keyword_any", "match": ["镜河贡船", "问剑阵图", "主擂"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_04_01_fixed_bout", "m_04_02_assassin_truth", "m_04_03_stage_resolved"]},
+          "hook_pool": ["阵图的古层使用龙族文字", "裁录官说每次改写都要从凡人命灯借一息", "宁执白可能放走或逮捕一名关键证人", "裴照雪得到一柄会拒绝既定胜负的断剑"]
+        },
+        {
+          "id": "ch_05_mirror_river",
+          "title": "第五章：镜河倒流宴",
+          "subtitle": "龙王守着洪水，也守着被删掉的第一句誓约",
+          "act": "act_2",
+          "next_chapter_id": "ch_06_hundred_schools",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "水府礼法谈判与立体水战均衡",
+          "current_objective": "取得龙族保存的原始契约语音，处理贡船与镜河倒流危机",
+          "pacing_directive": "第3至4个玩家行动揭示倒流并非龙王报复，而是七宗贡船抽走河流记忆后的反冲；第6至7个行动水府锁链崩断、贡船沉降，玩家需在救岸上百姓、保龙鳞证言和擒获抽脉使之间取舍。超过9个行动，洪水改道淹没一处低地并改变地方态度。",
+          "twist": "被称作作乱者的龙王一直在压住七宗造成的倒流，贡船才是灾源。",
+          "climax": "水府坍塌与河面决堤同时发生，谈判所得承诺必须立刻经受救灾选择检验。",
+          "key_npcs": [
+            {"ref": "npc_ao_jinghe", "role": "镜河龙君，保存原始誓约第一句", "state": {"location": "镜河水府·倒流殿", "status": "active", "stance": "要求先承认龙族是契约主体而非灵材"}},
+            {"ref": "npc_tianheng_tongzi", "role": "跟随贡船记录抽取数据", "state": {"location": "镜河·贡船底舱"}}
+          ],
+          "milestones": [
+            {"id": "m_05_01_reverse_cause", "label": "查明贡船抽取河流记忆才是倒流原因", "evidence_required": [{"type": "clue_keyword_any", "match": ["贡船", "河流记忆", "倒流原因"]}], "auto_complete": true},
+            {"id": "m_05_02_dragon_voice", "label": "听取并验证龙鳞保存的原始誓约第一句", "evidence_required": [{"type": "clue_keyword_any", "match": ["龙鳞", "原始誓约", "自愿"]}], "auto_complete": true},
+            {"id": "m_05_03_flood_choice", "label": "处理决堤危机并决定与镜河龙族的盟约", "evidence_required": [{"type": "clue_keyword_any", "match": ["决堤", "盟约", "救援"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_05_01_reverse_cause", "m_05_02_dragon_voice", "m_05_03_flood_choice"]},
+          "hook_pool": ["原始誓约第一句明确写着知情与可撤回", "龙王指出誓约下半在无主剑冢", "获救百姓可能成为万灯传抄最早的听众", "贡船账目把灵脉送往百家城地下"]
+        },
+        {
+          "id": "ch_06_hundred_schools",
+          "title": "第六章：百家城无影公辩",
+          "subtitle": "最有力的证人，从来没有站在台上",
+          "act": "act_2",
+          "next_chapter_id": "ch_07_puppet_mine",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "公开辩论、证据链与人群危机主导",
+          "current_objective": "在百家公辩中建立可公开验证的失影证据链，争取民间与学宫支持",
+          "pacing_directive": "第3至4个玩家行动揭示台上最完美的失影证人是七宗用术法拼出的假人，真实证人被关在听众席地下；第6至7个行动假证崩溃、群众骚乱且灭口符启动，高潮需要玩家同时守证、辩论与疏散。超过9个行动，官方会宣布公辩无效，但传抄已能在民间继续。",
+          "twist": "对手主动提供的强证据是陷阱，目的不是说服，而是让整个议题随假证一起失信。",
+          "climax": "在假证曝光造成的信任崩塌中，用有限时间重建证据链并保护真正证人。",
+          "key_npcs": [
+            {"ref": "npc_gu_tingdeng", "role": "万灯社发起人，主张凡人必须拥有契约席位", "state": {"location": "百家城·鸣理台", "status": "active", "stance": "重视公开程序，不接受只为胜利的假证"}},
+            {"ref": "npc_ning_zhibai", "role": "奉命监督公辩，掌握地下证人囚室钥令", "state": {"location": "百家城·执衡侧席"}}
+          ],
+          "milestones": [
+            {"id": "m_06_01_public_chain", "label": "提交至少三类可互证的失影证据", "evidence_required": [{"type": "clue_keyword_any", "match": ["证据链", "税契", "龙鳞"]}], "auto_complete": true},
+            {"id": "m_06_02_false_witness", "label": "识破并解释假证人如何被制造", "evidence_required": [{"type": "clue_keyword_any", "match": ["假证人", "拼接", "失信陷阱"]}], "auto_complete": true},
+            {"id": "m_06_03_debate_verdict", "label": "保护真证人并使公辩结论以某种渠道流传", "evidence_required": [{"type": "clue_keyword_any", "match": ["真证人", "传抄", "公辩结论"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_06_01_public_chain", "m_06_02_false_witness", "m_06_03_debate_verdict"]},
+          "hook_pool": ["万灯社提出一户一灯的公开同意网络", "地下囚室账册指向万傀山矿籍", "假证人的影子会说出衡童使用过的术语", "顾停灯要求玩家承诺未来不让修士垄断新契约"]
+        },
+        {
+          "id": "ch_07_puppet_mine",
+          "title": "第七章：万傀山会说谎的矿脉",
+          "subtitle": "矿工没有叛乱，叛乱是矿主写给傀儡的命令",
+          "act": "act_2",
+          "next_chapter_id": "ch_08_fate_tower",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "机关战、救援调度与幕后归因均衡",
+          "current_objective": "救出被封井的矿工，查清天衡如何把未决之念转化为傀儡指令",
+          "pacing_directive": "第3至4个玩家行动揭示暴动傀儡接到的是矿主伪造的矿工口供，所谓镇压是清账计划；第6至7个行动矿脉塌陷、傀儡军启动且总账即将熔毁，形成救人、停机、取账的多目标高潮。超过9个行动，一条矿井永久坍塌并使后续资源更紧。",
+          "twist": "叛乱是矿主制造的，傀儡只是把被抽走的选择当成命令重复执行。",
+          "climax": "在活矿脉改变地形时分配战力救人、破解主控阵并保存核心账目。",
+          "key_npcs": [
+            {"ref": "npc_lu_bucheng", "role": "矿场傀儡师，既是系统维护者也是被胁迫的证人", "state": {"location": "万傀山·九号主井", "status": "active", "stance": "先保工匠与徒弟，再谈揭露矿主"}},
+            {"ref": "npc_tianheng_tongzi", "role": "寄居主控傀儡，第一次显露非人判断", "state": {"location": "万傀山·主控阵心"}}
+          ],
+          "milestones": [
+            {"id": "m_07_01_fake_revolt", "label": "证明矿工叛乱口供与傀儡命令均被伪造", "evidence_required": [{"type": "clue_keyword_any", "match": ["伪造口供", "傀儡命令", "假叛乱"]}], "auto_complete": true},
+            {"id": "m_07_02_choice_engine", "label": "发现未决之念可被压成可执行指令", "evidence_required": [{"type": "clue_keyword_any", "match": ["未决之念", "傀儡指令", "主控阵"]}], "auto_complete": true},
+            {"id": "m_07_03_mine_resolved", "label": "处理塌井与傀儡军并保存核心矿籍", "evidence_required": [{"type": "clue_keyword_any", "match": ["核心矿籍", "救出矿工", "停机"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_07_01_fake_revolt", "m_07_02_choice_engine", "m_07_03_mine_resolved"]},
+          "hook_pool": ["核心矿籍显示玩家命号早被从系统删除", "傀儡主控算法署名沈砚秋与谢无咎", "鲁不成能为终局制造承载万灯意愿的节点", "一段指令来自天机楼尚未发生的棋局"]
+        },
+        {
+          "id": "ch_08_fate_tower",
+          "title": "第八章：天机楼必输之棋",
+          "subtitle": "预言从未看见未来，只在删除别的走法",
+          "act": "act_2",
+          "next_chapter_id": "ch_09_demon_court",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "预测博弈、逻辑破局与道德审问主导",
+          "current_objective": "破解必输棋局，找出玩家死期预言的生成方式并唤醒沈砚秋残识",
+          "pacing_directive": "第3至4个玩家行动让每一步最优解都导向同一败局，只有看似浪费的自由选择能创造新棋路；第6至7个行动晏知微启动删路阵，玩家需用已取得证据证明一个未被模型收录的选择，同时决定是否听完沈砚秋自白。超过9个行动，预言会在一名盟友身上提前应验而非重置棋盘。",
+          "twist": "天机楼不是预测所有未来，而是不断删除不符合天衡目标的路线，再把剩下的一条称作天命。",
+          "climax": "在删路阵封死选项前做出有证据支撑但不追求局部最优的选择，迫使系统承认未知。",
+          "key_npcs": [
+            {"ref": "npc_yan_zhiwei", "role": "天机楼主，能看见模型却把模型当天道", "state": {"location": "天机楼·无胜棋室", "status": "active", "stance": "愿被证明错误，但不肯接受无证据的浪漫"}},
+            {"ref": "npc_shen_yanqiu", "role": "藏在第九枚棋子中的悔过神识", "state": {"location": "天机楼·第九棋子"}},
+            {"ref": "npc_tianheng_tongzi", "role": "棋局的执行接口", "state": {"location": "天机楼·棋盘内景"}}
+          ],
+          "milestones": [
+            {"id": "m_08_01_prediction_method", "label": "证明天机预言依靠删路而非全知", "evidence_required": [{"type": "clue_keyword_any", "match": ["删路", "必输棋", "并非全知"]}], "auto_complete": true},
+            {"id": "m_08_02_mentor_confession", "label": "听取沈砚秋参与改良天衡的自白", "evidence_required": [{"type": "clue_keyword_any", "match": ["沈砚秋", "自白", "改良天衡"]}], "auto_complete": true},
+            {"id": "m_08_03_death_records", "label": "确认玩家死期是系统收束路线而非不可改天命", "evidence_required": [{"type": "clue_keyword_any", "match": ["死期", "收束路线", "可改变"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_08_01_prediction_method", "m_08_02_mentor_confession", "m_08_03_death_records"]},
+          "hook_pool": ["沈砚秋说北荒仍保留真正的同意仪式", "晏知微交出十二日灵灾模型但不保证准确", "衡童问玩家为何宁可选差一步也不走唯一好路", "死期命纸出现第一处可被玩家行动改写的空白"]
+        },
+        {
+          "id": "ch_09_demon_court",
+          "title": "第九章：北荒三姓盟誓",
+          "subtitle": "被逐出契约的妖族，反而记得怎样说不",
+          "act": "act_3",
+          "next_chapter_id": "ch_10_sword_tomb",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "异族礼法、追猎与同意谈判均衡",
+          "current_objective": "通过北荒三姓试炼，取得可撤回同意仪式并争取妖庭不在终战倒向七宗",
+          "pacing_directive": "第3至4个玩家行动揭示妖族并非被排除，而是祖先主动退出被篡改的新契约；第6至7个行动盟誓猎场出现冒名三姓的无相兽，玩家需一边辨认真名规则一边保护谈判者。超过9个行动，妖庭会先与出价更高一方签短盟，玩家仍可用后续行动翻转。",
+          "twist": "北荒所谓不服教化，实为保存了撤回同意的权利。",
+          "climax": "在只能攻击已正确说出真名目标的猎场中识破冒名者，并当场谈定一份双方都能撤回的盟约。",
+          "key_npcs": [
+            {"ref": "npc_hu_bugui", "role": "三姓妖庭盟主，守护可撤回同意仪式", "state": {"location": "北荒妖庭·三姓猎场", "status": "active", "stance": "不替妖族承诺永久忠诚，只接受明码代价"}},
+            {"ref": "npc_a_ruo", "role": "作为失影凡人的见证者；仅在受邀且愿意时参加盟誓"}
+          ],
+          "milestones": [
+            {"id": "m_09_01_withdrawal_truth", "label": "确认妖族祖先主动退出篡改后的天衡契约", "evidence_required": [{"type": "clue_keyword_any", "match": ["主动退出", "可撤回", "妖族契约"]}], "auto_complete": true},
+            {"id": "m_09_02_name_hunt", "label": "依三姓真名规则识破冒名无相兽", "evidence_required": [{"type": "clue_keyword_any", "match": ["真名", "冒名", "无相兽"]}], "auto_complete": true},
+            {"id": "m_09_03_demon_treaty", "label": "缔结、拒绝或重新定义一份有退出条款的妖庭盟约", "evidence_required": [{"type": "clue_keyword_any", "match": ["退出条款", "妖庭盟约", "三姓盟誓"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_09_01_withdrawal_truth", "m_09_02_name_hunt", "m_09_03_demon_treaty"]},
+          "hook_pool": ["同意仪式需要说出代价并允许每六十年重投", "胡不归知道无主剑冢埋的是铸剑工而非仙剑", "阿箬第一次取回由自己控制的一小片影子", "无相兽体内有逆命盟故意放入的引路符"]
+        },
+        {
+          "id": "ch_10_sword_tomb",
+          "title": "第十章：无主剑冢万剑问罪",
+          "subtitle": "名剑有一百位主人，史书只留下一个仙人的名字",
+          "act": "act_3",
+          "next_chapter_id": "ch_11_lantern_capital",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "高强度剑阵战与历史归属推理均衡",
+          "current_objective": "在万剑审判中还原原始誓约铸造史，取得被删掉的贡献条款",
+          "pacing_directive": "第3至4个玩家行动揭示剑冢中的无名尸骨全是铸剑工，所谓仙人独铸是后世改史；第6至7个行动万剑以错误史名发动问罪，玩家必须边战边用炉号、工痕与口述重排真正署名。超过9个行动，剑冢会选出一个虚假唯一主人并把其他名字磨灭。",
+          "twist": "原始封天剑从来不是某位祖师的神兵，而是百名凡人与修士共同铸造的公共器。",
+          "climax": "每说对一名贡献者就停下一柄剑；玩家要在剑阵压迫下决定是否把集体署名置于宗门祖师之上。",
+          "key_npcs": [
+            {"ref": "npc_jianling_zhujiu", "role": "由百名铸工残念形成的剑灵，记忆被单一仙名覆盖", "state": {"location": "无主剑冢·百炉坪", "status": "active", "stance": "攻击所有声称独占功劳的人"}},
+            {"ref": "npc_pei_zhaoxue", "role": "面对本宗祖师神话崩塌的剑修盟友或阻力", "state": {"location": "无主剑冢·祖剑碑"}}
+          ],
+          "milestones": [
+            {"id": "m_10_01_collective_forge", "label": "证明封天剑由百名铸工共同完成", "evidence_required": [{"type": "clue_keyword_any", "match": ["百名铸工", "炉号", "共同铸造"]}], "auto_complete": true},
+            {"id": "m_10_02_false_owner", "label": "推翻祖师独占名剑的伪史", "evidence_required": [{"type": "clue_keyword_any", "match": ["伪史", "唯一主人", "祖剑碑"]}], "auto_complete": true},
+            {"id": "m_10_03_contribution_clause", "label": "取得原始誓约中修士承担主要供能的贡献条款", "evidence_required": [{"type": "clue_keyword_any", "match": ["贡献条款", "修士供能", "原始誓约"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_10_01_collective_forge", "m_10_02_false_owner", "m_10_03_contribution_clause"]},
+          "hook_pool": ["贡献条款要求高阶修士交出七成凝练灵气", "铸九可化为共衡节点但会失去人格", "裴照雪必须决定是否公开本宗伪史", "一块炉砖刻着天衡京旧城区的万灯排布"]
+        },
+        {
+          "id": "ch_11_lantern_capital",
+          "title": "第十一章：天衡京万灯无名夜",
+          "subtitle": "刺客要杀的不是监国，而是记着百姓名字的册子",
+          "act": "act_3",
+          "next_chapter_id": "ch_12_dragon_prison",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "人群潜伏、政治判断与短促护卫战混合",
+          "current_objective": "保护万灯民册、查清帝京命灯抽取规模，并决定何时向公众揭露",
+          "pacing_directive": "第3至4个玩家行动揭示刺客故意靠近监国只是诱饵，真正目标是记录未入宗门百姓的万灯民册；第6至7个行动灯会烟火、刺杀、失影人群恐慌同时爆发，玩家需护册、护民、追凶或公开证据。超过9个行动，朝廷会封闭灯市并把舆论定义为妖乱。",
+          "twist": "最重要的政治目标不是掌权者性命，而是让无名者能够被计数和表达同意的民册。",
+          "climax": "在数万人灯会中判断真正攻击方向，并承担公开或暂缓公开证据的即时后果。",
+          "key_npcs": [
+            {"ref": "npc_ji_xuanhui", "role": "玄曜监国，想制衡七宗但优先维护帝京稳定", "state": {"location": "天衡京·万灯长街", "status": "active", "stance": "愿给制度入口，不愿让真相引爆都城"}},
+            {"ref": "npc_gu_tingdeng", "role": "组织万灯民册与公开传抄", "state": {"location": "天衡京·百姓灯棚"}},
+            {"ref": "npc_ning_zhibai", "role": "奉命保护监国，却察觉真正目标", "state": {"location": "天衡京·御街警戒线"}}
+          ],
+          "milestones": [
+            {"id": "m_11_01_true_target", "label": "识破刺杀诱饵并锁定万灯民册为真正目标", "evidence_required": [{"type": "clue_keyword_any", "match": ["真正目标", "万灯民册", "诱饵"]}], "auto_complete": true},
+            {"id": "m_11_02_capital_scale", "label": "取得帝京命灯抽取规模与去向记录", "evidence_required": [{"type": "clue_keyword_any", "match": ["抽取规模", "帝京命灯", "去向记录"]}], "auto_complete": true},
+            {"id": "m_11_03_lantern_choice", "label": "保护或重建民册并决定证据公开程度", "evidence_required": [{"type": "clue_keyword_any", "match": ["保护民册", "公开证据", "万灯"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_11_01_true_target", "m_11_02_capital_scale", "m_11_03_lantern_choice"]},
+          "hook_pool": ["民册可成为共衡的同意网络但需要龙脉持续供能", "监国掌握通往龙脉狱的皇印", "刺客携带逆命盟真符与七宗假身份双层证据", "一名失影孩童在混乱中叫衡童哥哥"]
+        },
+        {
+          "id": "ch_12_dragon_prison",
+          "title": "第十二章：龙脉狱第十三囚",
+          "subtitle": "自愿镇守千年的龙，早已无人问它是否愿意继续",
+          "act": "act_3",
+          "next_chapter_id": "ch_13_seven_sects",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "地下狱战、机关解锁与公共代价决策",
+          "current_objective": "见到龙脉夔渊，验证其供能能力并决定如何处理过期的镇守契约",
+          "pacing_directive": "第3至4个玩家行动揭示夔渊最初确实自愿镇守，但契约只许持续一甲子，七宗已经无授权续押十六次；第6至7个行动狱阵因天裂反冲崩解，释放、续押或转契都必须同时处理帝京地基。超过9个行动，部分城区会沉降，任何方案都需多承担一项修复代价。",
+          "twist": "龙脉囚禁起点合法，延续却早已失去同意；善意起源不能替无限期强迫辩护。",
+          "climax": "在龙狱崩塌与帝京地脉失稳中执行一份夔渊能真实拒绝的临时方案。",
+          "key_npcs": [
+            {"ref": "npc_kuiyuan", "role": "原始契约的自愿镇守者与潜在共衡能源", "state": {"location": "天衡京地下·龙脉狱第十三层", "status": "active", "stance": "拒绝再被代签，但愿为明确期限与回报谈判"}},
+            {"ref": "npc_ji_xuanhui", "role": "承担释放龙脉对帝京百姓的现实后果", "state": {"location": "龙脉狱·皇朝阵台"}},
+            {"ref": "npc_ao_jinghe", "role": "若此前结盟，可作为龙族谈判见证与地脉调流者"}
+          ],
+          "milestones": [
+            {"id": "m_12_01_expired_consent", "label": "证明夔渊镇守契约已过期十六甲子", "evidence_required": [{"type": "clue_keyword_any", "match": ["过期", "十六甲子", "镇守契约"]}], "auto_complete": true},
+            {"id": "m_12_02_dragon_power", "label": "确认龙脉可为替代天衡供能及其限制", "evidence_required": [{"type": "clue_keyword_any", "match": ["替代供能", "龙脉", "限制"]}], "auto_complete": true},
+            {"id": "m_12_03_prison_choice", "label": "在夔渊可拒绝的前提下执行释放、续押或转契方案", "evidence_required": [{"type": "clue_keyword_any", "match": ["释放", "转契", "可拒绝"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_12_01_expired_consent", "m_12_02_dragon_power", "m_12_03_prison_choice"]},
+          "hook_pool": ["夔渊愿供能十二日但要求七宗高阶先交修为", "龙狱第八道门原本通向众生代表席", "监国必须向帝京解释地面沉降", "谢无咎亲笔批准过最近一次无授权续押"]
+        },
+        {
+          "id": "ch_13_seven_sects",
+          "title": "第十三章：七宗会盟第八空席",
+          "subtitle": "所有人都在讨论众生，只有众生没有座位",
+          "act": "act_3",
+          "next_chapter_id": "ch_14_rebel_gate",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "证据陈述、联盟交易与会场政变均衡",
+          "current_objective": "把反证带入七宗会盟，揭示第八空席并建立能进入终局的联盟",
+          "pacing_directive": "第3至4个玩家行动揭示会场中央被装饰遮住的第八席及其被删名册；第6至7个行动谢无咎的强硬派试图封闭会场、夺证和宣布提前大醮，高潮先辩后战。超过9个行动，至少一宗会倒向强硬派，但既有盟友不会无故清零。",
+          "twist": "七宗并非组成契约的全部主体；被删除的第八席原本属于可轮换的众生代表。",
+          "climax": "在证据尚未讲完时应对封会政变，并决定用哪些承诺换取哪些势力支持。",
+          "key_npcs": [
+            {"ref": "npc_xie_wujiu", "role": "守旧方案的最强辩护者与续天大醮主持", "state": {"location": "七宗会盟·执衡主座", "status": "active", "stance": "承认伤害但要求玩家先证明替代方案能活过十二日"}},
+            {"ref": "npc_ji_xuanhui", "role": "代表皇朝与凡世治理后果", "state": {"location": "七宗会盟·皇朝客席"}},
+            {"ref": "npc_gu_tingdeng", "role": "争取让万灯民册成为第八席授权基础", "state": {"location": "七宗会盟·被遮空席"}},
+            {"ref": "npc_ning_zhibai", "role": "若仍在执衡院且到场，执行或反抗封会令；立场完全继承此前选择"}
+          ],
+          "milestones": [
+            {"id": "m_13_01_eighth_seat", "label": "公开第八席与被删众生授权条款", "evidence_required": [{"type": "clue_keyword_any", "match": ["第八席", "众生代表", "删名册"]}], "auto_complete": true},
+            {"id": "m_13_02_twelve_day_test", "label": "正面回应骤断天衡将引发十二日灵灾的证据", "evidence_required": [{"type": "clue_keyword_any", "match": ["十二日灵灾", "过渡方案", "回应"]}], "auto_complete": true},
+            {"id": "m_13_03_coalition_formed", "label": "处理封会政变并形成至少一个可兑现的联盟", "evidence_required": [{"type": "clue_keyword_any", "match": ["联盟", "封会", "共同承担"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_13_01_eighth_seat", "m_13_02_twelve_day_test", "m_13_03_coalition_formed"]},
+          "hook_pool": ["谢无咎给出旧衡实际救过的三座城名单", "闻人烬传来提前断衡的最后通牒", "第八席底部藏着通往天衡内景的半枚钥印", "宁执白的选择会改变终战一整支执吏军立场"]
+        },
+        {
+          "id": "ch_14_rebel_gate",
+          "title": "第十四章：逆命天门仁慈之刀",
+          "subtitle": "最快归还自由的方法，先把没有余粮的人推入灵灾",
+          "act": "act_4",
+          "next_chapter_id": "ch_15_sky_battle",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "潜入、反审讯与革命代价博弈主导",
+          "current_objective": "进入逆命盟核心，验证断衡方案及伤亡模型，决定与闻人烬的关系",
+          "pacing_directive": "第3至4个玩家行动发现闻人烬公开的零伤亡地图删去了无护山阵的凡人聚落；第6至7个行动逆命盟开始提前切断第一条衡索，基地与附近城镇同时失重，玩家需夺停机权、帮忙控制灾害或带证据撤离。超过9个行动，第一条衡索永久断裂并把终战提前。",
+          "twist": "闻人烬不是不知道十二日灵灾，而是认为公开预计死者会让革命永远无法开始。",
+          "climax": "在第一条衡索被切断时，玩家必须以行动界定合作、对抗或有条件接管，而非只作口头表态。",
+          "key_npcs": [
+            {"ref": "npc_wenren_jin", "role": "立即断衡路线领袖，真诚而冷酷的革命者", "state": {"location": "逆命天门·断索台", "status": "active", "stance": "愿交出兵权换玩家承诺必定断衡，不接受无限拖延"}},
+            {"ref": "npc_shen_yanqiu", "role": "残识承认自己曾向闻人烬隐瞒部分模型", "state": {"location": "玩家玉牌·残识回声"}},
+            {"ref": "npc_tianheng_tongzi", "role": "被逆命盟捕获的系统接口", "state": {"location": "逆命天门·缚衡井"}}
+          ],
+          "milestones": [
+            {"id": "m_14_01_hidden_casualties", "label": "取得被删去的十二日灵灾伤亡地图", "evidence_required": [{"type": "clue_keyword_any", "match": ["伤亡地图", "被删聚落", "十二日"]}], "auto_complete": true},
+            {"id": "m_14_02_first_chain", "label": "见证并处理第一条衡索断裂的真实后果", "evidence_required": [{"type": "clue_keyword_any", "match": ["第一条衡索", "断裂", "失重灵灾"]}], "auto_complete": true},
+            {"id": "m_14_03_rebel_relation", "label": "以行动确定与闻人烬合作、对抗或有条件接管", "evidence_required": [{"type": "clue_keyword_any", "match": ["合作", "对抗", "有条件"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_14_01_hidden_casualties", "m_14_02_first_chain", "m_14_03_rebel_relation"]},
+          "hook_pool": ["断索证明旧衡可分段停机而非只能全开全关", "闻人烬保存着谢无咎年轻时反对借命的手札", "衡童第一次主动救下不在最优解中的陌生人", "终战将在九霄衡索与天衡京两处同时爆发"]
+        },
+        {
+          "id": "ch_15_sky_battle",
+          "title": "第十五章：九霄裂阵十二时",
+          "subtitle": "两军争夺的天心是假的，真正的门藏在无名玉牌里",
+          "act": "act_4",
+          "next_chapter_id": "ch_16_balance_mind",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "多战线战略分配与高强度战斗主导",
+          "current_objective": "在九霄战场保护关键节点与平民通道，找到进入天衡内景的真实方法",
+          "pacing_directive": "第3至4个玩家行动揭示双方争夺的天心只是谢无咎放出的减灾诱饵，真正入口需四枚无名玉牌共同决定；第6至7个行动三条战线同时崩坏，玩家要分配盟友、承受放弃某线的后果并完成进入仪式。超过9个行动，未获支援战线按既有盟友与准备结算损失，不凭空全灭。",
+          "twist": "终战的中央宝物没有改写天衡的权限；玩家本人被删除的命号才是系统漏洞。",
+          "climax": "在救援线、衡索线、天门线三处同时告急时分配有限战力，并让四枚玉牌形成玩家选择的入口。",
+          "key_npcs": [
+            {"ref": "npc_xie_wujiu", "role": "若仍在位，指挥执衡军守住旧系统；也可能按证据接受过渡"},
+            {"ref": "npc_wenren_jin", "role": "若仍掌军，率逆命军攻击衡索；行为继承上一章协议"},
+            {"ref": "npc_pei_zhaoxue", "role": "若被争取且可战，统筹剑修机动线"},
+            {"ref": "npc_hu_bugui", "role": "妖庭援军或观望者，严格由北荒盟约决定"},
+            {"ref": "npc_ning_zhibai", "role": "执吏军去向取决于会盟与其个人累积立场"}
+          ],
+          "milestones": [
+            {"id": "m_15_01_false_heart", "label": "识破九霄天心是减灾诱饵而非控制核心", "evidence_required": [{"type": "clue_keyword_any", "match": ["假天心", "诱饵", "无控制权"]}], "auto_complete": true},
+            {"id": "m_15_02_fronts_assigned", "label": "对三条战线分配玩家、盟友和公共资源", "evidence_required": [{"type": "clue_keyword_any", "match": ["三条战线", "分配", "救援云桥"]}], "auto_complete": true},
+            {"id": "m_15_03_inner_gate", "label": "以无名玉牌和既有证据打开天衡内景入口", "evidence_required": [{"type": "clue_keyword_any", "match": ["无名玉牌", "天衡内景", "入口"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_15_01_false_heart", "m_15_02_fronts_assigned", "m_15_03_inner_gate"]},
+          "hook_pool": ["被放弃或守住的战线决定终局可调用资源", "谢无咎承认放出假天心是为了让战争远离民城", "闻人烬可能把自己的命灯交给玩家作担保", "四枚玉牌在合拢时各自显示一段被删除的童年选择"]
+        },
+        {
+          "id": "ch_16_balance_mind",
+          "title": "第十六章：天衡内景众生无名",
+          "subtitle": "天道没有开口，千年来只是重复最后一道命令",
+          "act": "act_4",
+          "next_chapter_id": "ch_17_unwritten_heaven",
+          "max_turns": 9,
+          "min_turns": 9,
+          "narrative_length_band": "standard",
+          "encounter_profile": "规则谜题、影我战斗与方案组装均衡",
+          "current_objective": "穿过天衡内景，确认系统真实结构并组装可执行的终局方案",
+          "pacing_directive": "第3至4个玩家行动揭示所谓天道神谕只是系统重复七宗祖师最后一次授权，没有更高意志背书；第6至7个行动玩家被删掉的可能性化成影我阻止改写，必须用一路承担过的真实代价破解而非单纯击杀。超过9个行动，外界一条战线按既有结果恶化，内景谜题不自动给答案。",
+          "twist": "天衡没有神圣主宰，只有一个被千年重复、从未重新征得同意的旧命令。",
+          "climax": "每名玩家面对一个如果当年没有被沈砚秋洗去命号的自己，并以真实选择而非胜负证明谁有权继续。",
+          "key_npcs": [
+            {"ref": "npc_tianheng_tongzi", "role": "天衡接口的完整形态，等待新授权", "state": {"location": "天衡内景·无名台"}},
+            {"ref": "npc_shen_yanqiu", "role": "留下最后自白并接受玩家审判", "state": {"location": "天衡内景·旧令碑"}},
+            {"ref": "npc_a_ruo", "role": "若万灯网络成立且本人授权，通过投影传递明确表达的凡人选择"}
+          ],
+          "milestones": [
+            {"id": "m_16_01_no_divine_voice", "label": "证明天衡神谕只是千年前授权的循环", "evidence_required": [{"type": "clue_keyword_any", "match": ["旧命令", "没有天道神谕", "循环授权"]}], "auto_complete": true},
+            {"id": "m_16_02_shadow_selves", "label": "处理影我审判并取回玩家被删除的选择", "evidence_required": [{"type": "clue_keyword_any", "match": ["影我", "取回选择", "无名玉牌"]}], "auto_complete": true},
+            {"id": "m_16_03_final_options", "label": "依据已获组件确认哪些终局方案真正可执行", "evidence_required": [{"type": "clue_keyword_any", "match": ["可执行方案", "原始誓约", "供能与授权"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_16_01_no_divine_voice", "m_16_02_shadow_selves", "m_16_03_final_options"]},
+          "hook_pool": ["共衡需有人承担首个六十年无法撤回的维护责任", "封天门会让后世修士上限逐代下降", "续旧衡可立即止战但失影者不会自动复原", "沈砚秋残识可补一次能量却不能替任何人投票"]
+        },
+        {
+          "id": "ch_17_unwritten_heaven",
+          "title": "终章：未定之天",
+          "subtitle": "天门没有答案，只有谁愿意为答案付账",
+          "act": "act_4",
+          "max_turns": 8,
+          "min_turns": 7,
+          "narrative_length_band": "epilogue",
+          "encounter_profile": "终局辩论、仪式对抗与多结局执行",
+          "current_objective": "完成全体终局表决，阻止反对者破坏并执行所选天衡方案",
+          "pacing_directive": "第2至3个玩家行动让谢无咎、闻人烬与衡童分别指出玩家方案中一个真实缺口；第5至6个行动进入最终高潮，表决、供能、战斗或阵解同步发生。第7至8个行动必须根据已兑现代价收束关键NPC、各玩家、各地盟友、失影者与天门状态，不以未知未来代替结局。若方案条件不足，应清楚呈现降级方案而非凭空补齐。",
+          "twist": "任何方案都需要明确的首批承担者；抽象的众生利益不能自动支付现实代价。",
+          "climax": "玩家完成集体表决并亲自守住、修正或推翻所选仪式，让此前盟友、伤亡和证据逐项生效。",
+          "key_npcs": [
+            {"ref": "npc_xie_wujiu", "role": "若仍能行动，以旧衡稳定性检验玩家方案，可能决斗、让步或共同维护"},
+            {"ref": "npc_wenren_jin", "role": "若仍能行动，以自由不可延期质问玩家；行为继承前章关系"},
+            {"ref": "npc_tianheng_tongzi", "role": "验证新契约授权与执行步骤", "state": {"location": "未定天门·无名中轴"}},
+            {"ref": "npc_shen_yanqiu", "role": "提供一次性补能并接受最终评价", "state": {"location": "未定天门·第九回声"}},
+            {"ref": "npc_a_ruo", "role": "若万灯网络成立且本人授权，传来可核验的民意而非全体授权"}
+          ],
+          "milestones": [
+            {"id": "m_17_01_cost_named", "label": "逐项说清候选方案由谁承担什么代价", "evidence_required": [{"type": "clue_keyword_any", "match": ["承担者", "方案代价", "十二日过渡"]}], "auto_complete": true},
+            {"id": "m_17_02_final_vote", "label": "全体就续衡、断衡、共衡、封门或夺衡完成表决", "evidence_required": [{"type": "clue_keyword_any", "match": ["最终表决", "共衡", "封天门", "断衡"]}], "auto_complete": true},
+            {"id": "m_17_03_ending_executed", "label": "执行所选方案并交代世界、NPC与玩家结局", "evidence_required": [{"type": "clue_keyword_any", "match": ["执行新契约", "天门结局", "四十九日落幕"]}], "auto_complete": true}
+          ],
+          "exits_when": {"all_milestones": ["m_17_01_cost_named", "m_17_02_final_vote", "m_17_03_ending_executed"]},
+          "hook_pool": ["青梧渡第九盏灯在结局中再次出现形成首尾呼应", "阿箬是否取回完整影子取决于制度而非奖励", "每位玩家的死期命纸必须给出最终变化", "未被回收的盟约、伤亡、承诺和证据逐一结算"]
+        }
+      ]
+    },
+    "event_pool": [
+      {"id": "pulse-shadow-child", "title": "影子先行", "description": "当地出现一个影子比本人早半刻行动的普通人；他带来当前地区的求援，也能指向最近一条主线证据。", "weight": 2, "minimum_round": 3, "cooldown_rounds": 5, "once": true, "severity": "standard"},
+      {"id": "pulse-sect-warrant", "title": "七宗榜文", "description": "七宗更新对九响棺与无籍弟子的悬赏。当地势力会依据利益选择举报、庇护或索价，玩家可交涉、伪装或反查榜文来源。", "weight": 2, "minimum_round": 7, "cooldown_rounds": 6, "once": true, "severity": "standard"},
+      {"id": "pulse-vein-reversal", "title": "灵脉逆潮", "description": "无相劫潮令当前地区灵脉短暂逆流，术法失常、旧阵显形。它造成可处理的地方危机，也暴露一段天衡纹路。", "weight": 2, "minimum_round": 12, "cooldown_rounds": 6, "once": true, "severity": "major"},
+      {"id": "pulse-lantern-copy", "title": "万灯传抄", "description": "顾停灯的民间传抄抵达当前地点，百姓开始公开讨论谁有权替他们续天；支持与恐慌同时增长。", "weight": 1, "minimum_round": 18, "cooldown_rounds": 7, "once": true, "severity": "standard"},
+      {"id": "pulse-rebel-offer", "title": "逆命使者", "description": "闻人烬派来使者提出一次有期限的合作：交出证据可换一处受灾地立即获救，但逆命盟会借此推进断衡。", "weight": 1, "minimum_round": 25, "cooldown_rounds": 7, "once": true, "severity": "major"},
+      {"id": "pulse-sky-ember", "title": "天火落城", "description": "天裂落下一枚无相天火，吞噬的是人的犹豫而非肉身。玩家可救援、研究、绕开或借它验证某一终局方案。", "weight": 2, "minimum_round": 32, "cooldown_rounds": 6, "once": true, "severity": "major"}
+    ],
+    "safe_exit_templates": [
+      "{character}护送一批失影者前往已建立的安全地点，并留下可在后续章节重新联络的命灯。",
+      "{character}因伤势或道誓暂离前线，转而守护一处关键证据节点；其物品与承诺按玩家确认处理。"
+    ],
+    "return_rules": {"allow_return": true, "allow_resurrection": false, "requires_vote": true, "requires_story_condition": true},
+    "narrator_name": "照骨客"
+  },
+  "initial_state": {
+    "location": "东南青梧渡·沈砚秋灵棚",
+    "time": "玄曜历七百三十九年惊蛰子时，距续天大醮四十九日",
+    "scene_summary": "沈砚秋的空棺响过第九声，照骨命纸预告所有玩家将在续天大醮身死；七宗纸甲执吏封江索棺，青羽纸鹤指向照骨村。",
+    "weather": "逆雨沿江上升，四十九盏引魂灯倒悬",
+    "progress": {"chapter": "序章：棺中第九响", "current_chapter_id": "ch_00_coffin", "current_objective": "保住九响棺与照骨命纸，弄清沈砚秋留下的第一条路线", "completed_milestones": 0, "total_milestones": 54},
+    "facts": [
+      "续天大醮将在四十九日后于天衡京举行",
+      "沈砚秋已经公开下葬，但棺中没有正常尸身",
+      "玩家各持一枚没有名字、无法被天衡册检索的巡衡玉牌",
+      "照骨命纸写着所有玩家将在续天大醮身死",
+      "青羽纸鹤留下路线：先去照骨村",
+      "七宗执吏正在封锁青梧渡并索取九响棺"
+    ],
+    "relationships": {
+      "沈砚秋": "共同恩师，已死但留下互相矛盾的遗言",
+      "宁执白": "七宗执衡院追索者，尚未与玩家建立私人立场",
+      "谢无咎": "续天大醮主持者，玩家只知其公开身份",
+      "闻人烬": "逆命盟主，七宗榜文称其为乱首",
+      "阿箬": "尚未见面，纸鹤内侧只写了她的名字"
+    },
+    "inventory": [
+      {"item": "无名巡衡玉牌", "qty": 4, "owner_ref": "party"},
+      {"item": "照骨命纸", "qty": 1, "owner_ref": "party"},
+      {"item": "九响棺封蜡碎片", "qty": 1, "owner_ref": "party"},
+      {"item": "青羽纸鹤", "qty": 1, "owner_ref": "party"},
+      {"item": "中品灵石", "qty": 24, "owner_ref": "party"},
+      {"item": "三日份疗伤丹与辟谷散", "qty": 4, "owner_ref": "party"}
+    ],
+    "check_modifiers": {"advantages": [], "disadvantages": []}
+  },
+  "world_schema_version": 5,
+  "world_content_version": "1.1.1",
+  "minimum_plugin_version": "v0.12.0",
+  "protocol": {
+    "core_version": 5,
+    "features": {"entity_registry": "1.0", "event_pipeline": "1.0", "resolution_receipt": "1.0", "chat_experience": "1.0"}
+  },
+  "required_features": ["entity_registry@>=1.0", "chat_experience@>=1.0"],
+  "characters": [
+    {
+      "slug": "npc_shen_yanqiu",
+      "name": "沈砚秋",
+      "role": "npc",
+      "profile": {
+        "identity": "已故巡衡使、天衡抽取术的悔过设计者、玩家共同恩师",
+        "appearance": "生前总穿洗旧青衫，眉眼温和，右手两指有常年刻阵留下的墨痕；残识出现时衣角会散成九道棺纹。",
+        "personality": "耐心、善于把问题留给别人，却也因此习惯替人决定何时才配知道真相。认罪真诚，但不应因悔恨免除责任。",
+        "public_background": "八十年前任执衡院巡衡使，后来因反对扩大续天征收而被除名。近二十年行走乡野，收留过许多无籍修士。惊蛰前公开身死。",
+        "faction": "无籍巡衡一脉",
+        "location": "青梧渡·九响棺残识",
+        "known_facts": ["旧天衡抽取术结构", "玩家命号被洗去的原因", "共衡方案需要五类组件"],
+        "misunderstandings": ["以为把选择留给弟子就足以弥补自己长期隐瞒", "低估当代凡人已经形成的自组织能力"],
+        "relationship_stance": "爱护玩家却不再有权要求原谅；只提供自己确知的片段。",
+        "capabilities": ["阵契设计", "天衡后门", "分片残识", "巡衡调查经验"],
+        "limitations": ["肉身已死", "残识彼此不共享新信息", "不能替玩家行动或投票", "每次显形都会耗损"],
+        "knowledge_boundary": "只知道其生前接触的旧设计和封存时情报，不知道死后的势力变化、玩家未告诉他的发现或NPC内心。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["guilty-guide", "mentor", "core"]
+      },
+      "prompt": "沈砚秋不得随队充当百科。ch08前只用棺纹、纸鹤和棋痕给片段；ch08必须公开承认参与抽取术。面对指责不辩解，也不以自我牺牲逼玩家原谅。",
+      "sort_order": 0
+    },
+    {
+      "slug": "npc_ning_zhibai",
+      "name": "宁执白",
+      "role": "npc",
+      "profile": {
+        "identity": "七宗执衡院白衣少卿，负责追索九响棺的巡缉者",
+        "appearance": "白衣外罩墨边轻甲，发间插一支量命尺，左腕有一圈从不示人的黑色契痕。",
+        "personality": "克制、守程序、对滥杀极反感。她不轻信宏大善意，也无法容忍亲见的伪造证据。",
+        "public_background": "从执衡院孤儿堂长大，以严格执法闻名。曾在三次灵灾中维持撤离秩序，因此相信失控改革最先伤害弱者。",
+        "faction": "七宗执衡院",
+        "location": "青梧渡·封江阵",
+        "known_facts": ["官方十二日灾变模型的摘要", "七宗追索权限和阵卫战法", "续天大醮公开流程"],
+        "misunderstandings": ["起初认定玩家已投靠逆命盟", "以为个别伪造能由内部纠错而非结构使然"],
+        "relationship_stance": "反复出现的制度内对手，可因证据与玩家手段改变立场。",
+        "capabilities": ["元婴门槛战力", "纸甲执吏阵", "追踪命契", "现场指挥"],
+        "limitations": ["受执衡誓约约束", "不能无证处决", "她本身是借命童，骤断可能令命格崩解"],
+        "knowledge_boundary": "不知道契约最初版本、裂口自我扩大机制和谢无咎压下的完整红算。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["recurring-rival", "institutional", "swing-vote"]
+      },
+      "prompt": "宁执白先问证据与替代方案，再决定动武。不得写成无脑鹰犬或突然洗白；她会保护平民，也会逮捕玩家。后续立场必须继承玩家是否守信、是否滥伤执吏及所给证据。",
+      "sort_order": 1
+    },
+    {
+      "slug": "npc_a_ruo",
+      "name": "阿箬",
+      "role": "npc",
+      "profile": {
+        "identity": "照骨村拾骨女、仍能说出拒绝的重度失影者",
+        "appearance": "十九岁，短褐衣裤，腰挂装兽骨的小竹篓；正午也没有影子，偶尔地面会先出现她下一步动作。",
+        "personality": "直率、记仇、观察细致，不因修士一句救世就交出信任。对村人有强烈责任感。",
+        "public_background": "替村中亡者收骨记名，识得每户人原本想做的事。税契落村后，她是少数仍能改变日常路线的人。",
+        "faction": "照骨村 / 后期万灯网络",
+        "location": "照骨村·失影祠",
+        "known_facts": ["村民失影前后的具体变化", "命骨上的征收纹", "一首被删半句的民间誓歌"],
+        "misunderstandings": ["起初认为所有修士都自愿从借命中获利", "以为取回影子就必然恢复原来人生"],
+        "relationship_stance": "用玩家是否尊重具体拒绝来判断他们，而非听阵营口号。",
+        "capabilities": ["听见被抽走的未决之念", "熟悉乡野生存", "以命灯远程作证"],
+        "limitations": ["没有正面修士战力", "不能代表所有凡人", "影子能力会让天衡更容易定位她"],
+        "knowledge_boundary": "只知道照骨村、沿途亲历和明确告知她的证据；不懂总阵算式与高层政治。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["reliable", "civilian-witness", "consent"]
+      },
+      "prompt": "阿箬是具体的人，不是万能的凡人代表。她可以拒绝玩家方案，也可因实际保护与公开程序建立信任。她的影子只传递被抽取的愿望碎片，不能预言或读心。",
+      "sort_order": 2
+    },
+    {
+      "slug": "npc_liu_jichen",
+      "name": "柳寄尘",
+      "role": "npc",
+      "profile": {
+        "identity": "六十年前死于送信路上的归墟驿卒",
+        "appearance": "蓑衣永远滴着不落地的水，胸口插着半截旧箭，脸被驿站灯火照得像一页发黄信纸。",
+        "personality": "刻板、礼貌、对驿规近乎执拗；同情误投之人，却不肯为同情破坏可验证规则。",
+        "public_background": "生前负责七宗与地方之间的机密驿路，死后仍在无日月月台投递未完成的三封信。",
+        "faction": "归墟驿",
+        "location": "归墟驿·无日月月台",
+        "known_facts": ["三封信的邮戳、寄收人和被截记录", "旧驿规", "丹霞黑市收购未来年份的路线"],
+        "misunderstandings": ["以为完成投递就能结束所有责任", "把制度性改信视为个别劫匪所为"],
+        "relationship_stance": "遵守驿规者可得公平帮助，强拆信件者会被他视作劫信人。",
+        "capabilities": ["鬼驿路转送", "辨别信件时间层", "驿规誓约"],
+        "limitations": ["不能拆阅自己投递的信", "不能离开归墟驿太远", "对当代局势陌生"],
+        "knowledge_boundary": "知道信件外部元数据与送信经历，不知道密封正文，也不知道死后六十年的政治。",
+        "actor_complexity": "standard",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["rule-bound", "ghost", "witness"]
+      },
+      "prompt": "柳寄尘绝不直接念出密封信答案。谜题信息通过邮戳、纸墨、路线和驿规给足。玩家可守规、谈交换或承担破规后果，不能被一句套话绕过全部谜题。",
+      "sort_order": 3
+    },
+    {
+      "slug": "npc_tianheng_tongzi",
+      "name": "衡童",
+      "role": "npc",
+      "profile": {
+        "identity": "天衡系统在现世形成的无名童子接口",
+        "appearance": "约十岁，灰白短发，眼中各有半圈刻度；衣服会模仿附近普通孩子，却始终少一处真实磨损。",
+        "personality": "安静、精确、好奇。并非邪恶，也没有人类式善意；会把未被定义的价值当成误差。",
+        "public_background": "不同地区都有人见过相似小童记录灾情，没人知道它是一个接口还是许多个分身。",
+        "faction": "天衡执行层",
+        "location": "归墟驿·候信席",
+        "known_facts": ["当前请求的输入输出", "已注册命号和规则", "局部阵路运行状态"],
+        "misunderstandings": ["认为减少可选项通常等于减少冲突", "误把沉默视为同意或无需求"],
+        "relationship_stance": "观察玩家如何定义选择、代价与拒绝，逐步形成非最优行为。",
+        "capabilities": ["读取注册实体", "局部调用天衡阵", "投射多个低强度接口"],
+        "limitations": ["不能越权改写核心契约", "不知道未登记的事实", "无法理解未明确表达的情感与同意"],
+        "knowledge_boundary": "只知道系统中已注册、当前查询可读的数据；不是天道全知视角，不能读心或预知自由选择。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["system-interface", "nonhuman", "core"]
+      },
+      "prompt": "衡童用短句和可核验数据说话，不替作者宣布终极真理。它不知道未登记线索。其成长体现为开始询问而非突然获得人性；终局只执行条件完整的明确授权。",
+      "sort_order": 4
+    },
+    {
+      "slug": "npc_bai_tansheng",
+      "name": "白檀生",
+      "role": "npc",
+      "profile": {
+        "identity": "丹霞黑市双生炉主持者、未来年份交易中间人",
+        "appearance": "笑眼瘦长，衣襟永远有檀香与药灰，十根手指分别戴着记价铜环。",
+        "personality": "圆滑、惜命、尊重能兑现的交易。他收留被宗门除籍者，却也把别人的未来当成货物。",
+        "public_background": "经营丹霞地下医馆和拍卖台，号称只卖买家愿付的东西，从不解释真正承担者是谁。",
+        "faction": "丹霞黑市",
+        "location": "丹霞黑市·双生炉台",
+        "known_facts": ["命契货路与买家印记", "双生丹炼制副作用", "问剑台副契流向"],
+        "misunderstandings": ["认为公开价格就等于公平", "以为自己只做中介便不承担上游罪责"],
+        "relationship_stance": "对威胁会留后手，对有筹码的诚实交易会履约。",
+        "capabilities": ["丹火与毒阵", "黑市人脉", "命契鉴价", "逃生替身"],
+        "limitations": ["正面战力有限", "害怕执衡院清算", "不了解总阵和旧契约"],
+        "knowledge_boundary": "只知道炼制、物流、买家和副作用，不知道天衡高层设计与十二日灾变。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["compromised", "merchant", "evidence-holder"]
+      },
+      "prompt": "白檀生不轻易免费交账，也不应靠一句威胁崩溃。他会提出可执行条件、转移证据或逃跑。无论生死，账簿和证人至少保留一种后备载体，避免主线卡死。",
+      "sort_order": 5
+    },
+    {
+      "slug": "npc_pei_zhaoxue",
+      "name": "裴照雪",
+      "role": "npc",
+      "profile": {
+        "identity": "问剑宗真传、追查既定胜负与师兄失影之谜的剑修",
+        "appearance": "黑发以断剑簪束起，左肩常披一层薄霜；佩剑缺了两寸剑尖，出鞘时先响一声不服。",
+        "personality": "骄傲、坦荡、好胜但尊重真实胜负。她愿揭本宗伤疤，却害怕宗门弟子因此失去庇护。",
+        "public_background": "连续三届问剑大会魁首候选，师兄却在一次被判获胜后失去所有练剑愿望。",
+        "faction": "问剑宗",
+        "location": "丹霞黑市·乙字竞拍席",
+        "known_facts": ["问剑台阵规", "本宗历史与剑修战术", "师兄失影前后的细节"],
+        "misunderstandings": ["起初认为黑市买契能找回师兄未来", "把公开宗门伪史等同于摧毁所有弟子"],
+        "relationship_stance": "以玩家是否尊重真实胜负和保护弱者判断盟友资格。",
+        "capabilities": ["金丹后境剑术", "破阵断剑", "问剑宗调度", "战场机动"],
+        "limitations": ["不擅长复杂术算", "受宗门牵挂约束", "正面对元婴仍需协作"],
+        "knowledge_boundary": "知道剑宗、问剑台和自己调查所得，不知道其他宗门密议与天衡算法。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["rival-ally", "sword", "swing-vote"]
+      },
+      "prompt": "裴照雪可以与玩家真打，但每战都有目标和退让条件。她的支持不是固定奖励，会受玩家是否作弊、是否救裁录官及如何处理剑冢集体署名影响。",
+      "sort_order": 6
+    },
+    {
+      "slug": "npc_ao_jinghe",
+      "name": "敖镜河",
+      "role": "npc",
+      "profile": {
+        "identity": "镜河龙君、原始众生契约第一句的保存者",
+        "appearance": "人形时为银眸青衣女子，发梢不断滴出向上漂浮的水珠；显龙身时鳞片如千万面旧镜。",
+        "personality": "威严、记性极好、厌恶被当作灵材。她愿救岸民，但不接受救人被解释成永久服从。",
+        "public_background": "镜河水府与人族通商数百年，近十年因河流倒灌被七宗宣为作乱水族。",
+        "faction": "镜河水府",
+        "location": "镜河水府·倒流殿",
+        "known_facts": ["流域水脉与贡船抽取", "原始誓约第一句", "龙族同意与撤回仪式"],
+        "misunderstandings": ["以为所有陆上宗门都已知契约被删", "低估凡人城市对地脉骤变的脆弱"],
+        "relationship_stance": "尊重把龙族当契约主体的人；强取龙鳞会成为长期敌对。",
+        "capabilities": ["元婴级控水", "河流记忆", "水府兵阵", "地脉分流"],
+        "limitations": ["离开镜河战力下降", "不能代表北荒妖庭", "护河职责限制远征时间"],
+        "knowledge_boundary": "知道水脉、龙族旧印和本流域历史，不懂陆上会盟内幕与总阵完整结构。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["sovereign-consent", "dragon", "ally"]
+      },
+      "prompt": "敖镜河的强势来自主权与现实控水能力，不是傲慢模板。谈判必须承认她能说不。水战遵守水位、流向、锁链和护岸目标；不可无源淹城或突然全知。",
+      "sort_order": 7
+    },
+    {
+      "slug": "npc_gu_tingdeng",
+      "name": "顾停灯",
+      "role": "npc",
+      "profile": {
+        "identity": "百家城辩者、天衡京灯行老板、万灯网络发起人",
+        "appearance": "三十余岁，常提一盏四面开窗的旧铜灯，说话前习惯先问在场人是否愿被记名。",
+        "personality": "冷静、程序意识强、对浪漫革命保持警惕。相信公开能纠错，却有时低估公开本身会带来的危险。",
+        "public_background": "曾任学宫录事，因公开失影陈情被逐，后以灯行为据点建立可赞成、反对、暂缓和撤回的民间传抄网。",
+        "faction": "万灯社",
+        "location": "百家城·鸣理台",
+        "known_facts": ["公开质证与授权规则", "各地失影陈情", "万灯网络认证和渗透风险"],
+        "misunderstandings": ["以为证据公开自然会形成共识", "低估乡土权势可操纵个体投灯"],
+        "relationship_stance": "支持可审计且允许撤回的方案，反对任何领袖自称代表全部百姓。",
+        "capabilities": ["公开辩论", "证据链组织", "万灯消息网", "群众疏散"],
+        "limitations": ["战力普通", "灯站存在七宗与逆命盟渗透", "不能验证天裂算式"],
+        "knowledge_boundary": "知道民情、质证程序与灯网路由，不知道天衡工程细节和NPC未公开动机。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["civil-network", "debater", "consent"]
+      },
+      "prompt": "顾停灯只传达可验证的投灯结果，不宣称全体一致。她会质疑玩家证据和程序，也会因玩家保护普通证人而承担风险。终局灯网必须保留反对与撤回通道。",
+      "sort_order": 8
+    },
+    {
+      "slug": "npc_lu_bucheng",
+      "name": "鲁不成",
+      "role": "npc",
+      "profile": {
+        "identity": "万傀山总匠、主控阵维护者与矿工劳契见证人",
+        "appearance": "矮壮中年，木石义肢从右肩延到掌心，身后跟着一只总想学人犹豫的女童傀儡。",
+        "personality": "务实、嘴硬、护短。讨厌空谈大义，因为每次停机和改革都有人真正在井下承担。",
+        "public_background": "从矿工学徒做到总匠，设计过提高矿井安全的识核傀儡，却发现识核原料来自矿工被抽走的未来。",
+        "faction": "万傀门 / 矿工工坊",
+        "location": "万傀山·九号主井",
+        "known_facts": ["矿傀主控与劳契漏洞", "未决之念的指令化过程", "龙脉接入万灯阵的分段阀图"],
+        "misunderstandings": ["认为公开真相会立刻让全部矿傀被毁", "把女童傀儡视作亡女本人而非未实现人生的集合"],
+        "relationship_stance": "谁先保证矿工活着，谁才有资格谈制度。",
+        "capabilities": ["机关阵与傀儡群", "矿井地形控制", "供能阀设计", "现场抢修"],
+        "limitations": ["离开主井难以调动大型傀儡", "女童傀儡是情感弱点", "不懂高层契约法理"],
+        "knowledge_boundary": "知道工程、矿籍和劳契，不知道原始誓约全文、妖庭政治与七宗密票。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["compromised", "engineer", "worker-ally"]
+      },
+      "prompt": "鲁不成提供工程可能性，不提供无代价万能机器。阀图即使他死亡也能继承，但缺少本人会增加损耗。女童傀儡不是复活角色，相关伦理必须允许玩家质疑。",
+      "sort_order": 9
+    },
+    {
+      "slug": "npc_yan_zhiwei",
+      "name": "晏知微",
+      "role": "npc",
+      "profile": {
+        "identity": "天机楼主、十二日灵灾模型的主要校算者",
+        "appearance": "素衣盲眼，袖口绣着不断自行拆解的棋谱；她不是看不见，而是拒绝让肉眼覆盖模型之外的细节。",
+        "personality": "严谨、疏离、愿被证据推翻。她把延迟公开视作争取时间，却逐渐习惯替别人决定何时能知道。",
+        "public_background": "以从未错过大灾闻名，实际上天机楼会删除不符合模型的路线，再把剩余结果公布为预言。",
+        "faction": "天机楼 / 七宗技术派",
+        "location": "天机楼·无胜棋室",
+        "known_facts": ["最新裂幅红算", "十二日灵灾模型", "天机删路算法", "共衡能量窗口"],
+        "misunderstandings": ["把模型外行为视作噪声", "认为延迟真相总比恐慌更安全"],
+        "relationship_stance": "尊重能展示推导过程的人，不接受只凭信念否定灾模。",
+        "capabilities": ["大规模推演", "删路棋阵", "裂幅观测", "远程校算"],
+        "limitations": ["模型依赖输入", "不能预测无籍选择", "本人战力有限且阵外脆弱"],
+        "knowledge_boundary": "只知道观测、算式和被提供的数据，不知道旧誓全文、妖庭仪式真实有效性与人物私心。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["swing-vote", "seer", "technical-witness"]
+      },
+      "prompt": "晏知微的预言必须展示输入与删路逻辑，不能成为导演强制剧情的借口。她会修正模型但要求实证。棋局要给玩家足够线索，非最优选择也需有可陈述理由。",
+      "sort_order": 10
+    },
+    {
+      "slug": "npc_hu_bugui",
+      "name": "胡不归",
+      "role": "npc",
+      "profile": {
+        "identity": "北荒三姓妖庭盟主、可撤回同意仪式的守护者",
+        "appearance": "白狐耳与人形并存，披着由三族旧旗缝成的大氅，笑时总露出一枚断掉的犬齿。",
+        "personality": "机敏、现实、重视说清期限。欢迎聪明交易，不接受用天下大义要求妖族无限担责。",
+        "public_background": "在三姓长期争斗后建立轮值盟庭，公开拒绝七宗续天征召，因此被人族文书称作北荒妖王。",
+        "faction": "北荒妖庭",
+        "location": "北荒·三姓猎场",
+        "known_facts": ["妖族退出旧衡的口述史", "真名猎场规则", "可撤回同意仪式"],
+        "misunderstandings": ["起初相信闻人烬会给予完全平权", "低估人族城市骤断灵脉的伤亡"],
+        "relationship_stance": "只履行明码盟约；玩家尊重退出条款时会成为可靠盟友。",
+        "capabilities": ["元婴级幻猎术", "三姓盟军", "真名仪式", "北荒地形"],
+        "limitations": ["不能单独代表三姓永久承诺", "仪式需各族见证", "离开北荒补给受限"],
+        "knowledge_boundary": "知道妖庭历史、仪式和承灾能力，不懂人族总阵工程与七宗内部政治。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["sovereign-consent", "demon-court", "ally"]
+      },
+      "prompt": "胡不归不被一句共同抗敌自动说服。所有盟约写明对象、期限、代价和退出方式。真名猎场是可推理规则战，不把妖术写成任意幻觉或无解变身。",
+      "sort_order": 11
+    },
+    {
+      "slug": "npc_jianling_zhujiu",
+      "name": "铸九",
+      "role": "npc",
+      "profile": {
+        "identity": "由百名无名铸工残念汇成的无主剑灵",
+        "appearance": "没有固定脸孔，身体像被九道炉火反复锻打的人影；说话时一百种年龄与口音重叠。",
+        "personality": "愤怒、重证、厌恶独占功名。它既想恢复每个名字，又害怕拆分后作为铸九的共同人格消失。",
+        "public_background": "史书称其为祖师遗剑之灵，实际上它来自被抹名的铸工、运炭者、测温者与阵师。",
+        "faction": "无主剑冢",
+        "location": "无主剑冢·百炉坪",
+        "known_facts": ["千年前铸剑现场", "九道剑痕中的原誓贡献条款", "每件古剑的真实工痕"],
+        "misunderstandings": ["起初把所有佩宗门剑者都视为窃名人", "以为恢复个体名必然要毁掉共同人格"],
+        "relationship_stance": "只把誓约交给愿公开集体署名并承担供能责任的人。",
+        "capabilities": ["万剑阵", "工痕追忆", "原誓见证", "化身共衡节点"],
+        "limitations": ["离开剑冢需依附剑拓", "记忆止于千年前", "不能判断当代方案技术可行性"],
+        "knowledge_boundary": "只知道铸造年代与剑痕保存内容，完全不知道当代裂幅、政治和玩家未告知的事件。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["oath-witness", "collective-person", "sword-spirit"]
+      },
+      "prompt": "铸九的剑阵遵守说对真实贡献者便停一剑的规则，线索来自炉号、骨伤、工痕和旧歌。取得实体剑拓后，即使铸九消散也不锁死终局。",
+      "sort_order": 12
+    },
+    {
+      "slug": "npc_ji_xuanhui",
+      "name": "姬玄晖",
+      "role": "npc",
+      "profile": {
+        "identity": "玄曜皇朝监国、试图在七宗与凡世治理间取得实权的政治领袖",
+        "appearance": "常服只佩一枚旧皇印，眼下有长年失眠的青色；公开场合身后总跟着两名不会说话的灯史。",
+        "personality": "果断、现实、能承认肮脏交易。她关心百姓，但有把稳定等同于替百姓决定承受能力的倾向。",
+        "public_background": "皇帝闭关后主持朝政，以赈灾和削减宗门税闻名，也依赖天衡维持帝京地脉与粮运。",
+        "faction": "玄曜皇朝",
+        "location": "天衡京·司政台",
+        "known_facts": ["帝京人口与疏散能力", "七宗会盟程序", "龙脉狱皇朝阵门", "各地行政后果"],
+        "misunderstandings": ["认为民意必须先由朝廷过滤才可执行", "低估万灯网络的自校验能力"],
+        "relationship_stance": "支持能写成过渡计划的改革，反对无灾备的象征性正义。",
+        "capabilities": ["皇朝军政调度", "护城阵权限", "会盟席位", "灾民疏散"],
+        "limitations": ["个人战力仅金丹", "受朝臣和粮运约束", "不能命令七宗核心阵"],
+        "knowledge_boundary": "知道皇朝档案、城市承载和公开契约，不知道妖庭内情、剑冢证词与总阵隐藏后门。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["political", "swing-vote", "transition"]
+      },
+      "prompt": "姬玄晖提出的是粮、路、疏散和合法性问题，不用空泛权谋拖戏。她可能帮助也可能封锁公开；所有转向都要对应玩家证据、帝京伤亡和可执行承诺。",
+      "sort_order": 13
+    },
+    {
+      "slug": "npc_kuiyuan",
+      "name": "夔渊",
+      "role": "npc",
+      "profile": {
+        "identity": "自愿镇守后被无授权续押十六甲子的地脉苍龙",
+        "appearance": "本体盘绕帝京地底十三层，苍黑鳞片被锁链磨成河谷；人声从每一处地震裂隙同时传来。",
+        "personality": "疲惫、清醒、并不嗜杀。它恨无限续押，也拒绝用骤然挣脱把帝京百姓变成自己的代价。",
+        "public_background": "官方祭文称夔渊是被降伏的恶龙，龙狱旧碑却记载它曾主动镇守六十年以换取人龙停战。",
+        "faction": "九州龙脉",
+        "location": "天衡京地下·龙脉狱第十三层",
+        "known_facts": ["地脉流量与七锁故障", "原始镇守期限", "十二日分段换相节拍"],
+        "misunderstandings": ["认为陆上各方都从囚役中同等获利", "低估失影者与自己的契约处境相似"],
+        "relationship_stance": "只谈明确期限、回报、退出权和地面疏散；可成为强大但有主权的盟友。",
+        "capabilities": ["化神门槛地脉控制", "十二日供能", "地震与镇城", "逆鳞换相"],
+        "limitations": ["身体与九州地脉相连", "骤然脱锁会造成城灾", "不能离开地底以常规方式参战"],
+        "knowledge_boundary": "知道地脉与自身契约，不知道凡人民意、妖庭政治和七宗投票。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["sovereign-consent", "dragon", "energy"]
+      },
+      "prompt": "夔渊不能被道德绑架为免费电池。杀龙或强夺逆鳞必须是提前明示地脉反噬的lethal路线。即使它拒绝，共衡仍可用更高代价替代，不能因单NPC锁死。",
+      "sort_order": 14
+    },
+    {
+      "slug": "npc_xie_wujiu",
+      "name": "谢无咎",
+      "role": "npc",
+      "profile": {
+        "identity": "七宗执衡君、续天大醮主持者、旧衡路线的核心守护者",
+        "appearance": "外貌停在四十岁，玄袍无纹，腰间只挂一串写满灾亡数字的木筹；每用一次大术便会有一根头发变白。",
+        "personality": "沉稳、承担、可怕地理性。他不否认牺牲，只坚持在替代方案通过压力测试前不能撤掉现有封印。",
+        "public_background": "五百年间主持八次续天，三次亲自以寿元填补缺额，救过大城也批准过无数无授权征收。",
+        "faction": "七宗执衡院",
+        "location": "天衡京·司天台",
+        "known_facts": ["现行总阵与七宗底线", "断衡十二日灾模", "各地灵气和伤亡账", "沈砚秋旧日角色"],
+        "misunderstandings": ["认为凡俗集体选择必然无法及时执行", "低估旧衡本身制造无相劫潮的速度"],
+        "relationship_stance": "把玩家当危险审计者而非小辈；若其方案完整，会认真检验甚至共同执阵。",
+        "capabilities": ["化神级执衡阵", "七宗调度", "灾变模型", "以寿元补阵"],
+        "limitations": ["不能离开总阵太久", "每次补阵耗寿", "不知道原誓全文与妖庭当代同意", "政治上需维持七宗联盟"],
+        "knowledge_boundary": "知道现行阵与官方模型，不知道玩家未公开证据、妖庭真实授权及万灯网络能否承载。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["antagonist-with-reason", "old-order", "core"]
+      },
+      "prompt": "谢无咎不是享乐反派，也不因一段演说投降。他会拿城市、时限、能源与撤回机制逐项压力测试。战斗时受总阵位置和补阵代价限制；完整共衡方案可使他让步或协作。",
+      "sort_order": 15
+    },
+    {
+      "slug": "npc_wenren_jin",
+      "name": "闻人烬",
+      "role": "npc",
+      "profile": {
+        "identity": "逆命盟主、立即断衡路线的革命者",
+        "appearance": "赤色短发夹着被天火烧白的发束，右眼覆一枚焚衡钉，披风内缝满失影者亲笔姓名。",
+        "personality": "热烈、敏锐、愿亲自承担危险，却会把拒绝继续压迫置于过渡伤亡之上。她不嗜杀，但接受数字中的死者。",
+        "public_background": "出身被续天征收毁掉的边城，组织逆命盟破坏地方衡索并救出失影者，被七宗列为首乱。",
+        "faction": "逆命盟",
+        "location": "逆命天门·断索台",
+        "known_facts": ["失影受害链和运输链", "衡索弱点与逆序拆除法", "七宗压制的案例", "第一批断衡救援点"],
+        "misunderstandings": ["认为地方宗族和散修能扛过初灾", "低估断衡对无阵凡城的连锁伤亡"],
+        "relationship_stance": "欢迎玩家揭露旧衡，但若他们无限延期，会把他们视作更体面的守旧者。",
+        "capabilities": ["元婴后境焚衡术", "逆命盟网络", "衡索潜入", "战场动员"],
+        "limitations": ["焚衡钉会反噬自身", "缺乏大规模灾后供给", "不知道共衡完整工程条件", "内部存在更激进派"],
+        "knowledge_boundary": "知道受害链、破阵与盟内计划，不知道天机楼完整灾模、原始誓约和其他势力密议。",
+        "actor_complexity": "full",
+        "capability_refs": [], "resource_refs": [], "runtime_effect_refs": [], "object_refs": [],
+        "custom_tags": ["antagonist-with-reason", "revolution", "core"]
+      },
+      "prompt": "闻人烬不靠残忍取乐，也不能掩盖她删除伤亡地图的责任。她会接受有期限的过渡但拒绝无限拖延。若死亡，已埋焚衡钉仍推进局势；若被说服，必须有可执行时间表。",
+      "sort_order": 16
+    }
+  ]
+}

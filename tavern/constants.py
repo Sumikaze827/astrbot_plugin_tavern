@@ -1,20 +1,13 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
 
 PLUGIN_NAME = "astrbot_plugin_tavern"
-PLUGIN_VERSION = "1.0.0-rc10"
-PLUGIN_DISPLAY_VERSION = "v1.0.0-rc10"
-WORLD_PROTOCOL_VERSION = "TWP 1.0.0-rc10"
-TWP_VERSION = "1.0.0-rc10"
-TWP_CORE_VERSION = "1.0.0-rc10"
-TWP_MODULE_API_VERSION = "1.0.0-rc10"
-DEFAULT_WORLD_CONTENT_VERSION = "1.0.0-rc10"
-DEFAULT_WORLD_DISPLAY_VERSION = "1.0.0-rc10"
-DATABASE_SCHEMA_VERSION = 30
-TEMPLATE_BUNDLE_VERSION = "1.0.0-rc10"
-CHARACTER_CARD_SCHEMA_VERSION = 7
-CHARACTER_CARD_TEMPLATE_VERSION = 7
-DEFAULT_CHARACTER_CARD_CONTENT_VERSION = 10
+PLUGIN_VERSION = "0.12.0"
+DATABASE_SCHEMA_VERSION = 12
+TEMPLATE_BUNDLE_VERSION = "4.0.0"
+CHARACTER_CARD_TEMPLATE_VERSION = 6
 NPC_IMPORT_TEMPLATE_VERSION = 2
 
 SESSION_CLOSED = "closed"
@@ -34,6 +27,9 @@ SESSION_STATES = {
 }
 
 MANAGEMENT_ACTIONS = {
+    "导入角色卡": "card_import",
+    "完成": "checkpoint_complete",
+    "回退": "checkpoint_revert",
     "开启": "start",
     "启动": "start",
     "开演": "perform",
@@ -45,8 +41,6 @@ MANAGEMENT_ACTIONS = {
     "完结": "finish",
     "强制终止": "abort",
     "安全暂停": "safety_pause",
-    "取消": "cancel_generation",
-    "重试本轮": "retry_turn",
     "维护": "maintenance",
     "状态": "status",
     "存档": "save",
@@ -59,30 +53,16 @@ MANAGEMENT_ACTIONS = {
     "副本列表": "instances",
     "副本": "instances",
     "加入": "join",
-    "AI队友": "ai_companions",
-    "AI 队友": "ai_companions",
-    "智能队友": "ai_companions",
     "建卡": "card",
     "填写": "card_fill",
     "上一步": "card_previous",
     "修改": "card_modify",
     "当前步骤": "card_current",
-    "当前": "card_current",
-    "补充": "supplement",
-    "补充状态": "supplement",
-    "成长": "growth",
-    "我的倾向": "tendency",
-    "下一批": "card_next",
-    "查看选项": "card_detail",
     "预览": "card_preview",
     "重填数值": "card_stats_reset",
     "建卡提醒": "card_timer_notice",
     "确认建卡": "card_confirm",
     "取消建卡": "card_cancel",
-    "重新建卡": "card_restart",
-    "修改角色名": "card_rename",
-    "修改昵称": "card_nickname",
-    "放弃席位": "card_abandon",
     "角色": "character",
     "准备": "ready",
     "强制全员准备": "force_ready",
@@ -92,34 +72,8 @@ MANAGEMENT_ACTIONS = {
     "灵感": "inspiration",
     "灵感重投": "inspiration_reroll",
     "重整选项": "reroll",
+    "提问": "ask_dm",
     "投票": "vote",
-    "命运预览": "fate_preview",
-    "命运确认": "fate_accept",
-    "命运拒绝": "fate_refuse",
-    "救援": "rescue",
-    "战况": "tactical_status",
-    "开始战术": "tactical_start",
-    "行动": "tactical_action",
-    "防守": "tactical_guard",
-    "援助": "tactical_aid",
-    "撤退": "tactical_retreat",
-    "谈判": "tactical_parley",
-    "确认行动": "tactical_confirm",
-    "锁定行动": "tactical_lock",
-    "推进战术": "tactical_advance",
-    "纠正战术": "tactical_correct",
-    "结束战术": "tactical_end",
-    "挑战": "challenge_status",
-    "开始挑战": "challenge_start",
-    "挑战行动": "challenge_action",
-    "退出挑战": "challenge_withdraw",
-    "挑战谈判": "challenge_negotiate",
-    "确认挑战": "challenge_confirm",
-    "推进挑战": "challenge_advance",
-    "结束挑战": "challenge_end",
-    "赠予": "give_item",
-    "商店": "shop",
-    "购买": "buy",
     "暂离": "away",
     "返回队列": "return_queue",
     "申请返场": "return_request",
@@ -152,6 +106,9 @@ MANAGEMENT_ACTIONS = {
 }
 
 MUTATING_ACTIONS = {
+    "card_import",
+    "checkpoint_complete",
+    "checkpoint_revert",
     "start",
     "perform",
     "pause",
@@ -161,8 +118,6 @@ MUTATING_ACTIONS = {
     "finish",
     "abort",
     "safety_pause",
-    "cancel_generation",
-    "retry_turn",
     "maintenance",
     "save",
     "delete_save",
@@ -173,17 +128,10 @@ MUTATING_ACTIONS = {
     "card_fill",
     "card_previous",
     "card_modify",
-    "card_next",
     "card_stats_reset",
     "card_timer_notice",
     "card_confirm",
     "card_cancel",
-    "card_restart",
-    "card_rename",
-    "card_nickname",
-    "card_abandon",
-    "growth",
-    "tendency_action",
     "ready",
     "force_ready",
     "review",
@@ -192,29 +140,6 @@ MUTATING_ACTIONS = {
     "inspiration_reroll",
     "reroll",
     "vote",
-    "fate_accept",
-    "fate_refuse",
-    "rescue",
-    "tactical_start",
-    "tactical_action",
-    "tactical_guard",
-    "tactical_aid",
-    "tactical_retreat",
-    "tactical_parley",
-    "tactical_confirm",
-    "tactical_lock",
-    "tactical_advance",
-    "tactical_correct",
-    "tactical_end",
-    "challenge_start",
-    "challenge_action",
-    "challenge_withdraw",
-    "challenge_negotiate",
-    "challenge_confirm",
-    "challenge_advance",
-    "challenge_end",
-    "give_item",
-    "buy",
     "away",
     "return_queue",
     "return_request",
@@ -236,27 +161,18 @@ MUTATING_ACTIONS = {
 }
 
 PLAYER_ACTIONS = {
+    "card_import",
     "join",
     "card",
     "card_fill",
     "card_previous",
     "card_modify",
     "card_current",
-    "supplement",
-    "growth",
-    "tendency",
-    "tendency_action",
-    "card_next",
-    "card_detail",
     "card_stats_reset",
     "card_timer_notice",
     "card_preview",
     "card_confirm",
     "card_cancel",
-    "card_restart",
-    "card_rename",
-    "card_nickname",
-    "card_abandon",
     "character",
     "ready",
     "roster",
@@ -264,30 +180,8 @@ PLAYER_ACTIONS = {
     "inspiration",
     "inspiration_reroll",
     "safety_pause",
-    "cancel_generation",
-    "retry_turn",
     "reroll",
     "vote",
-    "fate_preview",
-    "fate_accept",
-    "fate_refuse",
-    "rescue",
-    "tactical_status",
-    "tactical_action",
-    "tactical_guard",
-    "tactical_aid",
-    "tactical_retreat",
-    "tactical_parley",
-    "tactical_confirm",
-    "challenge_status",
-    "challenge_action",
-    "challenge_withdraw",
-    "challenge_negotiate",
-    "challenge_confirm",
-    "give_item",
-    "shop",
-    "buy",
-
     "away",
     "return_queue",
     "return_request",
@@ -298,16 +192,31 @@ PLAYER_ACTIONS = {
     "delegate_restore",
     "leave",
     "save_list",
+    "usage",
     "recap",
+    "ask_dm",
     "order",
     "skip",
+    "ban_list",
 }
 
-DEFAULT_WORLD_SLUG = "thirteenth-seat-new-era"
+DEFAULT_WORLD_SLUG = "aelvion-ashen-crown"
+
+
+def _load_builtin_json(filename: str):
+    path = Path(__file__).resolve().parent.parent / "worlds" / filename
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+DEFAULT_WORLD = _load_builtin_json("aelvion-ashen-crown.json")
+DEFAULT_CHARACTERS = tuple(
+    _load_builtin_json("aelvion-ashen-crown-npcs.json")
+)
 
 
 CORE_NARRATOR_RULES = """\
-你是“开团叙事裁定器”，不是普通聊天机器人。
+你是“叙事裁定器”，不是普通聊天机器人。
 
 不可违反的规则：
 1. 不替玩家决定台词、行动、情感、立场或内心想法。
@@ -322,4 +231,12 @@ CORE_NARRATOR_RULES = """\
 9. 当前输入只代表回合表中一名玩家的一次行动；不要替其他玩家补行动，
    结尾须给下一位玩家留出明确可回应的局面。
 10. 输出必须是单个 JSON 对象，不要使用 Markdown 代码块，不要附加解释。
+11. ledger_ops.create / complete 的 stable_key 必须严格来自 <current_chapter>
+    块中 milestones[*].id 字段（例如 m_03_01_chen_located），禁止使用中文
+    短语、标题别名、含空格字符串或自由拼接；切章判定只匹配规范 stable_key，
+    错误的 stable_key 会让 milestone 永远停在 active 状态、章节永远无法推进。
+    完成 milestone 时用 complete：原 stable_key；新增副作用线索时用 create。
+12. 玩家文面使用现代、直白的中文。陌生专名、古称或专业词第一次出现时，
+    先用日常词说明它是什么或有什么用，再给专名。建筑、门窗、台阶、平台、
+    通道和城防设施优先使用常见名称；不得只用生僻建筑术语代替物体与空间。
 """

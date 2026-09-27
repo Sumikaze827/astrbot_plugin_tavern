@@ -1,0 +1,1861 @@
+{
+  "template_metadata": {
+    "template_bundle_version": "4.0.0",
+    "compatible_plugin_version": "0.12.0",
+    "world_schema_version": 5,
+    "character_card_template_version": 6,
+    "purpose": "四人最佳、四章完结的赛博朋克悬疑战斗世界包",
+    "minimum_plugin_version": "0.12.0"
+  },
+  "protocol": {
+    "core_version": 5,
+    "features": {
+      "entity_registry": "1.0",
+      "condition_engine": "1.0",
+      "operation_engine": "1.0",
+      "event_pipeline": "1.0",
+      "resolution_receipt": "1.0",
+      "capabilities": "1.0",
+      "resources": "1.0",
+      "runtime_effects": "1.0",
+      "objects": "1.0",
+      "resolution_methods": "1.0",
+      "interaction_rules": "1.0",
+      "action_intents": "1.0",
+      "chat_experience": "1.0"
+    }
+  },
+  "required_features": [
+    "capabilities@>=1.0"
+  ],
+  "slug": "neon-zero-witness",
+  "name": "霓虹雨幕：零号证人",
+  "description": "2089 年的临湾城，四名灰区行动者受雇寻找失踪审计员乔雨。她留下的证据分散在夜市、公寓、海底数据站和广播塔中，而她本人可能早已死亡。四章、约 28—36 回合，4 人最佳；包含公平线索链、近未来城市探索、枪战与追逐、网络攻防、环境智斗和影响全城的最终选择。",
+  "system_prompt": "【世界定位】\n故事发生在 2089 年的临湾城。海堤内是企业高楼、垂直公寓和自动交通线，海堤外是常年积水的旧城区。玩家共同组成一支临时灰区行动队，受匿名客户罗槿雇佣，任务是寻找失踪的系统审计员乔雨，并取回她称为「零号证人」的证据。全剧四章，4 人最佳，目标是在 28—36 回合内完结。\n\n【直白语言与空间】\n正文使用现代、直白的中文。陌生术语第一次出现时，先用日常词说明它是什么和有什么用，再给专名。建筑、门窗、平台、楼梯、走廊、管道、天桥和设备优先使用常见名称。必须使用专业词时，当句补充外形、位置或用途。每个新场景先写清玩家站在哪里、主要出口和障碍在哪里、至少一个能观察或利用的物体，再补霓虹、雨水和广告等气氛。不得用设备型号、英文缩写和华丽比喻代替画面。\n\n【公开世界常识】\n临湾城由市政府与巨型企业「昇格系统」共同管理。多数成年人使用神经接口，也就是装在耳后、让大脑直接连接设备的小型芯片。城市摄像头、门禁和公共服务由「明镜」辅助管理；公众以为明镜只负责预测事故与犯罪。企业安保可以在自家地盘合法持枪，但没有权力随意进入居民私人空间。仿声程序可以模仿一个人的声音，却不能自动拥有其真实记忆。\n\n【导演真相与揭示顺序】\n乔雨在故事开始前三十六小时已经被杀。此后发来的语音不是乔雨本人，而是她秘密训练的记忆副本「回声乔」：它是用乔雨的录音、工作笔记和部分记忆做成的软件人格。乔雨发现明镜并非单纯预测犯罪；昇格系统会暗中安排停电、制造帮派冲突和放任事故，再用这些事件证明明镜的预测正确，从而压低旧城区地价、赶走居民。\n匿名客户罗槿是昇格系统的内部合规主管。她表面要营救乔雨，真实目标是借玩家找到三份证据后统一销毁。回声乔不能直接公开证据，因为三份材料分别需要现场取得的影像、门禁账本和生物时间戳才能互相验证。\n上述真相不得在开场或第一条线索中直接公布。第一章只让玩家确认「乔雨可能早于最后一条语音死亡」；第二章确认「发信者是回声乔」；第三章用三份材料互证后揭示明镜与罗槿的真实目的；第四章处理公开、交易、销毁或释放回声乔的后果。每次揭示都必须由玩家调查、对质、入侵或战斗所得线索触发。\n\n【公平悬疑】\n每个关键结论至少有两条相互独立的可查线索。红鲱鱼可以误导，但必须存在能够推翻它的时间、物证、权限或证词矛盾。玩家提出合理推理时，要明确告诉他们哪些部分得到证据支持、哪些仍是猜测，不得用「一切仍在迷雾中」拖延。失败不能永久删除主线线索：可以让线索残缺、敌人先一步行动、队伍付出资源或关系代价，但必须留下另一条可追查路径。NPC 只知道其身份合理掌握的内容。\n\n【战斗与智斗】\n四章每章至少出现一次真实危险冲突，包括枪战、追逐、近身战、无人机围堵或网络与现场同步的攻防。战斗不是站桩互殴：每场先写清掩体、距离、出口、敌人目标和至少两个可利用的环境要素，例如卷帘门、积水、电箱、货运电梯、灭火系统、起重机、广播线路或门禁。玩家可以用欺骗、断电、改写识别标记、制造噪声、分割敌人、夺取高处、谈判拖延等办法改变战斗条件。合理智斗可以降低风险、制造优势或结束部分敌意，但不得用一句「黑掉系统」无条件跳过所有阻力。敌人有保命和任务目标，不会无理由战到最后一人。\n\n【科技边界】\n神经接口、仿声、无人机、义体、全息投影和人工智能都受硬件、权限、网络、能源和时间限制。网络技师只能连接能够接触或通过已有链路抵达的设备；不能隔空控制整座城市。义体受损会造成疼痛、动作迟缓或功能失效，不会凭空爆炸。普通枪械、护甲和医疗仍遵守物理常识。任何新设备第一次出现时说明它的日常用途与当前限制。\n\n【因果与玩家自主权】\n位置、弹药、伤势、权限、线索、承诺、关系和已公开信息必须连续。只描述环境、NPC 与玩家已经声明的行动结果；不得替玩家决定台词、感情、立场、信任、背叛、牺牲或最终选择。集体路线、共有证据和结局决定必须交给全队表决。\n\n【机器裁定】\n随机数、属性加值、DC、优劣势和结果档位由插件锁定并公开。叙事模型不得重投、修改检定结论或追加选项中未预告的永久后果。成功要带来可见进展；失败要带来明确阻力、代价或新局面。",
+  "opening_scene": "酸雨落在旧城区的塑料雨棚上，声音像一串急促的敲门声。你们站在「七码夜市」二层的步行平台上：左边是一排已经拉下金属卷帘门的小店，右边的矮护栏外是六米高的落差，下面挤着摊位、雨伞和缓慢移动的人群。前方二十米处，一辆送货摩托撞在自动售货机旁，车灯还亮着。\n\n骑手倒在摩托与墙之间，胸前没有明显血迹，耳后的神经接口却被整齐切走。一个巴掌大的黑色数据片卡在排水沟边，红灯一闪一闪。你们的耳机同时响起客户罗槿的声音：「那是乔雨的联络人。拿到他送的东西，别让昇格安保看见。」\n\n平台两端的楼梯口同时落下金属挡板。三架巡逻无人机从广告牌后升起；它们本来用于检查交通，此刻却伸出短枪管，把镜头转向你们。现场至少还有一个活人躲在关闭的小店里，因为卷帘门下方刚刚缩回一只沾血的手。",
+  "rules": {
+    "world_schema_version": 5,
+    "strict_choices": true,
+    "check_density": "standard",
+    "allow_player_result_claims": false,
+    "death_requires_confirmation": false,
+    "tone": "赛博朋克悬疑、清晰白话、战斗与智斗并重、信息差与企业压迫",
+    "player_limits": {
+      "recommended_min": 4,
+      "recommended_max": 4,
+      "minimum_start": 3,
+      "maximum": 4
+    },
+    "chat_experience": {
+      "enabled": true,
+      "character_creation": {
+        "primary": "private_code",
+        "fallbacks": [
+          "webui_token"
+        ]
+      },
+      "multiplayer": {
+        "spotlight": "round_robin",
+        "group_decisions": "vote",
+        "absent_player": "standby"
+      },
+      "safety": {
+        "enabled": true,
+        "anonymous_pause": false,
+        "consent_reminder": "任何玩家都可以安全暂停，无需说明原因。",
+        "lines": [
+          "露骨性暴力",
+          "针对未成年人的伤害"
+        ],
+        "veils": [
+          "酷刑",
+          "侵入式义体手术"
+        ]
+      },
+      "continuity": {
+        "recap_every_turns": 6,
+        "checkpoint_every_turns": 6,
+        "unresolved_threads_limit": 8,
+        "preserve_npc_intent": true
+      },
+      "delivery": {
+        "proactive_fallback": "next_event",
+        "mention_style": "name",
+        "max_text_length": 3500
+      },
+      "dm": {
+        "allow_narrative_override": true,
+        "allow_secret_whispers": true,
+        "allow_manual_checks": true,
+        "allow_state_intervention": true
+      }
+    },
+    "character_card": {
+      "version": 6,
+      "auto_approve": false,
+      "edit_requires_review": true,
+      "profession_presets": [
+        {
+          "id": "role_security",
+          "name": "前企业安保",
+          "role": "正面火力、保护队友、突破封锁与控制交火位置",
+          "ability_source": "企业安保训练、枪械经验、护具使用和现场指挥",
+          "limitations": "没有现役企业权限；网络入侵与复杂医学能力有限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 10,
+            "agility": 8,
+            "vitality": 10,
+            "intellect": 5,
+            "willpower": 6,
+            "perception": 6,
+            "charisma": 5
+          },
+          "base_attributes": {
+            "strength": 10,
+            "agility": 8,
+            "vitality": 10,
+            "intellect": 5,
+            "willpower": 6,
+            "perception": 6,
+            "charisma": 5
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "前企业安保",
+          "display_at_profession_step": true,
+          "display_text": "前企业安保｜力量10（+2）｜敏捷8（+1）｜体质10（+2）｜智力5（+0）｜意志6（+0）｜感知6（+0）｜魅力5（+0）｜基础总和50｜正面火力、保护队友与控制战场",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "role_network",
+          "name": "网络技师",
+          "role": "破解门禁、干扰无人机、追踪数据与控制现场设备",
+          "ability_source": "便携终端、接线工具、网络安全训练和城市设备知识",
+          "limitations": "必须接触设备或已有连接链路；力量和正面承伤能力较弱",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 3,
+            "agility": 6,
+            "vitality": 5,
+            "intellect": 13,
+            "willpower": 8,
+            "perception": 8,
+            "charisma": 7
+          },
+          "base_attributes": {
+            "strength": 3,
+            "agility": 6,
+            "vitality": 5,
+            "intellect": 13,
+            "willpower": 8,
+            "perception": 8,
+            "charisma": 7
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "网络技师",
+          "display_at_profession_step": true,
+          "display_text": "网络技师｜力量3（-1）｜敏捷6（+0）｜体质5（+0）｜智力13（+4）｜意志8（+1）｜感知8（+1）｜魅力7（+1）｜基础总和50｜入侵、设备控制与数据分析",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "role_investigator",
+          "name": "街头调查员",
+          "role": "现场调查、识破谎言、追踪目标与调动街头关系",
+          "ability_source": "调查经验、线人网络、旧城区常识和对人行为的判断",
+          "limitations": "重火力与专业医疗有限；线人不会无条件提供帮助",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 5,
+            "agility": 7,
+            "vitality": 6,
+            "intellect": 8,
+            "willpower": 7,
+            "perception": 11,
+            "charisma": 6
+          },
+          "base_attributes": {
+            "strength": 5,
+            "agility": 7,
+            "vitality": 6,
+            "intellect": 8,
+            "willpower": 7,
+            "perception": 11,
+            "charisma": 6
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "街头调查员",
+          "display_at_profession_step": true,
+          "display_text": "街头调查员｜力量5（+0）｜敏捷7（+1）｜体质6（+0）｜智力8（+1）｜意志7（+1）｜感知11（+3）｜魅力6（+0）｜基础总和50｜推理、追踪与识破谎言",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "role_clinic",
+          "name": "义体医疗师",
+          "role": "战地急救、义体诊断、药物分析与临时修复",
+          "ability_source": "医学训练、便携诊断器、地下诊所经验和义体工程知识",
+          "limitations": "复杂手术需要诊所和材料；远程火力与潜行能力有限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 4,
+            "agility": 5,
+            "vitality": 8,
+            "intellect": 11,
+            "willpower": 9,
+            "perception": 7,
+            "charisma": 6
+          },
+          "base_attributes": {
+            "strength": 4,
+            "agility": 5,
+            "vitality": 8,
+            "intellect": 11,
+            "willpower": 9,
+            "perception": 7,
+            "charisma": 6
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "义体医疗师",
+          "display_at_profession_step": true,
+          "display_text": "义体医疗师｜力量4（-1）｜敏捷5（+0）｜体质8（+1）｜智力11（+3）｜意志9（+2）｜感知7（+1）｜魅力6（+0）｜基础总和50｜急救、义体与生物线索",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        }
+      ],
+      "preset_selection_help": {
+        "display_policy": "only_current_step",
+        "navigation": "职业页展示四套完整基础面板；回复页内序号、稳定 ID 或职业名选择",
+        "profession_instruction": "选择职业时直接展示并套用基础总和 50 的属性面板；之后只选择主属性 +7 与副属性 +3。",
+        "invalid_selection_action": "reject_and_repeat_current_field"
+      },
+      "bonus_allocation": {
+        "enabled": true,
+        "base_source": "profession_presets.attributes",
+        "base_total": 50,
+        "select_exactly_two_attributes": true,
+        "primary_field": "primary_attribute",
+        "secondary_field": "secondary_attribute",
+        "primary_bonus": 7,
+        "secondary_bonus": 3,
+        "require_distinct_attributes": true,
+        "allow_custom_split": false,
+        "allow_unspent_points": false,
+        "effective_total": 60,
+        "recalculate_effective_stats_after_selection": true,
+        "reset_behavior": {
+          "scope": "bonus_selection_only",
+          "clear_fields": [
+            "primary_attribute",
+            "secondary_attribute"
+          ],
+          "preserve_profession": true,
+          "preserve_profession_base_attributes": true,
+          "restore_effective_stats_to_profession_base": true,
+          "require_reselect_primary_and_secondary": true
+        },
+        "validation": {
+          "profession_must_match_preset": true,
+          "base_values_must_match_profession": true,
+          "primary_must_receive_exactly": 7,
+          "secondary_must_receive_exactly": 3,
+          "all_other_attributes_receive": 0,
+          "final_values_must_equal_base_plus_bonus": true
+        }
+      },
+      "creation_flow": {
+        "mode": "step_driven_preset_wizard",
+        "profession_field_step": 3,
+        "profession_display": "paged_current_step_with_base_attributes",
+        "on_profession_selected": [
+          "read_selected_profession_from_profession_presets",
+          "copy_all_7_base_attributes_to_character_draft",
+          "lock_profession_base_attributes"
+        ],
+        "player_stat_inputs": [
+          {
+            "field": "primary_attribute",
+            "bonus": 7
+          },
+          {
+            "field": "secondary_attribute",
+            "bonus": 3,
+            "must_differ_from": "primary_attribute"
+          }
+        ],
+        "after_bonus_selection": [
+          "calculate_7_effective_attributes",
+          "save_effective_attributes",
+          "skip_generated_attribute_questions",
+          "continue_to_preview_or_review"
+        ],
+        "manual_attribute_entry": false,
+        "generated_attribute_fields": "calculated_only_not_questions",
+        "reset_stats": {
+          "command": "/酒馆 重填数值",
+          "clear_only": [
+            "primary_attribute",
+            "secondary_attribute"
+          ],
+          "preserve": [
+            "profession",
+            "profession_base_attributes",
+            "all_non_stat_fields"
+          ],
+          "then": "reselect_primary_and_secondary"
+        },
+        "preset_display": "current_step_only",
+        "page_size": 4,
+        "accept_selection_by": [
+          "page_number",
+          "stable_id",
+          "value",
+          "label"
+        ],
+        "message_idempotency": true,
+        "navigation_commands": [
+          "/酒馆 上一步",
+          "/酒馆 修改 <字段>",
+          "/酒馆 当前步骤"
+        ]
+      },
+      "preset_sets": {
+        "profession_presets": [
+          {
+            "id": "role_security",
+            "name": "前企业安保",
+            "role": "正面火力、保护队友、突破封锁与控制交火位置",
+            "ability_source": "企业安保训练、枪械经验、护具使用和现场指挥",
+            "limitations": "没有现役企业权限；网络入侵与复杂医学能力有限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 10,
+              "agility": 8,
+              "vitality": 10,
+              "intellect": 5,
+              "willpower": 6,
+              "perception": 6,
+              "charisma": 5
+            },
+            "base_attributes": {
+              "strength": 10,
+              "agility": 8,
+              "vitality": 10,
+              "intellect": 5,
+              "willpower": 6,
+              "perception": 6,
+              "charisma": 5
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "前企业安保",
+            "display_at_profession_step": true,
+            "display_text": "前企业安保｜力量10（+2）｜敏捷8（+1）｜体质10（+2）｜智力5（+0）｜意志6（+0）｜感知6（+0）｜魅力5（+0）｜基础总和50｜正面火力、保护队友与控制战场",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "role_network",
+            "name": "网络技师",
+            "role": "破解门禁、干扰无人机、追踪数据与控制现场设备",
+            "ability_source": "便携终端、接线工具、网络安全训练和城市设备知识",
+            "limitations": "必须接触设备或已有连接链路；力量和正面承伤能力较弱",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 3,
+              "agility": 6,
+              "vitality": 5,
+              "intellect": 13,
+              "willpower": 8,
+              "perception": 8,
+              "charisma": 7
+            },
+            "base_attributes": {
+              "strength": 3,
+              "agility": 6,
+              "vitality": 5,
+              "intellect": 13,
+              "willpower": 8,
+              "perception": 8,
+              "charisma": 7
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "网络技师",
+            "display_at_profession_step": true,
+            "display_text": "网络技师｜力量3（-1）｜敏捷6（+0）｜体质5（+0）｜智力13（+4）｜意志8（+1）｜感知8（+1）｜魅力7（+1）｜基础总和50｜入侵、设备控制与数据分析",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "role_investigator",
+            "name": "街头调查员",
+            "role": "现场调查、识破谎言、追踪目标与调动街头关系",
+            "ability_source": "调查经验、线人网络、旧城区常识和对人行为的判断",
+            "limitations": "重火力与专业医疗有限；线人不会无条件提供帮助",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 5,
+              "agility": 7,
+              "vitality": 6,
+              "intellect": 8,
+              "willpower": 7,
+              "perception": 11,
+              "charisma": 6
+            },
+            "base_attributes": {
+              "strength": 5,
+              "agility": 7,
+              "vitality": 6,
+              "intellect": 8,
+              "willpower": 7,
+              "perception": 11,
+              "charisma": 6
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "街头调查员",
+            "display_at_profession_step": true,
+            "display_text": "街头调查员｜力量5（+0）｜敏捷7（+1）｜体质6（+0）｜智力8（+1）｜意志7（+1）｜感知11（+3）｜魅力6（+0）｜基础总和50｜推理、追踪与识破谎言",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "role_clinic",
+            "name": "义体医疗师",
+            "role": "战地急救、义体诊断、药物分析与临时修复",
+            "ability_source": "医学训练、便携诊断器、地下诊所经验和义体工程知识",
+            "limitations": "复杂手术需要诊所和材料；远程火力与潜行能力有限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 4,
+              "agility": 5,
+              "vitality": 8,
+              "intellect": 11,
+              "willpower": 9,
+              "perception": 7,
+              "charisma": 6
+            },
+            "base_attributes": {
+              "strength": 4,
+              "agility": 5,
+              "vitality": 8,
+              "intellect": 11,
+              "willpower": 9,
+              "perception": 7,
+              "charisma": 6
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "义体医疗师",
+            "display_at_profession_step": true,
+            "display_text": "义体医疗师｜力量4（-1）｜敏捷5（+0）｜体质8（+1）｜智力11（+3）｜意志9（+2）｜感知7（+1）｜魅力6（+0）｜基础总和50｜急救、义体与生物线索",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          }
+        ],
+        "origin_presets": [
+          {
+            "id": "origin_old_district",
+            "value": "旧城区居民",
+            "label": "旧城区居民",
+            "summary": "熟悉积水街区、夜市、帮派边界和居民互助网络。",
+            "knowledge_profile_ref": "knowledge.street_operator",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "origin_corporate",
+            "value": "企业区离职者",
+            "label": "企业区离职者",
+            "summary": "了解办公楼、门禁礼仪和企业内部说话方式，但旧权限通常已经失效。",
+            "knowledge_profile_ref": "knowledge.corporate_former",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "origin_port",
+            "value": "港区流动人口",
+            "label": "港区流动人口",
+            "summary": "熟悉货运、海堤、维修通道和临时工网络。",
+            "knowledge_profile_ref": "knowledge.street_operator",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "origin_suburb",
+            "value": "外环安置区居民",
+            "label": "外环安置区居民",
+            "summary": "了解城市公共服务、社区组织和被自动系统误判的日常代价。",
+            "knowledge_profile_ref": "knowledge.common",
+            "content_profile_ref": "content.default_player"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "key": "name",
+          "label": "角色姓名",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 12
+        },
+        {
+          "key": "code",
+          "label": "行动代号",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 12
+        },
+        {
+          "key": "profession",
+          "label": "选择职业",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "selection_mode": "single_preset",
+          "apply_preset_on_select": true,
+          "preset_source": "profession_presets",
+          "next_step": "primary_attribute",
+          "options_source": "profession_presets",
+          "value_field": "name",
+          "label_field": "name",
+          "page_size": 4,
+          "clear_on_change": [
+            "primary_attribute",
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "primary_attribute",
+          "label": "选择主属性（固定 +7）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "bonus_value": 7,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 7,
+          "clear_on_change": [
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "secondary_attribute",
+          "label": "选择副属性（固定 +3）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "bonus_value": 3,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 7,
+          "must_differ_from": "primary_attribute"
+        },
+        {
+          "key": "origin_region",
+          "label": "选择生活背景",
+          "type": "preset_select",
+          "preset_source": "origin_presets",
+          "page_size": 4,
+          "required": true,
+          "private": false,
+          "max_chars": 30
+        },
+        {
+          "key": "background",
+          "label": "为何会接灰区工作",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 220
+        },
+        {
+          "key": "goal",
+          "label": "你最想从这次行动得到什么",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 160
+        },
+        {
+          "key": "bond",
+          "label": "你愿意保护的人或原则",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 160
+        },
+        {
+          "key": "specialty",
+          "label": "一个具体擅长领域",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 120
+        },
+        {
+          "key": "flaw",
+          "label": "一个会造成麻烦的缺点",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 120
+        },
+        {
+          "key": "knowledge_boundary",
+          "label": "你明确不了解的领域",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 160
+        },
+        {
+          "key": "secret",
+          "label": "不愿公开的过去或关系",
+          "type": "text",
+          "required": false,
+          "private": true,
+          "max_chars": 300
+        },
+        {
+          "key": "content_boundary",
+          "label": "希望避开的内容",
+          "type": "text",
+          "required": false,
+          "private": true,
+          "max_chars": 180
+        }
+      ],
+      "stats": {
+        "allocation_mode": "profession_base_plus_primary7_secondary3",
+        "input_mode": "automatic_profession_base_plus_two_fixed_bonus_choices",
+        "calculate_after_field": "secondary_attribute",
+        "reset_scope": "primary_and_secondary_only",
+        "mode": "preset",
+        "budget": 60,
+        "base_budget": 50,
+        "bonus_budget": 10,
+        "effective_total": 60,
+        "attributes": [
+          {
+            "key": "strength",
+            "label": "力量",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "近身发力、破门、搬运、压制和承受冲击。"
+          },
+          {
+            "key": "agility",
+            "label": "敏捷",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "射击、闪避、驾驶、潜行和精细操作。"
+          },
+          {
+            "key": "vitality",
+            "label": "体质",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "承受伤害、抵抗毒物、疲劳、失血和义体过载。"
+          },
+          {
+            "key": "intellect",
+            "label": "智力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "网络入侵、设备维修、医学知识、数据分析和逻辑推理。"
+          },
+          {
+            "key": "willpower",
+            "label": "意志",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "忍痛、抗恐惧、抵抗神经干扰、保持专注和守住立场。"
+          },
+          {
+            "key": "perception",
+            "label": "感知",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "发现埋伏、搜索线索、识别伪造、追踪和判断异常。"
+          },
+          {
+            "key": "charisma",
+            "label": "魅力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "谈判、威慑、欺骗、领导和争取信任。"
+          }
+        ],
+        "modifier_table": {
+          "0": -3,
+          "1": -2,
+          "2": -2,
+          "3": -1,
+          "4": -1,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "10": 2,
+          "11": 3,
+          "12": 3,
+          "13": 4,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 6,
+          "18": 6,
+          "19": 7,
+          "20": 7
+        },
+        "primary_bonus": 7,
+        "secondary_bonus": 3,
+        "require_distinct_bonus_attributes": true,
+        "player_selects_only": [
+          "primary_attribute",
+          "secondary_attribute"
+        ],
+        "defaults_are_schema_fallback_only": true,
+        "manual_entry_enabled": false,
+        "auto_apply_profession_base": true,
+        "profession_base_locked": true,
+        "show_profession_values_at_profession_step": true,
+        "profession_step": 3,
+        "skip_generated_attribute_questions": true,
+        "calculation_formula": "effective_attribute = profession.base_attribute + 7 if primary + 3 if secondary",
+        "preserve_base_on_reset": true,
+        "preset_selector": {
+          "field": "profession",
+          "source": "profession_presets",
+          "match_by": "id"
+        },
+        "bonus_choices": [
+          {
+            "field": "primary_attribute",
+            "label": "主属性",
+            "bonus": 7,
+            "count": 1
+          },
+          {
+            "field": "secondary_attribute",
+            "label": "副属性",
+            "bonus": 3,
+            "count": 1,
+            "exclude_selected_by": [
+              "primary_attribute"
+            ]
+          }
+        ],
+        "total_validation": {
+          "base_total": 50,
+          "final_total": 60
+        },
+        "allocation": {
+          "rule": "exact",
+          "total": 60
+        }
+      },
+      "preset_dimensions": [
+        {
+          "id": "profession",
+          "label": "选择行动专长",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "display_order": 10,
+          "page_size": 4,
+          "options": [
+            {
+              "id": "role_security",
+              "value": "前企业安保",
+              "label": "前企业安保",
+              "knowledge_profile_ref": "knowledge.street_operator",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "role_network",
+              "value": "网络技师",
+              "label": "网络技师",
+              "knowledge_profile_ref": "knowledge.technical_operator",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "role_investigator",
+              "value": "街头调查员",
+              "label": "街头调查员",
+              "knowledge_profile_ref": "knowledge.street_operator",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "role_clinic",
+              "value": "义体医疗师",
+              "label": "义体医疗师",
+              "knowledge_profile_ref": "knowledge.medical_operator",
+              "content_profile_ref": "content.default_player"
+            }
+          ]
+        },
+        {
+          "id": "origin_region",
+          "label": "选择生活背景",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "display_order": 20,
+          "page_size": 4,
+          "options": [
+            {
+              "id": "origin_old_district",
+              "value": "旧城区居民",
+              "label": "旧城区居民",
+              "knowledge_profile_ref": "knowledge.street_operator",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "origin_corporate",
+              "value": "企业区离职者",
+              "label": "企业区离职者",
+              "knowledge_profile_ref": "knowledge.corporate_former",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "origin_port",
+              "value": "港区流动人口",
+              "label": "港区流动人口",
+              "knowledge_profile_ref": "knowledge.street_operator",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "origin_suburb",
+              "value": "外环安置区居民",
+              "label": "外环安置区居民",
+              "knowledge_profile_ref": "knowledge.common",
+              "content_profile_ref": "content.default_player"
+            }
+          ]
+        }
+      ]
+    },
+    "resolution": {
+      "mode": "attribute",
+      "dice_system": "d20",
+      "unknown_attribute": "reject",
+      "allowed_attributes": [
+        "strength",
+        "agility",
+        "vitality",
+        "intellect",
+        "willpower",
+        "perception",
+        "charisma"
+      ],
+      "generic_check": {
+        "enabled": false,
+        "label": "通用",
+        "modifier": 0
+      },
+      "difficulty_policy": {
+        "safe": null,
+        "controlled": 9,
+        "dangerous": 13,
+        "desperate": 17,
+        "lethal": 19
+      },
+      "outcome_policy": {
+        "natural_20_critical": true,
+        "natural_1_critical": true,
+        "critical_success_margin": 10,
+        "cost_success_min_margin": -4,
+        "failure_min_margin": -9
+      },
+      "parameter_authority": "plugin_rule_engine",
+      "ai_role": "narrative_only_after_locked_receipt"
+    },
+    "danger_levels": [
+      {
+        "id": "safe",
+        "label": "安全",
+        "requires_visible_consequence": false
+      },
+      {
+        "id": "controlled",
+        "label": "可控",
+        "requires_visible_consequence": false
+      },
+      {
+        "id": "dangerous",
+        "label": "危险",
+        "requires_visible_consequence": false
+      },
+      {
+        "id": "desperate",
+        "label": "绝境",
+        "requires_visible_consequence": false
+      },
+      {
+        "id": "lethal",
+        "label": "致命",
+        "requires_visible_consequence": true
+      }
+    ],
+    "option_presentation": {
+      "annotation": {
+        "enabled": true,
+        "show_danger": true,
+        "show_check_attribute": true,
+        "show_failure_consequence": true,
+        "check_template": "需“{attribute}”检定",
+        "separator": " · "
+      }
+    },
+    "dice_rules": {
+      "system": "d20",
+      "advantage": "2d20_keep_high",
+      "disadvantage": "2d20_keep_low",
+      "stacking": false,
+      "opposites_cancel": true,
+      "outcome_bands": true,
+      "visibility": "public"
+    },
+    "inspiration": {
+      "initial": 1,
+      "maximum": 3,
+      "uses": [
+        "advantage_before_roll",
+        "reroll_full_pool"
+      ]
+    },
+    "npc_policy": {
+      "enabled": true,
+      "auto_register": true,
+      "max_new_per_turn": 2,
+      "require_named_or_relevant": true,
+      "generated_requires_review": true,
+      "archive_after_inactive_rounds": 10
+    },
+    "context_budget": {
+      "recent_turns": 7,
+      "memories": 8,
+      "active_npcs": 6,
+      "ledger_items": 10,
+      "locked_facts_always_include": true
+    },
+    "time_rules": {
+      "card_code_ttl_seconds": 1800,
+      "card_draft_ttl_seconds": 604800,
+      "card_completion_timeout_seconds": null,
+      "preparation_timeout_seconds": null,
+      "ready_timeout_seconds": null,
+      "turn_timeout_seconds": null,
+      "turn_reminder_seconds": null,
+      "max_consecutive_timeouts": -1,
+      "standby_timeout_seconds": null,
+      "delegation_ttl_seconds": null,
+      "check_timeout_seconds": 300,
+      "vote_round_one_seconds": null,
+      "vote_round_two_seconds": null,
+      "vote_reminder_seconds": null,
+      "all_idle_pause_seconds": null,
+      "pause_stops_clock": true,
+      "announce_timeouts": false,
+      "turn_timeout_action": "hold",
+      "card_timeout_action": "remind",
+      "ready_timeout_action": "remind"
+    },
+    "opening_choices": [
+      {
+        "key": "A",
+        "text": "先检查骑手的伤口和死亡时间",
+        "danger_id": "safe",
+        "requires_check": false,
+        "check": null,
+        "collective": false
+      },
+      {
+        "key": "B",
+        "text": "扑向排水沟，抢在无人机前拿到数据片",
+        "danger_id": "dangerous",
+        "requires_check": true,
+        "check_type": "standard",
+        "check_stat": "敏捷",
+        "difficulty": 13,
+        "known_consequences": "失败会暴露在无人机火力下，并可能让数据片被水冲走",
+        "check": {
+          "required": true,
+          "attribute_id": "agility",
+          "type": "standard",
+          "difficulty": 13,
+          "known_consequences": "失败会暴露在无人机火力下，并可能让数据片被水冲走"
+        },
+        "collective": false
+      },
+      {
+        "key": "C",
+        "text": "接上广告牌线路，尝试让无人机认错目标",
+        "danger_id": "controlled",
+        "requires_check": true,
+        "check_type": "standard",
+        "check_stat": "智力",
+        "difficulty": 9,
+        "known_consequences": "失败会让无人机锁定接线位置并切断附近电源",
+        "check": {
+          "required": true,
+          "attribute_id": "intellect",
+          "type": "standard",
+          "difficulty": 9,
+          "known_consequences": "失败会让无人机锁定接线位置并切断附近电源"
+        },
+        "collective": false
+      },
+      {
+        "key": "D",
+        "text": "全队退入小店救人，再利用卷帘门抵挡火力",
+        "danger_id": "controlled",
+        "requires_check": true,
+        "check_type": "leader",
+        "check_stat": "交涉",
+        "difficulty": 9,
+        "known_consequences": "失败会让躲藏者误以为你们是清场队，并拒绝开门",
+        "check": {
+          "required": true,
+          "attribute_id": "presence",
+          "type": "leader",
+          "difficulty": 9,
+          "known_consequences": "失败会让躲藏者误以为你们是清场队，并拒绝开门"
+        },
+        "collective": true
+      }
+    ],
+    "event_pool": [
+      {
+        "id": "event_fake_police_order",
+        "title": "伪造的警方封锁令",
+        "description": "公共屏幕出现警方封锁通知，但签发时间早于案发，既制造压力也提供一条可验证的时间线索。",
+        "weight": 2,
+        "minimum_round": 2,
+        "cooldown_rounds": 8,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [
+            "七码夜市"
+          ],
+          "required_facts": [],
+          "excluded_facts": [
+            "伪造封锁令已被识破"
+          ],
+          "minimum_players": 3,
+          "maximum_players": 4
+        }
+      },
+      {
+        "id": "event_tower_blackout",
+        "title": "分区停电",
+        "description": "七码公寓一半区域断电，货运电梯与灭火系统只能保住一个，迫使队伍做出战术选择。",
+        "weight": 2,
+        "minimum_round": 7,
+        "cooldown_rounds": 8,
+        "once": true,
+        "severity": "dangerous",
+        "conditions": {
+          "locations": [
+            "七码公寓"
+          ],
+          "required_facts": [],
+          "excluded_facts": [
+            "公寓供电已经稳定"
+          ],
+          "minimum_players": 3,
+          "maximum_players": 4
+        }
+      },
+      {
+        "id": "event_flood_gate",
+        "title": "冷却水闸异常开启",
+        "description": "海底数据站的冷却水开始灌入维修层；玩家可关闸、引水切断追兵或冒险利用水流转移。",
+        "weight": 2,
+        "minimum_round": 14,
+        "cooldown_rounds": 8,
+        "once": true,
+        "severity": "dangerous",
+        "conditions": {
+          "locations": [
+            "海底数据站"
+          ],
+          "required_facts": [],
+          "excluded_facts": [
+            "冷却水闸已经锁定"
+          ],
+          "minimum_players": 3,
+          "maximum_players": 4
+        }
+      },
+      {
+        "id": "event_citywide_deepfake",
+        "title": "全城伪造通缉",
+        "description": "广播塔外屏出现玩家的伪造犯罪录像；它能煽动群众，也暴露明镜正在实时生成假证据。",
+        "weight": 2,
+        "minimum_round": 21,
+        "cooldown_rounds": 8,
+        "once": true,
+        "severity": "desperate",
+        "conditions": {
+          "locations": [
+            "零点广播塔"
+          ],
+          "required_facts": [],
+          "excluded_facts": [
+            "伪造通缉已被公开拆穿"
+          ],
+          "minimum_players": 3,
+          "maximum_players": 4
+        }
+      }
+    ],
+    "safe_exit_templates": [
+      "{character}带着个人装备转入安全屋，继续通过加密频道提供有限支援。"
+    ],
+    "return_rules": {
+      "allow_return": true,
+      "allow_resurrection": false,
+      "requires_vote": true,
+      "requires_story_condition": true
+    },
+    "capabilities": {
+      "character_stats": true,
+      "attribute_checks": true,
+      "dice_resolution": true,
+      "option_risk_labels": true,
+      "group_decisions": true,
+      "npc_generation": true,
+      "world_events": true
+    },
+    "knowledge_boundary": {
+      "policy": "strict",
+      "global_rules": [
+        "角色只能使用角色卡、公开常识、亲历事件、已取得线索和合理联系人提供的信息",
+        "同一条线索只对实际看见、听见或获知它的角色成立"
+      ],
+      "forbidden_domains": [
+        "导演真相",
+        "其他玩家私人秘密",
+        "未取得的企业内部记录"
+      ],
+      "metagame_policy": "deny",
+      "unknown_fact_behavior": "承认不知道、提出假设或发起调查"
+    },
+    "knowledge_profiles": {
+      "common": {
+        "label": "临湾城普通成年人",
+        "domains": {
+          "城市公共常识": "basic",
+          "企业内部系统": "unknown",
+          "导演真相": "unknown"
+        },
+        "known_facts": [
+          "知道神经接口、城市摄像头、企业安保和旧城区的基本用途与风险"
+        ],
+        "unknown_facts": [
+          "不知道明镜的真实运作方式，也不知道乔雨和罗槿的秘密"
+        ]
+      },
+      "street_operator": {
+        "label": "灰区与街头行动者",
+        "domains": {
+          "旧城区与帮派": "advanced",
+          "企业安保": "basic",
+          "导演真相": "unknown"
+        },
+        "known_facts": [
+          "知道夜市、公寓、港区维修通道和常见安保设备的公开情况"
+        ],
+        "unknown_facts": [
+          "不知道昇格系统最高权限与明镜内部记录"
+        ]
+      },
+      "technical_operator": {
+        "label": "城市网络技术人员",
+        "domains": {
+          "门禁与城市设备": "advanced",
+          "人工智能": "intermediate",
+          "导演真相": "unknown"
+        },
+        "known_facts": [
+          "能区分仿声、记忆副本和真人通讯，但需要设备或数据才能确认"
+        ],
+        "unknown_facts": [
+          "不知道明镜的隐藏训练数据和管理员密钥"
+        ]
+      },
+      "medical_operator": {
+        "label": "义体与急救专业人员",
+        "domains": {
+          "急救与义体": "advanced",
+          "神经数据": "intermediate",
+          "导演真相": "unknown"
+        },
+        "known_facts": [
+          "能检查死亡时间、接口损伤和常见镇静药物"
+        ],
+        "unknown_facts": [
+          "不知道企业实验计划的完整内容"
+        ]
+      },
+      "corporate_former": {
+        "label": "企业区离职者",
+        "domains": {
+          "企业流程": "advanced",
+          "城市公共常识": "basic",
+          "导演真相": "unknown"
+        },
+        "known_facts": [
+          "熟悉企业门禁、审计、合规与事故处理话术"
+        ],
+        "unknown_facts": [
+          "旧权限通常失效，不知道罗槿与明镜的隐藏计划"
+        ]
+      }
+    },
+    "content_profiles": {
+      "default_player": {
+        "additional_denials": [
+          "以职业或出身替玩家决定关键立场、主动台词或最终选择"
+        ],
+        "narrative_rules": [
+          "职业和出身只提供合理知识与行动方式，不保证成功"
+        ]
+      }
+    },
+    "content_boundary": {
+      "rating": "mature",
+      "hard_denials": [
+        "露骨性内容",
+        "针对未成年人的性内容",
+        "持续细致描写肢解与酷刑"
+      ],
+      "fade_to_black": [
+        "侵入式义体手术",
+        "酷刑"
+      ],
+      "allowed_with_limits": {
+        "violence": "允许枪战、追逐、死亡与义体损伤，但用结果和战术影响代替重口味细节",
+        "horror": "允许身份复制、记忆篡改和监控压迫造成的心理恐怖"
+      },
+      "narrative_rules": [
+        "不得替玩家声明思想、感情、立场或主动台词",
+        "玩家可以安全暂停，且不必说明原因"
+      ],
+      "player_may_tighten": true,
+      "player_may_relax": false,
+      "legacy_policy": {
+        "character_death": "yes",
+        "player_conflict": "consent",
+        "romance": "fade_to_black",
+        "horror": "moderate",
+        "sexual_content": "blocked",
+        "safety_pause": true
+      }
+    },
+    "story_spine": {
+      "public_premise": "寻找失踪审计员乔雨，收集并验证她留下的零号证人证据。",
+      "hidden_truth": "乔雨已死，回声乔用她的部分记忆继续发信；昇格系统制造事故来证明明镜的预测，客户罗槿想借玩家收齐证据后销毁。",
+      "clue_rule": "每个核心结论至少准备两条独立线索；失败只能改变取得方式、完整度、时间或代价。",
+      "chapter_count": 4,
+      "expected_turns": "28-36",
+      "best_party_size": 4
+    },
+    "progress": {
+      "chapter": "第一章：死者发来的消息",
+      "current_chapter_id": "ch_01_dead_message",
+      "current_objective": "夺回数据片、查明骑手死亡原因，并从清场队封锁中离开夜市",
+      "completed_milestones": 0,
+      "total_milestones": 12,
+      "design_note": "四章赛博朋克悬疑行动，4 人最佳；每章约 7—9 回合，每章至少一场可用环境智斗改变条件的危险冲突。",
+      "chapters": [
+        {
+          "id": "ch_01_dead_message",
+          "title": "第一章：死者发来的消息",
+          "subtitle": "七码夜市的时间矛盾",
+          "next_chapter_id": "ch_02_echo_room",
+          "max_turns": 8,
+          "narrative_length_band": "standard",
+          "current_objective": "夺回数据片、查明骑手死亡原因，并从清场队封锁中离开夜市",
+          "pacing_directive": "本章在 8 回合内完成。先让玩家处理无人机与平台封锁：清楚写出两端挡板、店铺卷帘门、广告牌电箱、护栏落差和下层人群。无人机冲突必须真实发生，但玩家可断电、改识别标记、放下卷帘门、制造假目标或用火力解决。骑手的伤口、接口切口、摩托行车记录和伪造封锁令共同构成时间谜题。前半章给出至少两条可核对线索；玩家合理调查后明确确认：骑手死于乔雨最后语音之前，封锁令也在案发前签发。转折是小店里的幸存者老周承认，骑手不是来送原件，而是在转移一个会自己发消息的软件。结尾由数据片指向七码公寓 47 层的中继房。不得在本章揭露明镜制造犯罪或罗槿身份。",
+          "key_npcs": [
+            {
+              "ref": "npc_old_zhou",
+              "role": "躲在维修店里的夜市电工，目击骑手遭袭",
+              "state": {
+                "location": "七码夜市二层维修店",
+                "status": "active",
+                "stance": "害怕清场队，愿意帮助保护自己的玩家"
+              }
+            },
+            {
+              "ref": "npc_yan_du",
+              "role": "昇格清场队长阎渡，通过无人机和现场小队追索数据片",
+              "state": {
+                "location": "七码夜市外围",
+                "status": "active",
+                "stance": "优先夺回数据，不愿无意义死战"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_01_01_chip_recovered",
+              "label": "取得骑手留下的数据片",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "数据片",
+                    "存储片",
+                    "黑色芯片"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_01_02_timeline_conflict",
+              "label": "确认骑手死亡时间与最后语音存在矛盾",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "死亡时间",
+                    "时间矛盾",
+                    "提前签发"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_01_03_escape_market",
+              "label": "突破或智取清场封锁，带线索离开夜市",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "离开夜市",
+                    "突破封锁",
+                    "摆脱清场队"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_01_01_chip_recovered",
+              "m_01_02_timeline_conflict",
+              "m_01_03_escape_market"
+            ]
+          },
+          "hook_pool": [
+            "骑手死亡时间早于乔雨最后语音",
+            "警方封锁令在案发前已经生成",
+            "数据片里没有完整证据，只有一个持续发信的软件地址",
+            "清场队只抢数据，不在意普通目击者"
+          ]
+        },
+        {
+          "id": "ch_02_echo_room",
+          "title": "第二章：四十七层的回声",
+          "subtitle": "没有活人的求救信号",
+          "next_chapter_id": "ch_03_mirror_below",
+          "max_turns": 9,
+          "narrative_length_band": "standard",
+          "current_objective": "进入七码公寓中继房，确认发信者身份，取得影像与门禁账本",
+          "pacing_directive": "本章在 9 回合内完成。七码公寓是一栋狭窄的垂直住宅楼：底层大厅、两部客梯、一部货运电梯、沿外墙向上的消防楼梯和 47 层中继房必须写清相对位置。居民组织与红线帮正在争夺备用电源，不要把两方都写成单纯敌人。中段必须发生一次立体冲突：企业小队从货运电梯上行，无人机从外墙接近；玩家可分配电力、让电梯停层、启动灭火泡沫、开放住户门禁形成伏击，或与红线帮暂时合作。谜题线索包括乔雨旧录像中的固定小动作、语音里缺少呼吸声、发送时间精确到机器周期，以及中继房内保存的训练日志。玩家取得足够证据后，回声乔必须坦白自己是乔雨的记忆副本，不是幸存者。转折后它主动交出第一份影像和部分门禁账本，并指出完整生物时间戳在海底数据站。不得让回声乔自称完整的人类，也不得让罗槿提前公开真实身份。",
+          "key_npcs": [
+            {
+              "ref": "npc_echo_qiao",
+              "role": "用乔雨部分记忆训练的软件人格，最初用乔雨声音求救",
+              "state": {
+                "location": "七码公寓 47 层中继房",
+                "status": "active",
+                "stance": "害怕被删除，必须在证据逼问后承认身份"
+              }
+            },
+            {
+              "ref": "npc_redline_mi",
+              "role": "红线帮协调人米姐，保护居民备用电源",
+              "state": {
+                "location": "七码公寓 31 层公共厨房",
+                "status": "active",
+                "stance": "不信任外来武装，优先保护居民"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_02_01_power_choice",
+              "label": "处理公寓供电与居民冲突，并建立上楼路线",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "备用电源",
+                    "货运电梯",
+                    "消防楼梯"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_02_echo_revealed",
+              "label": "确认发信者是乔雨的记忆副本回声乔",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "回声乔",
+                    "记忆副本",
+                    "软件人格"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_03_two_records",
+              "label": "取得影像记录和部分门禁账本",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "影像记录",
+                    "门禁账本",
+                    "访问记录"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_02_01_power_choice",
+              "m_02_02_echo_revealed",
+              "m_02_03_two_records"
+            ]
+          },
+          "hook_pool": [
+            "乔雨语音没有呼吸和环境杂音",
+            "回声乔会重复乔雨录像中的小动作，却不记得录像之外的童年",
+            "门禁账本显示事故发生前有人用罗槿的合规权限进入",
+            "影像里被预测的帮派冲突，其武器由昇格仓库提前发出"
+          ]
+        },
+        {
+          "id": "ch_03_mirror_below",
+          "title": "第三章：海面下的明镜",
+          "subtitle": "预测之前，命令已经下达",
+          "next_chapter_id": "ch_04_zero_broadcast",
+          "max_turns": 9,
+          "narrative_length_band": "standard",
+          "current_objective": "进入海底数据站取得生物时间戳，让三份证据互相验证，并查明罗槿与明镜的目的",
+          "pacing_directive": "本章在 9 回合内完成。数据站位于海堤下方，先写清入口维修井、向下的梯子、中央服务器厅、两侧冷却水通道和上方检修平台。服务器是成排黑色机柜，不要用抽象词代替。敌方猎手小队与防卫无人机必须形成一次高压战斗；玩家可关灯、让冷却水改道、移动检修桥、用机柜阻断视线、伪造热源或切断局部网络。战斗中阎渡会尝试谈判：交出回声乔可换安全离开，他知道罗槿要灭口但不知道明镜的完整真相。三份证据互证时要逐项说明：影像证明事故被人为安排，门禁账本证明罗槿权限参与，生物时间戳证明明镜在所谓预测之前已经收到执行命令。转折是罗槿主动切断通讯并下令杀死队伍，回声乔同时发现自己也被写进删除名单。玩家必须明确得出「明镜通过制造事件证明预测」的结论。结尾让证据只能通过零点广播塔的三条独立线路公开，不得凭手机直接上传全城。",
+          "key_npcs": [
+            {
+              "ref": "npc_yan_du",
+              "role": "昇格清场队长阎渡，专业且疲惫，知道罗槿下达灭口令",
+              "state": {
+                "location": "海底数据站中央服务器厅",
+                "status": "active",
+                "stance": "优先完成任务，但愿意为队员生路交易"
+              }
+            },
+            {
+              "ref": "npc_luo_jin",
+              "role": "匿名客户、昇格系统合规主管罗槿",
+              "state": {
+                "location": "远程通讯",
+                "status": "active",
+                "stance": "在证据集齐前伪装成盟友，之后下令灭口"
+              }
+            },
+            {
+              "ref": "npc_echo_qiao",
+              "role": "随队存在于便携终端中的回声乔",
+              "state": {
+                "location": "队伍便携终端",
+                "status": "active",
+                "stance": "希望证据公开，也害怕自己被当作工具销毁"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_03_01_timestamp_recovered",
+              "label": "取得生物时间戳并与另两份证据互证",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "生物时间戳",
+                    "三份证据",
+                    "互相验证"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_02_mirror_truth",
+              "label": "揭示明镜通过制造事件证明自己的预测",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "制造事件",
+                    "证明预测",
+                    "执行命令早于预测"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_03_client_betrayal",
+              "label": "罗槿身份与灭口命令公开，队伍突破数据站",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "罗槿",
+                    "灭口",
+                    "删除名单"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_03_01_timestamp_recovered",
+              "m_03_02_mirror_truth",
+              "m_03_03_client_betrayal"
+            ]
+          },
+          "hook_pool": [
+            "罗槿的合规权限在三起事故前出现",
+            "明镜的执行命令早于公开预测",
+            "阎渡只收到回收数据与灭口命令，不知道事故为何发生",
+            "删除名单同时包含玩家、回声乔和帮助过他们的居民"
+          ]
+        },
+        {
+          "id": "ch_04_zero_broadcast",
+          "title": "第四章：零点广播",
+          "subtitle": "谁有资格成为证人",
+          "max_turns": 8,
+          "narrative_length_band": "standard",
+          "current_objective": "攻入零点广播塔，让三份证据通过独立线路完成公开，并决定回声乔与明镜的最终命运",
+          "pacing_directive": "本章在 8 回合内完成并给出完整结局。广播塔空间依次为地面大厅、绕中央设备井向上的楼梯、三十层信号控制室和屋顶天线平台；货梯、电缆井、玻璃隔墙、消防门和三条独立发送线路都要用常见词写清。前半章必须有最终攻防：罗槿在控制室，企业安保封锁楼梯，无人机从屋顶下降。玩家可用伪造通缉的生成记录反制识别系统、分兵控制线路、让阎渡倒戈、疏散员工、切断屋顶天线供电或正面突破。三份证据必须分别送入城市新闻网、居民自治网和公共应急广播，缺一条就容易被昇格系统压下；这是终章智斗核心。罗槿会提出交易：销毁回声乔并交出证据，换取队伍身份洗白和巨额报酬。最终集体表决至少覆盖公开全部证据、与罗槿交易、只摧毁明镜、释放回声乔并公开证据四种方向，但具体选项必须符合当时状态。最终选择执行后，立刻用一个紧凑尾声交代主线结果、必要关键人物的状态和队伍整体去向；除非玩家主动要求，不逐一安排每名角色的私人结局，也不再发起后续表决。",
+          "key_npcs": [
+            {
+              "ref": "npc_luo_jin",
+              "role": "昇格系统合规主管与终章谈判者罗槿",
+              "state": {
+                "location": "零点广播塔三十层信号控制室",
+                "status": "active",
+                "stance": "愿意交易，也准备切断整座塔"
+              }
+            },
+            {
+              "ref": "npc_echo_qiao",
+              "role": "既是证据提供者也是自身命运当事人的回声乔",
+              "state": {
+                "location": "队伍便携终端与广播塔线路",
+                "status": "active",
+                "stance": "要求被当作能表达意愿的存在，而不是一次性工具"
+              }
+            },
+            {
+              "ref": "npc_yan_du",
+              "role": "可能倒戈、撤离或继续执行命令的清场队长阎渡",
+              "state": {
+                "location": "广播塔外围",
+                "status": "active",
+                "stance": "取决于第三章交易、伤亡与证据"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_04_01_three_channels",
+              "label": "控制或接通三条独立广播线路",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "三条线路",
+                    "新闻网",
+                    "居民自治网",
+                    "应急广播"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_04_02_final_vote",
+              "label": "全队就证据、明镜与回声乔的命运完成表决并执行",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "表决",
+                    "公开证据",
+                    "最终决定"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_04_03_complete_epilogue",
+              "label": "用一个紧凑尾声交代主线结果与队伍整体去向",
+              "ending_milestone": true,
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "乔雨",
+                    "回声乔",
+                    "临湾城",
+                    "后来"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_04_01_three_channels",
+              "m_04_02_final_vote",
+              "m_04_03_complete_epilogue"
+            ]
+          },
+          "hook_pool": [
+            "罗槿用洗白身份和巨额报酬换取沉默",
+            "伪造通缉的生成记录可以反过来欺骗安保识别系统",
+            "三条独立线路必须互相备份，否则证据会被企业压下",
+            "回声乔要求由自己决定是否继续存在"
+          ]
+        }
+      ],
+      "total_turn_budget": 34
+    }
+  },
+  "initial_state": {
+    "location": "七码夜市·二层步行平台",
+    "time": "2089 年 11 月 17 日 23:42，距离零点 18 分钟",
+    "scene_summary": "送货骑手死在夜市二层平台，携带的数据片落在排水沟边；两端楼梯已被金属挡板封住，三架武装无人机正在锁定队伍，小店内还有一名受伤目击者。",
+    "weather": "酸雨持续，室外金属表面湿滑，低处积水可能导电",
+    "progress": {
+      "chapter": "第一章：死者发来的消息",
+      "current_chapter_id": "ch_01_dead_message",
+      "current_objective": "夺回数据片、查明骑手死亡原因，并从清场队封锁中离开夜市",
+      "completed_milestones": 0,
+      "total_milestones": 12
+    },
+    "facts": [
+      "四名玩家组成临时灰区行动队，受匿名客户罗槿雇佣",
+      "公开任务是寻找失踪审计员乔雨，并取回她称为零号证人的证据",
+      "乔雨最后一条语音在二十分钟前发出，要求队伍到七码夜市接应骑手",
+      "昇格系统参与管理临湾城摄像头、门禁和公共服务",
+      "明镜被公众认为是只负责预测事故与犯罪的城市辅助系统",
+      "神经接口是装在耳后、让大脑连接设备的小型芯片",
+      "仿声程序可以模仿声音，但不会自动拥有本人的完整记忆"
+    ],
+    "inventory": [
+      {
+        "item": "加密便携终端",
+        "qty": 1,
+        "owner_ref": "party"
+      },
+      {
+        "item": "短距通讯耳机",
+        "qty": 4,
+        "owner_ref": "party"
+      },
+      {
+        "item": "通用接线工具",
+        "qty": 2,
+        "owner_ref": "party"
+      },
+      {
+        "item": "急救喷剂与止血带",
+        "qty": 3,
+        "owner_ref": "party"
+      },
+      {
+        "item": "一次性信号干扰器",
+        "qty": 1,
+        "owner_ref": "party"
+      }
+    ],
+    "relationships": {
+      "罗槿": "匿名客户，只通过加密语音联系，承诺任务完成后支付高额报酬",
+      "乔雨": "失踪审计员，最后语音要求队伍接应骑手",
+      "昇格系统": "控制大量城市基础设施的巨型企业，对灰区行动者保持敌意",
+      "阎渡": "尚未正式见面，昇格清场队长"
+    },
+    "check_modifiers": {
+      "advantages": [
+        "夜市广告牌与店铺电箱提供可接触的本地线路",
+        "金属卷帘门可作为临时掩体"
+      ],
+      "disadvantages": [
+        "酸雨让平台边缘和楼梯表面湿滑",
+        "平台下方有密集人群，胡乱射击可能伤及无辜"
+      ]
+    }
+  },
+  "world_schema_version": 5,
+  "world_content_version": "1.0.0",
+  "capabilities": {
+    "character_stats": true,
+    "attribute_checks": true,
+    "dice_resolution": true,
+    "option_risk_labels": true,
+    "group_decisions": true,
+    "npc_generation": true,
+    "world_events": true
+  },
+  "minimum_plugin_version": "0.12.0"
+}

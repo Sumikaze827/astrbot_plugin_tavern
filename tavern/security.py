@@ -8,7 +8,7 @@ from threading import Lock
 from .constants import MANAGEMENT_ACTIONS
 
 _CONTROL_CHARS = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
-_COMMAND = re.compile(r"^\s*[/／!！]团(?:\s+|$)(.*)$", re.DOTALL)
+_COMMAND = re.compile(r"^\s*[/／!！]酒馆(?:\s+|$)(.*)$", re.DOTALL)
 _SAFE_SLUG = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
 
 
@@ -55,8 +55,6 @@ class ParsedCommand:
     action: str = ""
     argument: str = ""
     raw_action: str = ""
-    source: str = ""
-    public_target: str = ""
 
 
 def parse_tavern_command(message: str) -> ParsedCommand:
@@ -75,7 +73,6 @@ def parse_tavern_command(message: str) -> ParsedCommand:
         action=action,
         argument=argument.strip(),
         raw_action=action_text.strip(),
-        public_target=argument.strip(),
     )
 
 

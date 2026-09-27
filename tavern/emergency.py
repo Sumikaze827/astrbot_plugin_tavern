@@ -30,21 +30,15 @@ class EmergencyService:
                 session_id, choices, actor_id
             )
         if action == "edit_last_narrative":
-            document = payload.get("narrative_document")
-            if not isinstance(document, Mapping):
-                raise ValueError("修订故事必须提交 narrative_document")
             return await self.database.emergency_edit_last_narrative(
                 session_id,
-                document,
+                str(payload.get("narrative") or ""),
                 actor_id,
             )
         if action == "bridge_narrative":
-            document = payload.get("narrative_document")
-            if not isinstance(document, Mapping):
-                raise ValueError("过渡故事必须提交 narrative_document")
             return await self.database.emergency_append_narrative(
                 session_id,
-                document,
+                str(payload.get("narrative") or ""),
                 actor_id,
             )
         if action == "cancel_operation":

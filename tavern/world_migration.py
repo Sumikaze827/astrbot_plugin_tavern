@@ -1,56 +1,10 @@
 from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
-from contextlib import closing
-from datetime import datetime, timezone
-import hashlib
-import json
-from pathlib import Path
-import sqlite3
 from typing import Any
 
 from .lifecycle import card_template
 from .world_contract import world_contract
-
-
-def create_world_migration_backup(
-    database_path: Path,
-    *,
-    backup_dir: Path,
-    session_id: str,
-    candidate_world_ref: str,
-) -> dict[str, Any]:
-    """Create an immutable SQLite backup before an explicit world migration."""
-
-    backup_dir.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
-    digest = hashlib.sha256(
-        f"{session_id}|{candidate_world_ref}|{stamp}".encode("utf-8")
-    ).hexdigest()[:12]
-    backup = backup_dir / f"pre-world-migrate-{stamp}-{digest}.sqlite3"
-    with closing(sqlite3.connect(database_path)) as source:
-        with closing(sqlite3.connect(backup)) as target:
-            source.backup(target)
-    with closing(sqlite3.connect(backup)) as check:
-        integrity = str(check.execute("PRAGMA integrity_check").fetchone()[0])
-        foreign_keys = list(check.execute("PRAGMA foreign_key_check").fetchall())
-    if integrity.lower() != "ok" or foreign_keys:
-        backup.unlink(missing_ok=True)
-        raise RuntimeError("世界迁移前数据库备份完整性检查失败")
-    sha256 = hashlib.sha256(backup.read_bytes()).hexdigest()
-    receipt = {
-        "schema": "tavern-world-migration-backup/1.0.0-rc10",
-        "backup_ref": backup.name,
-        "sha256": sha256,
-        "bytes": backup.stat().st_size,
-        "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-    }
-    backup.with_suffix(".json").write_text(
-        json.dumps(receipt, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-        newline="\n",
-    )
-    return receipt
 
 
 def _ids(items: Any, *fields: str) -> set[str]:
@@ -135,3 +89,4 @@ def compare_world_contracts(
         },
         "policy": "运行中的副本永远不直接热更新世界契约",
     }
+

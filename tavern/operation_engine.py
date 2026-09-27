@@ -1,12 +1,8 @@
 from __future__ import annotations
 
-import hashlib
-import json
 import math
-import uuid
 from collections.abc import Mapping, MutableMapping, Sequence
 from copy import deepcopy
-from datetime import datetime, timezone
 from typing import Any
 
 from .entity_registry import EntityRegistry, split_ref
@@ -24,329 +20,6 @@ OPERATION_TYPES = frozenset(
 PERSISTENCE_SCOPES = frozenset(
     {"global_character", "world_character", "campaign", "session", "scene", "temporary"}
 )
-ACTOR_KINDS = frozenset({"player", "dm", "admin", "system", "ai"})
-# D1-RUN-007: 统一 Receipt 状态机。
-RECEIPT_STATUSES = frozenset(
-    {
-        "reserved",
-        "validated",
-        "committed",
-        "delivery_pending",
-        "delivered",
-        "delivery_failed",
-        "rejected",
-        "rolled_back",
-    }
-)
-ENVELOPE_SCHEMA = "tavern-operation-envelope/1.0.0-rc10"
-ROLLBACK_SCHEMA = "tavern-rollback-plan/1.0.0-rc10"
-
-
-def _canonical(value: Any) -> bytes:
-    return json.dumps(
-        value,
-        ensure_ascii=False,
-        sort_keys=True,
-        separators=(",", ":"),
-    ).encode("utf-8")
-
-
-def utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat(timespec="seconds")
-
-
-def build_operation_envelope(
-    *,
-    command_id: str,
-    session_id: str,
-    idempotency_key: str,
-    actor: Mapping[str, Any],
-    payload: Mapping[str, Any] | None = None,
-    request_id: str = "",
-    expected_revision: int | None = None,
-    preview_only: bool = False,
-    allow_empty_session: bool = False,
-) -> dict[str, Any]:
-    """D1-RUN-003 统一命令信封（纯数据契约）。
-
-    内部 ID 只允许出现在信封与技术审计中；玩家结果必须通过 Projection
-    生成中文名称。
-    """
-
-    command_id = str(command_id or "").strip()
-    session_id = str(session_id or "").strip()
-    idempotency_key = str(idempotency_key or "").strip()
-    if not command_id:
-        raise ValueError("操作信封缺少 command_id")
-    if not session_id and not allow_empty_session:
-        raise ValueError("操作信封缺少 session_id")
-    if not idempotency_key:
-        raise ValueError("操作信封缺少幂等键")
-    actor_data = dict(actor) if isinstance(actor, Mapping) else {}
-    kind = str(actor_data.get("kind") or "").strip().lower()
-    ref = str(actor_data.get("ref") or "").strip()
-    if kind not in ACTOR_KINDS:
-        raise ValueError(f"操作主体类型无效：{kind or '（空）'}")
-    if not ref:
-        raise ValueError("操作主体缺少稳定引用")
-    payload_data = dict(payload) if isinstance(payload, Mapping) else {}
-    if expected_revision is not None:
-        try:
-            expected_revision = int(expected_revision)
-        except (TypeError, ValueError):
-            raise ValueError("expected_revision 必须是整数或 null")
-        if expected_revision < 0:
-            raise ValueError("expected_revision 不能为负数")
-    envelope = {
-        "schema": ENVELOPE_SCHEMA,
-        "command_id": command_id[:160],
-        "request_id": str(request_id or "").strip()[:160],
-        "idempotency_key": idempotency_key[:240],
-        "session_id": session_id[:160],
-        "actor": {"kind": kind, "ref": ref[:160]},
-        "payload": payload_data,
-        "expected_revision": expected_revision,
-        "preview_only": bool(preview_only),
-    }
-    envelope["envelope_hash"] = hashlib.sha256(_canonical(envelope)).hexdigest()
-    return envelope
-
-
-def validate_operation_envelope(value: Any) -> dict[str, Any]:
-    """Normalize and validate an operation envelope from any mapping."""
-
-    if not isinstance(value, Mapping):
-        raise TypeError("操作信封必须是对象")
-    return build_operation_envelope(
-        command_id=str(value.get("command_id") or ""),
-        session_id=str(value.get("session_id") or ""),
-        idempotency_key=str(value.get("idempotency_key") or ""),
-        actor=value.get("actor") or {},
-        payload=value.get("payload") or {},
-        request_id=str(value.get("request_id") or ""),
-        expected_revision=value.get("expected_revision"),
-        preview_only=bool(value.get("preview_only", False)),
-    )
-
-
-def build_operation_receipt(
-    *,
-    operation_id: str,
-    idempotency_key: str = "",
-    command_id: str = "",
-    session_id: str = "",
-    status: str = "committed",
-    revision_before: int = 0,
-    revision_after: int = 0,
-    events: Sequence[Mapping[str, Any]] = (),
-    changes_digest: str = "",
-    projection_digest: str = "",
-    error: Mapping[str, Any] | None = None,
-) -> dict[str, Any]:
-    """D1-RUN-007 统一 Receipt 纯契约。
-
-    状态、Event、Receipt 与 outbox 必须由仓储层同一事务提交；
-    平台发送失败只更新投递状态，不重复执行领域 Effect。
-    """
-
-    status = str(status or "").strip().lower()
-    if status not in RECEIPT_STATUSES:
-        raise ValueError(f"Receipt 状态无效：{status or '（空）'}")
-    operation_id = str(operation_id or "").strip()
-    if not operation_id:
-        raise ValueError("Receipt 缺少 operation_id")
-    receipt = {
-        "receipt_id": f"receipt_{uuid.uuid4().hex}",
-        "schema": "tavern-operation-receipt/1.0.0-rc10",
-        "operation_id": operation_id[:240],
-        "idempotency_key": str(idempotency_key or "")[:240],
-        "command_id": str(command_id or "")[:160],
-        "session_id": str(session_id or "")[:160],
-        "status": status,
-        "revision_before": max(0, int(revision_before or 0)),
-        "revision_after": max(0, int(revision_after or 0)),
-        "events": [
-            dict(item) for item in events if isinstance(item, Mapping)
-        ],
-        "changes_digest": str(changes_digest or ""),
-        "projection_digest": str(projection_digest or ""),
-        "error": dict(error) if isinstance(error, Mapping) else None,
-        "created_at": utc_now(),
-    }
-    receipt["receipt_hash"] = hashlib.sha256(_canonical(receipt)).hexdigest()
-    return receipt
-
-
-def _numeric_inverse(item: Mapping[str, Any], change: Mapping[str, Any]) -> dict[str, Any]:
-    strategy = str(
-        change.get("aggregation_strategy")
-        or item.get("aggregation_strategy")
-        or "sum"
-    )
-    operand = change.get("operand")
-    if operand is None:
-        operand = float(item.get("value", item.get("delta", 0)) or 0)
-    inverse: dict[str, Any] = {
-        "op": "modify_value",
-        "target_ref": str(change.get("target_ref") or item.get("target_ref") or ""),
-        "persistence_scope": str(
-            item.get("persistence_scope") or "session"
-        ),
-        "recipient": dict(item.get("recipient") or {})
-        if isinstance(item.get("recipient"), Mapping)
-        else {},
-    }
-    if strategy == "multiply":
-        denominator = float(operand or 1) or 1
-        inverse["aggregation_strategy"] = "multiply"
-        inverse["value"] = 1.0 / denominator
-    else:
-        inverse["value"] = -float(operand or 0)
-    return inverse
-
-
-def build_rollback_plan(
-    operations: Sequence[Mapping[str, Any]],
-    changes: Sequence[Mapping[str, Any]],
-    *,
-    operation_id: str = "",
-) -> dict[str, Any]:
-    """Build a real inverse-operation plan for a prepared operation batch.
-
-    Each entry is expressed in the same declarative operation format and can
-    be fed back into ``OperationEngine.apply``.  Event-like operations have no
-    state inverse and are listed as irreversible so the repository layer can
-    compensate them through the receipt ledger instead.
-    """
-
-    batch = [dict(item) for item in operations if isinstance(item, Mapping)]
-    change_rows = [dict(item) for item in changes if isinstance(item, Mapping)]
-    entries: list[dict[str, Any]] = []
-    irreversible: list[dict[str, Any]] = []
-    for index, change in enumerate(change_rows):
-        op = str(change.get("op") or "")
-        ref = str(change.get("target_ref") or "")
-        state_scope = str(change.get("state_scope") or "world")
-        before = change.get("before")
-        after = change.get("after")
-        inverse: dict[str, Any] | None = None
-        reversible = True
-        if op in {"modify_value", "advance_counter"}:
-            inverse = _numeric_inverse(batch[index] if index < len(batch) else {}, change)
-            inverse["persistence_scope"] = str(
-                (batch[index] if index < len(batch) else {}).get("persistence_scope")
-                or "session"
-            )
-        elif op in {"set_value", "set_visibility", "set_availability"}:
-            inverse = {
-                "op": "set_value",
-                "target_ref": ref,
-                "value": deepcopy(before),
-                "persistence_scope": str(
-                    (batch[index] if index < len(batch) else {}).get("persistence_scope")
-                    or "session"
-                ),
-            }
-        elif op == "grant_reference":
-            if before is True:
-                reversible = False
-            else:
-                inverse = {
-                    "op": "revoke_reference",
-                    "target_ref": ref,
-                    "persistence_scope": "session",
-                }
-        elif op == "revoke_reference":
-            if before is False:
-                reversible = False
-            else:
-                inverse = {
-                    "op": "grant_reference",
-                    "target_ref": ref,
-                    "persistence_scope": "session",
-                }
-        elif op == "add_tag":
-            if before is True:
-                reversible = False
-            else:
-                inverse = {
-                    "op": "remove_tag",
-                    "target_ref": ref,
-                    "value": str(change.get("tag_value") or ref),
-                    "persistence_scope": "session",
-                }
-        elif op == "remove_tag":
-            if before is False:
-                reversible = False
-            else:
-                inverse = {
-                    "op": "add_tag",
-                    "target_ref": ref,
-                    "value": str(change.get("tag_value") or ref),
-                    "persistence_scope": "session",
-                }
-        elif op == "create_instance":
-            if before is None:
-                inverse = {
-                    "op": "end_instance",
-                    "target_ref": ref,
-                    "instance_id": str(change.get("instance_id") or ref),
-                    "persistence_scope": "session",
-                }
-            else:
-                inverse = {
-                    "op": "create_instance",
-                    "target_ref": ref,
-                    "instance_id": str(change.get("instance_id") or ref),
-                    "value": deepcopy(before),
-                    "persistence_scope": "session",
-                }
-        elif op == "end_instance":
-            if before is None:
-                reversible = False
-            else:
-                inverse = {
-                    "op": "create_instance",
-                    "target_ref": ref,
-                    "instance_id": str(change.get("instance_id") or ref),
-                    "value": deepcopy(before),
-                    "persistence_scope": "session",
-                }
-        else:
-            reversible = False
-        if inverse is None:
-            irreversible.append(
-                {
-                    "index": index,
-                    "op": op,
-                    "target_ref": ref,
-                    "reason": "该操作没有可逆的状态逆操作",
-                }
-            )
-            continue
-        entries.append(
-            {
-                "index": index,
-                "op": str(inverse["op"]),
-                "target_ref": ref,
-                "state_scope": state_scope,
-                "operation": inverse,
-                "reversible": reversible,
-                "reason": f"撤销 #{index} 的 {op}",
-            }
-        )
-    plan = {
-        "schema": ROLLBACK_SCHEMA,
-        "operation_id": str(operation_id or ""),
-        "operation_count": len(batch),
-        "entries": entries,
-        "irreversible_ops": irreversible,
-        "reversible": not irreversible and all(
-            bool(item.get("reversible", True)) for item in entries
-        ),
-    }
-    plan["plan_id"] = f"rollback:{hashlib.sha256(_canonical(plan)).hexdigest()[:24]}"
-    return plan
 
 
 class OperationEngine:
@@ -498,8 +171,7 @@ class OperationEngine:
                     after = deepcopy(item.get("value") or item.get("definition") or {})
                     instances[instance_id] = after
             elif op == "end_instance":
-                instance_id = str(item.get("instance_id") or ref)
-                before = instances.pop(instance_id, None)
+                before = instances.pop(ref, None)
                 after = None
             elif op == "add_narrative_constraint":
                 projection = {
@@ -512,41 +184,15 @@ class OperationEngine:
             elif op in {"emit_event", "request_resolution"}:
                 after = deepcopy(item.get("value") or item)
                 bucket.setdefault("emitted", []).append(after)
-            change_record: dict[str, Any] = {
+            changes.append({
                 "op": op,
                 "state_scope": state_scope,
                 "target_ref": ref,
                 "before": before,
                 "after": after,
-            }
-            if op in {"modify_value", "advance_counter"}:
-                change_record["aggregation_strategy"] = str(
-                    item.get("aggregation_strategy") or "sum"
-                )
-                change_record["operand"] = float(
-                    item.get("value", item.get("delta", 0)) or 0
-                )
-            if op in {"add_tag", "remove_tag"}:
-                change_record["tag_value"] = str(item.get("value") or ref)
-            if op in {"create_instance", "end_instance"}:
-                change_record["instance_id"] = str(
-                    item.get("instance_id") or ref
-                )
-            changes.append(change_record)
+            })
 
         return (dict(state or {}) if dry_run else working), changes, narrative
 
 
-__all__ = [
-    "ACTOR_KINDS",
-    "ENVELOPE_SCHEMA",
-    "OPERATION_TYPES",
-    "OperationEngine",
-    "PERSISTENCE_SCOPES",
-    "RECEIPT_STATUSES",
-    "ROLLBACK_SCHEMA",
-    "build_operation_envelope",
-    "build_operation_receipt",
-    "build_rollback_plan",
-    "validate_operation_envelope",
-]
+__all__ = ["OPERATION_TYPES", "OperationEngine", "PERSISTENCE_SCOPES"]

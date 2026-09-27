@@ -11,66 +11,24 @@ from .operation_engine import OperationEngine
 from .capability_service import CapabilityService
 from .chat_experience import validate_chat_experience
 from .constants import PLUGIN_VERSION
-from .protocol.constants import (
-    TWP_CORE_VERSION,
-    TWP_MODULE_API_VERSION,
-    TWP_VERSION,
-    WORLD_TAG_PRESETS,
-)
-from .contracts.actor_fate import (
-    parse_actor_fate,
-    parse_terminal_conditions,
-    validate_actor_fate,
-    validate_terminal_conditions,
-)
 
 
-WORLD_SCHEMA_VERSION = 12
-# 仅用于当前 TWP 编译世界模型的内部校验，不是公开世界协议版本。
-SUPPORTED_WORLD_SCHEMA_VERSIONS = frozenset({WORLD_SCHEMA_VERSION})
+WORLD_SCHEMA_VERSION = 5
+SUPPORTED_WORLD_SCHEMA_VERSIONS = frozenset({2, 3, 4, 5})
 FEATURE_VERSIONS = {
-    # 原子切换全部插件自有模块与运行契约，避免两段式
-    # 1.0/2.0 在作者源、编译物、运行验证与消费者之间继续漂移。
-    feature: TWP_MODULE_API_VERSION
-    for feature in (
-        "actor",
-        "time_clock",
-        "relationship_graph",
-        "items_inventory",
-        "economy",
-        "capability_effects",
-        "ending",
-        "entity_registry",
-        "condition_engine",
-        "operation_engine",
-        "event_pipeline",
-        "resolution_receipt",
-        "capabilities",
-        "resources",
-        "runtime_effects",
-        "objects",
-        "resolution_methods",
-        "interaction_rules",
-        "action_intents",
-        "chat_experience",
-        "scene_graph",
-        "quest_graph",
-        "knowledge_graph",
-        "npc_lifecycle",
-        "faction_state",
-        "human_dm",
-        "challenge_engine",
-        "tactical_conflict",
-        "actor_fate",
-        "terminal_conditions",
-        "progression",
-        "crafting",
-        "localization",
-        "maps_handouts",
-        "distribution",
-        "simulation",
-        "adaptive_ui",
-    )
+    "entity_registry": "1.0",
+    "condition_engine": "1.0",
+    "operation_engine": "1.0",
+    "event_pipeline": "1.0",
+    "resolution_receipt": "1.0",
+    "capabilities": "1.0",
+    "resources": "1.0",
+    "runtime_effects": "1.0",
+    "objects": "1.0",
+    "resolution_methods": "1.0",
+    "interaction_rules": "1.0",
+    "action_intents": "1.0",
+    "chat_experience": "1.0",
 }
 STAT_MODES = {"none", "manual", "preset", "preset_stack"}
 RESOLUTION_MODES = {"none", "narrative", "dice_only", "attribute"}
@@ -92,20 +50,24 @@ DEFAULT_DIFFICULTY_POLICY = {
     "controlled": 9,
     "dangerous": 13,
     "desperate": 17,
-    "lethal": 21,
+    "lethal": 19,
 }
 
 DEFAULT_OUTCOME_POLICY = {
-    "natural_20_critical": True,
-    "natural_1_critical": True,
+    "natural_20_critical": False,
+    "natural_1_critical": False,
     "critical_success_margin": 10,
-    "cost_success_min_margin": -4,
+    "cost_success_min_margin": 0,
     "failure_min_margin": -9,
 }
 
 
 def _version_tuple(value: Any) -> tuple[int, int, int] | None:
     text = str(value or "").strip().lower().removeprefix("v")
+    # B1-era templates briefly used a suffix-only identifier.  Continue to
+    # accept it, while current releases use the full numeric + suffix form.
+    if text in {"b1", "b2"}:
+        return (0, 12, 0)
     numeric = text.split("-", 1)[0]
     parts = numeric.split(".")
     if not 1 <= len(parts) <= 3 or any(not part.isdigit() for part in parts):
@@ -129,9 +91,14 @@ def stats_mode(stats: Mapping[str, Any] | None) -> str:
     mode = str(stats.get("mode") or "").strip().lower()
     if mode in STAT_MODES:
         return mode
-    # C6: an omitted stats contract means that this world has no standard
-    # attribute-allocation phase.  The platform must not invent attributes.
-    return "none"
+    if (
+        stats.get("input_mode")
+        == "automatic_profession_base_plus_two_fixed_bonus_choices"
+        or stats.get("allocation_mode")
+        == "profession_base_plus_primary7_secondary3"
+    ):
+        return "preset"
+    return "manual"
 
 
 def world_contract(world: Mapping[str, Any] | None) -> dict[str, Any]:
@@ -140,7 +107,7 @@ def world_contract(world: Mapping[str, Any] | None) -> dict[str, Any]:
     source = world if isinstance(world, Mapping) else {}
     rules = source.get("rules")
     rules = rules if isinstance(rules, Mapping) else source
-    card = rules.get("actor")
+    card = rules.get("character_card")
     card = card if isinstance(card, Mapping) else {}
     stats = card.get("stats")
     stats = stats if isinstance(stats, Mapping) else {}
@@ -155,21 +122,8 @@ def world_contract(world: Mapping[str, Any] | None) -> dict[str, Any]:
     try:
         version = int(
             source.get(
-                "internal_world_model_revision",
-                rules.get(
-                    "internal_world_model_revision",
-                    WORLD_SCHEMA_VERSION
-                    if str(
-                        (
-                            source.get("protocol")
-                            if isinstance(source.get("protocol"), Mapping)
-                            else {}
-                        ).get("name")
-                        or ""
-                    ).casefold()
-                    == "twp"
-                    else 0,
-                ),
+                "world_schema_version",
+                rules.get("world_schema_version", 0),
             )
         )
     except (TypeError, ValueError):
@@ -230,16 +184,18 @@ def world_contract(world: Mapping[str, Any] | None) -> dict[str, Any]:
     outcome_policy = dict(DEFAULT_OUTCOME_POLICY)
     if isinstance(resolution_raw.get("outcome_policy"), Mapping):
         outcome_policy.update(dict(resolution_raw.get("outcome_policy") or {}))
+    # Legacy imports cannot re-enable natural-die overrides or below-DC success.
+    outcome_policy.update(natural_20_critical=False, natural_1_critical=False,
+                          cost_success_min_margin=0)
     return {
         "version": version,
         "minimum_plugin_version": str(
-            source.get("minimum_plugin_version") or ""
+            source.get("minimum_plugin_version")
+            or source.get("min_plugin_version")
+            or ""
         ),
         "protocol": {
-            "name": str(protocol.get("name") or ""),
-            "version": str(protocol.get("version") or ""),
-            "core": str(protocol.get("core") or ""),
-            "compiler_abi": str(protocol.get("compiler_abi") or ""),
+            "core_version": int(protocol.get("core_version", version) or version),
             "features": features,
         },
         "required_features": [str(item) for item in required_features],
@@ -291,15 +247,10 @@ def world_contract(world: Mapping[str, Any] | None) -> dict[str, Any]:
 
 
 def _economy_contract(rules: Mapping[str, Any]) -> dict[str, Any]:
-    """Parse the C5 multi-shop economy contract.
-
-    ``shops`` is the only definition source.  Callers must select a concrete
-    shop and consume its runtime MarketView instead of assuming one global
-    static shop.
-    """
+    """A16：解析可选经济块（不写死任何货币/汇率语义；未声明即空）。"""
     raw = rules.get("economy")
     if not isinstance(raw, Mapping):
-        return {"available": False, "policy": {}, "shops": []}
+        return {"available": False, "policy": {}}
     currencies = raw.get("currencies") or []
     if not isinstance(currencies, list):
         currencies = []
@@ -312,62 +263,6 @@ def _economy_contract(rules: Mapping[str, Any]) -> dict[str, Any]:
     policy = raw.get("policy")
     if not isinstance(policy, Mapping):
         policy = {}
-    shops = raw.get("shops") or []
-    if not isinstance(shops, list):
-        shops = []
-    normalized_shops: list[dict[str, Any]] = []
-    seen_shop_ids: set[str] = set()
-    for raw_shop in shops:
-        if not isinstance(raw_shop, Mapping):
-            continue
-        shop_id = str(raw_shop.get("shop_id") or "").strip()
-        if not shop_id:
-            raise ValueError("rules.economy.shops 每项必须声明 shop_id")
-        if shop_id in seen_shop_ids:
-            raise ValueError(f"商店 ID 重复：{shop_id}")
-        seen_shop_ids.add(shop_id)
-        offers = raw_shop.get("offers") or []
-        if not isinstance(offers, list):
-            raise ValueError(f"商店 {shop_id} 的 offers 必须是数组")
-        normalized_offers: list[dict[str, Any]] = []
-        seen_offer_ids: set[str] = set()
-        for raw_offer in offers:
-            if not isinstance(raw_offer, Mapping):
-                continue
-            offer_id = str(raw_offer.get("offer_id") or "").strip()
-            item_ref = str(raw_offer.get("item_ref") or "").strip()
-            if not offer_id or not item_ref:
-                raise ValueError(f"商店 {shop_id} 的商品必须声明 offer_id 和 item_ref")
-            if offer_id in seen_offer_ids:
-                raise ValueError(f"商店 {shop_id} 的商品 ID 重复：{offer_id}")
-            seen_offer_ids.add(offer_id)
-            normalized_offers.append(dict(raw_offer))
-        normalized_shops.append(
-            {
-                **dict(raw_shop),
-                "shop_id": shop_id,
-                "label": str(raw_shop.get("label") or raw_shop.get("name") or shop_id),
-                "region_refs": [
-                    str(item) for item in raw_shop.get("region_refs", [])
-                ]
-                if isinstance(raw_shop.get("region_refs"), list)
-                else [],
-                "scene_refs": [
-                    str(item) for item in raw_shop.get("scene_refs", [])
-                ]
-                if isinstance(raw_shop.get("scene_refs"), list)
-                else [],
-                "availability_conditions": dict(
-                    raw_shop.get("availability_conditions") or {}
-                )
-                if isinstance(raw_shop.get("availability_conditions"), Mapping)
-                else {},
-                "restock_policy": dict(raw_shop.get("restock_policy") or {})
-                if isinstance(raw_shop.get("restock_policy"), Mapping)
-                else {},
-                "offers": normalized_offers,
-            }
-        )
     return {
         "available": True,
         "currencies": [dict(item) for item in currencies if isinstance(item, Mapping)],
@@ -378,202 +273,66 @@ def _economy_contract(rules: Mapping[str, Any]) -> dict[str, Any]:
             dict(item) for item in exchange_rules if isinstance(item, Mapping)
         ],
         "policy": dict(policy),
-        "shops": normalized_shops,
     }
-
-
-def starter_loadout(world: Mapping[str, Any]) -> dict[str, Any]:
-    """每玩家开局物资（1.0.0-A7）：rules.starter_loadout.items = {物品: 数量}。"""
-    rules = world.get("rules")
-    if not isinstance(rules, Mapping):
-        return {}
-    raw = rules.get("starter_loadout")
-    if not isinstance(raw, Mapping):
-        return {}
-    items = raw.get("items")
-    if not isinstance(items, Mapping):
-        return {}
-    return {
-        "label": str(raw.get("label") or "开局物资"),
-        "items": {
-            str(name): max(1, int(count))
-            for name, count in items.items()
-            if str(name).strip() and isinstance(count, (int, float)) and int(count) > 0
-        },
-    }
-
-
-def shop_offers(
-    world: Mapping[str, Any],
-    shop_ref: str,
-) -> list[dict[str, Any]]:
-    """Return offers for one explicitly selected C5 shop."""
-
-    contract = world_contract(world)
-    shops = contract.get("economy", {}).get("shops", [])
-    for shop in shops if isinstance(shops, list) else []:
-        if (
-            isinstance(shop, Mapping)
-            and str(shop.get("shop_id") or "") == str(shop_ref or "")
-        ):
-            return [
-                dict(item)
-                for item in shop.get("offers", [])
-                if isinstance(item, Mapping)
-            ]
-    return []
-
-
-def _declared_module_contracts(
-    world: Mapping[str, Any],
-) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
-    """Return package-owned module descriptors and runtime contracts.
-
-    C5 deliberately treats module ids as world-package data.  The plugin only
-    owns the shape of the descriptor/runtime contract; an extension therefore
-    does not need to be added to a core allow-list before it can be validated.
-    """
-
-    descriptors: dict[str, dict[str, Any]] = {}
-    raw_modules = world.get("twp_modules")
-    if isinstance(raw_modules, Sequence) and not isinstance(
-        raw_modules, (str, bytes)
-    ):
-        for raw in raw_modules:
-            if not isinstance(raw, Mapping):
-                raise ValueError("twp_modules 的每一项都必须是对象")
-            module_id = str(raw.get("module_id") or raw.get("id") or "").strip()
-            if not module_id:
-                raise ValueError("twp_modules 模块缺少 module_id")
-            if module_id in descriptors:
-                raise ValueError(f"twp_modules 模块重复：{module_id}")
-            descriptors[module_id] = dict(raw)
-
-    runtime_contracts: dict[str, dict[str, Any]] = {}
-    raw_runtime = world.get("runtime_contract")
-    if raw_runtime is not None:
-        if not isinstance(raw_runtime, Mapping):
-            raise ValueError("runtime_contract 必须是对象")
-        for module_id, raw in raw_runtime.items():
-            module_key = str(module_id).strip()
-            if not module_key or not isinstance(raw, Mapping):
-                raise ValueError("runtime_contract 每个模块都必须是具名对象")
-            runtime_contracts[module_key] = dict(raw)
-    return descriptors, runtime_contracts
-
-
-def _validate_declared_modules(
-    world: Mapping[str, Any],
-    declared_features: Mapping[str, str],
-) -> dict[str, str]:
-    descriptors, runtime_contracts = _declared_module_contracts(world)
-    dynamic_versions: dict[str, str] = {}
-    if not descriptors and not runtime_contracts:
-        return dynamic_versions
-
-    unknown_runtime = sorted(set(runtime_contracts) - set(descriptors))
-    if unknown_runtime:
-        raise ValueError(
-            "runtime_contract 引用了未声明模块：" + "、".join(unknown_runtime)
-        )
-
-    for module_id, descriptor in descriptors.items():
-        api_version = str(
-            descriptor.get("api_version") or descriptor.get("version") or ""
-        ).strip()
-        if _version_tuple(api_version) is None:
-            raise ValueError(f"模块 {module_id} 缺少有效 api_version")
-        dynamic_versions[module_id] = api_version
-        enabled = bool(descriptor.get("enabled", True))
-        if enabled and module_id not in runtime_contracts:
-            raise ValueError(f"模块 {module_id} 缺少 runtime_contract")
-        if enabled:
-            if module_id not in declared_features:
-                raise ValueError(f"启用模块 {module_id} 缺少 protocol.features 声明")
-            if str(declared_features[module_id]) != api_version:
-                raise ValueError(
-                    f"模块 {module_id} 的 feature 版本与 api_version 不一致"
-                )
-        else:
-            if module_id in declared_features:
-                raise ValueError(
-                    f"已关闭模块 {module_id} 不得出现在 protocol.features"
-                )
-            if module_id in runtime_contracts:
-                raise ValueError(
-                    f"已关闭模块 {module_id} 不得保留 runtime_contract"
-                )
-        runtime = runtime_contracts.get(module_id)
-        if runtime is None:
-            continue
-        expected_path = f"runtime.modules.{module_id}"
-        state_path = str(runtime.get("state_path") or "")
-        if state_path != expected_path:
-            raise ValueError(
-                f"模块 {module_id} 的 state_path 必须是 {expected_path}"
-            )
-    return dynamic_versions
 
 
 def validate_world_contract(world: Mapping[str, Any]) -> dict[str, Any]:
     contract = world_contract(world)
     if contract["version"] not in SUPPORTED_WORLD_SCHEMA_VERSIONS:
         raise ValueError(
-            f"{PLUGIN_VERSION} 只接受 TWP 内部世界模型修订 "
-            f"{WORLD_SCHEMA_VERSION}，当前为 {contract['version']}"
-        )
-    protocol = contract["protocol"]
-    if protocol.get("name", "").casefold() != "twp":
-        raise ValueError("世界包必须声明 protocol.name = twp")
-    if protocol.get("version") != TWP_VERSION:
-        raise ValueError(f"世界包必须使用 TWP {TWP_VERSION}")
-    if protocol.get("core") != TWP_CORE_VERSION:
-        raise ValueError(
-            f"世界包必须声明 protocol.core = {TWP_CORE_VERSION}"
-        )
-    display_tags = world.get("display_tags") or []
-    if not isinstance(display_tags, Sequence) or isinstance(
-        display_tags, (str, bytes)
-    ):
-        raise ValueError("display_tags 必须是预设标签键数组")
-    normalized_tags = [str(value or "").strip() for value in display_tags]
-    if len(normalized_tags) > 4:
-        raise ValueError("display_tags 最多选择四项")
-    if len(normalized_tags) != len(set(normalized_tags)):
-        raise ValueError("display_tags 不得重复")
-    unknown_tags = [
-        value for value in normalized_tags if value not in WORLD_TAG_PRESETS
-    ]
-    if unknown_tags:
-        raise ValueError(
-            "display_tags 包含插件未预设的标签：" + "、".join(unknown_tags)
+            f"{PLUGIN_VERSION} 仅接受世界包协议 v2、v3、v4 或 v5；"
+            f"当前为 v{contract['version']}"
         )
     stats = contract["stats"]
     mode = stats["mode"]
     if mode == "preset_stack":
+        if contract["version"] < 3:
+            raise ValueError("preset_stack 必须使用世界包协议 v3")
         minimum = _version_tuple(contract.get("minimum_plugin_version"))
-        if minimum is None or minimum < (1, 0, 0):
+        if minimum is None or minimum < (0, 9, 3):
             raise ValueError(
-                "TWP 世界包必须声明 minimum_plugin_version >= 1.0.0"
+                "preset_stack 世界包必须声明 minimum_plugin_version >= 0.9.3"
             )
+    if contract["version"] >= 4:
+        # 0.11.1：v5 世界缺 minimum_plugin_version 时此前会误报
+        # “v4 必须声明 >= 0.10.0”；按实际协议版本给出准确要求。
+        required = (0, 10, 0) if contract["version"] == 4 else (0, 11, 0)
+        label = "v4" if contract["version"] == 4 else "v5"
+        minimum = _version_tuple(contract.get("minimum_plugin_version"))
+        if minimum is None or minimum < required:
+            raise ValueError(
+                f"世界包协议 {label} 必须声明 "
+                f"minimum_plugin_version >= "
+                f"{'.'.join(str(part) for part in required)}"
+            )
+        if contract["version"] == 4:
+            validate_preset_dimensions(
+                {"preset_dimensions": contract["preset_dimensions"]}
+            )
+            knowledge = contract["knowledge_boundary"]
+            content = contract["content_boundary"]
+            if str(knowledge.get("policy") or "strict") not in {
+                "strict", "guided", "open"
+            }:
+                raise ValueError("knowledge_boundary.policy 必须是 strict/guided/open")
+            if bool(content.get("player_may_relax", False)):
+                raise ValueError("世界包内容硬边界不得允许玩家放宽")
     if contract["version"] >= 5:
         minimum = _version_tuple(contract.get("minimum_plugin_version"))
-        required_plugin = (1, 0, 0)
-        if minimum is None or minimum < required_plugin:
+        if minimum is None or minimum < (0, 11, 0):
             raise ValueError(
-                f"世界包协议 v{contract['version']} 必须声明 minimum_plugin_version >= "
-                f"{'.'.join(str(part) for part in required_plugin)}"
+                "世界包协议 v5 必须声明 minimum_plugin_version >= 0.11.0"
             )
+        protocol = contract["protocol"]
+        if int(protocol.get("core_version", 0)) != 5:
+            raise ValueError("世界包协议 v5 必须声明 protocol.core_version = 5")
         declared = protocol.get("features", {})
-        module_versions = _validate_declared_modules(world, declared)
         for feature, raw_version in declared.items():
             supported = FEATURE_VERSIONS.get(str(feature))
-            package_version = module_versions.get(str(feature))
-            if supported is None and package_version is None:
+            if supported is None:
                 raise ValueError(f"插件不支持功能协议：{feature}")
             parsed = _version_tuple(raw_version)
-            accepted = package_version or supported or ""
-            if parsed is None or parsed > (_version_tuple(accepted) or (0, 0, 0)):
+            if parsed is None or parsed > (_version_tuple(supported) or (0, 0, 0)):
                 raise ValueError(f"插件不支持 {feature}@{raw_version}")
         for requirement in contract["required_features"]:
             feature, minimum_feature = _feature_requirement(requirement)
@@ -671,21 +430,18 @@ def validate_world_contract(world: Mapping[str, Any]) -> dict[str, Any]:
                     operation_engine.validate(transition.get("operations", []))
         experience_module = module_value(world, "chat_experience", {})
         if isinstance(experience_module, Mapping) and experience_module:
-            if "chat_experience" not in declared:
+            declared_experience = "chat_experience" in declared
+            # 显式关闭的模块是**空转的残块**，不是"声明了 chat_experience 数据"。
+            # 面板的文案就是这么写的（「启用后才写入 chat_experience@1.0；关闭时
+            # 所有策略均为无操作」），而它保存时又会删掉功能声明——于是
+            # 「关掉开关再保存世界」必然撞上这条报错，玩家在世界编辑器里改什么
+            # 都会被它挡回来（人数上限、角色卡、开场白……全都存不进去）。
+            if not declared_experience and experience_module.get("enabled", True) is not False:
                 raise ValueError(
                     "声明 chat_experience 数据时必须启用对应功能版本"
                 )
-            validate_chat_experience(world)
-        fate_issues = validate_actor_fate(parse_actor_fate(world))
-        terminal_issues = validate_terminal_conditions(
-            parse_terminal_conditions(world),
-            world,
-        )
-        contract_issues = [*fate_issues, *terminal_issues]
-        if contract_issues:
-            raise ValueError(
-                "命运/终局契约无效：" + "；".join(contract_issues)
-            )
+            if declared_experience:
+                validate_chat_experience(world)
     resolution_mode = contract["resolution"]["mode"]
     if mode == "none" and resolution_mode == "attribute":
         raise ValueError("无数值世界不能启用 attribute 属性检定")
@@ -707,7 +463,7 @@ def validate_world_contract(world: Mapping[str, Any]) -> dict[str, Any]:
         failure_floor = int(outcome_policy["failure_min_margin"])
     except (KeyError, TypeError, ValueError) as exc:
         raise ValueError("outcome_policy 的结果档位必须是整数") from exc
-    if critical_margin < 1 or not failure_floor < cost_floor < 0:
+    if critical_margin < 1 or not failure_floor < cost_floor == 0:
         raise ValueError("outcome_policy 的结果档位顺序无效")
     capabilities = contract["capabilities"]
     expected = {
@@ -739,8 +495,6 @@ __all__ = [
     "SUPPORTED_WORLD_SCHEMA_VERSIONS",
     "WORLD_SCHEMA_VERSION",
     "attribute_lookup",
-    "shop_offers",
-    "starter_loadout",
     "stats_mode",
     "validate_world_contract",
     "world_contract",

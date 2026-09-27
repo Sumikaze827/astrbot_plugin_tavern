@@ -7,10 +7,11 @@ from .lifecycle import (
     card_stat_allocation,
     card_template,
     resolve_profession_stats,
-    stage_required_missing,
 )
 from .stat_generation import (
+    modifier_from_table,
     sync_preset_stack_fields,
+    uses_authored_stats,
     uses_preset_stack_stats,
 )
 
@@ -24,10 +25,12 @@ def validate_card_revision(
 
     template = card_template(world)
     fields = dict(profile)
-    # D1：分阶段世界只要求 A 组完整；B/C 组缺失进入待补充，不阻塞修订审核。
     missing = [
         str(item.get("label") or item.get("key"))
-        for item in stage_required_missing(template, fields)
+        for item in template["fields"]
+        if item.get("required")
+        and item.get("type") != "derived"
+        and not str(fields.get(str(item.get("key") or ""), "")).strip()
     ]
     if missing:
         raise ValueError("尚未填写：" + "、".join(missing))
@@ -39,6 +42,15 @@ def validate_card_revision(
             require_complete=True,
         )
         assert resolved is not None
+    elif uses_authored_stats(template):
+        # 基础值来自模型（在 profession_base_stats），主/副属性加点仍由玩家选，
+        # 所以改卡直接复用 profession 模式那条加点路径，不重算基础值
+        # （重算要再调一次模型，而这里是同步校验路径）。
+        resolved = resolve_profession_stats(template, fields, require_complete=True)
+        # 最终值要落回 profile，否则这次修订只存了 stats，下一次改卡/展示
+        # 读不到 stat_<key> 就会当成没加点。
+        for key, value in resolved["raw"].items():
+            fields[f"stat_{key}"] = value
     elif mode == "preset":
         resolved = resolve_profession_stats(template, fields, require_complete=True)
     elif mode == "manual":
@@ -66,7 +78,7 @@ def validate_card_revision(
                 for item in template["stats"]["attributes"]
             },
             "modifiers": {
-                key: int(table.get(str(value), 0)) for key, value in raw.items()
+                key: modifier_from_table(table, value) for key, value in raw.items()
             },
             "budget": int(template["stats"].get("budget", 0)),
         }

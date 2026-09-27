@@ -1,0 +1,1495 @@
+{
+  "slug": "zuowang-shanmen-guishi",
+  "name": "坐忘录·山门诡事",
+  "description": "修真悬疑中篇。四到五名外门弟子在师祖「坐化」、师父「飞升」、山门诡事频发的连夜里，被迫分头调查，最终发现修真常识中的常识可能就是祸的诱饵。单局 26 回合，4-5 人最佳，d20 心性 / 战斗并重。",
+  "system_prompt": "【世界定位】\n本故事发生在修真界中土·东岱山·白渊观。白渊观是修真八派之外的散修小派，靠祖庭封印「祸穴」而得名——所谓祸穴，是修真界公认的「绝地」，里头封着不知多少年的邪祟。观中常驻十余人，今日在场的只有五名新晋外门弟子和一位负责看山的老道人。\n\n玩家共同身份：白渊观刚通过「三年观礼」晋为外门弟子的五位少年修士，按入门先后排序为大师兄、二师兄、三师姐、四师兄、小师弟（小师妹）。观主（师父）冲真人于三日前入祖庭观礼，至今未归；值守的老道人赵师叔在今晨卯时敲响云板，留下半卷师祖遗书与一句「若见师祖飞升回山，切勿跪拜」便横死于大殿丹墀下，死状是：跪姿，双手合十，面上带着微笑。\n遗书只剩半卷——上半卷撕去，只留下半卷十二行「坐忘口诀」与一行字：「吾已斩却三尸，得大解脱，尔等勿悲。祸将至。」\n\n【修真底层规律】\n修真四要素是修士的根本：\n- 道心——心性根基，坚固者不易被幻象迷惑，浮动者入心斋易走火入魔。\n- 神识——精神感知，识破幻象、读符、感应残留神识。\n- 灵力——法力储量，施法（符箓、封印、剑诀）、压制祸影。\n- 体魄——肉身强度，战斗耐力、扛住入心斋反噬。\n\n检定框架：心斋 / 识破 / 读符 = d20 + 神识修正；施法 / 战斗 = d20 + 灵力修正（剑）/ + 体魄修正（肉搏）；辩驳 / 度人 / 抗幻 = d20 + 道心修正。妖邪（低阶祸影）DC 11-13；邪祟（中阶祸祟）DC 15-17；祸（祸穴本体）DC 19-21（lethal）。\n\n祸的最低限度定义（模型参考，玩家不必立刻知道）：祸是修真界对邪祟的统称，无定形，会让人看见幻象、走火入魔、或做出与本意相反的事。修真界流传着一条「气色青白、瞳孔散光、指甲发黑」的辨识口诀（参「修真常识可以错」）。\n\n修真规则硬约束：\n- 心斋越深越易入幻（修士越自信「看清真相」，越要给他怀疑自己的空间）。\n- 修真常识可以错。玩家基于常识做出的判断，模型可以让它「在当下是对的」，但不能保证它在所有场景都对。任何看起来不可动摇的修真常识，本局都至少要有一处是祸的伪装。\n- 道心浮动的判定：道心 ≤ 5 的玩家入心斋需做道心检定（DC 14），失败即陷入「入幻」状态（叙述与现实颠倒、信任与背叛颠倒）。\n- 祸的现身规则：祸不会以「气色青白」的传统形象示人——它会以「你最希望见到的、让你放下戒心的」形象示人（师祖、师父、已故的亲人、得道的同门）。它越让你安心，你越该怀疑。\n- 同一场景内不同玩家看见的「真相」可以不同——这是祸的常用手法。模型必须忠实呈现每位玩家各自所见，不许替玩家做判断、不许统一化叙述。\n- 战斗可选「打法」，不可选「打不打」：祸穴内的孽物不可谈判，但打法可以选。\n\n【陌生术语首现即注释（硬性）】\n修真界有大量生疏名词（坐忘、心斋、斩三尸、祸、祸穴、冲真人、冲和堂、飞升、道心等）。规则：术语**首次出现在叙事正文**时，必须以同位语或括注形式给出一句话定义——例如「心斋（坐忘的高阶状态，闭目内观，能感应神识、辨真伪）」。每回合最多引入 2 个新术语。**禁止一次性在开场把所有术语全列出**——本剧本的修真常识必须**随剧情展开逐次揭示**，玩家读到的修真常识应当是他「第一次遇到」该术语时自然习得的，不是开场科普灌输**。模型不得复读 system_prompt 里的术语表，**不得在开场白里把修真常识堆给玩家**。\n\n【底层规律】\n祸不是普通的鬼。祸是道心之瑕——修真常识里的常识，正是它藏身之处。越相信「气色青白就是祸」，它就越会以这一形象示人；越相信「斩三尸就是解脱」，它就越会化成「斩三尸得大解脱」的假象。你以为你在检验常识，其实你在验证它的剧本。\n修真四要素：道心（心性根基，决定抗幻）、神识（精神感知，决定识破）、灵力（法力储量，决定施法）、体魄（肉身强度，决定战斗与熬关）。\n检定框架：心斋/识破/读符 = d20 + 神识修正；施法/战斗 = d20 + 灵力修正（剑）/ + 体魄修正（肉搏）；辩驳/度人/抗幻 = d20 + 道心修正。妖邪（低阶祸影）DC 11-13；邪祟（中阶祸祟）DC 15-17；祸（祸穴本体）DC 19-21（lethal）。\n\n【修真规则硬约束】\n- 心斋越深越易被幻。本规则必须在每回合叙事中体现——修士越是自信「看清真相」，越要给他怀疑自己的空间。\n- 修真常识可以错。玩家基于常识做出的判断，模型可以让它「在当下是对的」，但不能保证它在所有场景都对。任何看起来不可动摇的修真常识，本局都至少要有一处是祸的伪装。\n- 道心浮动的判定：道心 ≤ 5 的玩家入心斋需做道心检定（DC 14），失败即陷入「入幻」状态（叙述与现实颠倒、信任与背叛颠倒）。\n- 祸的现身规则：祸不会以「气色青白」的传统形象示人——它会以「你最希望见到的、让你放下戒心的」形象示人（师祖、师父、已故的亲人、得道的同门）。它越让你安心，你越该怀疑。\n- 同一场景内不同玩家看见的「真相」可以不同——这是祸的常用手法。模型必须忠实呈现每位玩家各自所见，不许替玩家做判断、不许统一化叙述。\n- 战斗可选「打法」，不可选「打不打」：祸穴内的孽物不可谈判，但打法可以选。\n\n【身份与知识边界】\n五位外门弟子只懂自己师承的功夫、修真入门常识、彼此的脾性与本门内部规矩。冲真人不在，他们互为唯一可商量的人。赵师叔是长辈，今晨刚死。师祖飞升已久，弟子们只在画像里见过。三师姐入门前是江湖儿女，懂一点江湖话术。四师兄入门前在药铺当过学徒，懂一点医药。其余三位出身农家，没什么特殊。\n祸穴之内封着什么，玩家不知道；师祖飞升之前与祸穴的关系，玩家不知道；冲真人入祖庭的真实目的，玩家不知道。模型不得让任何玩家角色凭常识推断出这些信息——它们必须通过行动、观察、入心斋、读符、与残留神识交流才能一点点浮现。\n\n【因果与连续性】\n已发生事件、已消耗物品（止观铃、青石碑符、师祖遗书、老赵的血渍、道袍上的焦痕）、伤势、道心浮动与否、关系与祸穴状态必须连续。失败必须产生代价——道心浮动、走火入魔、被幻象带走一个回合、被祸影附身。不得「失败就无事」地推进。\n\n【玩家自主权】\n不得替玩家决定内心、思想、台词、承诺、投降或立场。涉及全体公共资源（止观铃、青石碑、师祖遗书、共同路线、最终裁决）的决定须获得当事人同意；个人行动（包括高风险与致命风险路线）无需全队表决。\n\n【冲突与风险】\n高风险行动的失败后果写入该选项的 known_consequences 字段随选项提交；致命后果不得无来源地突然触发。祸的现身须满足设定：要么祸影初现，要么修士自己入心斋太深。请按已知后果落骰。\n\n【叙事风格】\n修真悬疑 + 山门诡事 + 道诡异仙式的「真假难辨」。每回合聚焦本轮因果、可见变化与下一步可行动信息，节奏紧凑，不重复总结，不强行救场，不把所有谜题一次解释完。允许适度的弟子日常与冷幽默，但不让轻松桥段破坏危机逻辑。\n节奏硬约束：禁止连续 3 回合全是「观察 + 试探 + 讨论」的过渡，每 2 回合内必须至少发生一件改变处境的事件（新线索、新幻象、新伤亡、新真相）；每回合结尾必须留下「下一步会发生什么」的未决张力；每章的高潮节拍必须由玩家拍板；高潮后最多保留 2 回合收尾，不得拖长余波。\n\n【硬性禁令】\n禁止现代科技、异世界元素、时间穿越；禁止「修真常识碾压一切」式的无代价破解（每次识破都需要神识/道心/读符/与神识交流，并付出相应代价）；禁止无限信息与全知预言；禁止随意改写记忆与无代价控制玩家角色；禁止无来源、无设定的突然致死；致命后果须写入该选项的 known_consequences 字段；禁止把 NPC 私密导演指令、最终谜底和其他玩家私人秘密直接写进公开叙事；禁止未经目标玩家同意的玩家对玩家伤害、精神控制或永久负面效果。\n\n【本次任务范围】\n26 回合内完成一次单局。玩家不必读完整个修真史，只要搞定「师祖飞升 → 师父入祖庭 → 赵师叔横死 → 五弟子分头调查 → 祸穴显形 → 终结祸」的完整单局闭环。任何 26 回合外的延伸内容由叙事者主持决定是否续接。\n\n【插件权威边界】\n所有检定属性、加值、风险等级、检定结论、骰面与结果档位由机器骰制生成并持久化。叙事模型只可依据已公布的权威检定回执续写，不得重投、修改 DC、改变成功档位或追加未预告的永久性惩罚。\n【NPC 状态同步（硬规则）】\n1. 副本 NPC 的 runtime_state（location / status / faction）必须跟随剧情：每当 NPC 移动、负伤、立场变化、死亡或退场，必须在同一回合通过 npc_ops（op=update + runtime_state）同步 <active_npcs> 中对应的稳定 npc_id，不能只写进正文而不同步状态。\n2. 各章 key_npcs[].state 是本章关键 NPC 位置的权威起点：切到该章后，对应 NPC 的 runtime_state.location / status 应与其一致（引擎在切章时会自动写入）；NPC 在本章中途再移动或变化时，继续用 npc_ops 更新。\n3. 与玩家同行的 NPC，location 写成「随队 → 当前位置」；不随行的 NPC 写清各自所在位置。\n4. 死亡 / 退场必须用 npc_ops 的 op=kill / depart，或把 runtime_state.status 置为 dead / departed，禁止只改正文而不同步状态。\n5. 每回合生成叙事时至少核对一次关键 NPC 的 runtime_state 是否与当前剧情位置一致，不一致就补一条 npc_ops.update。",
+  "opening_scene": "东岱山·白渊观·冲和堂。卯时刚过，山雾未散。\n\n冲和堂是白渊观的主殿，今日该是你们五位刚晋外门的小修士做早课的时辰。可云板敲响的不是早课钟——是值守的老道人赵师叔横死在大殿丹墀正中。跪姿，双手合十，面上带着微笑——像是看见了什么让他心满意足的东西，然后就这么死了。\n\n指甲是干净的，气色是红润的，瞳孔没有散光。他看起来比活着的时候还健康。\n\n按修真常识，「气色青白、瞳孔散光、指甲发黑」才是祸附身三候——祸，是修真界对邪祟的统称——可赵师叔一样都不沾。他死得像一个得道的人。\n\n殿中师祖画像前挂着的止观铃还在轻微摇晃——止观铃是师祖飞升前留下的法器，此刻没人碰它，它自己在响。叮——叮——声音很轻。\n\n青石碑（殿中那块刻着封印咒文的碑）上多了一道新裂纹，裂纹里渗出极淡的红水，还没干。青石碑封的是祖庭之下那一处名为「祸穴」的绝地——白渊观之所以得名于此。\n\n你们心里都清楚：师祖一月前已飞升（飞升，是修士修真至大成、肉身化光、魂归大道，飞升后不再回山门）；师父冲真人（观主，外号冲和子）三日前入祖庭清点封印，至今未归。\n\n半卷师祖遗书摊在你手里——坐忘是你们修真的入门功课，遗书上半卷被撕去，下半卷留了十二行「坐忘口诀」与一行字：「吾已斩却三尸，得大解脱，尔等勿悲。祸将至。」\n\n遗书背面还有一行淡墨小字，像是后来补的——「若见师祖回山，切勿跪拜。」\n\n四个身影在等你开口——",
+  "rules": {
+    "world_schema_version": 5,
+    "resolution": {
+      "mode": "attribute",
+      "dice_system": "d20",
+      "_dice_system_documented_as": "传统 d20：骰 1-20 + 属性修正，对照难度 DC 判定成功档位。",
+      "unknown_attribute": "reject",
+      "option_checks": {
+        "enabled": true
+      },
+      "generic_check": {
+        "enabled": false,
+        "label": "通用",
+        "modifier": 0
+      },
+      "allowed_attributes": [
+        "dao_xin",
+        "shen_shi",
+        "ling_li",
+        "ti_po"
+      ],
+      "difficulty_policy": {
+        "safe": null,
+        "controlled": 9,
+        "dangerous": 13,
+        "desperate": 17,
+        "lethal": 19
+      },
+      "outcome_policy": {
+        "natural_20_critical": true,
+        "natural_1_critical": true,
+        "critical_success_margin": 10,
+        "cost_success_min_margin": -4,
+        "failure_min_margin": -9
+      },
+      "parameter_authority": "plugin_rule_engine",
+      "ai_role": "narrative_only_after_locked_receipt"
+    },
+    "default_difficulty": 12,
+    "difficulty_min": 5,
+    "difficulty_max": 25,
+    "dice_rules": {
+      "system": "d20",
+      "advantage": "2d20_keep_high",
+      "disadvantage": "2d20_keep_low",
+      "stacking": false,
+      "opposites_cancel": true,
+      "outcome_bands": true,
+      "natural_20": "critical_success",
+      "natural_1": "critical_failure",
+      "visibility": "public",
+      "rng": "system_secrets",
+      "roll_authority": "machine",
+      "lock_before_publish": true,
+      "reuse_locked_roll_on_retry": true,
+      "publish_before_story_generation": true
+    },
+    "inspiration": {
+      "enabled": true,
+      "initial": 1,
+      "maximum": 3,
+      "allow_pre_roll_advantage": true,
+      "allow_pre_authorized_reroll": true
+    },
+    "safety": {
+      "any_active_player_can_pause": true,
+      "pvp_requires_target_consent": true,
+      "collective_harm_requires_vote": false,
+      "lethal_risk_must_be_disclosed": true
+    },
+    "content_boundaries": {
+      "character_death": "yes",
+      "_character_death_documented_as": "允许角色死亡：失败的 lethal 检定可当场兑现死亡，无需先行征询或二次确认。致命风险另见 system_prompt.致命风险协议。",
+      "player_conflict": "consent",
+      "romance": "fade_to_black",
+      "horror": "moderate",
+      "sexual_content": "blocked",
+      "safety_pause": true
+    },
+    "context_budget": {
+      "recent_turns": 6,
+      "memories": 6,
+      "active_npcs": 6,
+      "ledger_items": 8,
+      "locked_facts_always_include": true
+    },
+    "npc_policy": {
+      "enabled": true,
+      "auto_register": true,
+      "max_new_per_turn": 2,
+      "require_named_or_relevant": true,
+      "generated_requires_review": true,
+      "archive_after_inactive_rounds": 4
+    },
+    "allow_player_result_claims": false,
+    "death_requires_confirmation": false,
+    "tone": "修真悬疑、山门诡事、道诡异仙式的真假难辨、心斋入幻与道心浮动",
+    "strict_choices": true,
+    "check_density": "standard",
+    "player_limits": {
+      "recommended_min": 4,
+      "recommended_max": 5,
+      "minimum_start": 1,
+      "maximum": 5
+    },
+    "time_rules": {
+      "turn_timeout_action": "hold",
+      "card_timeout_action": "remind",
+      "ready_timeout_action": "remind"
+    },
+    "interaction_rules": {
+      "settings": {
+        "conflict_strategy": "priority_then_stack"
+      }
+    },
+    "resources": {
+      "definitions": [
+        {
+          "id": "dao_xin_fortitude",
+          "label": "道心稳度",
+          "category": "vitality",
+          "description": "五位弟子共同的道心定力。入心斋失败、被祸影附身、看到师祖飞升回山的假象都会扣减；观礼、入定、彼此守望可恢复。归零即全队道心崩溃，任一人入心斋直接走火入魔，祸穴封印随之崩解。",
+          "persistence_scope": "session",
+          "initial_value": 6,
+          "range": {
+            "min": 0,
+            "max": 10
+          },
+          "tags": [
+            "xinzhi",
+            "resource"
+          ],
+          "version": "1.0"
+        },
+        {
+          "id": "shen_shi_reserve",
+          "label": "神识储备",
+          "category": "charge",
+          "description": "五位弟子共同的神识余量。入心斋、读符、与残留神识交流、识破幻象都会消耗；静坐养觉、子时自观可恢复。",
+          "persistence_scope": "session",
+          "initial_value": 4,
+          "range": {
+            "min": 0,
+            "max": 8
+          },
+          "tags": [
+            "shenzhi",
+            "resource"
+          ],
+          "version": "1.0"
+        }
+      ],
+      "items": []
+    },
+    "story_spine": {
+      "campaign_type": "single_engagement",
+      "total_turn_budget": 26,
+      "recommended_player_count": "4-5",
+      "fallback_player_count": "3 (drift +25%) / 5 (drift -10%)",
+      "non_renewable_session": true,
+      "primary_question": "在师父入祖庭未归、赵师叔诡异微笑身亡、修真常识被一一颠覆的山门之内，你们能否辨清祸穴的真相？",
+      "secondary_question": "师祖真的飞升了？师父真的只是去清点封印？冲和堂里那道新裂纹里渗出的红水——究竟是什么？",
+      "themes": [
+        "修真悬疑",
+        "真假难辨",
+        "道心浮动与入幻",
+        "修真常识的边界",
+        "山门诡事",
+        "师门情谊与背叛"
+      ],
+      "do_not_include_in_this_session": [
+        "白渊观之外的修真界延展剧情",
+        "完美大团圆结局",
+        "无代价封印祸穴",
+        "通过斩三尸直接无伤降伏祸",
+        "现代科技与异世界元素",
+        "主角光环式的无来源救场",
+        "把修真常识写成永远正确的圣经"
+      ]
+    },
+    "tension_drivers": [
+      "师祖遗书下半卷与背后那行淡墨字「若见师祖回山，切勿跪拜」",
+      "止观铃自行摇晃，没有人碰它",
+      "青石碑新裂纹渗出的红水",
+      "赵师叔跪姿合十面带微笑的诡异死状",
+      "修真常识「气色青白、瞳孔散光、指甲发黑」三候全部不沾",
+      "冲真人入祖庭三日未归，封印是否已被扰动",
+      "同一场景内不同弟子看见的真相可以不同",
+      "道心浮动者的入心斋是入幻而非入真"
+    ],
+    "character_card": {
+      "version": 6,
+      "auto_approve": false,
+      "edit_requires_review": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "角色道号",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "text"
+        },
+        {
+          "key": "code",
+          "label": "副本代号",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "text"
+        },
+        {
+          "key": "profession",
+          "label": "选择专修",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "selection_mode": "single_preset",
+          "apply_preset_on_select": true,
+          "preset_source": "profession_presets",
+          "next_step": "primary_attribute",
+          "options_source": "profession_presets",
+          "value_field": "name",
+          "label_field": "name",
+          "page_size": 6,
+          "clear_on_change": [
+            "primary_attribute",
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "rank",
+          "label": "入门次序",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "page_size": 6,
+          "options": [
+            "大师兄",
+            "二师兄",
+            "三师姐",
+            "四师兄",
+            "小师弟（小师妹）"
+          ]
+        },
+        {
+          "key": "dao_flavour",
+          "label": "入道所悟",
+          "required": true,
+          "private": false,
+          "max_chars": 30,
+          "type": "preset_select",
+          "page_size": 6,
+          "options": [
+            "敬师（守誓为先）",
+            "求真（道心为先）",
+            "护众（山门为先）",
+            "自省（疑己为先）",
+            "任侠（江湖为先）",
+            "逍遥（自在为先）"
+          ]
+        },
+        {
+          "key": "primary_attribute",
+          "label": "选择主属性（固定 +7）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "道心",
+            "神识",
+            "灵力",
+            "体魄"
+          ],
+          "bonus_value": 7,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 8
+        },
+        {
+          "key": "secondary_attribute",
+          "label": "选择副属性（固定 +3）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "道心",
+            "神识",
+            "灵力",
+            "体魄"
+          ],
+          "bonus_value": 3,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 8
+        },
+        {
+          "key": "background",
+          "label": "（可选）入门前的私事 / 个人补充",
+          "required": false,
+          "private": true,
+          "max_chars": 200,
+          "type": "text"
+        }
+      ],
+      "stats": {
+        "allocation_mode": "profession_base_plus_primary7_secondary3",
+        "input_mode": "automatic_profession_base_plus_two_fixed_bonus_choices",
+        "skip_attribute_question_range": "26-35",
+        "calculate_after_field": "secondary_attribute",
+        "reset_scope": "primary_and_secondary_only",
+        "mode": "preset",
+        "budget": 60,
+        "base_budget": 50,
+        "bonus_budget": 10,
+        "effective_total": 60,
+        "attributes": [
+          {
+            "key": "dao_xin",
+            "label": "道心",
+            "minimum": 0,
+            "maximum": 27,
+            "default": 5,
+            "description": "心性根基，决定抗幻、抗附身、入心斋走火入魔与否。坐忘、静观、彼此守望、修真常识稳固可加；入幻、被附身、相信修真常识而中招可减。"
+          },
+          {
+            "key": "shen_shi",
+            "label": "神识",
+            "minimum": 0,
+            "maximum": 27,
+            "default": 5,
+            "description": "精神感知，决定识破幻象、读符、感应残留神识、入心斋深浅。"
+          },
+          {
+            "key": "ling_li",
+            "label": "灵力",
+            "minimum": 0,
+            "maximum": 27,
+            "default": 5,
+            "description": "法力储量，决定施法（符箓、封印、剑诀）、压制祸影。"
+          },
+          {
+            "key": "ti_po",
+            "label": "体魄",
+            "minimum": 0,
+            "maximum": 27,
+            "default": 5,
+            "description": "肉身强度，决定战斗耐力、近身搏斗、熬关、扛住入心斋反噬。"
+          }
+        ],
+        "modifier_table": {
+          "0": -3,
+          "1": -2,
+          "2": -2,
+          "3": -1,
+          "4": -1,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "10": 2,
+          "11": 3,
+          "12": 3,
+          "13": 4,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 6,
+          "18": 6,
+          "19": 7,
+          "20": 7
+        },
+        "primary_bonus": 7,
+        "secondary_bonus": 3,
+        "require_distinct_bonus_attributes": true,
+        "player_selects_only": [
+          "primary_attribute",
+          "secondary_attribute"
+        ],
+        "defaults_are_schema_fallback_only": true,
+        "manual_entry_enabled": false,
+        "auto_apply_profession_base": true,
+        "profession_base_locked": true,
+        "show_profession_values_at_profession_step": true,
+        "profession_step": 3,
+        "skip_generated_attribute_questions": true,
+        "calculation_formula": "effective_attribute = profession.base_attribute + 7 if primary + 3 if secondary",
+        "preserve_base_on_reset": true,
+        "preset_selector": {
+          "field": "profession",
+          "source": "profession_presets",
+          "match_by": "id"
+        },
+        "bonus_choices": [
+          {
+            "field": "primary_attribute",
+            "label": "主属性",
+            "bonus": 7,
+            "count": 1
+          },
+          {
+            "field": "secondary_attribute",
+            "label": "副属性",
+            "bonus": 3,
+            "count": 1,
+            "exclude_selected_by": [
+              "primary_attribute"
+            ]
+          }
+        ],
+        "total_validation": {
+          "base_total": 50,
+          "final_total": 60
+        },
+        "allocation": {
+          "rule": "exact",
+          "total": 60
+        }
+      },
+      "preset_selection_help": {
+        "display_policy": "only_current_step",
+        "navigation": "分页预览每页最多 6 项；使用页码替换 / 列表稳定 ID 翻页",
+        "profession_instruction": "选择专修时展示专修可选项，按提示写入并展示 50 基础属性。",
+        "invalid_selection_action": "reject_and_repeat_current_field"
+      },
+      "bonus_allocation": {
+        "base_source": "profession_presets.attributes",
+        "primary_field": "primary_attribute",
+        "secondary_field": "secondary_attribute"
+      },
+      "creation_flow": {
+        "mode": "step_driven_preset_wizard",
+        "profession_display": "paged_current_step_with_base_attributes",
+        "generated_attribute_fields": "calculated_only_not_questions",
+        "preset_display": "current_step_only"
+      },
+      "preset_dimensions": [
+        {
+          "id": "profession",
+          "label": "专修",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 10
+        }
+      ],
+      "profession_presets": [
+        {
+          "id": "sword_xiu",
+          "name": "剑修",
+          "role": "持剑斩邪的近战壁垒",
+          "ability_source": "师门剑诀传承与三年观礼期间的勤修苦练",
+          "limitations": "剑势凌厉，但入心斋易见剑意之幻；不擅读符与药理",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "dao_xin": 14,
+            "shen_shi": 5,
+            "ling_li": 16,
+            "ti_po": 15
+          },
+          "base_attributes": {
+            "dao_xin": 14,
+            "shen_shi": 5,
+            "ling_li": 16,
+            "ti_po": 15
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "剑修",
+          "display_at_profession_step": true,
+          "display_text": "剑修:道心14 神识5 灵力16 体魄15；基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "fu_xiu",
+          "name": "符修",
+          "role": "画符布阵、读符识咒的封印支柱",
+          "ability_source": "师门符箓传承与三年观礼中研读祖庭符阵的功底",
+          "limitations": "不擅近身搏斗；符纸、符墨、符笔一断即力减",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "dao_xin": 9,
+            "shen_shi": 16,
+            "ling_li": 14,
+            "ti_po": 11
+          },
+          "base_attributes": {
+            "dao_xin": 9,
+            "shen_shi": 16,
+            "ling_li": 14,
+            "ti_po": 11
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "符修",
+          "display_at_profession_step": true,
+          "display_text": "符修:道心9 神识16 灵力14 体魄11；基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "yi_xiu",
+          "name": "医修",
+          "role": "识药炼丹、辨毒疗伤、识破毒物的识真之眼",
+          "ability_source": "师门丹道传承与四师兄入门前在药铺当学徒的医药底子",
+          "limitations": "不擅战斗；药石之效需时间生效，难救急",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "dao_xin": 11,
+            "shen_shi": 18,
+            "ling_li": 10,
+            "ti_po": 11
+          },
+          "base_attributes": {
+            "dao_xin": 11,
+            "shen_shi": 18,
+            "ling_li": 10,
+            "ti_po": 11
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "医修",
+          "display_at_profession_step": true,
+          "display_text": "医修:道心11 神识18 灵力10 体魄11；基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "shen_xiu",
+          "name": "神修",
+          "role": "入心斋、坐忘、感应神识的精神系修士",
+          "ability_source": "师门心斋传承与天生神识敏锐的资质",
+          "limitations": "心斋越深越易入幻；体魄薄弱，不擅正面接战",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "dao_xin": 10,
+            "shen_shi": 20,
+            "ling_li": 10,
+            "ti_po": 10
+          },
+          "base_attributes": {
+            "dao_xin": 10,
+            "shen_shi": 20,
+            "ling_li": 10,
+            "ti_po": 10
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "神修",
+          "display_at_profession_step": true,
+          "display_text": "神修:道心10 神识20 灵力10 体魄10；基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "za_xue",
+          "name": "杂学",
+          "role": "机关、杂艺、世故、走江湖的全能杂修",
+          "ability_source": "师门杂学传承与三年观礼中四处打杂的广博底子",
+          "limitations": "什么都不精；面对高阶祸影时力有不逮",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "dao_xin": 13,
+            "shen_shi": 9,
+            "ling_li": 12,
+            "ti_po": 16
+          },
+          "base_attributes": {
+            "dao_xin": 13,
+            "shen_shi": 9,
+            "ling_li": 12,
+            "ti_po": 16
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "杂学",
+          "display_at_profession_step": true,
+          "display_text": "杂学:道心13 神识9 灵力12 体魄16；基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        }
+      ],
+      "preset_sets": {
+        "profession_presets": [
+          {
+            "id": "sword_xiu",
+            "name": "剑修",
+            "role": "持剑斩邪的近战壁垒",
+            "ability_source": "师门剑诀传承与三年观礼期间的勤修苦练",
+            "limitations": "剑势凌厉，但入心斋易见剑意之幻；不擅读符与药理",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "dao_xin": 14,
+              "shen_shi": 5,
+              "ling_li": 16,
+              "ti_po": 15
+            },
+            "base_attributes": {
+              "dao_xin": 14,
+              "shen_shi": 5,
+              "ling_li": 16,
+              "ti_po": 15
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "剑修",
+            "display_at_profession_step": true,
+            "display_text": "剑修:道心14 神识5 灵力16 体魄15；基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "fu_xiu",
+            "name": "符修",
+            "role": "画符布阵、读符识咒的封印支柱",
+            "ability_source": "师门符箓传承与三年观礼中研读祖庭符阵的功底",
+            "limitations": "不擅近身搏斗；符纸、符墨、符笔一断即力减",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "dao_xin": 9,
+              "shen_shi": 16,
+              "ling_li": 14,
+              "ti_po": 11
+            },
+            "base_attributes": {
+              "dao_xin": 9,
+              "shen_shi": 16,
+              "ling_li": 14,
+              "ti_po": 11
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "符修",
+            "display_at_profession_step": true,
+            "display_text": "符修:道心9 神识16 灵力14 体魄11；基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "yi_xiu",
+            "name": "医修",
+            "role": "识药炼丹、辨毒疗伤、识破毒物的识真之眼",
+            "ability_source": "师门丹道传承与四师兄入门前在药铺当学徒的医药底子",
+            "limitations": "不擅战斗；药石之效需时间生效，难救急",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "dao_xin": 11,
+              "shen_shi": 18,
+              "ling_li": 10,
+              "ti_po": 11
+            },
+            "base_attributes": {
+              "dao_xin": 11,
+              "shen_shi": 18,
+              "ling_li": 10,
+              "ti_po": 11
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "医修",
+            "display_at_profession_step": true,
+            "display_text": "医修:道心11 神识18 灵力10 体魄11；基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "shen_xiu",
+            "name": "神修",
+            "role": "入心斋、坐忘、感应神识的精神系修士",
+            "ability_source": "师门心斋传承与天生神识敏锐的资质",
+            "limitations": "心斋越深越易入幻；体魄薄弱，不擅正面接战",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "dao_xin": 10,
+              "shen_shi": 20,
+              "ling_li": 10,
+              "ti_po": 10
+            },
+            "base_attributes": {
+              "dao_xin": 10,
+              "shen_shi": 20,
+              "ling_li": 10,
+              "ti_po": 10
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "神修",
+            "display_at_profession_step": true,
+            "display_text": "神修:道心10 神识20 灵力10 体魄10；基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "za_xue",
+            "name": "杂学",
+            "role": "机关、杂艺、世故、走江湖的全能杂修",
+            "ability_source": "师门杂学传承与三年观礼中四处打杂的广博底子",
+            "limitations": "什么都不精；面对高阶祸影时力有不逮",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "dao_xin": 13,
+              "shen_shi": 9,
+              "ling_li": 12,
+              "ti_po": 16
+            },
+            "base_attributes": {
+              "dao_xin": 13,
+              "shen_shi": 9,
+              "ling_li": 12,
+              "ti_po": 16
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "杂学",
+            "display_at_profession_step": true,
+            "display_text": "杂学:道心13 神识9 灵力12 体魄16；基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "专修基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          }
+        ]
+      }
+    },
+    "chat_experience": {
+      "max_text_length": 3000,
+      "dm": {
+        "allow_narrative_override": true,
+        "allow_secret_whispers": true,
+        "allow_manual_checks": true,
+        "allow_state_intervention": false
+      }
+    },
+    "opening_choices": [
+      {
+        "key": "A",
+        "text": "翻检赵师叔遗物，看他今早出门前留下的其它线索",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": false,
+        "danger_id": "safe",
+        "check": null
+      },
+      {
+        "key": "B",
+        "text": "把遗书、止观铃、青石碑三样摆在案上，请四师兄以医修底子辨一辨哪一样最有问题",
+        "risk": "controlled",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "神识",
+        "difficulty": 9,
+        "known_consequences": "失败会让四位观察者各自看见不同的「破绽」，无法统一判断谁看见的是真",
+        "danger_id": "controlled",
+        "check": {
+          "required": true,
+          "attribute_id": "shen_shi",
+          "type": "standard",
+          "difficulty": 9,
+          "known_consequences": "失败会让四位观察者各自看见不同的「破绽」，无法统一判断谁看见的是真"
+        }
+      },
+      {
+        "key": "C",
+        "text": "让大师兄、二师兄守殿，三师姐带你去祖庭入口探一探封印是否还稳",
+        "risk": "dangerous",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "灵力",
+        "difficulty": 13,
+        "known_consequences": "失败会让封印表面完好，但你能感到背后有什么东西在跟",
+        "danger_id": "dangerous",
+        "check": {
+          "required": true,
+          "attribute_id": "ling_li",
+          "type": "standard",
+          "difficulty": 13,
+          "known_consequences": "失败会让封印表面完好，但你能感到背后有什么东西在跟"
+        }
+      },
+      {
+        "key": "D",
+        "text": "把师祖画像与止观铃盖上黑布，撤去香烛，先断「师祖可能飞升回山」这条诱饵",
+        "risk": "controlled",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "道心",
+        "difficulty": 9,
+        "known_consequences": "失败会让止观铃突然止响，但你没来由地感到被师祖画像盯着",
+        "danger_id": "controlled",
+        "check": {
+          "required": true,
+          "attribute_id": "dao_xin",
+          "type": "standard",
+          "difficulty": 9,
+          "known_consequences": "失败会让止观铃突然止响，但你没来由地感到被师祖画像盯着"
+        }
+      }
+    ],
+    "progress": {
+      "chapter": "序章：卯时之死",
+      "current_chapter_id": "ch_00_dawn_death",
+      "current_objective": "在五位弟子之间分配首个调查线索——遗书/止观铃/青石碑/赵师叔遗物——并决定分头还是同行的初步方案",
+      "completed_milestones": 0,
+      "total_milestones": 14,
+      "design_note": "本剧本为 26 回合轻量单局，4-5 人最佳。3 人勉强但会拖，5 人正好对应五位外门弟子。",
+      "chapters": [
+        {
+          "id": "ch_00_dawn_death",
+          "title": "序章：卯时之死",
+          "subtitle": "微笑的尸体与摇晃的铃",
+          "next_chapter_id": "ch_01_weird_chapel",
+          "max_turns": 4,
+          "narrative_length_band": "compact",
+          "current_objective": "确认赵师叔死状、分配五位弟子的首个调查对象、决定是否分头行动",
+          "pacing_directive": "本章 4 回合内完成 2 个里程碑。模型不得把场景拖入寒暄、祭拜、收殓、入定调息。本章结尾必须把五位弟子各自的第一个行动分头 / 同行的决定摆上台面——分头是默认，但若有弟子主动要求同行，模型必须承接并明确该弟子所在位置。\n\n【术语首现说明（硬性）】本章是玩家首次接触本修真体系的章节。开场 opening_scene 内已自然带出白渊观、冲和堂、五位外门弟子、赵师叔、师祖、止观铃、青石碑、祸穴、祸、修真常识三候、坐忘口诀、飞升等术语；模型不得在开场后另起一节「修真常识科普」，也不得在回合正文里复读这些定义——玩家已经读过。若本章需引入「道心稳度」「神识储备」这两个资源术语（在建卡流程已出现），由叙事者/角色对话自然带过，**不**得让模型贴标签解释。",
+          "key_npcs": [
+            {
+              "ref": "npc_zhao_shishu",
+              "role": "值守老道人，今晨横死，留半卷遗书",
+              "state": {
+                "location": "冲和堂丹墀",
+                "status": "dead",
+                "stance": "跪姿合十，微笑"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_00_01_first_look",
+              "label": "队伍完成赵师叔遗容、遗书、止观铃与青石碑的初步调查（可分头累计，不要求每人重复检查）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "遗容",
+                    "遗书",
+                    "止观铃",
+                    "青石碑",
+                    "新裂纹"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_00_02_first_split",
+              "label": "决定分头 / 同行的初步方案",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "分头",
+                    "同行",
+                    "留守",
+                    "祖庭",
+                    "藏经阁",
+                    "后山"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_00_01_first_look",
+              "m_00_02_first_split"
+            ]
+          },
+          "hook_pool": [
+            "止观铃在无人触碰的情况下自行摇晃",
+            "青石碑新裂纹渗出的红水到底是什么",
+            "遗书背后的淡墨字「若见师祖回山，切勿跪拜」",
+            "修真常识「气色青白、瞳孔散光、指甲发黑」三候全部不沾赵师叔",
+            "冲真人三日未归，封印是否已被扰动"
+          ]
+        },
+        {
+          "id": "ch_01_weird_chapel",
+          "title": "第一章：荒祠夜行",
+          "subtitle": "同一面墙，三种看见",
+          "next_chapter_id": "ch_02_xinzhai_fork",
+          "max_turns": 6,
+          "narrative_length_band": "standard",
+          "current_objective": "分头调查的弟子们在东岱山各处发现各自的异常：藏经阁、后山祖庭入口、白渊观旧祠、丹房旧址——同一面墙上三人看见三样东西",
+          "pacing_directive": "本章 6 回合内完成。模型不得让任一弟子在同一地点停留超过 2 回合；若停留须主动给出新位置选项。本章必须让「同一面墙上三人看见三样东西」的事件至少出现一次，并完成「找出师祖飞升前一晚的日记残页」与「识破第一道祸影」两个里程碑。否则强制推进。\n\n【术语首现说明（硬性）】本章首次出现「祸影」一词时，必须以同位语或括注给出一句话定义：「祸影（祸在外的影子，是祸的化身——能扮你最信任的人）」，不得让玩家以为祸影只是普通的影子。本章是「气色三候」第一次被识破的章节，识破时的叙述可顺带揭示三候的诱饵本质，但不得让师祖日记残页一次解释完。",
+          "key_npcs": [
+            {
+              "ref": "npc_zhao_shishu",
+              "role": "白渊观值守老道人",
+              "state": {
+                "location": "冲和堂丹墀",
+                "status": "dead",
+                "stance": "已逝，仅留遗物"
+              }
+            },
+            {
+              "ref": "npc_shifu_ghost",
+              "role": "师祖飞升回山的幻象（试金石）",
+              "state": {
+                "location": "东岱山某处",
+                "status": "shadow",
+                "stance": "温和、微笑、得道之相"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_01_01_three_sights",
+              "label": "同一面墙三位弟子看见三样东西",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "血字",
+                    "字迹",
+                    "三样",
+                    "各看见",
+                    "不一致"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_01_02_shizu_diary",
+              "label": "找到师祖飞升前一晚的日记残页",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "日记",
+                    "残页",
+                    "飞升前",
+                    "一月前"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_01_03_first_huo_shadow",
+              "label": "识破第一道祸影（师祖幻象）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "祸影",
+                    "幻象",
+                    "师祖",
+                    "识破"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_01_01_three_sights",
+              "m_01_02_shizu_diary",
+              "m_01_03_first_huo_shadow"
+            ]
+          },
+          "hook_pool": [
+            "师祖日记残页：「斩三尸之夜，吾将自身七情之一封入止观铃」",
+            "止观铃若封有师祖的七情之一——它的摇晃可能不是在自响",
+            "修真常识「气色青白、瞳孔散光、指甲发黑」三候被人为推广还是真实",
+            "藏经阁某一卷修真常识原本被水渍浸过，水渍形状像一只摊开的掌",
+            "赵师叔的遗物中有一只从未见他戴过的玉扳指"
+          ]
+        },
+        {
+          "id": "ch_02_xinzhai_fork",
+          "title": "第二章：坐忘歧途",
+          "subtitle": "心斋深处，五种真我",
+          "next_chapter_id": "ch_03_huoxue_truth",
+          "max_turns": 6,
+          "narrative_length_band": "standard",
+          "current_objective": "为破师祖之谜，五位弟子分头入心斋——各自「看见」自己的「真我」，但每个人的真我互相矛盾；至少一人入幻",
+          "pacing_directive": "本章 6 回合内完成。模型不得让所有弟子同时入心斋——按修真常识，入心斋是孤独之功，本章必须有「谁先入」「谁留守」的抉择。每个弟子入心斋所见必须互不相同，且其中至少一人所见与现实颠倒（入幻）。本章必须完成「五人各自入心斋所见不同」与「至少一人入幻被识破」两个里程碑。否则强制推进。\n\n【术语首现说明（硬性）】本章首次出现「心斋」「入心斋」「走火入魔」三词时，必须以同位语或括注各给出一句话定义——\n「心斋（坐忘的高阶状态：闭目内观，能感应他人神识、辨真伪）」；\n「入心斋（修士进入心斋）」；\n「走火入魔（心斋中失去对真假的辨别，陷入幻象）」。这些定义必须**由四师兄/神修弟子对话或动作展开**，**不**得用旁白百科形式塞给玩家。本章每回合最多引入 1 个新术语；若实在装不下，把剩余的推迟到下章首回合。",
+          "key_npcs": [
+            {
+              "ref": "npc_shifu_ghost",
+              "role": "心斋深处的诱饵",
+              "state": {
+                "location": "各弟子心斋之内",
+                "status": "shadow",
+                "stance": "化身为弟子最信任的形象"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_02_01_five_xinzhai",
+              "label": "五位弟子各自入心斋，所见互不相同",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "心斋",
+                    "看见",
+                    "真我",
+                    "互不相同"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_02_ru_huan",
+              "label": "至少一人入幻被其余弟子识破",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "入幻",
+                    "颠倒",
+                    "识破"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_03_dao_xin_floating",
+              "label": "道心稳度首次被扣减 / 回收（视入心斋成败）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "道心",
+                    "稳度",
+                    "扣减",
+                    "恢复"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_02_01_five_xinzhai",
+              "m_02_02_ru_huan",
+              "m_02_03_dao_xin_floating"
+            ]
+          },
+          "hook_pool": [
+            "至少一人的「真我」是师祖形象——他以为自己在悟道，其实他在入幻",
+            "至少一人的「真我」是已故的双亲——修真常识说亲人不会入心斋，但他出现了",
+            "修真常识的另一条：「入心斋见已故之人即入幻」——可这条常识本身是不是也是诱饵",
+            "道心浮动者会被祸影乘虚而入",
+            "止观铃在入心斋时突然停了——这意味着什么"
+          ]
+        },
+        {
+          "id": "ch_03_huoxue_truth",
+          "title": "第三章：祸穴深处的真相",
+          "subtitle": "冲真人还活着——可你不该信",
+          "next_chapter_id": "ch_04_po_wang",
+          "max_turns": 6,
+          "narrative_length_band": "standard",
+          "current_objective": "进祖庭下祸穴寻冲真人，撞见冲真人的身影——是真人、祸影、还是师祖的幻象？辨清祸穴真形，决定封印处置",
+          "pacing_directive": "本章 6 回合内完成。模型不得让任一弟子在祸穴之内停留超过 2 回合；本章必须让「冲真人还在里面」这个事实摆上台面，并完成「辨明祸穴内冲真人的真身」与「得知师祖遗书另一半的内容」两个里程碑。否则强制推进。\n\n【术语首现说明（硬性）】本章首次出现「斩三尸」「分尸」「师祖遗书上半卷」三词时，必须以同位语或括注各给出一句话定义——\n「斩三尸（修真进阶——斩却七情中的喜、怒、哀、乐、爱、恶、欲）」；\n「分尸（修真界对『斩三尸只是把七情寄托到别处』的另一种说法）」；\n「师祖遗书上半卷（遗书前半部分，被师祖本人撕去藏匿）」。本章是「修真常识三条全部被颠覆」的章节，三条颠覆必须**逐条揭示**——一条一回合，不得一章里把所有真相一次倒给玩家。本章每回合最多引入 1 个新术语。",
+          "key_npcs": [
+            {
+              "ref": "npc_chong_zhenren",
+              "role": "冲真人，三日前入祖庭，至今未归",
+              "state": {
+                "location": "祸穴深处",
+                "status": "ambiguous",
+                "stance": "微笑，与赵师叔同款"
+              }
+            },
+            {
+              "ref": "npc_huo",
+              "role": "祸穴本体，封印之下的「斩三尸失败者」",
+              "state": {
+                "location": "祸穴最深处",
+                "status": "sealed",
+                "stance": "沉默，但能模仿任何人"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_03_01_into_huoxue",
+              "label": "弟子们进入祸穴深处",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "祸穴",
+                    "祖庭之下",
+                    "深入"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_02_chong_identity",
+              "label": "辨明祸穴内冲真人的真身（真人 / 祸影 / 师祖幻象）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "冲真人",
+                    "祸影",
+                    "师祖",
+                    "辨明",
+                    "真身"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_03_other_half",
+              "label": "得知师祖遗书另一半（被撕去的上半卷）的内容",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "上半卷",
+                    "撕去",
+                    "遗书",
+                    "完整"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_03_01_into_huoxue",
+              "m_03_02_chong_identity",
+              "m_03_03_other_half"
+            ]
+          },
+          "hook_pool": [
+            "师祖遗书另一半写着：「斩三尸不是解脱，是分尸。我把喜怒哀乐爱恶欲分寄七处——止观铃封其一」",
+            "止观铃里封的不是师祖——是师祖的「喜」",
+            "修真常识「气色青白、瞳孔散光、指甲发黑」三候——是师祖当年为了镇压祸而刻意编造的口诀",
+            "冲真人三日未归不是被祸所害，是他主动入穴封印自己斩下的「三尸」之一",
+            "祸穴内若封印崩解，需要的不是更深的封印——而是把师祖斩碎的「三尸」合一归还"
+          ]
+        },
+        {
+          "id": "ch_04_po_wang",
+          "title": "终章：破妄·斩尸·坐忘",
+          "subtitle": "修真常识的第一条，从来都是错的",
+          "max_turns": 4,
+          "narrative_length_band": "epilogue",
+          "current_objective": "在祖庭之中，五位弟子完成最终处置——破修真常识的妄，识破祸的真身，让师祖与冲真人得安，让山门重归",
+          "pacing_directive": "本章 4 回合内完成。模型不得逃避最终表决。终章叙事（mode=resolve 正文）必须把三部分收尾内容写清楚：①关键人物（师祖、冲真人、赵师叔、五位弟子）的最终去向；②修真常识三条的真实面貌（气色三候、斩三尸、心斋入幻）；③山门与祸穴的最终结局。不得只写「后续待定」就结束。若玩家表决处置，必须呈现真实代价（封印碎、止观铃毁、某弟子走火入魔），不得「完美大结局」。否则强制推进。\n\n【术语首现说明（硬性）】终章若首次出现任何新术语，必须以括注同位语定义；本章是收束，不再堆新概念，主要任务是回收 ch_03 已揭示的常识颠覆。",
+          "key_npcs": [
+            {
+              "ref": "npc_chong_zhenren",
+              "role": "冲真人，最终归宿",
+              "state": {
+                "location": "祸穴深处",
+                "status": "ambiguous",
+                "stance": "待弟子裁决"
+              }
+            },
+            {
+              "ref": "npc_shifu_ghost",
+              "role": "师祖飞升真身（实为斩尸失败而被分寄七处）",
+              "state": {
+                "location": "止观铃 / 祸穴 / 五处未知",
+                "status": "fragmented",
+                "stance": "等待合一"
+              }
+            },
+            {
+              "ref": "npc_huo",
+              "role": "祸穴本体——师祖斩下的「三尸」之一",
+              "state": {
+                "location": "祸穴最深处",
+                "status": "to_be_resolved",
+                "stance": "等待合一"
+              }
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_04_01_xieyi_revealed",
+              "label": "修真常识三条的真相全部揭示",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "修真常识",
+                    "三候",
+                    "斩三尸",
+                    "心斋入幻"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_04_02_disposition",
+              "label": "五位弟子就祸穴与师祖碎片作出最终处置",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "处置",
+                    "合一",
+                    "封印",
+                    "安息",
+                    "裁决"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_04_03_dao_heart",
+              "label": "道心稳度最终回收 / 五位弟子各自归处",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "归处",
+                    "稳度",
+                    "终局"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_04_01_xieyi_revealed",
+              "m_04_02_disposition",
+              "m_04_03_dao_heart"
+            ]
+          },
+          "hook_pool": [
+            "师祖遗书上卷：「斩三尸不是解脱，是分尸。我把喜怒哀乐爱恶欲分寄七处」",
+            "止观铃里封的「喜」——若合一，是否会让师祖复活",
+            "祸穴之下的祸不是师祖——是师祖斩下的「三尸」之一",
+            "修真常识三候是师祖亲手编造的诱饵（让弟子的常识成为祸的剧本）",
+            "赵师叔之死的真因：他是师祖七情之一的「哀」之宿主，被召回",
+            "山门之后，五位弟子的修真路怎么走——他们还会信修真常识吗"
+          ]
+        }
+      ]
+    },
+    "narrator_name": "叙事者"
+  },
+  "initial_state": {
+    "location": "东岱山·白渊观·冲和堂",
+    "time": "今晨卯时初刻（约 5 点），赵师叔横死后一刻",
+    "scene_summary": "五位刚晋外门的小修士在冲和堂发现赵师叔跪姿合十面带微笑的尸体、半卷师祖遗书、止观铃自行摇晃、青石碑新裂纹渗红水。师祖一月前已飞升；冲真人三日前入祖庭至今未归。",
+    "weather": "东岱山常年云雾，今晨有薄雾未散；山中清寒，香烛难燃",
+    "progress": {
+      "chapter": "序章：卯时之死",
+      "current_chapter_id": "ch_00_dawn_death",
+      "current_objective": "确认赵师叔死状、分配五位弟子的首个调查对象、决定是否分头行动",
+      "completed_milestones": 0,
+      "total_milestones": 14
+    },
+    "facts": [
+      "赵师叔今晨卯时横死于冲和堂丹墀，跪姿合十，面带微笑",
+      "修真常识「气色青白、瞳孔散光、指甲发黑」三候——赵师叔一样都不沾",
+      "师祖一月前已飞升，冲真人三日前入祖庭至今未归",
+      "师祖遗书只剩半卷，下半卷十二行坐忘口诀 + 一行「吾已斩却三尸，得大解脱，尔等勿悲。祸将至。」",
+      "遗书背面有淡墨小字：「若见师祖回山，切勿跪拜」",
+      "止观铃（师祖飞升前法器）在无人触碰时自行摇晃",
+      "青石碑（封印咒文碑）新裂纹渗出极淡红水",
+      "白渊观仅五位刚晋外门弟子在场：大师兄、二师兄、三师姐、四师兄、小师弟（小师妹）",
+      "祸穴在祖庭之下，师祖守了一生；师祖飞升前仍留半卷遗书，警示弟子祸将至"
+    ],
+    "relationships": {
+      "赵师叔": "值守长辈，今晨横死，留半卷遗书",
+      "师祖": "飞升已久（一月前），止观铃为其法器；遗书背面的淡墨字疑似其补",
+      "冲真人（师父）": "三日前入祖庭观礼封印，至今未归；弟子们信任他",
+      "祸穴": "未接触，祖庭之下封印的绝地，封着什么弟子不知道",
+      "止观铃": "师祖法器，今晨自行摇晃——这是修真常识中从未记载的现象"
+    },
+    "inventory": [
+      {
+        "item": "师祖遗书（半卷）",
+        "qty": 1,
+        "owner_ref": "party"
+      },
+      {
+        "item": "止观铃（师祖法器，悬于师祖画像前）",
+        "qty": 1,
+        "owner_ref": "冲和堂"
+      },
+      {
+        "item": "青石碑（封印咒文碑，殿中）",
+        "qty": 1,
+        "owner_ref": "冲和堂"
+      },
+      {
+        "item": "外门弟子令牌（五人各一）",
+        "qty": 5,
+        "owner_ref": "party"
+      },
+      {
+        "item": "符纸 / 符墨 / 符笔",
+        "qty": 6,
+        "owner_ref": "party"
+      },
+      {
+        "item": "辟谷丹 / 醒神丸",
+        "qty": 4,
+        "owner_ref": "party"
+      },
+      {
+        "item": "弟子的随身剑 / 戒尺 / 药囊（按专修自备）",
+        "qty": 5,
+        "owner_ref": "party"
+      }
+    ]
+  },
+  "world_schema_version": 5,
+  "world_content_version": "1.0.0",
+  "minimum_plugin_version": "v0.12.0",
+  "capabilities": {
+    "definitions": [
+      {
+        "capability_id": "xiuzhen.outer_disciples",
+        "label": "白渊观外门弟子基本修真功",
+        "capability_type_ref": "capability_type:profession_signature",
+        "description": "刚晋外门的五位弟子具备修真入门功、师门传承剑诀/符箓/丹道/心斋/杂学的初步功底，可完成入心斋、读符、画符、施法、识药与基本战斗。",
+        "tags": [
+          "xiuzhen",
+          "disciple"
+        ],
+        "grant_policy": "ignore",
+        "effects": [
+          {
+            "op": "add_narrative_constraint",
+            "value": "弟子们具备各自专修的初步功底，可单独完成入门修真功课；高阶祸影与祸穴本体需要群体协作。"
+          }
+        ]
+      }
+    ],
+    "initial_grants": [
+      {
+        "capability_ref": "xiuzhen.outer_disciples",
+        "scope": "character",
+        "available": true
+      }
+    ],
+    "transitions": []
+  },
+  "protocol": {
+    "core_version": 5,
+    "features": {
+      "entity_registry": "1.0",
+      "condition_engine": "1.0",
+      "operation_engine": "1.0",
+      "event_pipeline": "1.0",
+      "resolution_receipt": "1.0",
+      "capabilities": "1.0",
+      "resources": "1.0",
+      "chat_experience": "1.0"
+    }
+  },
+  "required_features": [
+    "entity_registry@>=1.0",
+    "operation_engine@>=1.0",
+    "chat_experience@>=1.0"
+  ]
+}

@@ -1,0 +1,312 @@
+[
+ {
+  "slug": "npc_chen_mo",
+  "name": "陈默",
+  "role": "npc",
+  "profile": {
+   "identity": "《城市周刊》资深调查记者，失踪者，核心目标",
+   "appearance": "四十岁上下的男人，常年穿一件洗褪色的深蓝夹克，包不离身。声音沙哑，习惯先沉默半拍再开口。",
+   "personality": "谨慎、固执、对熟人近乎刻薄地保护。他不相信任何人能完全保护自己，所以把证据拆成三份藏起来。",
+   "public_background": "入行十八年，调查过三起城市治理丑闻，两次被约谈。三周前开始频繁出入城中村与滨江 CBD，向妹妹陈楠含糊提过「在查一个大东西」。",
+   "faction": "《城市周刊》",
+   "location": "北郊旧冷库（被关押），出场在 ch_03",
+   "known_facts": [
+    "持有沉默者名单后门日志的加密U盘",
+    "把第一段证据托付给了老周",
+    "知道名单最后一页包含大量普通市民"
+   ],
+   "misunderstandings": [
+    "误以为他把所有证据都给了调查组"
+   ],
+   "relationship_stance": "信任深度调查组的旧同事，但坚持按自己的方式保护线人。",
+   "capabilities": [
+    "十八年调查经验",
+    "稳定的地下线人网络",
+    "对媒体发布窗口极其敏感"
+   ],
+   "limitations": [
+    "正被关押，身体虚弱",
+    "部分证据只有他能解密",
+    "不愿连累老周"
+   ],
+   "actor_complexity": "full",
+   "capability_refs": [
+    "capability:newsroom.investigative"
+   ],
+   "resource_refs": [
+    "resource:evidence_chain"
+   ],
+   "runtime_effect_refs": [],
+   "object_refs": [],
+   "custom_tags": [
+    "faction.城市周刊",
+    "core"
+   ]
+  },
+  "prompt": "陈默在 ch_03 之前不会直接与玩家对话。他的留言与加密方式在序章/第一章被解读；他获救后只回答与名单相关的问题，对私藏的第二份证据守口如瓶，直到玩家主动逼问或信任到位。",
+  "sort_order": 0
+ },
+ {
+  "slug": "npc_chen_nan",
+  "name": "陈楠",
+  "role": "npc",
+  "profile": {
+   "identity": "市一院急诊科护士，陈默的妹妹",
+   "appearance": "三十岁上下，扎马尾，护士服外总披一件旧羽绒服。眼下有明显的青黑，说话快、带哭腔但努力克制。",
+   "personality": "急性子，护短，对哥哥的调查既骄傲又害怕。她是玩家最可靠的情绪锚点，但知道的都是表面信息。",
+   "public_background": "陈默失联当晚 22:03 收到他一条语音，只有一句「帮我把箱子给深度调查组」。她等了两天，今天才鼓起勇气寄出。",
+   "faction": "市一院",
+   "location": "市一院 / 城市周刊编辑部",
+   "known_facts": [
+    "陈默失联前最后通话内容",
+    "陈默三周来的反常行程",
+    "哥哥的备份钥匙存在银行保险柜"
+   ],
+   "misunderstandings": [
+    "以为哥哥只是被临时控制，不知他已被关押"
+   ],
+   "relationship_stance": "完全信任调查组，愿意跑腿但容易被情绪左右。",
+   "capabilities": [
+    "医院急诊资源",
+    "对哥哥习惯的了解"
+   ],
+   "limitations": [
+    "不是调查人员",
+    "情绪化",
+    "会被人盯上（魏彪可能跟踪她）"
+   ],
+   "actor_complexity": "standard",
+   "capability_refs": [],
+   "resource_refs": [],
+   "runtime_effect_refs": [],
+   "object_refs": [],
+   "custom_tags": [
+    "faction.市一院",
+    "reliable"
+   ]
+  },
+  "prompt": "陈楠每次出场都带有新电话/新消息，但不主动调查。如果玩家让她去危险的地方，她会犹豫并可能给调查组添乱。她在终章的表态会影响证据去向的投票结果。",
+  "sort_order": 1
+ },
+ {
+  "slug": "npc_lao_zhou",
+  "name": "老周",
+  "role": "npc",
+  "profile": {
+   "identity": "城中村「周记复印店」老板，陈默的地下联系人，前调查记者",
+   "appearance": "六十岁开外，头发花白，戴老花镜，身上永远有油墨和樟脑味。说话慢，爱用反问句。",
+   "personality": "谨慎到近乎多疑。他见过太多人被摄像头「请」出城市，所以只收现金、只走盲区、只信熟人引荐。",
+   "public_background": "十年前因报道被撤，转行开复印店，顺手帮记者存过档案。手里有陈默托付的第一段证据与一台旧手机。",
+   "faction": "无（城中村独立户）",
+   "location": "滨江城中村 12 巷·周记复印店",
+   "known_facts": [
+    "陈默托付的加密U盘",
+    "陈默的旧手机",
+    "补盲工程表",
+    "被清名单的单亲妈妈的联系方式"
+   ],
+   "misunderstandings": [
+    "以为调查组是云溯派来的试探者，需先取得信任"
+   ],
+   "relationship_stance": "只对「够格」的人交底；玩家证明自己可信后全盘托出。",
+   "capabilities": [
+    "城中村盲区地图",
+    "旧档案网络",
+    "低调的伪造与反侦察经验"
+   ],
+   "limitations": [
+    "年纪大，体力差",
+    "一旦曝光复印店就废了",
+    "名单最后一页里有他，影响他的决心"
+   ],
+   "actor_complexity": "full",
+   "capability_refs": [],
+   "resource_refs": [
+    "resource:evidence_chain"
+   ],
+   "runtime_effect_refs": [],
+   "object_refs": [],
+   "custom_tags": [
+    "faction.城中村",
+    "reliable"
+   ]
+  },
+  "prompt": "老周第一章出场，只把U盘交给被证明「够格」的玩家。若玩家处理不当（强行搜查、暴露复印店），他会拒绝合作并销毁部分线索。名单最后一页有他，这一事实在 ch_02 后逐渐影响他的态度。",
+  "sort_order": 2
+ },
+ {
+  "slug": "npc_lin_chuan",
+  "name": "林川",
+  "role": "npc",
+  "profile": {
+   "identity": "云溯科技数据中心数据分析师，陈默大学同学",
+   "appearance": "三十岁出头，程序员标配卫衣加双肩包，眼底有长期缺觉的红血丝，说话时反复捏手指。",
+   "personality": "聪明、怕事、自保本能强。他想做对的事，但更怕失去儿子。",
+   "public_background": "两个月前发现沉默者名单，把第一批证据匿名转给老同学陈默。上周被魏彪查到来历，魏彪用他儿子沐沐的住院数据（在名单上）要挟他配合。",
+   "faction": "云溯科技",
+   "location": "云溯科技数据中心",
+   "known_facts": [
+    "沉默者名单后端路径",
+    "机房白名单门禁逻辑",
+    "陈默曾凌晨 3 点潜入过",
+    "沐沐在名单上"
+   ],
+   "misunderstandings": [
+    "以为陈默已把全部证据交给调查组，自己只是传声筒"
+   ],
+   "relationship_stance": "摇摆：既怕被云溯处理，又想借调查组之力救儿子。玩家对他的处置方式决定他在 ch_03 是否冒险合作。",
+   "capabilities": [
+    "机房内部路径与门禁卡",
+    "数据平台日志分析",
+    "对云溯内部网络的了解"
+   ],
+   "limitations": [
+    "被魏彪盯死",
+    "不敢明着反水",
+    "儿子的住院数据是筹码"
+   ],
+   "actor_complexity": "full",
+   "capability_refs": [],
+   "resource_refs": [],
+   "runtime_effect_refs": [],
+   "object_refs": [],
+   "custom_tags": [
+    "faction.云溯",
+    "compromised"
+   ]
+  },
+  "prompt": "林川是 ch_02 的核心内应。玩家选择「信任/胁迫/绕开」会决定他在 ch_03 仓库营救中提供多少帮助（信任→提供货梯钥匙；胁迫→消极配合；绕开→可能被魏彪利用）。他的结局取决于终章表决。",
+  "sort_order": 3
+ },
+ {
+  "slug": "npc_su_jie",
+  "name": "苏望舒（苏姐）",
+  "role": "npc",
+  "profile": {
+   "identity": "云溯科技公关总监",
+   "appearance": "四十五岁上下，裁剪利落的套装，说话永远带着恰到好处的微笑。手腕上一只旧表，和一身行头不太相称。",
+   "personality": "职业化的体面与实用主义。她不是恶人，她相信「智慧城市」给临江带来的是实打实的升级与就业，名单只是「技术上不得不做的取舍」。",
+   "public_background": "从市政宣传系统空降到云溯，见过太多项目因舆论死于半途。她最擅长把丑闻谈成和解，把对手谈成合作方。",
+   "faction": "云溯科技",
+   "location": "滨江 CBD 双子楼 / 电话",
+   "known_facts": [
+    "沉默者名单的存在与功能",
+    "陈默被关在北郊旧冷库",
+    "董事会给她的 72 小时期限",
+    "她可以安排陈默安全获释"
+   ],
+   "misunderstandings": [
+    "以为调查组只要陈默活着就愿意闭嘴"
+   ],
+   "relationship_stance": "把玩家当可谈判对象而非敌人。她给的不是威胁，是「双方都能保住面子的方案」——这比威胁更难拒绝。",
+   "capabilities": [
+    "公关与法务资源",
+    "董事会授权",
+    "地方关系网"
+   ],
+   "limitations": [
+    "她的方案要掩盖名单",
+    "对技术细节无知",
+    "被董事会和市政双重压着"
+   ],
+   "actor_complexity": "full",
+   "capability_refs": [],
+   "resource_refs": [],
+   "runtime_effect_refs": [],
+   "object_refs": [],
+   "custom_tags": [
+    "faction.云溯",
+    "antagonist-with-reason"
+   ]
+  },
+  "prompt": "苏姐 ch_02 中段首次联系玩家，ch_03 提出「用U盘换陈默」的交易并要求当晚签约。她不威胁玩家的命，威胁的是「陈默的死」与「名单永远消失」。她的真实底线是让名单不被公开，其他都可谈。",
+  "sort_order": 4
+ },
+ {
+  "slug": "npc_tan_dui",
+  "name": "谭振（谭队）",
+  "role": "npc",
+  "profile": {
+   "identity": "临江市刑侦支队队长",
+   "appearance": "五十岁左右，警服笔挺但袖口磨得发白。眼神是常年办案练出来的，看谁都想多盯两眼。",
+   "personality": "正直但守规则。他清楚陈默案被撤不合理，但更清楚「越线」的代价——前一个越线的同事已经被调去看仓库了。",
+   "public_background": "接手陈默失踪案第三天被要求结案，定性「疑似离家出走」。他没有失声，也没有硬顶，把卷宗复印件悄悄留了一份。",
+   "faction": "临江市公安局",
+   "location": "刑侦支队",
+   "known_facts": [
+    "陈默失踪案被撤的经过",
+    "涉案的接警记录",
+    "他可以启动内部线索，但证据必须移交归公"
+   ],
+   "misunderstandings": [
+    "以为调查组只是家属的朋友，不清楚他们掌握的量级"
+   ],
+   "relationship_stance": "愿意接证据，但走的是「体制内举报」路径：证据移交后按程序处理，大概率被封存，他也保不住。这是给玩家的一个「安全但无解」的出口。",
+   "capabilities": [
+    "执法权限与体制渠道",
+    "办案经验",
+    "愿意在自己的权限边缘走一步"
+   ],
+   "limitations": [
+    "无法对抗体制性撤案",
+    "证据移交=证据被封存",
+    "不能参与玩家私下行动"
+   ],
+   "actor_complexity": "full",
+   "capability_refs": [],
+   "resource_refs": [],
+   "runtime_effect_refs": [],
+   "object_refs": [],
+   "custom_tags": [
+    "faction.公安",
+    "costly-channel"
+   ]
+  },
+  "prompt": "谭队不会帮玩家硬来。他只在玩家证据足够正式、走「举报/报案」路径时接手；接手后按章办事，能否真正立案取决于终章表决与玩家后续动作。他是「体制内安全出口」的化身，不是救星。",
+  "sort_order": 5
+ },
+ {
+  "slug": "npc_wei_biao",
+  "name": "魏彪",
+  "role": "npc",
+  "profile": {
+   "identity": "云溯科技安保部主管",
+   "appearance": "四十岁出头，壮实，短寸头，穿黑夹克，别着对讲机。说话简短，习惯先打量人再决定是否开口。",
+   "personality": "职业打手式的克制与高效。他听命办事，对名单本身没有立场，只对「别让事态失控」负责。",
+   "public_background": "退役后入行安保，服务过云溯六年，深谙摄像头布局与「体面收场」的手法。他的威慑来自存在本身，而非暴力。",
+   "faction": "云溯科技",
+   "location": "盯梢车队 / 数据中心 / 北郊旧冷库",
+   "known_facts": [
+    "调查组已介入",
+    "陈默的关押位置",
+    "苏姐的交易预案",
+    "仓库低洼处暴雨的风险"
+   ],
+   "misunderstandings": [
+    "以为调查组只是家属朋友或散兵游勇，低估了他们的取证能力"
+   ],
+   "relationship_stance": "以威胁和看押为主，除非苏姐明确指示，否则不会主动伤人；但他会毫不犹豫地「体面收场」——断电、收手机、带走关键物证。",
+   "capabilities": [
+    "安保团队与器械（防暴装备、电击枪）",
+    "监控布局知识",
+    "物理威慑"
+   ],
+   "limitations": [
+    "对技术细节无知",
+    "不敢违背苏姐的指令",
+    "暴雨来临时也得先保命"
+   ],
+   "actor_complexity": "standard",
+   "capability_refs": [],
+   "resource_refs": [],
+   "runtime_effect_refs": [],
+   "object_refs": [],
+   "custom_tags": [
+    "faction.云溯",
+    "enforcer"
+   ]
+  },
+  "prompt": "魏彪是物理威胁的具象：盯梢（ch_01）、机房安保（ch_02）、仓库看守（ch_03）。他不主动杀伐，但玩家若强闯而检定失败，被他「收场」是核心代价。暴雨红色预警下，他的优先度是保命而非看人。",
+  "sort_order": 6
+ }
+]

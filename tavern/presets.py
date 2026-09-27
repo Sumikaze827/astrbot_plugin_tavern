@@ -23,13 +23,6 @@ SELECTION_MODES = {
 }
 
 
-class PresetLibraryContractError(ValueError):
-    def __init__(self, code: str, message: str, path: str) -> None:
-        super().__init__(message)
-        self.code = code
-        self.path = path
-
-
 def _sequence(value: Any) -> list[Any]:
     if isinstance(value, Sequence) and not isinstance(value, (str, bytes)):
         return list(value)
@@ -47,321 +40,32 @@ def _unique(values: Sequence[Any]) -> list[str]:
     return result
 
 
-def _preset_candidates(
-    card: Mapping[str, Any],
-    source: str,
-) -> list[dict[str, Any]]:
-    sets = card.get("preset_sets")
-    sets = sets if isinstance(sets, Mapping) else {}
-    raw = sets.get(source)
-    if source == "profession_presets" and not isinstance(raw, Sequence):
-        raw = card.get("profession_presets")
-    return [
-        dict(item)
-        for item in _sequence(raw)
-        if isinstance(item, Mapping)
-    ]
-
-
-def normalize_preset_libraries(
-    card: Mapping[str, Any] | None,
-    *,
-    strict: bool = False,
-) -> dict[str, Any]:
-    """Build the authoritative preset-library DTO and validate source coverage."""
-
-    card = card if isinstance(card, Mapping) else {}
-    fields = [
-        dict(item)
-        for item in _sequence(card.get("fields"))
-        if isinstance(item, Mapping)
-    ]
-    preset_sets = card.get("preset_sets")
-    preset_sets = preset_sets if isinstance(preset_sets, Mapping) else {}
-    problems: list[dict[str, Any]] = []
-    references: dict[str, list[dict[str, Any]]] = {}
-    for index, field in enumerate(fields):
-        if "preset_set" in field:
-            problems.append(
-                {
-                    "code": "actor.preset_library.legacy_source",
-                    "message": "字段仍使用已废弃的 preset_set，请改为 preset_source",
-                    "path": f"rules.actor.fields[{index}].preset_set",
-                    "severity": "error",
-                }
-            )
-        source = str(field.get("preset_source") or "").strip()
-        source_exists = source in preset_sets or (
-            source == "profession_presets"
-            and bool(_sequence(card.get("profession_presets")))
-        )
-        if source and source_exists:
-            references.setdefault(source, []).append(field)
-        elif source:
-            problems.append(
-                {
-                    "code": "actor.preset_library.source_missing",
-                    "message": f"字段引用了不存在的候选来源：{source}",
-                    "path": f"rules.actor.fields[{index}].preset_source",
-                    "severity": "error",
-                }
-            )
-
-    raw_libraries = card.get("preset_libraries")
-    raw_libraries = (
-        list(raw_libraries)
-        if isinstance(raw_libraries, Sequence)
-        and not isinstance(raw_libraries, (str, bytes))
-        else []
-    )
-    declared: dict[str, dict[str, Any]] = {}
-    for index, raw in enumerate(raw_libraries):
-        if not isinstance(raw, Mapping):
-            problems.append(
-                {
-                    "code": "actor.preset_library.invalid",
-                    "message": "preset_libraries 每项必须是对象",
-                    "path": f"rules.actor.preset_libraries[{index}]",
-                    "severity": "error",
-                }
-            )
-            continue
-        item = dict(raw)
-        library_id = str(item.get("id") or "").strip()
-        if not library_id:
-            problems.append(
-                {
-                    "code": "actor.preset_library.id_missing",
-                    "message": "预设库缺少稳定 id",
-                    "path": f"rules.actor.preset_libraries[{index}].id",
-                    "severity": "error",
-                }
-            )
-            continue
-        if library_id in declared:
-            problems.append(
-                {
-                    "code": "actor.preset_library.duplicate",
-                    "message": f"预设库重复：{library_id}",
-                    "path": f"rules.actor.preset_libraries[{index}].id",
-                    "severity": "error",
-                }
-            )
-            continue
-        declared[library_id] = item
-
-    for source in sorted(references):
-        if source not in declared:
-            problems.append(
-                {
-                    "code": "actor.preset_library.missing",
-                    "message": f"字段引用了未声明元数据的预设库：{source}",
-                    "path": "rules.actor.preset_libraries",
-                    "severity": "error",
-                }
-            )
-    for library_id in sorted(declared):
-        if not _preset_candidates(card, library_id):
-            problems.append(
-                {
-                    "code": "actor.preset_library.orphan",
-                    "message": f"预设库没有对应候选集合：{library_id}",
-                    "path": f"rules.actor.preset_libraries.{library_id}",
-                    "severity": "error",
-                }
-            )
-
-    items: list[dict[str, Any]] = []
-    for library_id, raw in declared.items():
-        fields_using = references.get(library_id, [])
-        actual_field_ids = [
-            str(field.get("key") or "").strip()
-            for field in fields_using
-            if str(field.get("key") or "").strip()
-        ]
-        declared_field_ids = _unique(
-            _sequence(raw.get("source_field_ids"))
-        )
-        unknown_declared = [
-            field_id
-            for field_id in declared_field_ids
-            if field_id not in {
-                str(field.get("key") or "").strip() for field in fields
-            }
-        ]
-        if unknown_declared:
-            problems.append(
-                {
-                    "code": "actor.preset_library.field_missing",
-                    "message": (
-                        f"预设库 {library_id} 引用了未知字段："
-                        + "、".join(unknown_declared)
-                    ),
-                    "path": (
-                        f"rules.actor.preset_libraries.{library_id}."
-                        "source_field_ids"
-                    ),
-                    "severity": "error",
-                }
-            )
-        if set(declared_field_ids) != set(actual_field_ids):
-            problems.append(
-                {
-                    "code": "actor.preset_library.field_mismatch",
-                    "message": f"预设库 {library_id} 的字段引用目录与实际字段不一致",
-                    "path": (
-                        f"rules.actor.preset_libraries.{library_id}."
-                        "source_field_ids"
-                    ),
-                    "severity": "error",
-                }
-            )
-        label = str(raw.get("label") or "").strip()
-        description = str(raw.get("description") or "").strip()
-        if not label:
-            problems.append(
-                {
-                    "code": "actor.preset_library.label_missing",
-                    "message": f"预设库 {library_id} 缺少玩家可读中文标题",
-                    "path": f"rules.actor.preset_libraries.{library_id}.label",
-                    "severity": "error",
-                }
-            )
-        if not description:
-            problems.append(
-                {
-                    "code": "actor.preset_library.description_missing",
-                    "message": f"预设库 {library_id} 缺少用途说明",
-                    "path": (
-                        f"rules.actor.preset_libraries.{library_id}.description"
-                    ),
-                    "severity": "error",
-                }
-            )
-        visibility = str(raw.get("visibility") or "public").strip()
-        private_reference = any(
-            bool(field.get("private"))
-            or str(field.get("visibility") or "").strip()
-            in {"dm", "host", "private"}
-            for field in fields_using
-        )
-        if private_reference and visibility == "public":
-            problems.append(
-                {
-                    "code": "actor.preset_library.visibility_conflict",
-                    "message": f"私密字段引用了公开预设库：{library_id}",
-                    "path": (
-                        f"rules.actor.preset_libraries.{library_id}.visibility"
-                    ),
-                    "severity": "error",
-                }
-            )
-        if not fields_using:
-            problems.append(
-                {
-                    "code": "actor.preset_library.unused",
-                    "message": f"预设库未被任何角色字段引用：{library_id}",
-                    "path": f"rules.actor.preset_libraries.{library_id}",
-                    "severity": "warning",
-                }
-            )
-        item_problems = [
-            dict(problem)
-            for problem in problems
-            if library_id in str(problem.get("path") or "")
-            or library_id in str(problem.get("message") or "")
-        ]
-        items.append(
-            {
-                **raw,
-                "id": library_id,
-                "source_module": "actor",
-                "source_field_ids": actual_field_ids,
-                "candidate_contract": (
-                    raw.get("candidate_contract")
-                    or card.get("candidate_contract")
-                    or "twp-actor-candidate/1.0.0-rc10"
-                ),
-                "candidate_count": len(
-                    _preset_candidates(card, library_id)
-                ),
-                "visibility": visibility,
-                "editable": bool(raw.get("editable", True)),
-                "metadata_source": "declared",
-                "metadata_complete": not any(
-                    problem.get("severity") == "error"
-                    for problem in item_problems
-                )
-                and bool(label and description),
-                "problems": item_problems,
-            }
-        )
-    items.sort(
-        key=lambda item: (
-            int(item.get("sort_order") or 0),
-            str(item.get("id") or ""),
-        )
-    )
-    errors = [
-        problem
-        for problem in problems
-        if problem.get("severity") == "error"
-    ]
-    if strict and errors:
-        first = errors[0]
-        raise PresetLibraryContractError(
-            str(first["code"]),
-            str(first["message"]),
-            str(first["path"]),
-        )
-    return {
-        "items": items,
-        "count": len(items),
-        "referenced_library_ids": sorted(references),
-        "metadata_complete": bool(references)
-        and not errors
-        and set(references) == set(declared),
-        "problems": problems,
-    }
-
-
 def normalize_preset_dimensions(card: Mapping[str, Any] | None) -> list[dict[str, Any]]:
     card = card if isinstance(card, Mapping) else {}
-    preset_sets = card.get("preset_sets")
-    preset_sets = preset_sets if isinstance(preset_sets, Mapping) else {}
     result: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for index, raw in enumerate(_sequence(card.get("fields"))):
+    for index, raw in enumerate(_sequence(card.get("preset_dimensions"))):
         if not isinstance(raw, Mapping):
             continue
-        source = str(raw.get("preset_source") or "").strip()
-        raw_options = preset_sets.get(source)
-        if not source or not isinstance(raw_options, Sequence) or isinstance(
-            raw_options,
-            (str, bytes),
-        ):
-            continue
-        dimension_id = str(raw.get("key") or "").strip()
+        dimension_id = str(raw.get("id") or "").strip()
         if not dimension_id or dimension_id in seen:
             continue
         seen.add(dimension_id)
-        multi = str(raw.get("type") or "") == "multi_select"
-        mode = "multiple" if multi else "single"
-        required = bool(raw.get("required", True))
-        minimum = max(
-            0,
-            int(raw.get("min_choices", 1 if required else 0) or 0),
-        )
-        maximum = max(
-            minimum,
-            int(raw.get("max_choices", minimum or 1) or minimum or 1),
-        )
-        if not multi:
-            minimum = min(minimum, 1)
+        selection = raw.get("selection")
+        selection = selection if isinstance(selection, Mapping) else {}
+        mode = str(selection.get("mode") or raw.get("mode") or "single").lower()
+        if mode not in SELECTION_MODES:
+            mode = "single"
+        default_min = 0 if not raw.get("required", True) else 1
+        minimum = max(0, int(selection.get("min", default_min) or 0))
+        default_max = 1 if mode in {"single", "conditional"} else max(1, minimum)
+        maximum = max(minimum, int(selection.get("max", default_max) or default_max))
+        if mode in {"single", "conditional", "system_assigned", "author_fixed"}:
             maximum = 1
+            minimum = min(minimum, 1)
         options: list[dict[str, Any]] = []
         option_ids: set[str] = set()
-        for option_raw in raw_options:
+        for option_raw in _sequence(raw.get("options")):
             if not isinstance(option_raw, Mapping):
                 continue
             option = deepcopy(dict(option_raw))
@@ -381,14 +85,11 @@ def normalize_preset_dimensions(card: Mapping[str, Any] | None) -> list[dict[str
                 "label": str(raw.get("label") or dimension_id).strip(),
                 "description": str(raw.get("description") or "").strip(),
                 "selection": {"mode": mode, "min": minimum, "max": maximum},
-                "required": required,
-                "allow_custom": False,
+                "required": bool(raw.get("required", minimum > 0)),
+                "allow_custom": bool(raw.get("allow_custom", False)),
                 "randomizable": bool(raw.get("randomizable", False)),
                 "player_editable": bool(raw.get("player_editable", True)),
-                "visibility": str(
-                    raw.get("visibility")
-                    or ("private" if raw.get("private") else "player")
-                ),
+                "visibility": str(raw.get("visibility") or "player"),
                 "display_order": int(raw.get("display_order", (index + 1) * 10)),
                 "page_size": max(1, min(10, int(raw.get("page_size", 5) or 5))),
                 "options": options,
@@ -399,14 +100,10 @@ def normalize_preset_dimensions(card: Mapping[str, Any] | None) -> list[dict[str
 
 def validate_preset_dimensions(card: Mapping[str, Any] | None) -> dict[str, Any]:
     card = card if isinstance(card, Mapping) else {}
+    raw_dimensions = _sequence(card.get("preset_dimensions"))
     dimensions = normalize_preset_dimensions(card)
-    declared = [
-        field
-        for field in _sequence(card.get("fields"))
-        if isinstance(field, Mapping) and field.get("preset_source")
-    ]
-    if len(dimensions) != len(declared):
-        raise ValueError("actor.fields 存在空 key、重复 key 或无效 preset_source")
+    if len(dimensions) != len(raw_dimensions):
+        raise ValueError("preset_dimensions 存在空 ID、重复 ID 或非法维度")
     known = {item["id"] for item in dimensions}
     option_count = 0
     for dimension in dimensions:
@@ -436,15 +133,8 @@ def validate_preset_selection(
     fields: Mapping[str, Any],
     *,
     require_complete: bool = False,
-    required_dimension_ids: set[str] | frozenset[str] | None = None,
 ) -> dict[str, Any]:
-    """Validate selected stable IDs against v4 requirements and conflicts.
-
-    ``required_dimension_ids`` narrows only the completeness gate.  It is used
-    by staged character creation so the opening transaction can require every
-    A-group preset without pretending that deferred B/C dimensions are already
-    due.  Existing callers that omit it retain the full-card behavior.
-    """
+    """Validate selected stable IDs against v4 requirements and conflicts."""
     dimensions = normalize_preset_dimensions(card)
     selected_snapshots = _selected_snapshots(fields)
     selected: dict[str, set[str]] = {
@@ -456,28 +146,13 @@ def validate_preset_selection(
         for key, values in selected_snapshots.items()
     }
     if require_complete:
-        required_ids = (
-            {str(item) for item in required_dimension_ids}
-            if required_dimension_ids is not None
-            else None
-        )
         for dimension in dimensions:
-            if (
-                required_ids is not None
-                and dimension["id"] not in required_ids
-            ):
-                continue
             count = len(selected.get(dimension["id"], set()))
             minimum = int(dimension["selection"]["min"])
             maximum = int(dimension["selection"]["max"])
             if not minimum <= count <= maximum:
-                expected = (
-                    f"{minimum} 项"
-                    if minimum == maximum
-                    else f"{minimum}—{maximum} 项"
-                )
                 raise ValueError(
-                    f"{dimension['label']}必须选择 {expected}"
+                    f"{dimension['label']}必须选择 {minimum}—{maximum} 项"
                 )
     for dimension_id, snapshots in selected_snapshots.items():
         for option in snapshots:
@@ -534,7 +209,7 @@ def dimension_fields(card: Mapping[str, Any] | None) -> list[dict[str, Any]]:
 def _boundary_sources(world: Mapping[str, Any]) -> tuple[Mapping[str, Any], Mapping[str, Any]]:
     rules = world.get("rules")
     rules = rules if isinstance(rules, Mapping) else {}
-    card = rules.get("actor")
+    card = rules.get("character_card")
     card = card if isinstance(card, Mapping) else {}
     return rules, card
 
@@ -683,13 +358,11 @@ def check_content_permission(
 
 __all__ = [
     "KNOWLEDGE_LEVELS",
-    "PresetLibraryContractError",
     "check_character_knowledge",
     "check_content_permission",
     "dimension_fields",
     "explain_boundary_sources",
     "normalize_preset_dimensions",
-    "normalize_preset_libraries",
     "resolve_character_presets",
     "validate_preset_dimensions",
     "validate_preset_selection",

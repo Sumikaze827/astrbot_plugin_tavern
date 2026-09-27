@@ -8,22 +8,6 @@ from dataclasses import dataclass
 from typing import Any, Mapping
 
 from .lifecycle import normalize_choices
-from .contracts.narrative_document import (
-    NarrativeDocument,
-    narrative_document_to_plain_text,
-    repair_narrative_document,
-)
-
-
-_RESOLUTION_FIELDS = frozenset(
-    {
-        "mode", "narrative_document", "check", "state_patch",
-        "item_ops", "economy_ops", "memories", "next_choices",
-        "group_decision", "return_progress", "entity_mentions",
-        "npc_ops", "clock_ops", "ledger_ops", "status_ops",
-        "fate_consequences", "assist_ops", "director_note",
-    }
-)
 
 
 def _text(value: Any, maximum: int = 1000) -> str:
@@ -37,6 +21,15 @@ def _int(value: Any, default: int, minimum: int, maximum: int) -> int:
     except (TypeError, ValueError):
         parsed = default
     return max(minimum, min(maximum, parsed))
+
+
+def _attribute_value(value: Any) -> int | None:
+    """把世界给定的基础属性值归一化为非负整数；缺失/非法时返回 None。"""
+    try:
+        parsed = int(value)
+    except (TypeError, ValueError):
+        return None
+    return max(0, min(10000, parsed))
 
 
 def extract_json_object(raw: str) -> dict[str, Any]:
@@ -68,12 +61,49 @@ def extract_json_object(raw: str) -> dict[str, Any]:
     raise ValueError("模型未返回有效 JSON 对象")
 
 
+def salvage_json_objects(raw: str) -> list[dict[str, Any]]:
+    """收集文本里所有**完整**的 JSON 对象，即使外层文档被截断。
+
+    2026-09-20 玩家反馈「当前检查点一直没触发」：里程碑裁判的输出上限只有
+    800 token，待判定里程碑一多就会被 max_tokens 截断，外层对象永远解析
+    失败，引擎静默当成「没有判定」——章节因此可以卡住几十个回合。
+    截断只毁掉最后一条；前面的条目仍然完整可解析，这里把它们抢救出来，
+    由调用方按 id 过滤后交给 ``_parse_milestone_judge``。
+    """
+    text = (raw or "").strip()
+    if text.startswith("```"):
+        lines = text.splitlines()
+        if lines and lines[0].startswith("```"):
+            lines = lines[1:]
+        if lines and lines[-1].strip() == "```":
+            lines = lines[:-1]
+        text = "\n".join(lines).strip()
+    decoder = json.JSONDecoder()
+    found: list[dict[str, Any]] = []
+    index = 0
+    length = len(text)
+    while index < length:
+        pos = text.find("{", index)
+        if pos < 0:
+            break
+        try:
+            value, end = decoder.raw_decode(text[pos:])
+        except json.JSONDecodeError:
+            index = pos + 1
+            continue
+        if isinstance(value, dict):
+            found.append(value)
+        index = pos + max(1, int(end))
+    return found
+
+
 @dataclass(frozen=True, slots=True)
 class CheckRequest:
     stat: str
     reason: str
     difficulty: int
     modifier: int
+    attribute_value: int | None = None
     risk: str = "controlled"
     check_type: str = "standard"
     advantage_sources: tuple[str, ...] = ()
@@ -83,6 +113,11 @@ class CheckRequest:
     inspiration_mode: str = ""
     participant_ids: tuple[str, ...] = ()
     opponent_modifier: int = 0
+    # 2026-08-24 八次修正：自由演绎非法 check_stat 走玩家最高属性兜底
+    # 时，stat 字段存最高属性 key（让 authoritative_modifier 查到修正），
+    # display_stat 存「通用」（让 _format_dice_result 报「【通用检定】」）。
+    # 其他路径 display_stat="" 时下游 fallback 用 stat 自身。
+    display_stat: str = ""
 
 
 @dataclass(frozen=True, slots=True)
@@ -93,6 +128,7 @@ class DiceResult:
     difficulty: int
     outcome: str
     critical: str | None
+    attribute_value: int | None = None
     rolls: tuple[int, ...] = ()
     kept: int = 0
     dice_mode: str = "standard"
@@ -121,39 +157,25 @@ class Resolution:
     npc_ops: tuple[dict[str, Any], ...]
     clock_ops: tuple[dict[str, Any], ...]
     ledger_ops: tuple[dict[str, Any], ...]
+    location_ops: tuple[dict[str, Any], ...]
     status_ops: tuple[dict[str, Any], ...]
-    fate_consequences: tuple[dict[str, Any], ...]
     assist_ops: tuple[dict[str, Any], ...]
-    entity_mentions: tuple[dict[str, str], ...]
     director_note: str
     raw: dict[str, Any]
-    narrative_document: NarrativeDocument | None = None
+    # 本轮这条行动实际由哪些玩家一起完成（participant_id）。模型按现场
+    # 背景判断：同场的例行行动把同行者一并写进来，只有行动者自己做就
+    # 只写他自己。移动还须遵守持续 travel_groups；不跳过同行者的行动轮次。
+    participants: tuple[str, ...] = ()
 
 
-def validate_resolution(
-    payload: Mapping[str, Any],
-    *,
-    narrative_mode: str = "",
-    narrative_options: Mapping[str, Any] | None = None,
-) -> Resolution:
-    unknown = sorted(str(key) for key in payload if key not in _RESOLUTION_FIELDS)
-    if unknown:
-        raise ValueError(f"模型裁定包含未知字段：{unknown[0]}")
+def validate_resolution(payload: Mapping[str, Any]) -> Resolution:
     mode = str(payload.get("mode", "resolve")).strip().lower()
     if mode not in {"resolve", "check"}:
         raise ValueError("mode 必须为 resolve 或 check")
 
-    raw_patch = payload.get("state_patch", {})
-    state_patch = (
-        dict(raw_patch) if isinstance(raw_patch, Mapping) else {}
-    )
-    document: NarrativeDocument | None = None
-    narrative = ""
+    narrative = _text(payload.get("narrative"), 6000)
     check: CheckRequest | None = None
     if mode == "check":
-        raw_document = payload.get("narrative_document")
-        if raw_document is not None and raw_document != "":
-            raise ValueError("check 模式 narrative_document 必须为 null")
         raw_check = payload.get("check")
         if not isinstance(raw_check, Mapping):
             raise ValueError("check 模式缺少检定参数")
@@ -232,25 +254,13 @@ def validate_resolution(
                 10,
             ),
         )
-    else:
-        raw_document = payload.get("narrative_document")
-        if not isinstance(raw_document, Mapping):
-            raise ValueError("resolve 模式必须包含 narrative_document")
-        expected_mode = str(narrative_mode or "").strip().lower()
-        if expected_mode and str(raw_document.get("mode") or "").lower() != expected_mode:
-            raise ValueError("NarrativeDocument.mode 与副本正文模式不一致")
-        # A raw model patch cannot establish whether a scene/time value really
-        # changed because the current world state is not available here.  The
-        # engine performs that continuity check after relationship aliases are
-        # normalized and the current state is known.  Treating mere field
-        # presence as a transition would reject an idempotent location/time
-        # patch and encourage the model to invent a transition block.
-        options = dict(narrative_options or {})
-        # Model JSON first passes the fact-preserving structural repair gate.
-        # It may normalize nullable placeholders and optional presentation
-        # metadata, but it cannot invent a dialogue speaker or alter facts.
-        document = repair_narrative_document(raw_document, **options)
-        narrative = narrative_document_to_plain_text(document)
+    elif not narrative:
+        raise ValueError("resolve 模式必须包含 narrative")
+
+    raw_patch = payload.get("state_patch", {})
+    state_patch = (
+        dict(raw_patch) if isinstance(raw_patch, Mapping) else {}
+    )
 
     memories: list[dict[str, Any]] = []
     raw_memories = payload.get("memories", [])
@@ -329,6 +339,7 @@ def validate_resolution(
             group_decision = {
                 "question": question,
                 "options": options,
+                "vote_scope": "local" if raw_group_decision.get("vote_scope") == "local" else "party",
             }
         elif question or raw_options:
             raise ValueError("集体决策必须包含问题和 2-4 个有效选项")
@@ -465,17 +476,33 @@ def validate_resolution(
             if operation not in {"create", "update", "complete", "fail", "archive"}:
                 continue
             entry_id = _text(item.get("entry_id"), 128)
+            stable_key = _text(item.get("stable_key"), 128)
             title = _text(item.get("title"), 160)
             if operation == "create" and not title:
                 continue
             if operation != "create" and not entry_id and not title:
+                continue
+            # 2026-09-20：clue 条目不再接受。
+            #
+            # 它原本是里程碑判定的输入——引擎用关键词子串匹配线索标题里的
+            # evidence_required 词（见 milestone_judge_prompt 的说明）。2026-08-23
+            # 用户要求「不要靠正则」后那条路径被删除，改用模型裁判 + 已提交正文
+            # 举证；但生成侧一直没跟着删，于是模型持续按一份作废的格式写记录：
+            # 某局 270+ 轮攒了 126 条，只有 2 条被结清，叙事循环里谁都不读它，
+            # 反而把 context_budget.ledger_items 的 8 格占满、把 completed
+            # 里程碑全部挤出上下文。
+            #
+            # 注意不能只把它从下面的白名单里拿掉：那会让它落到 `kind = "objective"`
+            # 兜底，换个名字继续写进去，所以这里显式丢弃整条操作。
+            #
+            # 已有历史行保留（续作继承仍会带它们），只是新的一局不再积攒。
+            if str(item.get("kind") or "").strip().lower() == "clue":
                 continue
             kind = str(item.get("kind") or "objective").strip().lower()
             if kind not in {
                 "main",
                 "side",
                 "objective",
-                "clue",
                 "milestone",
                 "failed",
             }:
@@ -484,6 +511,7 @@ def validate_resolution(
                 {
                     "op": operation,
                     "entry_id": entry_id,
+                    "stable_key": stable_key,
                     "kind": kind,
                     "title": title,
                     "description": _text(item.get("description"), 800),
@@ -492,6 +520,23 @@ def validate_resolution(
                         if str(item.get("visibility") or "").lower() == "host"
                         else "public"
                     ),
+                }
+            )
+
+    location_ops: list[dict[str, Any]] = []
+    raw_location_ops = payload.get("location_ops")
+    if isinstance(raw_location_ops, list):
+        for item in raw_location_ops[:16]:
+            if not isinstance(item, Mapping):
+                continue
+            target_id = _text(item.get("target_id"), 128)
+            location = _text(item.get("location"), 160)
+            if not target_id or not location:
+                continue
+            location_ops.append(
+                {
+                    "target_id": target_id,
+                    "location": location,
                 }
             )
 
@@ -523,38 +568,6 @@ def validate_resolution(
                 }
             )
 
-    fate_consequences: list[dict[str, Any]] = []
-    raw_fate_consequences = payload.get("fate_consequences")
-    if isinstance(raw_fate_consequences, list):
-        for item in raw_fate_consequences[:16]:
-            if not isinstance(item, Mapping):
-                continue
-            severity = str(item.get("severity") or "").strip().lower()
-            target_actor = _text(item.get("target_actor"), 128)
-            source = _text(item.get("source"), 160)
-            reason = _text(item.get("reason"), 500)
-            if severity not in {"serious", "lethal"}:
-                raise ValueError(
-                    "fate_consequences.severity 必须为 serious 或 lethal"
-                )
-            if not target_actor or not source or not reason:
-                raise ValueError(
-                    "结构化后果必须包含 target_actor、source 与 reason"
-                )
-            alternatives_shown = bool(item.get("alternatives_shown"))
-            if severity == "lethal" and not alternatives_shown:
-                raise ValueError("致命后果必须先向玩家展示替代方案")
-            fate_consequences.append(
-                {
-                    "severity": severity,
-                    "target_actor": target_actor,
-                    "source": source,
-                    "reason": reason,
-                    "rescue_window": bool(item.get("rescue_window")),
-                    "alternatives_shown": alternatives_shown,
-                }
-            )
-
     assist_ops: list[dict[str, Any]] = []
     raw_assist_ops = payload.get("assist_ops")
     if isinstance(raw_assist_ops, list):
@@ -579,8 +592,6 @@ def validate_resolution(
                 }
             )
 
-    from .copy.story_entities import normalize_entity_mentions
-
     return Resolution(
         mode=mode,
         narrative=narrative,
@@ -593,15 +604,14 @@ def validate_resolution(
         npc_ops=tuple(npc_ops),
         clock_ops=tuple(clock_ops),
         ledger_ops=tuple(ledger_ops),
+        location_ops=tuple(location_ops),
         status_ops=tuple(status_ops),
-        fate_consequences=tuple(fate_consequences),
         assist_ops=tuple(assist_ops),
-        entity_mentions=normalize_entity_mentions(
-            payload.get("entity_mentions")
-        ),
         director_note=_text(payload.get("director_note"), 500),
         raw=dict(payload),
-        narrative_document=document,
+        participants=tuple(
+            _list_of_text(payload.get("participants"), 32, 128)
+        ),
     )
 
 
@@ -611,25 +621,17 @@ def _outcome_for_roll(
     policy: Mapping[str, Any] | None = None,
 ) -> tuple[str, str | None]:
     policy = policy if isinstance(policy, Mapping) else {}
-    natural_20 = bool(policy.get("natural_20_critical", True))
-    natural_1 = bool(policy.get("natural_1_critical", True))
     critical_margin = _int(
         policy.get("critical_success_margin"), 10, 1, 100
     )
-    cost_floor = _int(policy.get("cost_success_min_margin"), -4, -100, -1)
     failure_floor = _int(
-        policy.get("failure_min_margin"), -9, -100, cost_floor - 1
+        policy.get("failure_min_margin"), -9, -100, -1
     )
-    if natural_20 and die == 20:
-        return "critical_success", "critical_success"
-    if natural_1 and die == 1:
-        return "critical_failure", "critical_failure"
+    # Total minus DC is authoritative, including worlds carrying legacy flags.
     if margin >= critical_margin:
         return "critical_success", None
     if margin >= 0:
         return "success", None
-    if margin >= cost_floor:
-        return "success_with_cost", None
     if margin >= failure_floor:
         return "failure", None
     return "critical_failure", None
@@ -674,6 +676,7 @@ def roll_check(
     return DiceResult(
         die=die,
         modifier=check.modifier,
+        attribute_value=check.attribute_value,
         total=total,
         difficulty=check.difficulty,
         outcome=outcome,
@@ -708,6 +711,7 @@ def roll_group_check(
             reason=check.reason,
             difficulty=check.difficulty,
             modifier=_int(actor.get("modifier"), 0, -10, 10),
+            attribute_value=_attribute_value(actor.get("attribute_value")),
             risk=check.risk,
             check_type=check.check_type,
             advantage_sources=tuple(
@@ -732,6 +736,7 @@ def roll_group_check(
                 "rolls": list(rolled.rolls),
                 "kept": rolled.kept,
                 "modifier": rolled.modifier,
+                "attribute_value": rolled.attribute_value,
                 "total": rolled.total,
                 "outcome": rolled.outcome,
             }
@@ -774,25 +779,17 @@ def roll_opposed_check(
     defender_die = secrets.randbelow(20) + 1
     defender_total = defender_die + check.opponent_modifier
     margin = attacker.total - defender_total
-    critical_margin = _int(
-        (outcome_policy or {}).get("critical_success_margin"), 10, 1, 100
-    )
-    outcome = (
-        "critical_success"
-        if margin >= critical_margin
-        else "success" if margin > 0 else "failure"
-    )
-    if attacker.die == 20 and defender_die != 20:
-        outcome = "critical_success"
-    elif attacker.die == 1 and defender_die != 1:
-        outcome = "critical_failure"
+    outcome, _ = _outcome_for_roll(attacker.die, margin, outcome_policy)
+    if margin == 0:
+        outcome = "failure"  # Opposed ties still favor the defender.
     return DiceResult(
         die=attacker.die,
         modifier=attacker.modifier,
+        attribute_value=attacker.attribute_value,
         total=attacker.total,
         difficulty=defender_total,
         outcome=outcome,
-        critical=attacker.critical,
+        critical=None,
         rolls=attacker.rolls,
         kept=attacker.kept,
         dice_mode=attacker.dice_mode,
@@ -819,58 +816,22 @@ def roll_opposed_check(
     )
 
 
-def _fact_text(value: Any) -> str:
-    """提取事实的正文文本（兼容字符串与带元数据的对象）。"""
-    if isinstance(value, Mapping):
-        return _text(
-            value.get("text")
-            or value.get("content")
-            or value.get("fact")
-            or value.get("summary")
-        )
-    return _text(value)
-
-
 def _list_of_text(value: Any, maximum_items: int, maximum_chars: int) -> list[str]:
     if not isinstance(value, list):
         return []
     result: list[str] = []
     for item in value[:maximum_items]:
-        text = _fact_text(item)[:maximum_chars]
+        text = _text(item, maximum_chars)
         if text and text not in result:
             result.append(text)
     return result
 
 
-def _append_fact(
-    facts: list[Any],
-    text: str,
-    *,
-    fact_round: int,
-    fact_time: str,
-) -> None:
-    """追加一条事实；带回合/时间元数据，仍兼容纯字符串旧事实。"""
-    entry: Any = text
-    if fact_round or fact_time:
-        entry = {"text": text, "round_no": int(fact_round or 0)}
-        if fact_time:
-            entry["time"] = str(fact_time)
-    if not any(_fact_text(item) == text for item in facts):
-        facts.append(entry)
-
-
 def apply_state_patch(
     current: Mapping[str, Any] | None,
     patch: Mapping[str, Any] | None,
-    *,
-    fact_round: int = 0,
-    fact_time: str = "",
 ) -> dict[str, Any]:
-    """Apply only explicitly allowed world-state fields.
-
-    1.0.0-A5：模型新增的事实（facts_add）会带上当前回合与游戏时间元数据，
-    供“受控世界状态 → 已知事实”展示“第 N 轮 / 时间”；旧字符串事实保持兼容。
-    """
+    """Apply only explicitly allowed world-state fields."""
 
     state: dict[str, Any] = deepcopy(dict(current or {}))
     update = dict(patch or {})
@@ -885,17 +846,41 @@ def apply_state_patch(
             if value:
                 state[key] = value
 
-    facts = list(state.get("facts")) if isinstance(state.get("facts"), list) else []
+    facts = _list_of_text(state.get("facts"), 200, 400)
     remove = set(_list_of_text(update.get("facts_remove"), 30, 400))
     if remove:
-        facts = [fact for fact in facts if _fact_text(fact) not in remove]
+        facts = [fact for fact in facts if fact not in remove]
     for fact in _list_of_text(update.get("facts_add"), 30, 400):
-        _append_fact(facts, fact, fact_round=fact_round, fact_time=fact_time)
+        if fact not in facts:
+            facts.append(fact)
     state["facts"] = facts[-200:]
 
-    # C6：玩家物品只存在于 item_instances。world_state.inventory 和
-    # state_patch.inventory_ops 均已删除，防止模型状态补丁形成第二权威。
-    state.pop("inventory", None)
+    inventory = state.get("inventory")
+    inventory = deepcopy(inventory) if isinstance(inventory, dict) else {}
+    operations = update.get("inventory_ops")
+    if isinstance(operations, list):
+        for operation in operations[:30]:
+            if not isinstance(operation, Mapping):
+                continue
+            owner = _text(operation.get("owner_id"), 128)
+            item = _text(operation.get("item"), 100)
+            if not owner or not item:
+                continue
+            delta = _int(operation.get("delta"), 0, -100, 100)
+            owner_items = inventory.get(owner)
+            owner_items = (
+                deepcopy(owner_items)
+                if isinstance(owner_items, dict)
+                else {}
+            )
+            old_value = _int(owner_items.get(item), 0, 0, 1_000_000)
+            new_value = max(0, old_value + delta)
+            if new_value:
+                owner_items[item] = new_value
+            else:
+                owner_items.pop(item, None)
+            inventory[owner] = owner_items
+    state["inventory"] = inventory
 
     relationships = state.get("relationships")
     relationships = (

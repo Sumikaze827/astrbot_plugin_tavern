@@ -1,10 +1,10 @@
 name: astrbot_plugin_tavern
-display_name: "321开团 · AI多人跑团与世界运行平台"
-desc: "面向群聊的多人与世界运行平台：私聊建卡、AI/真人主持、模块化世界、状态推进、结局与可靠归档。"
-short_desc: "多人跑团、世界运行、AI/真人主持与可靠归档。"
-help: "配置管理员 ID 后使用 /团 开启 <副本>；建卡码过期会自动补发。使用 /团 主持 开启 可接管叙事，再以 推进、直述、交棒、自动 控制流程。"
+display_name: "AI 酒馆 · 多人跑团叙事引擎"
+desc: "面向 AstrBot 全平台的纯文本多人叙事引擎：AI/真人 DM、世界协议 v5、可回放裁定、通知补偿与事务恢复。"
+short_desc: "全平台文本跑团、真人 DM、世界协议 v5 与可靠恢复。"
+help: "配置管理员 ID 后使用 /酒馆 开启 <副本>；建卡码过期会自动补发。使用 /酒馆 主持 开启 可接管叙事，再以 推进、直述、交棒、自动 控制流程。"
 author: "Ghostberry"
-version: 1.0.0-rc10
+version: 0.12.0
 repo: "https://github.com/horizoe10/astrbot_plugin_tavern"
 astrbot_version: ">=4.26,<5"
 support_platforms:

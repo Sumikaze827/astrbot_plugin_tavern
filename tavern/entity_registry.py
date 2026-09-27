@@ -6,14 +6,7 @@ from dataclasses import dataclass
 from typing import Any
 
 
-ENTITY_TYPE_RE = re.compile(r"^[a-z][a-z0-9_]{0,47}$")
-ENTITY_ID_RE = re.compile(
-    r"^[a-z0-9][a-z0-9_.-]{0,127}(?::[a-z0-9][a-z0-9_.-]{0,127}){0,3}$"
-)
-TYPED_REF_RE = re.compile(
-    r"^[a-z][a-z0-9_]{0,47}:[a-z0-9][a-z0-9_.-]{0,127}"
-    r"(?::[a-z0-9][a-z0-9_.-]{0,127}){0,3}$"
-)
+TYPED_REF_RE = re.compile(r"^[a-z][a-z0-9_]{0,47}:[a-z0-9][a-z0-9_.-]{0,127}$")
 
 ENTITY_TYPES = frozenset(
     {
@@ -34,10 +27,8 @@ def module_value(world: Mapping[str, Any], key: str, default: Any = None) -> Any
 
 
 def typed_ref(entity_type: object, entity_id: object) -> str:
-    type_text = str(entity_type or "").strip()
-    id_text = str(entity_id or "").strip()
-    value = f"{type_text}:{id_text}"
-    if not ENTITY_TYPE_RE.fullmatch(type_text) or not ENTITY_ID_RE.fullmatch(id_text):
+    value = f"{str(entity_type or '').strip()}:{str(entity_id or '').strip()}"
+    if not TYPED_REF_RE.fullmatch(value):
         raise ValueError(f"非法类型化引用：{value}")
     return value
 
@@ -109,34 +100,34 @@ class EntityRegistry:
         return []
 
     def _register_world(self) -> None:
-        compiled_index = self.world.get("entity_index")
-        if isinstance(compiled_index, Sequence) and not isinstance(
-            compiled_index, (str, bytes)
-        ):
-            for entry in compiled_index:
-                if not isinstance(entry, Mapping):
-                    continue
-                entity_type = str(entry.get("type") or "custom")
-                self._register(
-                    entity_type,
-                    {
-                        "id": str(entry.get("id") or ""),
-                        "label": str(entry.get("label") or entry.get("id") or ""),
-                        "visibility": str(entry.get("visibility") or "public"),
-                        "source": dict(entry.get("source") or {}),
-                    },
-                )
+        generic = module_value(self.world, "entity_registry", {})
+        if isinstance(generic, Mapping):
+            entries = generic.get("entities", [])
         else:
-            generic = module_value(self.world, "entity_registry", {})
-            if isinstance(generic, Mapping):
-                entries = generic.get("entities", [])
-            else:
-                entries = []
-            for entry in self._iter_definitions(entries):
-                entity_type = str(
-                    entry.get("entity_type") or entry.get("type") or "custom"
-                )
-                self._register(entity_type, entry)
+            entries = []
+        for entry in self._iter_definitions(entries):
+            entity_type = str(entry.get("entity_type") or entry.get("type") or "custom")
+            self._register(entity_type, entry)
+
+        sources = {
+            "capability": ("capabilities", ("definitions", "items")),
+            "resource": ("resources", ("definitions", "items")),
+            "runtime_effect": ("runtime_effects", ("definitions", "items")),
+            "object": ("objects", ("definitions", "items")),
+            "resolution_method": ("resolution_methods", ("methods", "definitions", "items")),
+            "action_type": ("action_types", ("definitions", "items")),
+            "capability_type": ("capability_types", ("definitions", "items")),
+        }
+        for entity_type, (module_key, containers) in sources.items():
+            raw_module = module_value(self.world, module_key, [])
+            payload = raw_module
+            if isinstance(raw_module, Mapping):
+                for container in containers:
+                    if container in raw_module:
+                        payload = raw_module[container]
+                        break
+            for definition in self._iter_definitions(payload):
+                self._register(entity_type, definition)
 
         aliases = module_value(self.world, "id_aliases", {})
         if isinstance(aliases, Mapping):
@@ -188,7 +179,6 @@ class EntityRegistry:
 
 
 __all__ = [
-    "ENTITY_ID_RE", "ENTITY_TYPE_RE", "ENTITY_TYPES", "EntityDefinition",
-    "EntityRegistry", "TYPED_REF_RE",
+    "ENTITY_TYPES", "EntityDefinition", "EntityRegistry", "TYPED_REF_RE",
     "module_value", "split_ref", "typed_ref",
 ]

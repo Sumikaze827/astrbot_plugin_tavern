@@ -30,11 +30,9 @@ from __future__ import annotations
 from collections.abc import Callable, Mapping
 from typing import Any
 
-ELEMENTAL_CONTRACT_VERSION = "1.0.0-rc10"
+ELEMENTAL_CONTRACT_VERSION = "1.0"
 MAX_ELEMENTS = 64
 MAX_REACTIONS = 512
-MAX_INTERACTIONS = 512
-MAX_EXPOSURE_LAYERS = 5
 AFFINITY_MIN = -2.0
 AFFINITY_MAX = 2.0
 
@@ -95,34 +93,6 @@ def parse(world: Mapping[str, Any] | None) -> dict[str, Any]:
         )
     if len(reactions) > MAX_REACTIONS:
         reactions = reactions[:MAX_REACTIONS]
-    interactions: list[dict[str, Any]] = []
-    for item in raw.get("interactions", []) or []:
-        if not isinstance(item, Mapping):
-            continue
-        source = str(item.get("source_element") or "").strip()
-        target_selector = str(item.get("target_selector") or "").strip()
-        relation_type = str(item.get("relation_type") or "").strip()
-        if not source or not target_selector or not relation_type:
-            continue
-        interactions.append(
-            {
-                "id": str(item.get("id") or "").strip(),
-                "source_element": source,
-                "target_selector": target_selector,
-                "relation_type": relation_type,
-                "conditions": list(item.get("conditions") or []),
-                "priority": int(item.get("priority") or 0),
-                "operations": list(item.get("operations") or []),
-                "costs": list(item.get("costs") or []),
-                "public_copy": str(item.get("public_copy") or "").strip(),
-                "host_copy": str(item.get("host_copy") or "").strip(),
-                "visibility": str(item.get("visibility") or "public"),
-            }
-        )
-    interactions = sorted(
-        interactions[:MAX_INTERACTIONS],
-        key=lambda item: (-int(item["priority"]), str(item["id"])),
-    )
     if len(elements) > MAX_ELEMENTS:
         elements = elements[:MAX_ELEMENTS]
 
@@ -131,14 +101,6 @@ def parse(world: Mapping[str, Any] | None) -> dict[str, Any]:
         "elements": elements,
         "affinities": affinities,
         "reactions": reactions,
-        "interactions": interactions,
-        "exposure": {
-            "max_layers": min(
-                MAX_EXPOSURE_LAYERS,
-                max(1, int((raw.get("exposure") or {}).get("max_layers") or MAX_EXPOSURE_LAYERS)),
-            ),
-            "decay": str((raw.get("exposure") or {}).get("decay") or "scene_end"),
-        },
         "resolver": str(raw.get("resolver") or "").strip(),
         "raw": dict(raw),
     }
@@ -173,23 +135,6 @@ def _find_reaction(
         if pair == {source, target_element}:
             return item
     return None
-
-
-def _find_interaction(
-    table: Mapping[str, Any],
-    source: str,
-    target_ref: str,
-    target_element: str | None,
-) -> dict[str, Any] | None:
-    candidates = []
-    target_tokens = {target_ref, str(target_element or "")}
-    for item in table.get("interactions", []) or []:
-        if str(item.get("source_element") or "") != source:
-            continue
-        selector = str(item.get("target_selector") or "")
-        if selector in target_tokens or selector == "*" or selector in target_ref:
-            candidates.append(item)
-    return candidates[0] if candidates else None
 
 
 def _normalize_custom(
@@ -249,8 +194,7 @@ def resolve(
 
     aff = affinity(table, target_ref, source)
     reaction = _find_reaction(table, source, target_element) if target_element else None
-    interaction = _find_interaction(table, source, target_ref, target_element)
-    if aff == 0 and reaction is None and interaction is None:
+    if aff == 0 and reaction is None:
         return None
 
     return {
@@ -260,29 +204,7 @@ def resolve(
         "target_element": target_element or "",
         "affinity": aff,
         "reaction": reaction,
-        "interaction": interaction,
-        "effects": [
-            *(([reaction.get("effect")] if reaction and reaction.get("effect") else [])),
-            *((interaction or {}).get("operations") or []),
-        ],
-        "costs": list((interaction or {}).get("costs") or []),
-        "settlement_order": [
-            "permission",
-            "scene_environment",
-            "base_operation",
-            "reaction",
-            "directional_interaction",
-            "affinity",
-            "safety_and_consent",
-            "exposure_commit",
-            "receipt",
-        ],
-        "receipt": {
-            "schema": "tavern-elemental-resolution/1.0.0-rc10",
-            "matched_reaction": str((reaction or {}).get("id") or (reaction or {}).get("result") or ""),
-            "matched_interaction": str((interaction or {}).get("id") or ""),
-            "public_copy": str((interaction or {}).get("public_copy") or ""),
-        },
+        "effects": (reaction or {}).get("effect") or [],
         "resolver": str(table.get("resolver") or "table") or "table",
     }
 
@@ -363,23 +285,6 @@ def validate(world: Mapping[str, Any] | None) -> list[dict[str, Any]]:
                 "message": f"反应表超过 {MAX_REACTIONS} 条，超出的将被忽略",
             }
         )
-    seen_interactions: set[str] = set()
-    priority_keys: set[tuple[str, str, int]] = set()
-    for index, item in enumerate(raw.get("interactions") or []):
-        if not isinstance(item, Mapping):
-            issues.append({"level": "error", "path": f"elemental.interactions[{index}]", "code": "elemental.interaction.not_object", "message": "方向性交互必须是对象"})
-            continue
-        item_id = str(item.get("id") or "").strip()
-        if not item_id or item_id in seen_interactions:
-            issues.append({"level": "error", "path": f"elemental.interactions[{index}].id", "code": "elemental.interaction.duplicate_id", "message": "方向性交互 ID 缺失或重复"})
-        seen_interactions.add(item_id)
-        source = str(item.get("source_element") or "")
-        if known and source not in known:
-            issues.append({"level": "error", "path": f"elemental.interactions[{index}].source_element", "code": "elemental.unknown_element", "message": f"方向性交互引用未声明元素：{source}"})
-        conflict_key = (source, str(item.get("target_selector") or ""), int(item.get("priority") or 0))
-        if conflict_key in priority_keys:
-            issues.append({"level": "error", "path": f"elemental.interactions[{index}].priority", "code": "elemental.interaction.priority_conflict", "message": "同一目标存在同优先级的非唯一交互"})
-        priority_keys.add(conflict_key)
     return issues
 
 
@@ -391,8 +296,6 @@ def table(world: Mapping[str, Any] | None) -> dict[str, Any]:
         "elements": parsed["elements"],
         "affinities": parsed["affinities"],
         "reactions": parsed["reactions"],
-        "interactions": parsed["interactions"],
-        "exposure": parsed["exposure"],
         "resolver": parsed["resolver"],
         "issues": validate(world),
     }

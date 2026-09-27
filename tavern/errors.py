@@ -1,4 +1,4 @@
-"""统一错误分类与失败上报助手（v1.0-A2）。
+"""统一错误分类与失败上报助手（v0.12.0）。
 
 背景（对应规划 F2）：历史上「空 message_id 误判发送成功」「定时器轮询异常被静默
 吞掉」等问题，根源在于关键路径缺少统一的失败语义：哪些是预期内可恢复的瞬时错误、
@@ -42,12 +42,13 @@ __all__ = [
     "EconomyDisabledError",
     "InsufficientFundsError",
     "EconomyConflictError",
+    "provider_failure_is_permanent",
     "report_failure",
 ]
 
 
 class TavernError(Exception):
-    """321开团插件错误基类。"""
+    """AI 酒馆插件错误基类。"""
 
 
 class TransientError(TavernError):
@@ -81,6 +82,45 @@ class InsufficientFundsError(PolicyRejection):
 
 class EconomyConflictError(DataIntegrityError):
     """经济操作冲突（重复 operation_id 与既有结果不一致等）。"""
+
+
+# 服务商配置类失败的标记（2026-09-20）。这些失败说明「这个 provider_id /
+# 模型 ID / 密钥」在当前服务商上根本不可用，重试同一个 provider_id 永远不会
+# 成功，与网络抖动、限流、超时这类瞬时故障必须区分对待。
+#
+# 触发场景：火山方舟的 Coding Plan 端点只服务加入编码计划的模型，配置了
+# ``huoshan/deepseek-v4-1-flash-260910`` 会稳定返回
+# ``404 UnsupportedModel: The requested model does not support the coding
+# plan feature``。旧实现把它记成普通失败，每 5→10→20→40 分钟熔断到期就再打
+# 一次，线上连续 20 次失败、0 次成功。
+_PROVIDER_CONFIG_ERROR_MARKERS = (
+    "notfounderror",
+    "unsupportedmodel",
+    "does not support",
+    "model not found",
+    "model does not exist",
+    "invalid model",
+    "unknown model",
+    "authenticationerror",
+    "permissiondeniederror",
+    "invalid_api_key",
+    "invalid api key",
+    "incorrect api key",
+    "no permission",
+)
+
+
+def provider_failure_is_permanent(reason: str) -> bool:
+    """失败原因是否属于「换模型/换密钥才能解决」的配置类错误。
+
+    只接受原因字符串（熔断器拿到的就是归一化后的文本），因此按标记匹配。
+    判定为 True 时调用方应把服务商标记为 ``invalid``（长熔断），而不是按
+    瞬时故障做指数退避重试。
+    """
+    text = str(reason or "").casefold()
+    if not text:
+        return False
+    return any(marker in text for marker in _PROVIDER_CONFIG_ERROR_MARKERS)
 
 
 def _classify(exc: BaseException) -> tuple[str, int]:
@@ -126,7 +166,7 @@ def report_failure(
     details = "".join(
         f" {key}={value}" for key, value in (context or {}).items()
     )
-    message = f"321开团 {stage}.{operation} 失败（{category}）"
+    message = f"AI 酒馆 {stage}.{operation} 失败（{category}）"
     if details:
         message += f" [{details.strip()}]"
     if level == logging.INFO:

@@ -50,31 +50,22 @@ class TavernPublicAPI:
         session_id: str,
         name: str,
         actor_id: str,
-        *,
-        replace: bool,
-        expected_revision: int,
-        idempotency_key: str,
-        expected_snapshot_revision: int | None = None,
     ) -> dict[str, Any]:
         return await self._database.create_snapshot(
             session_id,
             name,
             actor_id,
-            replace=replace,
-            expected_revision=expected_revision,
-            idempotency_key=idempotency_key,
-            expected_snapshot_revision=expected_snapshot_revision,
         )
 
     async def append_story_event(
         self,
         session_id: str,
-        narrative_document: Mapping[str, Any],
+        text: str,
         actor_id: str,
     ) -> dict[str, Any]:
         return await self._database.emergency_append_narrative(
             session_id,
-            narrative_document,
+            text,
             actor_id,
         )
 
@@ -248,29 +239,15 @@ class TavernPublicAPI:
         )
 
     async def append_dm_narrative(
-        self,
-        session_id: str,
-        narrative_document: Mapping[str, Any],
-        actor_id: str,
+        self, session_id: str, narrative: str, actor_id: str
     ) -> dict[str, Any]:
-        from ..contracts.narrative_document import (
-            narrative_document_to_plain_text,
-            parse_narrative_document,
-        )
-
         session = await self._database.get_session(session_id)
-        document = parse_narrative_document(
-            narrative_document,
-            dialogue_expected=False,
-        )
-        narrative = narrative_document_to_plain_text(document)
         return await self._database.commit_dm_beat(
             session_id=session_id,
             expected_revision=int(session["revision"]),
             dm_user_id=actor_id,
             instruction=narrative,
             narrative=narrative,
-            narrative_document=document,
             world_state=session["world_state"],
             direct=True,
         )
@@ -305,7 +282,7 @@ class TavernPublicAPI:
     def list_preset_dimensions(world: Mapping[str, Any]) -> list[dict[str, Any]]:
         rules = world.get("rules") if isinstance(world, Mapping) else {}
         rules = rules if isinstance(rules, Mapping) else {}
-        card = rules.get("actor")
+        card = rules.get("character_card")
         return normalize_preset_dimensions(
             card if isinstance(card, Mapping) else {}
         )
@@ -347,7 +324,7 @@ class TavernPublicAPI:
         世界包需声明 ``elemental`` 块；若声明了 ``resolver``，则优先走已注册的
         ``element_resolver`` 扩展点，异常或未命中时回退声明式表。
         """
-        from ..elemental import parse, resolve
+        from .elemental import parse, resolve
 
         parsed = parse(world)
         provider = None

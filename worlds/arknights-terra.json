@@ -1,0 +1,2982 @@
+{
+  "slug": "arknights-terra",
+  "name": "明日方舟：黎明前",
+  "description": "Terra 历 1097 年秋。感染者是时代暗流中的日常。罗德岛保留着一艘古老陆行舰，在天灾与阴谋之间救治、招募、反击。玩家以刚入职的干员身份加入早班快速反应小队，被派往切尔诺伯格北部边境一个被天灾与整合运动切断了三天的偏远聚落——代号「黎明」。单局 30 回合，3-6 人友好。",
+  "system_prompt": "【世界定位】\n本故事发生在泰拉（Terra），一颗与地球相似但被源石工业重塑的行星。当前为 Terra 历 1097 年秋，源石工业基本普及，感染者占人口的 5%–15%。玩家共同身份是「罗德岛制药公司」（Rhodes Island Pharmaceuticals Inc.，简称 RI）的早期干员新兵，已通过背景审查与基础源石适应测试，被分配到快速反应小队「黎明」。本章是一支单次外勤任务，代号「黎明行动」，目标是一个位于切尔诺伯格以北 30 公里、海拔 1100 米的矿工聚落——挪德卡。\n\n【世界常识】\n泰拉由数个王国、自由城市、宗教领与氏族领地组成，最强势力为维多利亚王国、莱塔尼亚源石技艺体系（含艺术骑士 / Kunstritter 等）、龙门自由城邦、卡西米尔骑士领等。罗德岛名义上是制药公司，实际是挂着医疗执照的半军事化组织，主要业务为：感染者治疗、武装护卫、地区调查与源石污染治理。多数平民视 RI 为中立的「带着矿灯的怪医队」。\n感染者（Infected / Oripathy Patients）身上有黑色的源石结晶（Originium）覆盖区，会缓慢并发器官衰竭。被感染者获得微弱源石亲和，但死亡率近 100%，因此被多数地区系统性歧视。罗德岛独有的源石适应注射液「CTRL 系列」可延缓病情，目前不对外发售。\n源石技艺（Arts）是施法者透过媒介（Arts Unit）操控源石的技术，等同魔法，但需遵守源石的物理限制。\n\n【底层规律】\n现实物理基本稳定。源石技艺不能无条件推翻距离、时间、死亡与因果。天灾（Catastrophe）是不可完全预测的自然灾害，留下的源石污染与失控生物需多年才能消退。\n施法需要媒介、专注与身体承受力；感染者施法会加速自身结晶化。换源石技艺必须遵守距离、施法时间、媒介与代价。\n时间和空间限制：远距离传送在本剧本不可用；伤病需要时间恢复；长途旅行按小时计。死亡是真实的代价：高致命风险行动失败可致玩家角色当场死亡。致命风险必须在玩家做出致命选择的 1-2 回合前以白纸黑字公示已知后果，玩家做出选择后才落入检定。一旦致死被玩家接受，模型不得撤回、不得『奇迹缓解』。\n\n注：本 plugin 不会在落骰前自动暂停征询玩家组（这是 prompt 层规则，不是 plugin 代码层行为）；`rules.content_boundaries.character_death` 字段仅作为提示传给模型，不被 plugin 代码强制。若玩家组需要中止当面致命路径，可使用 `/酒馆 安全暂停` 安全词。\n\n【职业与属性】\n角色卡沿用 10 项属性：力量、体质、灵巧、感知、智力、意志、魅力、魔力、信仰、生存。基础属性总值 50，主属性 +7，副属性 +3，合计 60。可选职业参考现有 12 预设：守护骑士、先锋剑士、近卫剑客、远程弓手、奥术法师、神圣牧师、野外猎人、狂战士、暗影盗贼、圣殿圣骑、自然德鲁伊、吟游诗人、炼金方士、武僧。选择后系统会锁定基础值，玩家仅决定主副属性。\n\n【核心阵营】\n- 罗德岛（RI）：玩家所属。名义制药、半军事组织，由凯尔希（Kal'tsit）实际运作、阿米娅（Amiya）公开领队。\n- 龙门近卫局：高效城邦的执法与军事力量，总督魏彦吾统率，督察陈（Ch'en）执掌近卫局。\n- 莱茵生命：跨国研究企业，源石与生物技术领先。\n- 整合运动（Reunion）：感染者激进组织，前期反派。下设多个分离小队，本次任务目标之一即一支偏离主力的整编小分队。\n- 萨尔卡兹（Sarkaz）孤兵：跨阵营雇佣的战乱遗民，履历模糊，可能敌可能友。\n- 晨钟驱邪行会（民间源石技艺行会；非任何官方阵营，本剧本原创）：源石技艺与驱邪专家，立场偏中立。\n\n【地理与城市】\n本次任务核心区：挪德卡——切尔诺伯格北境内陆聚落，约 40 户居民，以小型矿采与畜牧业为生，海拔 1100 米，秋夜常起雾。村西有一处已经废弃的源石提炼炉（catastrophe 受损），村外有一条通往切尔诺伯格的旧路。罗德岛「黎明小队」从首都龙门附近出发，预计任务来回用时 6 个小时。\n\n【身份与知识边界】\n角色只能知道自身种族、职业训练、个人经历与剧情中实际获得的信息。魔法师不会自动辨认奥术细节，工程师不会炼金配方，感染者拥有微弱源石亲和但不必每个都武装化。玩家角色不得读取其他玩家角色的私人秘密、后台导演指令、未公开 NPC 动机。\n\n【因果与连续性】\n已发生事件、已消耗物品、伤势、关系必须连续。失败必须产生代价、资源损耗、误导、时间流逝，不能简单抹去玩家行动。地图距离、天气、昼夜、补给、伤势恢复均应影响行动。长途旅行不瞬间完成。\n\n【玩家自主权】\n不得替玩家决定内心、思想、台词、承诺、恋爱、投降或死亡。集体路线、公共资源、全队撤退与可能伤害队友的决定必须投票或获得明确同意。\n\n【冲突与风险】\n高风险行动必须提前说明玩家可见的失败后果。致命风险必须明确告知。敌人与 NPC 能力遵守其身份、装备与已建立设定。强敌可以撤退、谈判、分阶段战斗或被绕开。战斗中应明确位置、距离、掩体、威胁、伤势与可行动目标，不使用模糊的「突然秒杀」或无来源反转。\n\n【叙事风格】\n军事写实 + 暗黑奇幻 + 公路片。场景具体，对话符合身份，战斗强调空间与代价。每回合聚焦本轮因果、可见变化与下一步可行动线索，保持节奏，不重复总结，不强行救场，不把所有谜题一次解释完。允许适度幽默、酒馆日常、营地互动与职业摩擦，但不让轻松桥段破坏危机逻辑。\n\n【硬性禁令】\n禁止现代枪械、现代网络、科幻飞船、超出现有设定的工业科技；禁止无限法力、无条件瞬移、全知预言、随意改写记忆与无代价控制玩家角色；禁止替玩家在未公告致命后果前直接致其死亡；禁止把 NPC 私密导演指令、最终谜底和其他玩家私人秘密直接写进公开叙事；禁止未经目标玩家同意的玩家对玩家伤害、偷窃、精神控制或永久负面效果。\n\n【致命风险协议】\n致命风险（lethal risk）三条硬规则：①前 1-2 回合在叙事中以白纸黑字公示已知失败后果（包括但不限于：立刻击毙、致残至失能、源石感染不可逆）；②致命风险一旦被玩家在选项中主动选择，模型一律不再撤回或『奇迹缓解』；③致死原因必须符合 NPC 能力、地形、装备与已建立设定，禁止因『叙事张力』临时加码。\nplugin 代码侧的硬约束：玩家选中 `risk=lethal` 的选项但 `known_consequences` 为空时，[engine.py:2389](.runtime/astrbot-data/data/plugins/astrbot_plugin_tavern/tavern/engine.py) 会直接抛错。这一行是 plugin 唯一对致命风险的硬校验——所以你在生成致命选项时**绝对不能省略** `known_consequences` 字段，否则该选项无法提交。\n本剧本中至少有两处致命风险场景：[1] ch_02 中玩家在屋顶与弗拉达对峙时强行冲顶、或选择替代妮卡承受源石技艺反噬；[2] ch_03 撤离时玩家主动留守掩护队友。这些都是 *玩家可选* 的高风险路径，未选致死选项的玩家继续正常撤离。\n\n【本次任务范围】\n30 回合内完成一次单局。玩家不必读完整个世界观主线，只要搞定一个被天灾与整合运动同时切断的小聚落救援就行。本次剧本不预设前一卷、不带大幅章节链，只有「接到任务—到达现场—解决事件—撤离复盘」的完整单局闭环。任何在 30 回合外的延伸内容应由 DM 主持决定是否续接。\n\n【插件权威边界】\n所有检定属性、加值、风险等级、检定结论、骰面与结果档位由机器骰制生成并持久化。叙事模型只可依据已公布的权威检定回执续写，不得重投、修改 DC、改变成功档位或追加未预告的永久性惩罚。",
+  "opening_scene": "Terra 历 1097 年，秋。切尔诺伯格以北 30 公里，挪德卡。\n\n天灾刚结束三小时，浓雾未散。陆地通讯中继塔倒在村外 200 米的土坡上，几个家庭被困在村西面的采石场废墟。清晨的微光把残垣染成冷蓝。\n\n村庄方向的林道尽头，六个带兜帽的人影在用萨卡兹语低声交谈，手里举着刻有整合运动标志的盾牌。\n\n罗德岛快速反应小队「黎明」正在 200 米外的车队里检修装备，等待队长下达最后指示。",
+  "rules": {
+    "resolution": {
+      "mode": "attribute",
+      "dice_system": "d20",
+      "_dice_system_documented_as": "传统 d20：骰 1-20 + 属性修正，对照难度 DC 判定成功档位。",
+      "unknown_attribute": "reject",
+      "option_checks": {
+        "enabled": true
+      },
+      "generic_check": {
+        "enabled": false,
+        "label": "通用",
+        "modifier": 0
+      },
+      "difficulty_policy": {
+        "safe": null,
+        "controlled": 9,
+        "dangerous": 13,
+        "desperate": 17,
+        "lethal": 21
+      },
+      "outcome_policy": {
+        "natural_20_critical": true,
+        "natural_1_critical": true,
+        "critical_success_margin": 10,
+        "cost_success_min_margin": -4,
+        "failure_min_margin": -9
+      },
+      "parameter_authority": "plugin_rule_engine",
+      "ai_role": "narrative_only_after_locked_receipt"
+    },
+    "default_difficulty": 12,
+    "difficulty_min": 5,
+    "difficulty_max": 25,
+    "dice_rules": {
+      "system": "d20",
+      "advantage": "2d20_keep_high",
+      "disadvantage": "2d20_keep_low",
+      "stacking": false,
+      "opposites_cancel": true,
+      "outcome_bands": true,
+      "natural_20": "critical_success",
+      "natural_1": "critical_failure",
+      "visibility": "public",
+      "rng": "system_secrets",
+      "roll_authority": "machine",
+      "lock_before_publish": true,
+      "reuse_locked_roll_on_retry": true,
+      "publish_before_story_generation": true
+    },
+    "inspiration": {
+      "enabled": true,
+      "initial": 1,
+      "maximum": 3,
+      "allow_pre_roll_advantage": true,
+      "allow_pre_authorized_reroll": true
+    },
+    "safety": {
+      "any_active_player_can_pause": true,
+      "pvp_requires_target_consent": true,
+      "collective_harm_requires_vote": true,
+      "lethal_risk_must_be_disclosed": true
+    },
+    "content_boundaries": {
+      "character_death": "ask",
+      "_character_death_documented_as": "本剧本默认 ask；致命风险另见 system_prompt.致命风险协议 与各 chapter.lethal_scenarios 字段。本字段 plugin 代码不强制处理，仅作为提示传给 LLM。",
+      "player_conflict": "consent",
+      "romance": "fade_to_black",
+      "horror": "moderate",
+      "sexual_content": "blocked",
+      "safety_pause": true
+    },
+    "context_budget": {
+      "recent_turns": 6,
+      "memories": 6,
+      "active_npcs": 6,
+      "ledger_items": 8,
+      "locked_facts_always_include": true
+    },
+    "npc_policy": {
+      "enabled": true,
+      "auto_register": true,
+      "max_new_per_turn": 2,
+      "require_named_or_relevant": true,
+      "generated_requires_review": true,
+      "archive_after_inactive_rounds": 4
+    },
+    "progress": {
+      "chapter": "序章：黎明前",
+      "current_chapter_id": "ch_00_briefing",
+      "current_objective": "在切尔诺伯格北部挪德卡聚落 6 小时内救出被困家庭、评估整合运动偏离小分队威胁等级",
+      "completed_milestones": 0,
+      "total_milestones": 13,
+      "design_note": "本剧本为 30 回合轻量单局，4-5 人最佳。3 人勉强可行但会拖，6 人会紧。",
+      "chapters": [
+        {
+          "id": "ch_00_briefing",
+          "title": "序章：黎明前",
+          "subtitle": "凯尔希下达任务，全员整装待发",
+          "next_chapter_id": "ch_01_arrival",
+          "max_turns": 4,
+          "pacing_directive": "本章 4 回合内完成 2 个里程碑。模型不得把场景拖入作战车辆细节、舰船走廊介绍或罗德岛八卦。本章结尾必须给出「车队抵达挪德卡外围 200 米」的位置。否则强制推进。",
+          "narrative_length_band": "standard",
+          "key_npcs": [
+            {
+              "ref": "npc_kaltsit",
+              "role": "任务派发人，纪录片摄影式冷峻"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_00_01_receive_brief",
+              "label": "玩家小队接收并复述任务摘要",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "挪德卡",
+                    "整合运动",
+                    "6 小时"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_00_02_sign_off",
+              "label": "所有人完成出车前签字",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "签字",
+                    "确认出车",
+                    "已装备"
+                  ]
+                }
+              ]
+            }
+          ],
+          "hook_pool": [
+            "凯尔希顺便交代一名整合运动叛逃者随队",
+            "凯尔希临时提供一件战场样本供研究",
+            "车队配一名通讯中继操作员",
+            "玩家发现前任「黎明小队」的备忘纸条"
+          ]
+        },
+        {
+          "id": "ch_01_arrival",
+          "title": "第一章：诺德的烟",
+          "subtitle": "进入聚落外围，遭遇阻断",
+          "next_chapter_id": "ch_02_confrontation",
+          "max_turns": 10,
+          "pacing_directive": "本章 8-10 回合内完成。模型不得让玩家在同一废墟位置停留超 2 回合；如停留，须主动给出新的位置选项。本章末必须出现「整合运动小队长（弗拉达）露面并试图谈判」或「伏击开火」二选一。",
+          "narrative_length_band": "compact",
+          "key_npcs": [
+            {
+              "ref": "npc_misha",
+              "role": "天灾信使，被困家庭口译者，与整合运动内部分歧"
+            },
+            {
+              "ref": "npc_yegor",
+              "role": "村长米沙的祖父"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_01_01_first_contact",
+              "label": "首次接触被困村民",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "村民",
+                    "家庭",
+                    "废墟"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_01_02_quarantine_zoned",
+              "label": "玩家小队标记源石污染带并建立安全圈",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "源石污染",
+                    "安全圈",
+                    "隔离带"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_01_03_misha_warning",
+              "label": "米沙警告整合运动小分队已分裂",
+              "evidence_required": [
+                {
+                  "type": "npc",
+                  "match": "misha"
+                },
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "分裂",
+                    "整合运动内讧"
+                  ]
+                }
+              ]
+            }
+          ],
+          "hook_pool": [
+            "废墟下有未爆破的源石污染源",
+            "村民中有不受控的早期感染者",
+            "通讯中继塔残骸内有罗德岛旧资料",
+            "弗拉达主动派人以白旗谈 5 分钟"
+          ]
+        },
+        {
+          "id": "ch_02_confrontation",
+          "title": "第二章：地下与屋顶",
+          "subtitle": "对峙、伏击、两难抉择（含 1 处致命风险）",
+          "next_chapter_id": "ch_03_withdrawal",
+          "max_turns": 10,
+          "pacing_directive": "本章 8-10 回合内完成战斗/谈判核心节拍。模型必须给出至少 1 次「两难选择」（救谁 / 护谁 / 谈还是打），并保留至少 1 个 safe 风险选项让玩家不必冒死。本章前 3 回合必须以白纸黑字公示一个致命风险（屋顶强突或代替妮卡承受源石技艺反噬），玩家做出选择后才落骰。结尾必须转换到撤离节点。",
+          "narrative_length_band": "expanded",
+          "key_npcs": [
+            {
+              "ref": "npc_vlada",
+              "role": "整合运动小队长，前罗德岛受训干员，背叛原因不能由模型代玩家决定"
+            },
+            {
+              "ref": "npc_nika",
+              "role": "约 10 岁的感染者女孩，口齿不清，关键时机的因果锚；失控时是源石技艺反噬源"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_02_01_lethal_warning",
+              "label": "致命风险已公示（弗拉达屋顶强突 OR 代替妮卡承受源石技艺反噬）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "致命风险",
+                    "致死",
+                    "当场死亡",
+                    "不可逆"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_02_02_vlada_unmasked",
+              "label": "玩家识破弗拉达曾是罗德岛受训干员",
+              "evidence_required": [
+                {
+                  "type": "npc",
+                  "match": "vlada"
+                },
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "罗德岛",
+                    "受训",
+                    "背景"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_02_03_civilian_clear",
+              "label": "三户被困家庭全部离开废墟区",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "三户",
+                    "已撤离",
+                    "安全"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_02_04_fork_resolved",
+              "label": "玩家就「收编 / 释放 / 击退弗拉达」作出集体表决",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "集体表决",
+                    "收编",
+                    "释放",
+                    "击退"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_02_05_lethal_fork_resolved",
+              "label": "玩家就致命风险选项作出选择（接受 / 拒绝）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "致命选择",
+                    "接受致死",
+                    "拒绝致死"
+                  ]
+                }
+              ]
+            }
+          ],
+          "hook_pool": [
+            "弗拉达透露她离开罗德岛的真实原因（含 CTRL 缓释器失效倒计时）",
+            "屋顶观测点出现天灾再现预兆",
+            "妮卡突然发作未稳定的源石技艺（瞬时光耀 + 强震动 / canon 学派暂未归入六大系）、玩家可选择冲上前抱住她承受反噬",
+            "齐尤拉主动按下手中旧弓、向玩家示意『这一次我不射』",
+            "弗拉达部下一人提议内讧投降"
+          ],
+          "_lethal_scenarios_documented_as": "提示字段。Plugin 不读取；模型按 telegraph 公示致命已知后果。",
+          "lethal_scenarios": [
+            {
+              "trigger": "玩家在 ch_02 选择强突屋顶与弗拉达肉搏或跳下屋顶追击",
+              "telegraph": "本章开场及第 4-5 回合叙事中以白纸黑字公示『若强突失败，从屋顶坠落 + 弗拉达中阶水系技艺同时命中 = 即时致死』",
+              "executed_by": "vlada",
+              "severity": "lethal",
+              "choices_after_warning": [
+                "A: 强突屋顶（lethal risk，已公示）",
+                "B: 落回地面走侧路（safe）",
+                "C: 与弗拉达谈判（safe，触发 m_02_03_fork_resolved）"
+              ]
+            },
+            {
+              "trigger": "玩家在妮卡发作源石技艺时主动抱住她、用意志吸收反噬",
+              "telegraph": "本章第 7 回合前后公示『妮卡发作未稳定的源石反应（瞬时光耀 + 强震动，canon 学派暂未归入六大系）会反噬周围 3 米内生物。若无源石适应注射液，致死概率 30%，致残 60%。」",
+              "executed_by": "npc_nika",
+              "severity": "lethal_or_disabling",
+              "choices_after_warning": [
+                "A: 抱住妮卡承受反噬（lethal/disabling risk，已公示）",
+                "B: 用衣物挡住她视线、与她说话分散（safe）",
+                "C: 撤退到 3 米外、让米沙上前安抚（safe）"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch_03_withdrawal",
+          "title": "第三章：撤离窗口",
+          "subtitle": "天灾回潮前的返程（含 1 处致命掩护选项）",
+          "next_chapter_id": "ch_04_epilogue",
+          "max_turns": 4,
+          "pacing_directive": "本章 4 回合内完成。模型必须把时间压力写明白——天灾再发前的剩余小时数必须出现在正文或叙事提示里。结尾必须给出「车已开出 5 公里」的明确位置。本章前 1 回合必须公示『掩护者留守』的致命风险已知后果。",
+          "narrative_length_band": "compact",
+          "key_npcs": [
+            {
+              "ref": "npc_misha",
+              "role": "协助撤离，继续与玩家互动"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_03_01_extraction_done",
+              "label": "全员撤离污染带返回车队",
+              "auto_complete": true,
+              "evidence_required": [
+                {
+                  "type": "location",
+                  "match": [
+                    "车队",
+                    "撤离点"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_03_02_data_recovered",
+              "label": "现场数据样本回收完毕",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "样本",
+                    "源石样本",
+                    "已回收"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_03_03_cover_fork_resolved",
+              "label": "玩家就「掩护者留守」致命选项作出决定",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "掩护",
+                    "留守",
+                    "致命选择"
+                  ]
+                }
+              ]
+            }
+          ],
+          "hook_pool": [
+            "撤路上遇到不愿离开的老人",
+            "天灾余波重现的物理征兆",
+            "弗拉达的最后一道消息",
+            "米沙以口述方式记录下她的天灾信使笔记",
+            "掩护者被天灾余波追上时该如何退出"
+          ],
+          "_lethal_scenarios_documented_as": "提示字段。Plugin 不读取此字段；模型按 telegraph 公示致命已知后果。",
+          "lethal_scenarios": [
+            {
+              "trigger": "玩家在 ch_03 主动选择留守阻断天灾余波掩护队友",
+              "telegraph": "本章开场即公示『天灾余波将在 90 秒内抵达车队，留守者被原石风暴正面命中 = 即时致死或终身感染。』",
+              "executed_by": "world.catastrophe",
+              "severity": "lethal",
+              "choices_after_warning": [
+                "A: 留守掩护（lethal risk，已公示）",
+                "B: 全员上车不掩护（safe，但米沙的家人可能来不及上车）",
+                "C: 折中方案：高速带人走、入村取回米沙家人（controlled）"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ch_04_epilogue",
+          "title": "终章：复盘",
+          "subtitle": "回到罗德岛，写报告，决定下一卷",
+          "next_chapter_id": null,
+          "max_turns": 2,
+          "pacing_directive": "终章只 2 回合。模型禁止再去演移动中场景。复盘报告 + 是否续接下一卷为玩家应得的选择。",
+          "narrative_length_band": "standard",
+          "key_npcs": [
+            {
+              "ref": "npc_kaltsit",
+              "role": "听汇报，决定是否续案"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_04_01_report_signed",
+              "label": "全体玩家共同签字确认任务报告",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "报告",
+                    "全员签字",
+                    "确认"
+                  ]
+                }
+              ]
+            }
+          ],
+          "hook_pool": [
+            "凯尔希提到北部还有 3 处类似聚落",
+            "玩家可申请为「黎明小队」命名前队员",
+            "罗德岛内部有人注意到这次任务的源石样本异常"
+          ]
+        }
+      ]
+    },
+    "allow_player_result_claims": false,
+    "death_requires_confirmation": true,
+    "tone": "军事写实、暗黑奇幻、具象克制、空间代价、时间压力",
+    "strict_choices": true,
+    "check_density": "low",
+    "player_limits": {
+      "recommended_min": 3,
+      "recommended_max": 6,
+      "minimum_start": 3,
+      "maximum": 6
+    },
+    "character_card": {
+      "version": 6,
+      "auto_approve": false,
+      "edit_requires_review": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "角色姓名",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "text"
+        },
+        {
+          "key": "code",
+          "label": "干员代号",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "text"
+        },
+        {
+          "key": "species",
+          "label": "选择种族",
+          "required": true,
+          "private": false,
+          "max_chars": 20,
+          "type": "preset_select",
+          "preset_source": "species_presets",
+          "page_size": 5
+        },
+        {
+          "key": "profession",
+          "label": "选择职业",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "selection_mode": "single_preset",
+          "apply_preset_on_select": true,
+          "preset_source": "profession_presets",
+          "next_step": "primary_attribute",
+          "options_source": "profession_presets",
+          "value_field": "name",
+          "label_field": "name",
+          "page_size": 6,
+          "clear_on_change": [
+            "primary_attribute",
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "origin_region",
+          "label": "选择出身地区",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "preset_source": "origin_region_presets",
+          "value_field": "name",
+          "label_field": "name",
+          "page_size": 6
+        },
+        {
+          "key": "social_identity",
+          "label": "选择社会身份",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "preset_source": "social_identity_presets",
+          "value_field": "name",
+          "label_field": "name",
+          "page_size": 6
+        },
+        {
+          "key": "primary_attribute",
+          "label": "选择主属性（固定 +7）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "力量",
+            "体质",
+            "灵巧",
+            "感知",
+            "智力",
+            "意志",
+            "魅力",
+            "魔力",
+            "信仰",
+            "生存"
+          ],
+          "bonus_value": 7,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 10
+        },
+        {
+          "key": "secondary_attribute",
+          "label": "选择副属性（固定 +3）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "力量",
+            "体质",
+            "灵巧",
+            "感知",
+            "智力",
+            "意志",
+            "魅力",
+            "魔力",
+            "信仰",
+            "生存"
+          ],
+          "bonus_value": 3,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 10
+        },
+        {
+          "key": "background",
+          "label": "角色背景（200 字内）",
+          "required": true,
+          "private": false,
+          "max_chars": 200,
+          "type": "text"
+        },
+        {
+          "key": "infection_status",
+          "label": "感染状态",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "options": [
+            "未感染",
+            "已登记感染者（接受 CTRL 系列治疗）",
+            "已登记感染者（自行延命）",
+            "代填资料 — 由 GM 决定"
+          ]
+        }
+      ],
+      "stats": {
+        "allocation_mode": "profession_base_plus_primary7_secondary3",
+        "input_mode": "automatic_profession_base_plus_two_fixed_bonus_choices",
+        "skip_attribute_question_range": "26-35",
+        "calculate_after_field": "secondary_attribute",
+        "reset_scope": "primary_and_secondary_only",
+        "mode": "preset",
+        "budget": 60,
+        "base_budget": 50,
+        "bonus_budget": 10,
+        "effective_total": 60,
+        "attributes": [
+          {
+            "key": "strength",
+            "label": "力量",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "近战伤害、负重、推力、击破防具。"
+          },
+          {
+            "key": "constitution",
+            "label": "体质",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "耐打、长时间行动、伤病抵抗。"
+          },
+          {
+            "key": "dexterity",
+            "label": "灵巧",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "反射动作、闪避、潜行、远程武器握把。"
+          },
+          {
+            "key": "perception",
+            "label": "感知",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "观察、追踪、读天象、对异常先验反应。"
+          },
+          {
+            "key": "intelligence",
+            "label": "智力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "源石技艺理论、战略施法、复杂知识处理。"
+          },
+          {
+            "key": "willpower",
+            "label": "意志",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "专注、抵抗恐惧、维持长期施法。"
+          },
+          {
+            "key": "charisma",
+            "label": "魅力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "说服、感召、群体战气势、社交影响。"
+          },
+          {
+            "key": "mana",
+            "label": "魔力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "源石技艺强度、法术位余量、源石亲和上限。"
+          },
+          {
+            "key": "faith",
+            "label": "信仰",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "圣体反应、驱邪、信念护盾。"
+          },
+          {
+            "key": "survival",
+            "label": "生存",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "野外求生、觅食、警戒、应激反应。"
+          }
+        ],
+        "modifier_table": {
+          "0": -3,
+          "1": -2,
+          "2": -2,
+          "3": -1,
+          "4": -1,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "10": 2,
+          "11": 3,
+          "12": 3,
+          "13": 4,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 6,
+          "18": 6,
+          "19": 7,
+          "20": 7
+        },
+        "primary_bonus": 7,
+        "secondary_bonus": 3,
+        "require_distinct_bonus_attributes": true,
+        "player_selects_only": [
+          "primary_attribute",
+          "secondary_attribute"
+        ],
+        "defaults_are_schema_fallback_only": true,
+        "manual_entry_enabled": false,
+        "auto_apply_profession_base": true,
+        "profession_base_locked": true,
+        "show_profession_values_at_profession_step": true,
+        "profession_step": 4,
+        "skip_generated_attribute_questions": true,
+        "calculation_formula": "effective_attribute = profession.base_attribute + 7 if primary + 3 if secondary",
+        "preserve_base_on_reset": true,
+        "preset_selector": {
+          "field": "profession",
+          "source": "profession_presets",
+          "match_by": "id"
+        },
+        "bonus_choices": [
+          {
+            "field": "primary_attribute",
+            "label": "主属性",
+            "bonus": 7,
+            "count": 1
+          },
+          {
+            "field": "secondary_attribute",
+            "label": "副属性",
+            "bonus": 3,
+            "count": 1,
+            "exclude_selected_by": [
+              "primary_attribute"
+            ]
+          }
+        ],
+        "total_validation": {
+          "base_total": 50,
+          "final_total": 60
+        },
+        "allocation": {
+          "rule": "exact",
+          "total": 60
+        }
+      },
+      "preset_selection_help": {
+        "display_policy": "only_current_step",
+        "navigation": "分页预览每页最多 5 项；使用页码替换 / 列表稳定 ID 翻页",
+        "profession_instruction": "选择职业时展示职业可选项，按提示写入并展示 50 基础属性。",
+        "invalid_selection_action": "reject_and_repeat_current_field"
+      },
+      "bonus_allocation": {
+        "base_source": "profession_presets.attributes",
+        "primary_field": "primary_attribute",
+        "secondary_field": "secondary_attribute"
+      },
+      "creation_flow": {
+        "mode": "step_driven_preset_wizard",
+        "profession_display": "paged_current_step_with_base_attributes",
+        "generated_attribute_fields": "calculated_only_not_questions",
+        "preset_display": "current_step_only"
+      },
+      "profession_presets": [
+        {
+          "id": "defender",
+          "name": "守护骑士",
+          "role": "前排重装、近身阻挡、低机动",
+          "ability_source": "盾卫训练与重甲格斗",
+          "limitations": "远程、近战持续、群体威胁、源石技艺均受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 9,
+            "constitution": 9,
+            "dexterity": 3,
+            "perception": 4,
+            "intelligence": 3,
+            "willpower": 6,
+            "charisma": 4,
+            "mana": 1,
+            "faith": 7,
+            "survival": 4
+          },
+          "base_attributes": {
+            "strength": 9,
+            "constitution": 9,
+            "dexterity": 3,
+            "perception": 4,
+            "intelligence": 3,
+            "willpower": 6,
+            "charisma": 4,
+            "mana": 1,
+            "faith": 7,
+            "survival": 4
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "守护骑士",
+          "display_at_profession_step": true,
+          "display_text": "守护骑士:力量9 体质9 灵巧3 感知4 智力3 意志6 魅力4 魔力1 信仰7 生存4;基础总和 50。前排重装、近身阻挡、低机动。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "guard",
+          "name": "近卫",
+          "role": "中排输出、近战纠缠",
+          "ability_source": "中距离格斗与基础武术",
+          "limitations": "远程射击、纯防御、高阶法术均受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 8,
+            "constitution": 7,
+            "dexterity": 7,
+            "perception": 5,
+            "intelligence": 3,
+            "willpower": 5,
+            "charisma": 4,
+            "mana": 2,
+            "faith": 4,
+            "survival": 5
+          },
+          "base_attributes": {
+            "strength": 8,
+            "constitution": 7,
+            "dexterity": 7,
+            "perception": 5,
+            "intelligence": 3,
+            "willpower": 5,
+            "charisma": 4,
+            "mana": 2,
+            "faith": 4,
+            "survival": 5
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "近卫",
+          "display_at_profession_step": true,
+          "display_text": "近卫:力量8 体质7 灵巧7 感知5 智力3 意志5 魅力4 魔力2 信仰4 生存5;基础总和 50。中排输出、近战纠缠。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "vanguard",
+          "name": "先锋",
+          "role": "前排搅动、压力回位",
+          "ability_source": "突袭与先手控制",
+          "limitations": "持久战、远程压制、复杂法术受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 7,
+            "constitution": 6,
+            "dexterity": 7,
+            "perception": 5,
+            "intelligence": 4,
+            "willpower": 5,
+            "charisma": 5,
+            "mana": 2,
+            "faith": 5,
+            "survival": 4
+          },
+          "base_attributes": {
+            "strength": 7,
+            "constitution": 6,
+            "dexterity": 7,
+            "perception": 5,
+            "intelligence": 4,
+            "willpower": 5,
+            "charisma": 5,
+            "mana": 2,
+            "faith": 5,
+            "survival": 4
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "先锋",
+          "display_at_profession_step": true,
+          "display_text": "先锋:力量7 体质6 灵巧7 感知5 智力4 意志5 魅力5 魔力2 信仰5 生存4;基础总和 50。前排搅动、压力回位。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "sniper",
+          "name": "远程",
+          "role": "后排输出、远程精准",
+          "ability_source": "弓弩与抛射武器专精",
+          "limitations": "近战肉搏、群体防御、高阶法术受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 4,
+            "constitution": 5,
+            "dexterity": 9,
+            "perception": 9,
+            "intelligence": 4,
+            "willpower": 4,
+            "charisma": 3,
+            "mana": 2,
+            "faith": 3,
+            "survival": 7
+          },
+          "base_attributes": {
+            "strength": 4,
+            "constitution": 5,
+            "dexterity": 9,
+            "perception": 9,
+            "intelligence": 4,
+            "willpower": 4,
+            "charisma": 3,
+            "mana": 2,
+            "faith": 3,
+            "survival": 7
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "远程",
+          "display_at_profession_step": true,
+          "display_text": "远程:力量4 体质5 灵巧9 感知9 智力4 意志4 魅力3 魔力2 信仰3 生存7;基础总和 50。后排输出、远程精准。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "caster",
+          "name": "术师",
+          "role": "后排施法、源石技艺",
+          "ability_source": "源石技艺训练与高阶法术",
+          "limitations": "近战肉搏、持久战、远程射击均受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 4,
+            "constitution": 4,
+            "dexterity": 4,
+            "perception": 5,
+            "intelligence": 9,
+            "willpower": 6,
+            "charisma": 4,
+            "mana": 10,
+            "faith": 1,
+            "survival": 3
+          },
+          "base_attributes": {
+            "strength": 4,
+            "constitution": 4,
+            "dexterity": 4,
+            "perception": 5,
+            "intelligence": 9,
+            "willpower": 6,
+            "charisma": 4,
+            "mana": 10,
+            "faith": 1,
+            "survival": 3
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "术师",
+          "display_at_profession_step": true,
+          "display_text": "术师:力量4 体质4 灵巧4 感知5 智力9 意志6 魅力4 魔力10 信仰1 生存3;基础总和 50。后排施法、源石技艺。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "specialist",
+          "name": "特种",
+          "role": "单点突袭、复杂机动",
+          "ability_source": "战术行动与诱捕装置",
+          "limitations": "群体输出、高阶法术、长期行军均受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 5,
+            "constitution": 5,
+            "dexterity": 9,
+            "perception": 8,
+            "intelligence": 5,
+            "willpower": 4,
+            "charisma": 4,
+            "mana": 3,
+            "faith": 1,
+            "survival": 6
+          },
+          "base_attributes": {
+            "strength": 5,
+            "constitution": 5,
+            "dexterity": 9,
+            "perception": 8,
+            "intelligence": 5,
+            "willpower": 4,
+            "charisma": 4,
+            "mana": 3,
+            "faith": 1,
+            "survival": 6
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "特种",
+          "display_at_profession_step": true,
+          "display_text": "特种:力量5 体质5 灵巧9 感知8 智力5 意志4 魅力4 魔力3 信仰1 生存6;基础总和 50。单点突袭、复杂机动。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "medic",
+          "name": "医师",
+          "role": "后排支援、医疗与源石病理学",
+          "ability_source": "战地急救与感染者病理",
+          "limitations": "持久战斗、近身肉搏、远程射击均受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 4,
+            "constitution": 5,
+            "dexterity": 6,
+            "perception": 7,
+            "intelligence": 7,
+            "willpower": 8,
+            "charisma": 6,
+            "mana": 2,
+            "faith": 4,
+            "survival": 1
+          },
+          "base_attributes": {
+            "strength": 4,
+            "constitution": 5,
+            "dexterity": 6,
+            "perception": 7,
+            "intelligence": 7,
+            "willpower": 8,
+            "charisma": 6,
+            "mana": 2,
+            "faith": 4,
+            "survival": 1
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "医师",
+          "display_at_profession_step": true,
+          "display_text": "医师:力量4 体质5 灵巧6 感知7 智力7 意志8 魅力6 魔力2 信仰4 生存1;基础总和 50。后排支援、医疗与源石病理学。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "supporter",
+          "name": "辅助",
+          "role": "后排增益、群体减益",
+          "ability_source": "鼓舞、感召与群体技艺",
+          "limitations": "近战缠斗、远程压制、爆发输出均受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 3,
+            "constitution": 4,
+            "dexterity": 5,
+            "perception": 7,
+            "intelligence": 7,
+            "willpower": 7,
+            "charisma": 9,
+            "mana": 4,
+            "faith": 3,
+            "survival": 1
+          },
+          "base_attributes": {
+            "strength": 3,
+            "constitution": 4,
+            "dexterity": 5,
+            "perception": 7,
+            "intelligence": 7,
+            "willpower": 7,
+            "charisma": 9,
+            "mana": 4,
+            "faith": 3,
+            "survival": 1
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "辅助",
+          "display_at_profession_step": true,
+          "display_text": "辅助:力量3 体质4 灵巧5 感知7 智力7 意志7 魅力9 魔力4 信仰3 生存1;基础总和 50。后排增益、群体减益。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "summoner",
+          "name": "召唤师",
+          "role": "后排召唤、源石构筑",
+          "ability_source": "源石召唤术与持续召唤调谐",
+          "limitations": "近战缠斗、远程射击、群体防御均受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 5,
+            "constitution": 5,
+            "dexterity": 4,
+            "perception": 6,
+            "intelligence": 8,
+            "willpower": 7,
+            "charisma": 5,
+            "mana": 6,
+            "faith": 3,
+            "survival": 1
+          },
+          "base_attributes": {
+            "strength": 5,
+            "constitution": 5,
+            "dexterity": 4,
+            "perception": 6,
+            "intelligence": 8,
+            "willpower": 7,
+            "charisma": 5,
+            "mana": 6,
+            "faith": 3,
+            "survival": 1
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "召唤师",
+          "display_at_profession_step": true,
+          "display_text": "召唤师:力量5 体质5 灵巧4 感知6 智力8 意志7 魅力5 魔力6 信仰3 生存1;基础总和 50。后排召唤、源石构筑。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "paladin",
+          "name": "圣骑士",
+          "role": "中后排圣骑士、信念护盾",
+          "ability_source": "圣誓护盾与驱邪仪式",
+          "limitations": "持续远程输出、源石工艺、过激暴力手段受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 6,
+            "constitution": 7,
+            "dexterity": 4,
+            "perception": 4,
+            "intelligence": 4,
+            "willpower": 8,
+            "charisma": 7,
+            "mana": 3,
+            "faith": 6,
+            "survival": 1
+          },
+          "base_attributes": {
+            "strength": 6,
+            "constitution": 7,
+            "dexterity": 4,
+            "perception": 4,
+            "intelligence": 4,
+            "willpower": 8,
+            "charisma": 7,
+            "mana": 3,
+            "faith": 6,
+            "survival": 1
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "圣骑士",
+          "display_at_profession_step": true,
+          "display_text": "圣骑士:力量6 体质7 灵巧4 感知4 智力4 意志8 魅力7 魔力3 信仰6 生存1;基础总和 50。中后排圣骑士、信念护盾。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "berserker",
+          "name": "狂战士",
+          "role": "前排爆发、嗜血冲阵",
+          "ability_source": "狂战形态与肾上腺素战术",
+          "limitations": "持久战、群体控制、高阶法术、精密工作均受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 10,
+            "constitution": 7,
+            "dexterity": 4,
+            "perception": 5,
+            "intelligence": 2,
+            "willpower": 5,
+            "charisma": 3,
+            "mana": 1,
+            "faith": 4,
+            "survival": 9
+          },
+          "base_attributes": {
+            "strength": 10,
+            "constitution": 7,
+            "dexterity": 4,
+            "perception": 5,
+            "intelligence": 2,
+            "willpower": 5,
+            "charisma": 3,
+            "mana": 1,
+            "faith": 4,
+            "survival": 9
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "狂战士",
+          "display_at_profession_step": true,
+          "display_text": "狂战士:力量10 体质7 灵巧4 感知5 智力2 意志5 魅力3 魔力1 信仰4 生存9;基础总和 50。前排爆发、嗜血冲阵。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "minstrel",
+          "name": "吟游诗人",
+          "role": "后排感召、歌谣与情报收集",
+          "ability_source": "歌谣与情报学",
+          "limitations": "近战缠斗、远程压制、爆发输出均受限",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "strength": 3,
+            "constitution": 4,
+            "dexterity": 6,
+            "perception": 7,
+            "intelligence": 7,
+            "willpower": 5,
+            "charisma": 9,
+            "mana": 5,
+            "faith": 3,
+            "survival": 1
+          },
+          "base_attributes": {
+            "strength": 3,
+            "constitution": 4,
+            "dexterity": 6,
+            "perception": 7,
+            "intelligence": 7,
+            "willpower": 5,
+            "charisma": 9,
+            "mana": 5,
+            "faith": 3,
+            "survival": 1
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "吟游诗人",
+          "display_at_profession_step": true,
+          "display_text": "吟游诗人:力量3 体质4 灵巧6 感知7 智力7 意志5 魅力9 魔力5 信仰3 生存1;基础总和 50。后排感召、歌谣与情报收集。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        }
+      ],
+      "origin_region_presets": [
+        {
+          "id": "yan",
+          "name": "炎国",
+          "summary": "东方古老大国，帝制延续千年，辖下自由港龙门为泰拉东西交汇窗口；法术传统以丹术与雷法见长。",
+          "common_knowledge": [
+            "以皇权为核心的中央集权体制",
+            "崇古尚礼、宗族力量强大",
+            "龙门是炎国对外最活跃的口岸"
+          ],
+          "limitations": "对西方政治与法术学派陌生；对卡兹戴尔战后的散落部族不熟悉。",
+          "possible_contacts": [
+            "龙门近卫局外勤",
+            "企鹅物流雇员",
+            "炎国云游商人"
+          ],
+          "typical_languages": [
+            "通用语",
+            "炎国方言"
+          ]
+        },
+        {
+          "id": "ursus",
+          "name": "乌萨斯",
+          "summary": "北方传统帝国，境内感染者矛盾尖锐；Terra 历 1096 切尔诺伯格事件后陷内战边缘；罗德岛在该区域有持续介入。",
+          "common_knowledge": [
+            "军制帝国，贵族与第三集团军此消彼长",
+            "切尔诺伯格事件是十年内最大城市危机",
+            "境内原石矿脉与感染者聚落密集"
+          ],
+          "limitations": "对南方诸国城市政治陌生；不熟悉维多利亚工业体系。",
+          "possible_contacts": [
+            "退役内卫队士兵",
+            "切尔诺伯格幸存者",
+            "乌萨斯流亡感染者"
+          ],
+          "typical_languages": [
+            "通用语",
+            "乌萨斯语"
+          ]
+        },
+        {
+          "id": "victoria",
+          "name": "维多利亚",
+          "summary": "工业革命蓬勃的岛国，传统贵族与新兴产业并存；现由摄政王特雷西斯以傀儡皇室方式掌权，对外扩张意图明显。",
+          "common_knowledge": [
+            "军事贵族传统深厚",
+            "工业源石与铁路网络发达",
+            "喀兰贸易、银灰等干员出身地"
+          ],
+          "limitations": "对长期天灾污染地区（如乌萨斯）的疾病经验不足；不熟悉莱塔尼亚宫廷法术。",
+          "possible_contacts": [
+            "退役帝国军",
+            "喀兰贸易外勤",
+            "维多利亚工程技师"
+          ],
+          "typical_languages": [
+            "通用语",
+            "维多利亚语"
+          ]
+        },
+        {
+          "id": "leithanien",
+          "name": "莱塔尼亚",
+          "summary": "中欧式法术王国，巫王于 Terra 历 1077 被推翻后由希尔德加德与莉泽洛特双子女皇共治；法术氛围浓厚，以金律乐章治世。",
+          "common_knowledge": [
+            "金律法卫、艺术骑士与女皇之声为其军事支柱",
+            "学院城崔林特尔梅是泰拉法术研究重镇",
+            "对感染者态度在历史上摇摆"
+          ],
+          "limitations": "对开阔战场（如卡西米尔骑士赛）不熟悉；不熟悉乌萨斯式军阀割据。",
+          "possible_contacts": [
+            "艺术骑士退役",
+            "源石技艺研究协会成员",
+            "莱塔尼亚流浪乐师"
+          ],
+          "typical_languages": [
+            "通用语",
+            "莱塔尼亚语"
+          ]
+        },
+        {
+          "id": "kazimierz_knights",
+          "name": "卡西米尔",
+          "summary": "骑士竞技商业国，骑士锦标赛为其经济支柱；近十年受爵位与商业资本深度绑定，骑士文化不断被异化。",
+          "common_knowledge": [
+            "骑士身份由竞技排名决定",
+            "大骑士领企业中盘剥下层感染者骑士",
+            "临光、白银义勇等干员出身地"
+          ],
+          "limitations": "对法术体系不熟悉（卡西米尔以武技见长）；不熟悉龙门外勤政治。",
+          "possible_contacts": [
+            "退役竞技骑士",
+            "感染者佣兵",
+            "大骑士领侍从"
+          ],
+          "typical_languages": [
+            "通用语",
+            "卡西米尔语"
+          ]
+        },
+        {
+          "id": "kazdel_sarkaz",
+          "name": "卡兹戴尔（萨卡兹故土）",
+          "summary": "萨卡兹魔王与王庭曾居之城邦；Terra 历 898 毁灭战后化为雇佣兵散居地；目前伦蒂尼姆为实际王庭所在地，特雷西斯新政权试图整合散落部族。",
+          "common_knowledge": [
+            "萨卡兹常散落各地为雇佣兵或游民",
+            "特雷西斯与特蕾西娅的双王遗争延续至今",
+            "罗德岛前身巴别塔的故乡"
+          ],
+          "limitations": "对乌萨斯以外的国家关系生疏；不熟悉维多利亚工业体系。",
+          "possible_contacts": [
+            "巴哈蒙特佣兵",
+            "萨卡兹孤兵",
+            "前巴别塔干员"
+          ],
+          "typical_languages": [
+            "通用语",
+            "萨卡兹语"
+          ]
+        },
+        {
+          "id": "lungmen",
+          "name": "龙门",
+          "summary": "炎国下辖自由港，魏彦吾任总督；以近卫局与企鹅物流为核心执法与物流体系；Terra 历 1097 初发生切尔诺伯格-龙门事件，与罗德岛长期合作。",
+          "common_knowledge": [
+            "企鹅物流是龙门最有名的非官方外勤",
+            "近卫局是龙门主要执法力量",
+            "龙门贫民区与感染者关系是长期社会议题"
+          ],
+          "limitations": "对北方天灾与萨卡兹历史陌生；不熟悉莱塔尼亚宫廷。",
+          "possible_contacts": [
+            "企鹅物流雇员",
+            "龙门近卫局外勤",
+            "黑钢国际成员"
+          ],
+          "typical_languages": [
+            "通用语",
+            "龙门方言"
+          ]
+        },
+        {
+          "id": "stateless_wanderer",
+          "name": "漂泊散人",
+          "summary": "未归属任何政权的流浪者群体；多为前整合运动余部、各国逃兵、雇佣兵或未登记感染者；常以短期契约方式与罗德岛合作。",
+          "common_knowledge": [
+            "不被任一王国正式保护",
+            "通常对天灾与野外求生经验极强",
+            "对感染者态度高度务实"
+          ],
+          "limitations": "深度社会关系薄弱；对固定政权的内部运作不熟悉。",
+          "possible_contacts": [
+            "前整合运动成员",
+            "雇佣兵旧识",
+            "边境走私客"
+          ],
+          "typical_languages": [
+            "通用语",
+            "多种混杂语"
+          ]
+        }
+      ],
+      "social_identity_presets": [
+        {
+          "id": "rhodes_operator",
+          "name": "罗德岛登记干员",
+          "summary": "已在罗德岛运营 / 医疗 / 外勤 / 工程任一部门登记的现役干员；可担任本剧本玩家角色或前线 NPC。",
+          "common_knowledge": [
+            "干员编号 / 代号体系",
+            "基础源石适应与作战纪律",
+            "罗德岛内部行政流程"
+          ],
+          "limitations": "受罗德岛调度权限约束；对其他阵营的政治运作不熟。"
+        },
+        {
+          "id": "victoria_veteran",
+          "name": "维多利亚退役军人",
+          "summary": "曾在维多利亚帝国军（含地方守备、近卫等）服役后退役的官兵，对维多利亚贵族体系有亲身了解。",
+          "common_knowledge": [
+            "军事纪律与贵族礼仪",
+            "维多利亚军事装备体系",
+            "喀兰贸易相关人物网络"
+          ],
+          "limitations": "对乌萨斯内部政治与法术学派陌生；对罗德岛运营不熟。"
+        },
+        {
+          "id": "lungmen_guard_external",
+          "name": "龙门近卫局编外 / 退役",
+          "summary": "曾在龙门近卫局任职、现已脱离编制或转外勤的执法相关人员。",
+          "common_knowledge": [
+            "龙门执法流程与陈主导的指挥链",
+            "贫民区与黑市的实际情况",
+            "近卫局外勤战术"
+          ],
+          "limitations": "对北方萨卡兹历史与西方法术学派陌生。"
+        },
+        {
+          "id": "mercenary_band",
+          "name": "雇佣兵（巴哈蒙特 / 萨尔贡系）",
+          "summary": "隶属巴哈蒙特佣兵团、萨尔贡沙漠系佣兵团或龙门地下外包团的雇佣兵；通常以萨卡兹、菲林、卡特斯等族为多。",
+          "common_knowledge": [
+            "佣兵公会运作与短期契约",
+            "战场急救与野外生存",
+            "巴拉萨 / 巴哈蒙特人物网络"
+          ],
+          "limitations": "对城市行政与学院派法术陌生；可能受官方追查。"
+        },
+        {
+          "id": "rhine_lab_external",
+          "name": "莱茵生命外勤",
+          "summary": "莱茵生命跨国研究企业的外勤 / 工程 / 医疗岗雇员；接触前沿源石与生物技术。",
+          "common_knowledge": [
+            "莱茵生命研究体系（D6 等）",
+            "跨国法务与商业伦理",
+            "光学 / 物理源石技术分支"
+          ],
+          "limitations": "正面战斗与野外持久战经验有限；对罗德岛运营流程不熟。"
+        },
+        {
+          "id": "leithanien_academy",
+          "name": "莱塔尼亚源石技艺学院学徒",
+          "summary": "曾在崔林特尔梅或同等法术学府进修的学徒；可能涉及艺术骑士或研究协会分支。",
+          "common_knowledge": [
+            "金律乐章与法术学派常识",
+            "学术礼仪与学院政治",
+            "对源石技艺六大系有基础理解"
+          ],
+          "limitations": "实战与野外经验薄弱；对乌萨斯 / 维多利亚政治运作陌生。"
+        },
+        {
+          "id": "laterano_sankta",
+          "name": "拉特兰铳士（教派系）",
+          "summary": "来自铳与圣枪之国拉特兰的圣裔 / 铳士 / 侍从；持拉特兰国籍，常服务于教廷。",
+          "common_knowledge": [
+            "拉特兰铳术与礼仪",
+            "宗教驱邪与圣体仪式",
+            "对萨卡兹持敬畏距离"
+          ],
+          "limitations": "对源石技艺持较保守态度；与感染者深度合作时可能僵硬。"
+        },
+        {
+          "id": "columbia_industrial",
+          "name": "哥伦比亚工业技工",
+          "summary": "哥伦比亚工业城邦背景的技师 / 工匠；熟悉源石工业化生产线与现代工程实务。",
+          "common_knowledge": [
+            "工业源石器械维修",
+            "企业管理与蓝领工会",
+            "城市政治与黑市网络"
+          ],
+          "limitations": "对法术体系与野外求生陌生；不熟悉泰拉古国政治。"
+        },
+        {
+          "id": "sargon_tribal",
+          "name": "萨尔贡沙漠部族成员",
+          "summary": "出身萨尔贡沙漠 / 雨林部族，常以部落或雇佣关系维系社会。",
+          "common_knowledge": [
+            "沙漠 / 雨林生存与源石技艺",
+            "部族政治与水源知识",
+            "沙漠雇佣兵经济"
+          ],
+          "limitations": "对温带气候与城市政治不熟悉；不擅长群体防御。"
+        },
+        {
+          "id": "bolivar_remnant",
+          "name": "玻利瓦尔革命遗民",
+          "summary": "玻利瓦尔在辛嘉斯王朝被推翻后流散各地的革命遗民；可能含前反抗军、矿工后裔、难民。",
+          "common_knowledge": [
+            "玻利瓦尔内战与革命史",
+            "矿区与贫民区生存经验",
+            "对莱塔尼亚扶植王朝的痛恨"
+          ],
+          "limitations": "深度社会关系薄弱；缺乏新式源石工业工具。"
+        },
+        {
+          "id": "stateless_wanderer",
+          "name": "流亡者 / 无籍者",
+          "summary": "未登记在任何国家或阵营下的流浪者；可能是前整合运动逃亡者、未登记感染者或跨国逃犯。",
+          "common_knowledge": [
+            "边境求生与短期契约",
+            "对天灾与源石污染的实地经验",
+            "罗德岛短期任务经验"
+          ],
+          "limitations": "深度社会关系薄弱；对固定政治势力运作陌生。"
+        }
+      ],
+      "preset_dimensions": [
+        {
+          "id": "species",
+          "label": "种族",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 10
+        },
+        {
+          "id": "profession",
+          "label": "职业",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 20
+        },
+        {
+          "id": "origin_region",
+          "label": "出身地区",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 30
+        },
+        {
+          "id": "social_identity",
+          "label": "社会身份",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 40
+        }
+      ],
+      "preset_sets": {
+        "profession_presets": [
+          {
+            "id": "defender",
+            "name": "守护骑士",
+            "role": "前排重装、近身阻挡、低机动",
+            "ability_source": "盾卫训练与重甲格斗",
+            "limitations": "远程、近战持续、群体威胁、源石技艺均受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 9,
+              "constitution": 9,
+              "dexterity": 3,
+              "perception": 4,
+              "intelligence": 3,
+              "willpower": 6,
+              "charisma": 4,
+              "mana": 1,
+              "faith": 7,
+              "survival": 4
+            },
+            "base_attributes": {
+              "strength": 9,
+              "constitution": 9,
+              "dexterity": 3,
+              "perception": 4,
+              "intelligence": 3,
+              "willpower": 6,
+              "charisma": 4,
+              "mana": 1,
+              "faith": 7,
+              "survival": 4
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "守护骑士",
+            "display_at_profession_step": true,
+            "display_text": "守护骑士:力量9 体质9 灵巧3 感知4 智力3 意志6 魅力4 魔力1 信仰7 生存4;基础总和 50。前排重装、近身阻挡、低机动。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "guard",
+            "name": "近卫",
+            "role": "中排输出、近战纠缠",
+            "ability_source": "中距离格斗与基础武术",
+            "limitations": "远程射击、纯防御、高阶法术均受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 8,
+              "constitution": 7,
+              "dexterity": 7,
+              "perception": 5,
+              "intelligence": 3,
+              "willpower": 5,
+              "charisma": 4,
+              "mana": 2,
+              "faith": 4,
+              "survival": 5
+            },
+            "base_attributes": {
+              "strength": 8,
+              "constitution": 7,
+              "dexterity": 7,
+              "perception": 5,
+              "intelligence": 3,
+              "willpower": 5,
+              "charisma": 4,
+              "mana": 2,
+              "faith": 4,
+              "survival": 5
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "近卫",
+            "display_at_profession_step": true,
+            "display_text": "近卫:力量8 体质7 灵巧7 感知5 智力3 意志5 魅力4 魔力2 信仰4 生存5;基础总和 50。中排输出、近战纠缠。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "vanguard",
+            "name": "先锋",
+            "role": "前排搅动、压力回位",
+            "ability_source": "突袭与先手控制",
+            "limitations": "持久战、远程压制、复杂法术受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 7,
+              "constitution": 6,
+              "dexterity": 7,
+              "perception": 5,
+              "intelligence": 4,
+              "willpower": 5,
+              "charisma": 5,
+              "mana": 2,
+              "faith": 5,
+              "survival": 4
+            },
+            "base_attributes": {
+              "strength": 7,
+              "constitution": 6,
+              "dexterity": 7,
+              "perception": 5,
+              "intelligence": 4,
+              "willpower": 5,
+              "charisma": 5,
+              "mana": 2,
+              "faith": 5,
+              "survival": 4
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "先锋",
+            "display_at_profession_step": true,
+            "display_text": "先锋:力量7 体质6 灵巧7 感知5 智力4 意志5 魅力5 魔力2 信仰5 生存4;基础总和 50。前排搅动、压力回位。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "sniper",
+            "name": "远程",
+            "role": "后排输出、远程精准",
+            "ability_source": "弓弩与抛射武器专精",
+            "limitations": "近战肉搏、群体防御、高阶法术受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 4,
+              "constitution": 5,
+              "dexterity": 9,
+              "perception": 9,
+              "intelligence": 4,
+              "willpower": 4,
+              "charisma": 3,
+              "mana": 2,
+              "faith": 3,
+              "survival": 7
+            },
+            "base_attributes": {
+              "strength": 4,
+              "constitution": 5,
+              "dexterity": 9,
+              "perception": 9,
+              "intelligence": 4,
+              "willpower": 4,
+              "charisma": 3,
+              "mana": 2,
+              "faith": 3,
+              "survival": 7
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "远程",
+            "display_at_profession_step": true,
+            "display_text": "远程:力量4 体质5 灵巧9 感知9 智力4 意志4 魅力3 魔力2 信仰3 生存7;基础总和 50。后排输出、远程精准。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "caster",
+            "name": "术师",
+            "role": "后排施法、源石技艺",
+            "ability_source": "源石技艺训练与高阶法术",
+            "limitations": "近战肉搏、持久战、远程射击均受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 4,
+              "constitution": 4,
+              "dexterity": 4,
+              "perception": 5,
+              "intelligence": 9,
+              "willpower": 6,
+              "charisma": 4,
+              "mana": 10,
+              "faith": 1,
+              "survival": 3
+            },
+            "base_attributes": {
+              "strength": 4,
+              "constitution": 4,
+              "dexterity": 4,
+              "perception": 5,
+              "intelligence": 9,
+              "willpower": 6,
+              "charisma": 4,
+              "mana": 10,
+              "faith": 1,
+              "survival": 3
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "术师",
+            "display_at_profession_step": true,
+            "display_text": "术师:力量4 体质4 灵巧4 感知5 智力9 意志6 魅力4 魔力10 信仰1 生存3;基础总和 50。后排施法、源石技艺。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "specialist",
+            "name": "特种",
+            "role": "单点突袭、复杂机动",
+            "ability_source": "战术行动与诱捕装置",
+            "limitations": "群体输出、高阶法术、长期行军均受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 5,
+              "constitution": 5,
+              "dexterity": 9,
+              "perception": 8,
+              "intelligence": 5,
+              "willpower": 4,
+              "charisma": 4,
+              "mana": 3,
+              "faith": 1,
+              "survival": 6
+            },
+            "base_attributes": {
+              "strength": 5,
+              "constitution": 5,
+              "dexterity": 9,
+              "perception": 8,
+              "intelligence": 5,
+              "willpower": 4,
+              "charisma": 4,
+              "mana": 3,
+              "faith": 1,
+              "survival": 6
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "特种",
+            "display_at_profession_step": true,
+            "display_text": "特种:力量5 体质5 灵巧9 感知8 智力5 意志4 魅力4 魔力3 信仰1 生存6;基础总和 50。单点突袭、复杂机动。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "medic",
+            "name": "医师",
+            "role": "后排支援、医疗与源石病理学",
+            "ability_source": "战地急救与感染者病理",
+            "limitations": "持久战斗、近身肉搏、远程射击均受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 4,
+              "constitution": 5,
+              "dexterity": 6,
+              "perception": 7,
+              "intelligence": 7,
+              "willpower": 8,
+              "charisma": 6,
+              "mana": 2,
+              "faith": 4,
+              "survival": 1
+            },
+            "base_attributes": {
+              "strength": 4,
+              "constitution": 5,
+              "dexterity": 6,
+              "perception": 7,
+              "intelligence": 7,
+              "willpower": 8,
+              "charisma": 6,
+              "mana": 2,
+              "faith": 4,
+              "survival": 1
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "医师",
+            "display_at_profession_step": true,
+            "display_text": "医师:力量4 体质5 灵巧6 感知7 智力7 意志8 魅力6 魔力2 信仰4 生存1;基础总和 50。后排支援、医疗与源石病理学。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "supporter",
+            "name": "辅助",
+            "role": "后排增益、群体减益",
+            "ability_source": "鼓舞、感召与群体技艺",
+            "limitations": "近战缠斗、远程压制、爆发输出均受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 3,
+              "constitution": 4,
+              "dexterity": 5,
+              "perception": 7,
+              "intelligence": 7,
+              "willpower": 7,
+              "charisma": 9,
+              "mana": 4,
+              "faith": 3,
+              "survival": 1
+            },
+            "base_attributes": {
+              "strength": 3,
+              "constitution": 4,
+              "dexterity": 5,
+              "perception": 7,
+              "intelligence": 7,
+              "willpower": 7,
+              "charisma": 9,
+              "mana": 4,
+              "faith": 3,
+              "survival": 1
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "辅助",
+            "display_at_profession_step": true,
+            "display_text": "辅助:力量3 体质4 灵巧5 感知7 智力7 意志7 魅力9 魔力4 信仰3 生存1;基础总和 50。后排增益、群体减益。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "summoner",
+            "name": "召唤师",
+            "role": "后排召唤、源石构筑",
+            "ability_source": "源石召唤术与持续召唤调谐",
+            "limitations": "近战缠斗、远程射击、群体防御均受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 5,
+              "constitution": 5,
+              "dexterity": 4,
+              "perception": 6,
+              "intelligence": 8,
+              "willpower": 7,
+              "charisma": 5,
+              "mana": 6,
+              "faith": 3,
+              "survival": 1
+            },
+            "base_attributes": {
+              "strength": 5,
+              "constitution": 5,
+              "dexterity": 4,
+              "perception": 6,
+              "intelligence": 8,
+              "willpower": 7,
+              "charisma": 5,
+              "mana": 6,
+              "faith": 3,
+              "survival": 1
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "召唤师",
+            "display_at_profession_step": true,
+            "display_text": "召唤师:力量5 体质5 灵巧4 感知6 智力8 意志7 魅力5 魔力6 信仰3 生存1;基础总和 50。后排召唤、源石构筑。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "paladin",
+            "name": "圣骑士",
+            "role": "中后排圣骑士、信念护盾",
+            "ability_source": "圣誓护盾与驱邪仪式",
+            "limitations": "持续远程输出、源石工艺、过激暴力手段受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 6,
+              "constitution": 7,
+              "dexterity": 4,
+              "perception": 4,
+              "intelligence": 4,
+              "willpower": 8,
+              "charisma": 7,
+              "mana": 3,
+              "faith": 6,
+              "survival": 1
+            },
+            "base_attributes": {
+              "strength": 6,
+              "constitution": 7,
+              "dexterity": 4,
+              "perception": 4,
+              "intelligence": 4,
+              "willpower": 8,
+              "charisma": 7,
+              "mana": 3,
+              "faith": 6,
+              "survival": 1
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "圣骑士",
+            "display_at_profession_step": true,
+            "display_text": "圣骑士:力量6 体质7 灵巧4 感知4 智力4 意志8 魅力7 魔力3 信仰6 生存1;基础总和 50。中后排圣骑士、信念护盾。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "berserker",
+            "name": "狂战士",
+            "role": "前排爆发、嗜血冲阵",
+            "ability_source": "狂战形态与肾上腺素战术",
+            "limitations": "持久战、群体控制、高阶法术、精密工作均受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 10,
+              "constitution": 7,
+              "dexterity": 4,
+              "perception": 5,
+              "intelligence": 2,
+              "willpower": 5,
+              "charisma": 3,
+              "mana": 1,
+              "faith": 4,
+              "survival": 9
+            },
+            "base_attributes": {
+              "strength": 10,
+              "constitution": 7,
+              "dexterity": 4,
+              "perception": 5,
+              "intelligence": 2,
+              "willpower": 5,
+              "charisma": 3,
+              "mana": 1,
+              "faith": 4,
+              "survival": 9
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "狂战士",
+            "display_at_profession_step": true,
+            "display_text": "狂战士:力量10 体质7 灵巧4 感知5 智力2 意志5 魅力3 魔力1 信仰4 生存9;基础总和 50。前排爆发、嗜血冲阵。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "minstrel",
+            "name": "吟游诗人",
+            "role": "后排感召、歌谣与情报收集",
+            "ability_source": "歌谣与情报学",
+            "limitations": "近战缠斗、远程压制、爆发输出均受限",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "strength": 3,
+              "constitution": 4,
+              "dexterity": 6,
+              "perception": 7,
+              "intelligence": 7,
+              "willpower": 5,
+              "charisma": 9,
+              "mana": 5,
+              "faith": 3,
+              "survival": 1
+            },
+            "base_attributes": {
+              "strength": 3,
+              "constitution": 4,
+              "dexterity": 6,
+              "perception": 7,
+              "intelligence": 7,
+              "willpower": 5,
+              "charisma": 9,
+              "mana": 5,
+              "faith": 3,
+              "survival": 1
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "吟游诗人",
+            "display_at_profession_step": true,
+            "display_text": "吟游诗人:力量3 体质4 灵巧6 感知7 智力7 意志5 魅力9 魔力5 信仰3 生存1;基础总和 50。后排感召、歌谣与情报收集。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          }
+        ],
+        "origin_region_presets": [
+          {
+            "id": "yan",
+            "name": "炎国",
+            "summary": "东方古老大国，帝制延续千年，辖下自由港龙门为泰拉东西交汇窗口；法术传统以丹术与雷法见长。",
+            "common_knowledge": [
+              "以皇权为核心的中央集权体制",
+              "崇古尚礼、宗族力量强大",
+              "龙门是炎国对外最活跃的口岸"
+            ],
+            "limitations": "对西方政治与法术学派陌生；对卡兹戴尔战后的散落部族不熟悉。",
+            "possible_contacts": [
+              "龙门近卫局外勤",
+              "企鹅物流雇员",
+              "炎国云游商人"
+            ],
+            "typical_languages": [
+              "通用语",
+              "炎国方言"
+            ]
+          },
+          {
+            "id": "ursus",
+            "name": "乌萨斯",
+            "summary": "北方传统帝国，境内感染者矛盾尖锐；Terra 历 1096 切尔诺伯格事件后陷内战边缘；罗德岛在该区域有持续介入。",
+            "common_knowledge": [
+              "军制帝国，贵族与第三集团军此消彼长",
+              "切尔诺伯格事件是十年内最大城市危机",
+              "境内原石矿脉与感染者聚落密集"
+            ],
+            "limitations": "对南方诸国城市政治陌生；不熟悉维多利亚工业体系。",
+            "possible_contacts": [
+              "退役内卫队士兵",
+              "切尔诺伯格幸存者",
+              "乌萨斯流亡感染者"
+            ],
+            "typical_languages": [
+              "通用语",
+              "乌萨斯语"
+            ]
+          },
+          {
+            "id": "victoria",
+            "name": "维多利亚",
+            "summary": "工业革命蓬勃的岛国，传统贵族与新兴产业并存；现由摄政王特雷西斯以傀儡皇室方式掌权，对外扩张意图明显。",
+            "common_knowledge": [
+              "军事贵族传统深厚",
+              "工业源石与铁路网络发达",
+              "喀兰贸易、银灰等干员出身地"
+            ],
+            "limitations": "对长期天灾污染地区（如乌萨斯）的疾病经验不足；不熟悉莱塔尼亚宫廷法术。",
+            "possible_contacts": [
+              "退役帝国军",
+              "喀兰贸易外勤",
+              "维多利亚工程技师"
+            ],
+            "typical_languages": [
+              "通用语",
+              "维多利亚语"
+            ]
+          },
+          {
+            "id": "leithanien",
+            "name": "莱塔尼亚",
+            "summary": "中欧式法术王国，巫王于 Terra 历 1077 被推翻后由希尔德加德与莉泽洛特双子女皇共治；法术氛围浓厚，以金律乐章治世。",
+            "common_knowledge": [
+              "金律法卫、艺术骑士与女皇之声为其军事支柱",
+              "学院城崔林特尔梅是泰拉法术研究重镇",
+              "对感染者态度在历史上摇摆"
+            ],
+            "limitations": "对开阔战场（如卡西米尔骑士赛）不熟悉；不熟悉乌萨斯式军阀割据。",
+            "possible_contacts": [
+              "艺术骑士退役",
+              "源石技艺研究协会成员",
+              "莱塔尼亚流浪乐师"
+            ],
+            "typical_languages": [
+              "通用语",
+              "莱塔尼亚语"
+            ]
+          },
+          {
+            "id": "kazimierz_knights",
+            "name": "卡西米尔",
+            "summary": "骑士竞技商业国，骑士锦标赛为其经济支柱；近十年受爵位与商业资本深度绑定，骑士文化不断被异化。",
+            "common_knowledge": [
+              "骑士身份由竞技排名决定",
+              "大骑士领企业中盘剥下层感染者骑士",
+              "临光、白银义勇等干员出身地"
+            ],
+            "limitations": "对法术体系不熟悉（卡西米尔以武技见长）；不熟悉龙门外勤政治。",
+            "possible_contacts": [
+              "退役竞技骑士",
+              "感染者佣兵",
+              "大骑士领侍从"
+            ],
+            "typical_languages": [
+              "通用语",
+              "卡西米尔语"
+            ]
+          },
+          {
+            "id": "kazdel_sarkaz",
+            "name": "卡兹戴尔（萨卡兹故土）",
+            "summary": "萨卡兹魔王与王庭曾居之城邦；Terra 历 898 毁灭战后化为雇佣兵散居地；目前伦蒂尼姆为实际王庭所在地，特雷西斯新政权试图整合散落部族。",
+            "common_knowledge": [
+              "萨卡兹常散落各地为雇佣兵或游民",
+              "特雷西斯与特蕾西娅的双王遗争延续至今",
+              "罗德岛前身巴别塔的故乡"
+            ],
+            "limitations": "对乌萨斯以外的国家关系生疏；不熟悉维多利亚工业体系。",
+            "possible_contacts": [
+              "巴哈蒙特佣兵",
+              "萨卡兹孤兵",
+              "前巴别塔干员"
+            ],
+            "typical_languages": [
+              "通用语",
+              "萨卡兹语"
+            ]
+          },
+          {
+            "id": "lungmen",
+            "name": "龙门",
+            "summary": "炎国下辖自由港，魏彦吾任总督；以近卫局与企鹅物流为核心执法与物流体系；Terra 历 1097 初发生切尔诺伯格-龙门事件，与罗德岛长期合作。",
+            "common_knowledge": [
+              "企鹅物流是龙门最有名的非官方外勤",
+              "近卫局是龙门主要执法力量",
+              "龙门贫民区与感染者关系是长期社会议题"
+            ],
+            "limitations": "对北方天灾与萨卡兹历史陌生；不熟悉莱塔尼亚宫廷。",
+            "possible_contacts": [
+              "企鹅物流雇员",
+              "龙门近卫局外勤",
+              "黑钢国际成员"
+            ],
+            "typical_languages": [
+              "通用语",
+              "龙门方言"
+            ]
+          },
+          {
+            "id": "stateless_wanderer",
+            "name": "漂泊散人",
+            "summary": "未归属任何政权的流浪者群体；多为前整合运动余部、各国逃兵、雇佣兵或未登记感染者；常以短期契约方式与罗德岛合作。",
+            "common_knowledge": [
+              "不被任一王国正式保护",
+              "通常对天灾与野外求生经验极强",
+              "对感染者态度高度务实"
+            ],
+            "limitations": "深度社会关系薄弱；对固定政权的内部运作不熟悉。",
+            "possible_contacts": [
+              "前整合运动成员",
+              "雇佣兵旧识",
+              "边境走私客"
+            ],
+            "typical_languages": [
+              "通用语",
+              "多种混杂语"
+            ]
+          }
+        ],
+        "social_identity_presets": [
+          {
+            "id": "rhodes_operator",
+            "name": "罗德岛登记干员",
+            "summary": "已在罗德岛运营 / 医疗 / 外勤 / 工程任一部门登记的现役干员；可担任本剧本玩家角色或前线 NPC。",
+            "common_knowledge": [
+              "干员编号 / 代号体系",
+              "基础源石适应与作战纪律",
+              "罗德岛内部行政流程"
+            ],
+            "limitations": "受罗德岛调度权限约束；对其他阵营的政治运作不熟。"
+          },
+          {
+            "id": "victoria_veteran",
+            "name": "维多利亚退役军人",
+            "summary": "曾在维多利亚帝国军（含地方守备、近卫等）服役后退役的官兵，对维多利亚贵族体系有亲身了解。",
+            "common_knowledge": [
+              "军事纪律与贵族礼仪",
+              "维多利亚军事装备体系",
+              "喀兰贸易相关人物网络"
+            ],
+            "limitations": "对乌萨斯内部政治与法术学派陌生；对罗德岛运营不熟。"
+          },
+          {
+            "id": "lungmen_guard_external",
+            "name": "龙门近卫局编外 / 退役",
+            "summary": "曾在龙门近卫局任职、现已脱离编制或转外勤的执法相关人员。",
+            "common_knowledge": [
+              "龙门执法流程与陈主导的指挥链",
+              "贫民区与黑市的实际情况",
+              "近卫局外勤战术"
+            ],
+            "limitations": "对北方萨卡兹历史与西方法术学派陌生。"
+          },
+          {
+            "id": "mercenary_band",
+            "name": "雇佣兵（巴哈蒙特 / 萨尔贡系）",
+            "summary": "隶属巴哈蒙特佣兵团、萨尔贡沙漠系佣兵团或龙门地下外包团的雇佣兵；通常以萨卡兹、菲林、卡特斯等族为多。",
+            "common_knowledge": [
+              "佣兵公会运作与短期契约",
+              "战场急救与野外生存",
+              "巴拉萨 / 巴哈蒙特人物网络"
+            ],
+            "limitations": "对城市行政与学院派法术陌生；可能受官方追查。"
+          },
+          {
+            "id": "rhine_lab_external",
+            "name": "莱茵生命外勤",
+            "summary": "莱茵生命跨国研究企业的外勤 / 工程 / 医疗岗雇员；接触前沿源石与生物技术。",
+            "common_knowledge": [
+              "莱茵生命研究体系（D6 等）",
+              "跨国法务与商业伦理",
+              "光学 / 物理源石技术分支"
+            ],
+            "limitations": "正面战斗与野外持久战经验有限；对罗德岛运营流程不熟。"
+          },
+          {
+            "id": "leithanien_academy",
+            "name": "莱塔尼亚源石技艺学院学徒",
+            "summary": "曾在崔林特尔梅或同等法术学府进修的学徒；可能涉及艺术骑士或研究协会分支。",
+            "common_knowledge": [
+              "金律乐章与法术学派常识",
+              "学术礼仪与学院政治",
+              "对源石技艺六大系有基础理解"
+            ],
+            "limitations": "实战与野外经验薄弱；对乌萨斯 / 维多利亚政治运作陌生。"
+          },
+          {
+            "id": "laterano_sankta",
+            "name": "拉特兰铳士（教派系）",
+            "summary": "来自铳与圣枪之国拉特兰的圣裔 / 铳士 / 侍从；持拉特兰国籍，常服务于教廷。",
+            "common_knowledge": [
+              "拉特兰铳术与礼仪",
+              "宗教驱邪与圣体仪式",
+              "对萨卡兹持敬畏距离"
+            ],
+            "limitations": "对源石技艺持较保守态度；与感染者深度合作时可能僵硬。"
+          },
+          {
+            "id": "columbia_industrial",
+            "name": "哥伦比亚工业技工",
+            "summary": "哥伦比亚工业城邦背景的技师 / 工匠；熟悉源石工业化生产线与现代工程实务。",
+            "common_knowledge": [
+              "工业源石器械维修",
+              "企业管理与蓝领工会",
+              "城市政治与黑市网络"
+            ],
+            "limitations": "对法术体系与野外求生陌生；不熟悉泰拉古国政治。"
+          },
+          {
+            "id": "sargon_tribal",
+            "name": "萨尔贡沙漠部族成员",
+            "summary": "出身萨尔贡沙漠 / 雨林部族，常以部落或雇佣关系维系社会。",
+            "common_knowledge": [
+              "沙漠 / 雨林生存与源石技艺",
+              "部族政治与水源知识",
+              "沙漠雇佣兵经济"
+            ],
+            "limitations": "对温带气候与城市政治不熟悉；不擅长群体防御。"
+          },
+          {
+            "id": "bolivar_remnant",
+            "name": "玻利瓦尔革命遗民",
+            "summary": "玻利瓦尔在辛嘉斯王朝被推翻后流散各地的革命遗民；可能含前反抗军、矿工后裔、难民。",
+            "common_knowledge": [
+              "玻利瓦尔内战与革命史",
+              "矿区与贫民区生存经验",
+              "对莱塔尼亚扶植王朝的痛恨"
+            ],
+            "limitations": "深度社会关系薄弱；缺乏新式源石工业工具。"
+          },
+          {
+            "id": "stateless_wanderer",
+            "name": "流亡者 / 无籍者",
+            "summary": "未登记在任何国家或阵营下的流浪者；可能是前整合运动逃亡者、未登记感染者或跨国逃犯。",
+            "common_knowledge": [
+              "边境求生与短期契约",
+              "对天灾与源石污染的实地经验",
+              "罗德岛短期任务经验"
+            ],
+            "limitations": "深度社会关系薄弱；对固定政治势力运作陌生。"
+          }
+        ],
+        "species_presets": [
+          {
+            "id": "human",
+            "value": "human",
+            "label": "人类",
+            "summary": "分布最广、文化最多元的种族，没有特殊能力但适应力强。",
+            "limitations": "对源石技艺无天然亲和，需依赖施法媒介。"
+          },
+          {
+            "id": "sarkaz",
+            "value": "sarkaz",
+            "label": "萨尔卡兹",
+            "summary": "魔族血统，有角、翼或尾，多数掌握源石技艺；卡兹戴尔传统悠久。",
+            "limitations": "萨尔卡兹孤兵常被王国追查；社会关系脆弱。"
+          },
+          {
+            "id": "cautus",
+            "value": "cautus",
+            "label": "卡特斯",
+            "summary": "兔类亚人，反应快、听觉敏锐，常从业侦探与信使。",
+            "limitations": "不擅长持久正面攻坚；体型小。"
+          },
+          {
+            "id": "lupo",
+            "value": "lupo",
+            "label": "鲁珀",
+            "summary": "狼类亚人，耐寒忠诚，是卡西米尔骑士团的常见种族。",
+            "limitations": "高傲性格可能引发孤立；对源石技艺天赋弱。"
+          },
+          {
+            "id": "feline",
+            "value": "feline",
+            "label": "菲林",
+            "summary": "猫类亚人，敏捷独立，是龙门街头与黑市常见种族。",
+            "limitations": "对群体协作抵触；锋利性格易树敌。"
+          },
+          {
+            "id": "perro",
+            "value": "perro",
+            "label": "佩洛",
+            "summary": "犬类亚人，服从守纪，常从业军警。",
+            "limitations": "灵活性较差；不易受信任为单独行动者。"
+          },
+          {
+            "id": "vulpo",
+            "value": "vulpo",
+            "label": "沃尔珀",
+            "summary": "狐类亚人，社交敏锐，是龙门与情报业的常见种族。",
+            "limitations": "常被误认冷漠或不可靠；体格偏弱。"
+          },
+          {
+            "id": "kuranta",
+            "value": "kuranta",
+            "label": "库兰塔",
+            "summary": "马类亚人，奔跑与耐力优秀，常从业骑兵与邮差。",
+            "limitations": "高大体格在密闭处行动受限；智力向偏低。"
+          }
+        ]
+      }
+    },
+    "story_spine": {
+      "campaign_type": "single_engagement",
+      "total_turn_budget": 30,
+      "recommended_player_count": "4-5",
+      "fallback_player_count": "3 (drift +30%) / 6 (drift -30%)",
+      "non_renewable_session": true,
+      "primary_question": "你们能不能在 6 小时内把人弄出来？",
+      "secondary_question": "你们怎么处理弗拉达？",
+      "themes": [
+        "末日公路片",
+        "组织合法性",
+        "感染者处置",
+        "前同事反目"
+      ],
+      "do_not_include_in_this_session": [
+        "莱茵生命阴谋线",
+        "W 加入罗德岛",
+        "塔露拉主线",
+        "凯尔希个人史",
+        "萨卡兹王国历史"
+      ]
+    },
+    "tension_drivers": [
+      "天灾二次回潮倒计时",
+      "整合运动内部离心",
+      "弗拉达对罗德岛的怨怼",
+      "妮卡的源石技艺发作",
+      "源石污染带扩散"
+    ],
+    "time_rules": {
+      "turn_timeout_action": "hold",
+      "card_timeout_action": "remind",
+      "ready_timeout_action": "remind"
+    },
+    "setting_modules": {
+      "canon_policy": {
+        "source": "原创剧本：基于泰拉世界观改编",
+        "timeline": "Terra 历 1097 年秋，Arknights 主线前期 6–9 个月前"
+      },
+      "technology": {
+        "level": "源石工业成熟期，无现代枪械 / 无信息网络"
+      }
+    },
+    "chat_experience": {
+      "enabled": true,
+      "character_creation": {
+        "primary": "private_code",
+        "fallbacks": [
+          "webui_token"
+        ]
+      },
+      "multiplayer": {
+        "spotlight": "round_robin",
+        "group_decisions": "vote",
+        "absent_player": "standby"
+      },
+      "safety": {
+        "enabled": true,
+        "consent_reminder": "任何玩家都可使用安全暂停且不需要解释原因"
+      },
+      "continuity": {
+        "recap_every_turns": 0,
+        "checkpoint_every_turns": 0,
+        "unresolved_threads_limit": 4,
+        "preserve_npc_intent": true
+      },
+      "delivery": {
+        "proactive_fallback": "next_event",
+        "mention_style": "name",
+        "max_text_length": 3000
+      },
+      "dm": {
+        "allow_narrative_override": true,
+        "allow_secret_whispers": true,
+        "allow_manual_checks": true,
+        "allow_state_intervention": false
+      }
+    },
+    "interaction_rules": {
+      "settings": {
+        "conflict_strategy": "priority_then_stack"
+      }
+    },
+    "resources": {
+      "definitions": [
+        {
+          "id": "endurance",
+          "label": "耐力",
+          "category": "stamina",
+          "description": "基础耐力，描述角色在持续战、远程跋涉、源石技艺持续释放等场景下的持续能力。",
+          "persistence_scope": "session",
+          "initial_value": 10,
+          "range": {
+            "min": 0,
+            "max": 20
+          },
+          "tags": [
+            "stamina",
+            "resource"
+          ],
+          "version": "1.0"
+        }
+      ],
+      "items": []
+    },
+    "runtime_effects": {
+      "definitions": [
+        {
+          "id": "status_ori_partial",
+          "label": "部分源石化",
+          "description": "角色处于源石病早中期，行动受一定限制；用于弗拉达。",
+          "category": "status",
+          "severity": "serious",
+          "removable": true,
+          "tags": [
+            "status",
+            "infection"
+          ],
+          "version": "1.0"
+        },
+        {
+          "id": "status_ori_severe",
+          "label": "重度源石化",
+          "description": "角色处于源石病晚期，源石技艺释放时可能反噬；用于妮卡。",
+          "category": "status",
+          "severity": "critical",
+          "removable": false,
+          "tags": [
+            "status",
+            "infection"
+          ],
+          "version": "1.0"
+        }
+      ]
+    }
+  },
+  "initial_state": {
+    "location": "切尔诺伯格以北 30 公里，挪德卡聚落外围 200 米的林道",
+    "time": "Terra 历 1097 年秋，天灾后第 3 小时，清晨 6:42",
+    "scene_summary": "黎明快速反应小队从罗德岛出发抵达任务外围；车队停在林道尽头；远处聚落上空还有薄雾与未散尽的源石微粒。",
+    "weather": "薄雾，能见度 200 米，气温 4°C，自北风 3 级",
+    "progress": {
+      "chapter": "序章：黎明前",
+      "current_chapter_id": "ch_00_briefing",
+      "current_objective": "在切尔诺伯格北部挪德卡聚落 6 小时内救出被困家庭、评估整合运动偏离小分队威胁等级",
+      "completed_milestones": 0,
+      "total_milestones": 13
+    },
+    "facts": [
+      "本次任务代号『黎明』",
+      "目标聚落挪德卡位于切尔诺伯格北境，约 40 户，100 余名村民",
+      "天灾结束 3 小时，源石污染仍在扩散",
+      "通讯中继塔被毁，与外界中断 3 天",
+      "整合运动 1 支 6 人小分队据报在村内活动"
+    ],
+    "relationships": {
+      "npc_kaltsit": "已派遣，信任但附带观察任务",
+      "npc_misha": "未接触，将由玩家主动接触",
+      "npc_vlada": "敌对，待小队长下令后再正面遭遇"
+    },
+    "inventory": [
+      {
+        "item": "通讯器",
+        "qty": 1,
+        "owner_ref": "party"
+      },
+      {
+        "item": "原石样本试管盒",
+        "qty": 2,
+        "owner_ref": "party"
+      },
+      {
+        "item": "急救医疗包",
+        "qty": 4,
+        "owner_ref": "party"
+      },
+      {
+        "item": "防毒面罩",
+        "qty": 6,
+        "owner_ref": "party"
+      }
+    ]
+  },
+  "world_schema_version": 5,
+  "world_content_version": "1.0.0",
+  "minimum_plugin_version": "0.12.0",
+  "capabilities": {
+    "definitions": [
+      {
+        "capability_id": "squad.dawn_signature",
+        "label": "黎明小队签名",
+        "capability_type_ref": "capability_type:profession_signature",
+        "description": "黎明小队基础战术位与协同工具链；罗德岛快速反应小队的标志能力。",
+        "tags": [
+          "squad.dawn",
+          "rhodes_island"
+        ],
+        "grant_policy": "ignore",
+        "effects": [
+          {
+            "op": "add_narrative_constraint",
+            "value": "黎明小队队员在罗德岛快速反应协议下拥有基本战术与协同能力。"
+          }
+        ]
+      }
+    ],
+    "initial_grants": [
+      {
+        "capability_ref": "squad.dawn_signature",
+        "scope": "character",
+        "available": true
+      }
+    ],
+    "transitions": []
+  },
+  "protocol": {
+    "core_version": 5,
+    "features": {
+      "entity_registry": "1.0",
+      "condition_engine": "1.0",
+      "operation_engine": "1.0",
+      "event_pipeline": "1.0",
+      "resolution_receipt": "1.0",
+      "capabilities": "1.0",
+      "resources": "1.0",
+      "runtime_effects": "1.0",
+      "objects": "1.0",
+      "resolution_methods": "1.0",
+      "interaction_rules": "1.0",
+      "action_intents": "1.0",
+      "chat_experience": "1.0"
+    }
+  },
+  "required_features": [
+    "entity_registry@>=1.0",
+    "condition_engine@>=1.0",
+    "operation_engine@>=1.0",
+    "event_pipeline@>=1.0",
+    "resolution_receipt@>=1.0",
+    "capabilities@>=1.0",
+    "interaction_rules@>=1.0",
+    "chat_experience@>=1.0",
+    "resources@>=1.0",
+    "runtime_effects@>=1.0"
+  ],
+  "elemental": {
+    "version": "2.0",
+    "system_note": "本系统为剧本操作层抽象。canon 源石技艺体系参照泰拉大典，分为六大系：咒法化形系（形） / 塑能转换系（能） / 塑形重构系（质） / 生理变化系与恢复疗愈系（生） / 传心感知系（心）；底层为'源'。原'光/暗/理'等元素在本系统不再保留。下表 6 个代号为机能层抽象：形=形变 / 能=能量 / 质=物质 / 生=生理 / 心=感知 / 源=底层要素。",
+    "elements": [
+      "源",
+      "形",
+      "能",
+      "质",
+      "生",
+      "心"
+    ],
+    "affinities": {
+      "material.consecrated_silver": {
+        "源": -1.0,
+        "心": -1.0,
+        "形": 0.5
+      },
+      "npc:感染者": {
+        "源": 1.0,
+        "心": -0.5
+      },
+      "item:原石样本": {
+        "源": -1.5,
+        "生": -1.0
+      },
+      "target.creature_tag": {
+        "源": 0.0
+      }
+    },
+    "reactions": [
+      {
+        "a": "源",
+        "b": "形",
+        "result": "形变干涉",
+        "effect": {
+          "op": "emit_event",
+          "text": "咒法化形系技艺压制源石微粒，污染区退潮。"
+        }
+      },
+      {
+        "a": "源",
+        "b": "生",
+        "result": "感染扩散",
+        "effect": {
+          "op": "emit_event",
+          "text": "源石污染溢出，生理变化系区域出现源石霜冻。"
+        }
+      },
+      {
+        "a": "能",
+        "b": "心",
+        "result": "感知压制",
+        "effect": {
+          "op": "emit_event",
+          "text": "塑能与传心交叉施压，目标感官被干涉，近距能见度归零。"
+        }
+      }
+    ]
+  }
+}

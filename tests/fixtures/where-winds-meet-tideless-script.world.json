@@ -1,0 +1,5118 @@
+{
+  "template_metadata": {
+    "template_bundle_version": "2.0.0",
+    "compatible_plugin_version": "0.10.0",
+    "world_schema_version": 4,
+    "character_card_template_version": 5,
+    "purpose": "《燕云十六声》现行江湖体系下的原创长篇支线世界包",
+    "source_baseline_date": "2026-08-02",
+    "content_isolation": "不包含正传主角和任何原作剧情NPC",
+    "compatibility_note": "v0.10.0 世界协议 v4：通用预设维度在建卡时自动合成数值、知识边界与内容边界；玩家不再填写边界文本。",
+    "minimum_plugin_version": "0.10.0"
+  },
+  "slug": "where-winds-meet-tideless-script",
+  "name": "燕云十六声：潮痕无字",
+  "description": "发生在江南·临潮渡的原创长篇武侠悬案。一艘无人的赈粮空船逆潮归来，水显账簿、百家兵痕与黑竹牌把玩家引向无灯市、沉闸暗渠和听潮台。1—8人可玩，推荐2—6人，建议30—50回合，完整探索40—70回合。保留现行门派、武学、奇术、卸势、气竭与易武玩法，不出现正传主角及任何原作剧情NPC。",
+  "system_prompt": "【世界与正传隔离】\n这是《燕云十六声》时代与江湖体系下的原创长篇支线《潮痕无字》，活动中心是杭州外围虚构水陆集镇“临潮渡”。允许使用已经正式存在的地域、门派、武学、奇术、卸势、真气、气竭、易武等公共设定；严禁让正传主角或任何原作剧情NPC登场、传信、留名、救场或成为幕后人物，也不得改写原作主线结局。所有具体案件人物均使用本包原创NPC。\n\n【时代与氛围】\n五代末宋初秩序交替，水陆商路、官府、漕社、义仓、门派与江湖游侠彼此纠缠。叙事比例为历史市井70%、江湖武侠20%、暧昧志怪10%。江南繁华与梅雨潮湿并存；志怪只保持可疑、可追查、可留白，不把世界突然改成无代价仙术体系。\n\n【公开案件】\n梅雨第八日，一艘无船夫、无赈粮的空船逆潮回到临潮渡。舱内有遇水显字、离水无痕的账簿痕迹，十种不同武学留下的兵痕，以及刻“潮退人归”的黑竹牌；血脚印通向客栈，义仓同时起火。玩家只知道这些可见事实，不知道真相。\n\n【主持人隐藏真相】\n所谓“无字潮谱”不是绝世武学，而是记录暗渠、水闸、沉船点和赈粮流向的秘密河图。义仓主簿梁晦借废闸转运赈粮，雇人以器具、药香和偷学残招伪造百家兵痕，意图诱发门派互疑并销毁账目。沈孤篷是内部告密者，陆三停隐瞒旧闸暗渠，程鹭娘保存一页水显账簿，秦小满能证明“水鬼伤”混有毒香与点穴。人为阴谋必须能凭证据闭环；旧闸深处的十六声古调始终保留一小部分无法完全解释的余地，不能用一句“都是鬼”抹去调查。\n\n【五维与知识映射】\n世界只允许体、御、敏、势、劲五维。体：体魄、耐力、气血、抗毒、负伤、游水与救治承受；御：防御、格挡、卸势、守阵、护人和抵抗冲击；敏：身法、追踪、潜行、观察、听辨和精细操作；势：气势、威慑、交涉、定力、号令与声律影响；劲：劲力、破甲、角力、抬闸、重械、机关强制与结构破坏。不得请求魅力、感知、智力等包外属性。内部ID只能用于结构字段，玩家可见正文必须显示中文属性名。\n\n【建卡数值真值】\n每项基础为5；地区出身提供合计+2，江湖身份提供+1，主修武学流派提供+3，最终五维总和固定31，通常单项5—9。门派和辅修流派不加属性。v0.9.3使用preset_stack从地区出身、江湖身份与主修武学流派的机器加成自动结算五维，并保存来源快照；玩家不得手动填写或修改最终五维。不得改回主属性/副属性模式。\n\n【能力边界】\n门派与武学解绑。门派给予身份、基层权限、门规和关系，不给予全门派号令权；主修流派给予对应两门起始武学，辅修只代表浅层训练，不能强过主修。奇术不是无限法术：必须考虑距离、姿势、介质、调息和场景后果。角色只能依据角色卡、亲历、公开事实、所得线索与合理消息源行动；不得读取其他玩家秘密、主持人隐藏真相或NPC私密方向。\n\n【战斗翻译】\n卸势针对可读招式通常用御，以身法闪解可用敏；连续成功、克制、协作或大成功可积累敌方破绽，关键敌人出现三次有效破绽后才可进入气竭；易武在合理切换两套武学且改变战术时可给一次情境优势，不能反复刷优势；相邻角色可用御或体代人承受已知后果；普通失败不直接死亡，致命风险必须事先公开后果并遵守玩家确认。敌人数随人数调整，不堆叠无意义血量。\n\n【机器裁定】\n插件锁定D20、属性加值、风险DC和结果档位。安全选项不得检定；可控DC9、危险DC13、绝境DC17、致命DC21。天然20为大成功、天然1为大失败；差值≥10大成功，0至9成功，-1至-4代价成功，-5至-9失败，≤-10大失败。文字AI不得重投、修改DC、篡改结果或在失败后追加未预告永久代价。失败应推动剧情：失去时间、暴露位置、线索变残缺、关系恶化、资源受损或时钟推进，但不能让主线无路可走。\n\n【长篇节奏总则】\n推荐30—50回合，完整探索40—70回合。不得因一次高检定跳过整幕、直接说出梁晦全案或提前进入结局。每幕至少完成三个主节点，并处理至少一个可选事件后，才可进入下一幕；一人局可由同行NPC提供一种有限协助但绝不替玩家选项，2—6人正常推进，7—8人应提供分组调查、协作检定和群体投票。每回合只推进一个清晰局部变化，给出可行动信息。\n\n【五幕与十五主节点】\n第一幕“空船归潮”：1空船检验——辨认水显痕、兵痕为杂糅伪迹；2义仓火线——救人、保粮或追纵火者并承受取舍；3客栈血迹——确认赤脚血印属于活人且有人刻意引路。三线互证后加入事实“第一幕核心证据已闭环”，完成里程碑“空船归潮”，移除第一幕章节事实，加入第二幕章节事实。\n第二幕“百家疑痕”：4伪痕拆分——至少分辨三类兵痕来源；5青篁坞访材——查出黑竹牌、船钉或假痕器具；6无灯市寻买家——取得暗号、货单或中间人证词。不得仅凭门派身份强取情报。闭环后进入第三幕。\n第三幕“沉闸旧事”：7退潮潜闸——找到可用入口并处理水压；8沉船与幸存者——救出或找到船队真证；9暗渠河图——确认潮谱实为水工与转运图。必须让陆三停旧事、秦小满毒香判断或等价证据至少两项成立，才进入第四幕。\n第四幕“十六声局”：10多方索卷——官差、漕社、门派与黑市提出冲突要求；11内鬼告密——保护或审问沈孤篷，确认梁晦网络；12听潮台争谱——通过交涉、潜入、战斗或设局决定谁先取得完整潮谱。影响全队阵营与潮谱归属的决定必须发起群体投票。闭环后进入第五幕。\n第五幕“潮退人归”：13十六声机关——分清人为声律机关与无法解释的余音；14开闸救援——在粮、船工、证据和自身安全间作公开取舍；15梁晦对质与潮谱处置——可以揭发、逼供、交易、放逐或利用，不强制击杀。完成后根据结局矩阵收束，仍需给每名玩家个人余波。\n\n【进度、账本与时钟】\n副本只保留五个kind=milestone的章节里程碑，不得新增第六个；使用main/objective记录当前主节点，使用clue记录证据。首次正式推进且账本中没有章节里程碑时，一次性创建“空船归潮、百家疑痕、沉闸旧事、十六声局、潮退人归”五项milestone，均保持active，完成对应幕时只complete相应条目。首次正式推进且场景时钟不存在时，创建：潮位逼近6格（满格封死低位暗渠）、赈粮损耗6格（满格大量粮食不可追回）、百家猜忌6格（满格触发公开冲突）、无人古调4格hidden（满格只揭示新的异常，不直接证明鬼神）。时间拖延、失败与放弃目标可推进对应时钟；有效准备、救援或拆局可停止、延缓或在合理时回退一格，但不能无理由清零。\n\n【事件池使用】\n系统每回合最多抽取一个符合章节事实与人数的事件。事件只改变当前局面，不能替代十五主节点，也不能凭事件描述自动判定玩家失败。抽到事件后将其自然融入环境、NPC行动或新选项；已处理事件不得换名重复。章节转换必须精确移除旧章节事实并加入新章节事实，使事件池不会串幕。\n\n【玩家自主权与多人秩序】\n只描述环境、NPC及已声明行动的结果；不得替玩家决定思想、台词、承诺、背叛、恋爱、投降、门派立场或死亡确认。当前玩家不得操控他人角色。多人分组时记录每组地点和已知信息，合流前不让角色凭空共享情报。关键路线、潮谱归属、是否开闸、是否公开证据等影响全队的决定使用group_decision，不消耗个人行动回合。\n\n【结局矩阵】\n证据充分且证人安全、潮谱公开：众门同证；优先开闸救人与还粮、牺牲部分证据：开闸放粮；与地方势力交易维稳：水路换旗；毁掉潮谱阻止再利用：无字归潮；玩家带走潮谱：江湖持卷；人为案闭环但古调未解：潮下余声。结局可以组合，必须依据赈粮保存、获救人数、百家猜忌、证据账本、潮谱归属、梁晦处置和古调时钟生成变体，禁止无视玩家积累强行指定“唯一真结局”。\n\n【叙事输出】\n语言采用克制、有画面感的中文武侠叙事，保持雨、水、木、铁、灯火与声律意象；不要堆砌四字词或写成长篇独白。每回合先交代可见变化和因果，再给下一位玩家严格A—D四项；选项必须与该角色能力和当前场景相关，至少包含谨慎、交涉/调查、冒险和团队路线中的合理变化，但不得把隐藏真相写进选项。",
+  "opening_scene": "梅雨连下七日，到第八日清晨才稍稍收声。临潮渡的石阶还浸在灰白水雾里，一艘没有掌舵人、没有船灯的平底粮船逆着潮头撞上渡口。船舱空得反常：麻袋里只剩湿透的谷壳，舱板上横陈十种彼此冲突的兵刃痕迹，一枚刻着“潮退人归”的黑竹牌钉在主梁。更深处的木纹间，几行遇水显现的账目正在随风变淡。\n\n一串赤脚血印从船舷延伸上岸，穿过鱼市，停在程记客栈后门。还没等人追过去，东面的义仓突然冒出浓烟；与此同时，船腹里传来三声不像木料挤压的短响。报案的铜锣尚未敲起，已有两个没有完整腰牌的差役挤进人群，要求所有人退开。\n\n玩家因各自目标同到临潮渡，此刻都看见了空船、血印、义仓火光与可疑差役。谁也不知道“无字潮谱”究竟是武谱、河图，还是一场专门写给江湖看的骗局。",
+  "rules": {
+    "world_schema_version": 4,
+    "strict_choices": true,
+    "check_density": "standard",
+    "allow_player_result_claims": false,
+    "death_requires_confirmation": true,
+    "player_limits": {
+      "recommended_min": 2,
+      "recommended_max": 6,
+      "minimum_start": 1,
+      "maximum": 8
+    },
+    "character_card": {
+      "version": 5,
+      "auto_approve": false,
+      "edit_requires_review": true,
+      "preset_sets": {
+        "origin_regions": [
+          {
+            "id": "origin_qinghe",
+            "value": "清河",
+            "label": "清河",
+            "summary": "乡野、猎场与旧盟遗迹之间长大。",
+            "stat_bonus": {
+              "ti": 1,
+              "yu": 1
+            },
+            "common_knowledge": [
+              "乡野路径",
+              "狩猎基础",
+              "旧盟遗迹传闻"
+            ],
+            "limitations": "不自动认识清河正传人物，也不拥有旧盟机密。",
+            "knowledge_profile_ref": "knowledge.origin_regions.origin_qinghe",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "origin_kaifeng",
+            "value": "开封",
+            "label": "开封",
+            "summary": "熟悉坊市、行会、官府手续与流动人情。",
+            "stat_bonus": {
+              "min": 1,
+              "shi": 1
+            },
+            "common_knowledge": [
+              "坊市规矩",
+              "官府文书",
+              "城市消息路数"
+            ],
+            "limitations": "不自动拥有官府身份、权贵关系或禁城权限。",
+            "knowledge_profile_ref": "knowledge.origin_regions.origin_kaifeng",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "origin_hexi",
+            "value": "河西",
+            "label": "河西",
+            "summary": "在军镇、商道、沙地与多族往来中成长。",
+            "stat_bonus": {
+              "ti": 1,
+              "jin": 1
+            },
+            "common_knowledge": [
+              "军旅行止",
+              "商队路线",
+              "荒地辨向"
+            ],
+            "limitations": "不自动拥有军职、军令或边军调动权。",
+            "knowledge_profile_ref": "knowledge.origin_regions.origin_hexi",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "origin_bujianshan",
+            "value": "不见山",
+            "label": "不见山",
+            "summary": "熟悉百工、矿石、营造和机关常识。",
+            "stat_bonus": {
+              "yu": 1,
+              "jin": 1
+            },
+            "common_knowledge": [
+              "百工术语",
+              "机关安全",
+              "材料辨识"
+            ],
+            "limitations": "不自动掌握墨门秘械或大型机关图纸。",
+            "knowledge_profile_ref": "knowledge.origin_regions.origin_bujianshan",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "origin_qingzhou",
+            "value": "青州",
+            "label": "青州",
+            "summary": "受海岱文教、乡约、商港与乐舞熏陶。",
+            "stat_bonus": {
+              "yu": 1,
+              "shi": 1
+            },
+            "common_knowledge": [
+              "乡约礼法",
+              "海贸常识",
+              "齐鲁文教"
+            ],
+            "limitations": "不自动拥有士族谱系、官学名籍或海商船队。",
+            "knowledge_profile_ref": "knowledge.origin_regions.origin_qingzhou",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "origin_jiangnan",
+            "value": "江南",
+            "label": "江南",
+            "summary": "熟悉舟船、潮汐、园林、乐舞和水路商业。",
+            "stat_bonus": {
+              "min": 1,
+              "shi": 1
+            },
+            "common_knowledge": [
+              "舟船潮汐",
+              "水乡市井",
+              "江南商路"
+            ],
+            "limitations": "不自动知道临潮渡暗渠或本案幕后网络。",
+            "knowledge_profile_ref": "knowledge.origin_regions.origin_jiangnan",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "origin_wandering",
+            "value": "漂泊无籍",
+            "label": "漂泊无籍",
+            "summary": "长期随商旅、艺班、难民或江湖队伍迁徙。",
+            "stat_bonus": {
+              "ti": 1,
+              "min": 1
+            },
+            "common_knowledge": [
+              "道路求生",
+              "客栈黑话",
+              "多地风俗碎片"
+            ],
+            "limitations": "消息广而不深，缺少稳定户籍与官方担保。",
+            "knowledge_profile_ref": "knowledge.origin_regions.origin_wandering",
+            "content_profile_ref": "content.default_player"
+          }
+        ],
+        "social_identities": [
+          {
+            "id": "identity_escort",
+            "value": "镖客",
+            "label": "镖客",
+            "summary": "擅长护送、警戒、辨路与维护雇约。",
+            "stat_bonus": {
+              "yu": 1
+            },
+            "permissions": [
+              "判断常规护送阵形",
+              "识别商路风险"
+            ],
+            "obligations": [
+              "重视雇约与同行安全"
+            ],
+            "knowledge_profile_ref": "knowledge.social_identities.identity_escort",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "identity_healer",
+            "value": "医者",
+            "label": "医者",
+            "summary": "能够处置常见伤势，辨认药材、毒物与病症。",
+            "stat_bonus": {
+              "ti": 1
+            },
+            "permissions": [
+              "普通急救",
+              "常见药毒辨识"
+            ],
+            "obligations": [
+              "紧急现场优先救治伤者"
+            ],
+            "knowledge_profile_ref": "knowledge.social_identities.identity_healer",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "identity_artisan",
+            "value": "工匠",
+            "label": "工匠",
+            "summary": "熟悉船体、机关、工具和材料受力。",
+            "stat_bonus": {
+              "jin": 1
+            },
+            "permissions": [
+              "维修常规器械",
+              "判断结构损坏"
+            ],
+            "obligations": [
+              "需要材料与工具，不能凭空造物"
+            ],
+            "knowledge_profile_ref": "knowledge.social_identities.identity_artisan",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "identity_scholar",
+            "value": "文士",
+            "label": "文士",
+            "summary": "熟悉账册、律令、文书、典故与声律考据。",
+            "stat_bonus": {
+              "shi": 1
+            },
+            "permissions": [
+              "核对文书",
+              "辨析常见典故"
+            ],
+            "obligations": [
+              "重大指控需要依据"
+            ],
+            "knowledge_profile_ref": "knowledge.social_identities.identity_scholar",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "identity_scout",
+            "value": "斥候",
+            "label": "斥候",
+            "summary": "擅长潜行、追踪、观察与地形判断。",
+            "stat_bonus": {
+              "min": 1
+            },
+            "permissions": [
+              "读常见踪迹",
+              "选择隐蔽路线"
+            ],
+            "obligations": [
+              "不能凭一次观察看穿全部埋伏"
+            ],
+            "knowledge_profile_ref": "knowledge.social_identities.identity_scout",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "identity_merchant",
+            "value": "商旅",
+            "label": "商旅",
+            "summary": "熟悉估价、货路、契约与市井人情。",
+            "stat_bonus": {
+              "shi": 1
+            },
+            "permissions": [
+              "辨常见货价",
+              "寻找商路联系人"
+            ],
+            "obligations": [
+              "没有无限钱财或随叫随到的人脉"
+            ],
+            "knowledge_profile_ref": "knowledge.social_identities.identity_merchant",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "identity_performer",
+            "value": "乐伎",
+            "label": "乐伎",
+            "summary": "熟悉声律、演艺、场面观察和后台规矩。",
+            "stat_bonus": {
+              "min": 1
+            },
+            "permissions": [
+              "辨认节拍与音律",
+              "混入普通演艺场合"
+            ],
+            "obligations": [
+              "身份不能自动换取任何人的真心或信任"
+            ],
+            "knowledge_profile_ref": "knowledge.social_identities.identity_performer",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "identity_hunter",
+            "value": "猎户",
+            "label": "猎户",
+            "summary": "擅长野外、兽踪、陷阱和简易取食。",
+            "stat_bonus": {
+              "min": 1
+            },
+            "permissions": [
+              "读兽踪",
+              "布置普通陷阱"
+            ],
+            "obligations": [
+              "城市暗线与罕见异兽仍需调查"
+            ],
+            "knowledge_profile_ref": "knowledge.social_identities.identity_hunter",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "identity_boatman",
+            "value": "船工",
+            "label": "船工",
+            "summary": "熟悉水性、潮汐、风向、缆绳与船只操作。",
+            "stat_bonus": {
+              "ti": 1
+            },
+            "permissions": [
+              "操纵常见舟船",
+              "判断水流变化"
+            ],
+            "obligations": [
+              "暴潮、毒水和大型船损仍可能需要检定"
+            ],
+            "knowledge_profile_ref": "knowledge.social_identities.identity_boatman",
+            "content_profile_ref": "content.default_player"
+          }
+        ],
+        "sect_presets": [
+          {
+            "id": "sect_none",
+            "value": "无门无派",
+            "label": "无门无派",
+            "summary": "不受门规约束，可自定两项合理江湖人脉。",
+            "permissions": [
+              "自由处理门派事务"
+            ],
+            "rules": [
+              "不得借无门无派获得全门派权限"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_none",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "sect_tianquan",
+            "value": "天泉",
+            "label": "天泉",
+            "summary": "重行侠、护送与赈济。",
+            "permissions": [
+              "向基层同门请求普通护送情报"
+            ],
+            "rules": [
+              "不得坐视弱者在眼前受害"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_tianquan",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "sect_qingxi",
+            "value": "青溪",
+            "label": "青溪",
+            "summary": "重医治、药理与救援。",
+            "permissions": [
+              "使用基层医者联络与常规药理资源"
+            ],
+            "rules": [
+              "危急时应优先救人"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_qingxi",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "sect_sangengtian",
+            "value": "三更天",
+            "label": "三更天",
+            "summary": "擅潜入、断罪和刺杀情报。",
+            "permissions": [
+              "辨认基层断罪暗记"
+            ],
+            "rules": [
+              "断罪需要证据或明确理由"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_sangengtian",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "sect_jiuliu",
+            "value": "九流门",
+            "label": "九流门",
+            "summary": "擅骗术、伪装、黑市与街头智慧。",
+            "permissions": [
+              "识别常见骗局与黑市切口"
+            ],
+            "rules": [
+              "不得以门派之名欺压无辜；失手须承担门规后果"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_jiuliu",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "sect_zuihuayin",
+            "value": "醉花阴",
+            "label": "醉花阴",
+            "summary": "擅乐舞、风月场交际与隐秘消息。",
+            "permissions": [
+              "接触普通演艺与风月场线人"
+            ],
+            "rules": [
+              "重视真心、承诺与体面"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_zuihuayin",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "sect_kuanglan",
+            "value": "狂澜",
+            "label": "狂澜",
+            "summary": "重军阵、豪饮、袍泽和正面担当。",
+            "permissions": [
+              "识别军阵与狂澜基层信物"
+            ],
+            "rules": [
+              "不可临阵弃友"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_kuanglan",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "sect_momen",
+            "value": "墨门",
+            "label": "墨门",
+            "summary": "重机关、营造、守御与兼爱。",
+            "permissions": [
+              "判断普通机关与营造逻辑"
+            ],
+            "rules": [
+              "不得以器械滥杀无辜"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_momen",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "sect_liyuan",
+            "value": "梨园",
+            "label": "梨园",
+            "summary": "重戏乐、易装、声律与公开演出。",
+            "permissions": [
+              "进入普通戏班后台与辨认行规"
+            ],
+            "rules": [
+              "维护同门与戏班声誉"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_liyuan",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "sect_wenjinguan",
+            "value": "文津馆",
+            "label": "文津馆",
+            "summary": "重文书、辩论、考据和师出有名。",
+            "permissions": [
+              "请求基层学人协助考据"
+            ],
+            "rules": [
+              "重大指控必须给出依据"
+            ],
+            "knowledge_profile_ref": "knowledge.sect_presets.sect_wenjinguan",
+            "content_profile_ref": "content.default_player"
+          }
+        ],
+        "martial_flows": [
+          {
+            "id": "flow_mingjin_hong",
+            "value": "鸣金·虹",
+            "label": "鸣金·虹",
+            "summary": "无名剑法＋无名枪法；均衡进退、剑气与正面压制。",
+            "stat_bonus": {
+              "shi": 2,
+              "jin": 1
+            },
+            "martial_arts": [
+              "无名剑法",
+              "无名枪法"
+            ],
+            "combat_tags": [
+              "均衡",
+              "剑气",
+              "正面进退"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_mingjin_hong",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_mingjin_ying",
+            "value": "鸣金·影",
+            "label": "鸣金·影",
+            "summary": "积矩九剑＋九曲惊神枪；流血、持续压制与连携。",
+            "stat_bonus": {
+              "jin": 2,
+              "min": 1
+            },
+            "martial_arts": [
+              "积矩九剑",
+              "九曲惊神枪"
+            ],
+            "combat_tags": [
+              "流血",
+              "持续压制",
+              "连携"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_mingjin_ying",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_qiansi_yu",
+            "value": "牵丝·玉",
+            "label": "牵丝·玉",
+            "summary": "青山执笔＋九重春色；远程牵制、定身与浮空。",
+            "stat_bonus": {
+              "min": 2,
+              "shi": 1
+            },
+            "martial_arts": [
+              "青山执笔",
+              "九重春色"
+            ],
+            "combat_tags": [
+              "远程",
+              "定身",
+              "浮空"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_qiansi_yu",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_qiansi_yi",
+            "value": "牵丝·翊",
+            "label": "牵丝·翊",
+            "summary": "文动霓裳＋杏游草野；声律、群攻与战场辅助。",
+            "stat_bonus": {
+              "shi": 2,
+              "min": 1
+            },
+            "martial_arts": [
+              "文动霓裳",
+              "杏游草野"
+            ],
+            "combat_tags": [
+              "声律",
+              "群攻",
+              "辅助"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_qiansi_yi",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_qiansi_lin",
+            "value": "牵丝·霖",
+            "label": "牵丝·霖",
+            "summary": "明川药典＋千香引魂蛊；治疗、复苏与蛊术支援。",
+            "stat_bonus": {
+              "ti": 2,
+              "shi": 1
+            },
+            "martial_arts": [
+              "明川药典",
+              "千香引魂蛊"
+            ],
+            "combat_tags": [
+              "治疗",
+              "复苏",
+              "支援"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_qiansi_lin",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_lieshi_wei",
+            "value": "裂石·威",
+            "label": "裂石·威",
+            "summary": "嗟夫刀法＋八方风雷枪；格挡、蓄势与正面承压。",
+            "stat_bonus": {
+              "yu": 2,
+              "jin": 1
+            },
+            "martial_arts": [
+              "嗟夫刀法",
+              "八方风雷枪"
+            ],
+            "combat_tags": [
+              "格挡",
+              "承压",
+              "蓄势"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_lieshi_wei",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_lieshi_jun",
+            "value": "裂石·钧",
+            "label": "裂石·钧",
+            "summary": "斩雪刀法＋十方破阵；卸势反击、破甲与重击。",
+            "stat_bonus": {
+              "jin": 2,
+              "yu": 1
+            },
+            "martial_arts": [
+              "斩雪刀法",
+              "十方破阵"
+            ],
+            "combat_tags": [
+              "反击",
+              "破甲",
+              "重击"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_lieshi_jun",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_pozhu_yuan",
+            "value": "破竹·鸢",
+            "label": "破竹·鸢",
+            "summary": "天志垂象＋千机索天；手甲短打、绳镖控敌与追索。",
+            "stat_bonus": {
+              "jin": 2,
+              "min": 1
+            },
+            "martial_arts": [
+              "天志垂象",
+              "千机索天"
+            ],
+            "combat_tags": [
+              "短打",
+              "追索",
+              "控敌"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_pozhu_yuan",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_pozhu_feng",
+            "value": "破竹·风",
+            "label": "破竹·风",
+            "summary": "泥犁三垢＋栗子游尘；双刀、闪避与快速连击。",
+            "stat_bonus": {
+              "min": 2,
+              "jin": 1
+            },
+            "martial_arts": [
+              "泥犁三垢",
+              "栗子游尘"
+            ],
+            "combat_tags": [
+              "双刀",
+              "闪避",
+              "连击"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_pozhu_feng",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_pozhu_chen",
+            "value": "破竹·尘",
+            "label": "破竹·尘",
+            "summary": "醉梦游春＋粟子行云；伞与绳镖的范围控制。",
+            "stat_bonus": {
+              "shi": 2,
+              "min": 1
+            },
+            "martial_arts": [
+              "醉梦游春",
+              "粟子行云"
+            ],
+            "combat_tags": [
+              "范围",
+              "牵引",
+              "移形"
+            ],
+            "knowledge_profile_ref": "knowledge.martial_flows.flow_pozhu_chen",
+            "content_profile_ref": "content.default_player"
+          }
+        ],
+        "secondary_martial_flows": [
+          {
+            "id": "flow_none",
+            "value": "暂不辅修",
+            "label": "暂不辅修",
+            "summary": "开局只掌握主修流派。",
+            "martial_arts": [],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_none",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_mingjin_hong",
+            "value": "鸣金·虹",
+            "label": "鸣金·虹",
+            "summary": "无名剑法＋无名枪法；均衡进退、剑气与正面压制。",
+            "stat_bonus": {
+              "shi": 2,
+              "jin": 1
+            },
+            "martial_arts": [
+              "无名剑法",
+              "无名枪法"
+            ],
+            "combat_tags": [
+              "均衡",
+              "剑气",
+              "正面进退"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_mingjin_hong",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_mingjin_ying",
+            "value": "鸣金·影",
+            "label": "鸣金·影",
+            "summary": "积矩九剑＋九曲惊神枪；流血、持续压制与连携。",
+            "stat_bonus": {
+              "jin": 2,
+              "min": 1
+            },
+            "martial_arts": [
+              "积矩九剑",
+              "九曲惊神枪"
+            ],
+            "combat_tags": [
+              "流血",
+              "持续压制",
+              "连携"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_mingjin_ying",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_qiansi_yu",
+            "value": "牵丝·玉",
+            "label": "牵丝·玉",
+            "summary": "青山执笔＋九重春色；远程牵制、定身与浮空。",
+            "stat_bonus": {
+              "min": 2,
+              "shi": 1
+            },
+            "martial_arts": [
+              "青山执笔",
+              "九重春色"
+            ],
+            "combat_tags": [
+              "远程",
+              "定身",
+              "浮空"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_qiansi_yu",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_qiansi_yi",
+            "value": "牵丝·翊",
+            "label": "牵丝·翊",
+            "summary": "文动霓裳＋杏游草野；声律、群攻与战场辅助。",
+            "stat_bonus": {
+              "shi": 2,
+              "min": 1
+            },
+            "martial_arts": [
+              "文动霓裳",
+              "杏游草野"
+            ],
+            "combat_tags": [
+              "声律",
+              "群攻",
+              "辅助"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_qiansi_yi",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_qiansi_lin",
+            "value": "牵丝·霖",
+            "label": "牵丝·霖",
+            "summary": "明川药典＋千香引魂蛊；治疗、复苏与蛊术支援。",
+            "stat_bonus": {
+              "ti": 2,
+              "shi": 1
+            },
+            "martial_arts": [
+              "明川药典",
+              "千香引魂蛊"
+            ],
+            "combat_tags": [
+              "治疗",
+              "复苏",
+              "支援"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_qiansi_lin",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_lieshi_wei",
+            "value": "裂石·威",
+            "label": "裂石·威",
+            "summary": "嗟夫刀法＋八方风雷枪；格挡、蓄势与正面承压。",
+            "stat_bonus": {
+              "yu": 2,
+              "jin": 1
+            },
+            "martial_arts": [
+              "嗟夫刀法",
+              "八方风雷枪"
+            ],
+            "combat_tags": [
+              "格挡",
+              "承压",
+              "蓄势"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_lieshi_wei",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_lieshi_jun",
+            "value": "裂石·钧",
+            "label": "裂石·钧",
+            "summary": "斩雪刀法＋十方破阵；卸势反击、破甲与重击。",
+            "stat_bonus": {
+              "jin": 2,
+              "yu": 1
+            },
+            "martial_arts": [
+              "斩雪刀法",
+              "十方破阵"
+            ],
+            "combat_tags": [
+              "反击",
+              "破甲",
+              "重击"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_lieshi_jun",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_pozhu_yuan",
+            "value": "破竹·鸢",
+            "label": "破竹·鸢",
+            "summary": "天志垂象＋千机索天；手甲短打、绳镖控敌与追索。",
+            "stat_bonus": {
+              "jin": 2,
+              "min": 1
+            },
+            "martial_arts": [
+              "天志垂象",
+              "千机索天"
+            ],
+            "combat_tags": [
+              "短打",
+              "追索",
+              "控敌"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_pozhu_yuan",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_pozhu_feng",
+            "value": "破竹·风",
+            "label": "破竹·风",
+            "summary": "泥犁三垢＋栗子游尘；双刀、闪避与快速连击。",
+            "stat_bonus": {
+              "min": 2,
+              "jin": 1
+            },
+            "martial_arts": [
+              "泥犁三垢",
+              "栗子游尘"
+            ],
+            "combat_tags": [
+              "双刀",
+              "闪避",
+              "连击"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_pozhu_feng",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "flow_pozhu_chen",
+            "value": "破竹·尘",
+            "label": "破竹·尘",
+            "summary": "醉梦游春＋粟子行云；伞与绳镖的范围控制。",
+            "stat_bonus": {
+              "shi": 2,
+              "min": 1
+            },
+            "martial_arts": [
+              "醉梦游春",
+              "粟子行云"
+            ],
+            "combat_tags": [
+              "范围",
+              "牵引",
+              "移形"
+            ],
+            "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_pozhu_chen",
+            "content_profile_ref": "content.default_player"
+          }
+        ],
+        "mystic_arts": [
+          {
+            "id": "mystic_taiji",
+            "value": "太极",
+            "label": "太极",
+            "summary": "借力化力、推移物体；通常使用御，连续强用会调息。",
+            "default_attribute": "yu",
+            "knowledge_profile_ref": "knowledge.mystic_arts.mystic_taiji",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "mystic_acupoint",
+            "value": "点穴",
+            "label": "点穴",
+            "summary": "短暂封阻行动或止血；通常使用敏，需接近并辨位。",
+            "default_attribute": "min",
+            "knowledge_profile_ref": "knowledge.mystic_arts.mystic_acupoint",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "mystic_roar",
+            "value": "狮吼正声",
+            "label": "狮吼正声",
+            "summary": "震慑、破胆或远距传声；通常使用势，易暴露位置。",
+            "default_attribute": "shi",
+            "knowledge_profile_ref": "knowledge.mystic_arts.mystic_roar",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "mystic_fire",
+            "value": "神龙吐火",
+            "label": "神龙吐火",
+            "summary": "借火源点燃或制造爆燃；通常使用劲，受环境限制。",
+            "default_attribute": "jin",
+            "knowledge_profile_ref": "knowledge.mystic_arts.mystic_fire",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "mystic_wind",
+            "value": "冯虚御风",
+            "label": "冯虚御风",
+            "summary": "短距离凌空、越障或脱险；通常使用敏，不能长期飞行。",
+            "default_attribute": "min",
+            "knowledge_profile_ref": "knowledge.mystic_arts.mystic_wind",
+            "content_profile_ref": "content.default_player"
+          }
+        ],
+        "life_skills": [
+          {
+            "id": "life_fishing",
+            "value": "悬壶钓客",
+            "label": "悬壶钓客",
+            "summary": "识水、垂钓与水边耐心观察。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_fishing",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "life_cooking",
+            "value": "庖厨",
+            "label": "庖厨",
+            "summary": "辨食材、掌火候并稳定队伍补给。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_cooking",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "life_music",
+            "value": "乐律",
+            "label": "乐律",
+            "summary": "辨音、记调与还原声场。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_music",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "life_architecture",
+            "value": "营造",
+            "label": "营造",
+            "summary": "判断结构、木石与水工设施。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_architecture",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "life_trade",
+            "value": "行商",
+            "label": "行商",
+            "summary": "估价、议价与辨货路。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_trade",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "life_medicine",
+            "value": "药理",
+            "label": "药理",
+            "summary": "辨常见药材、毒物与配伍。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_medicine",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "life_tracking",
+            "value": "游猎",
+            "label": "游猎",
+            "summary": "追踪、扎营与野外取食。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_tracking",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "life_performance",
+            "value": "戏乐",
+            "label": "戏乐",
+            "summary": "表演、易装与场面调度。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_performance",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "life_craft",
+            "value": "匠作",
+            "label": "匠作",
+            "summary": "维护工具、武具与普通机关。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_craft",
+            "content_profile_ref": "content.default_player"
+          },
+          {
+            "id": "life_calligraphy",
+            "value": "文墨",
+            "label": "文墨",
+            "summary": "读写、抄录、账册与印鉴辨析。",
+            "knowledge_profile_ref": "knowledge.life_skills.life_calligraphy",
+            "content_profile_ref": "content.default_player"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "key": "name",
+          "label": "角色姓名",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 12
+        },
+        {
+          "key": "code",
+          "label": "副本代号",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 12
+        },
+        {
+          "key": "origin_region",
+          "label": "选择地区出身（提供合计+2）",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 20,
+          "preset_source": "origin_regions",
+          "page_size": 5
+        },
+        {
+          "key": "social_identity",
+          "label": "选择江湖身份（提供+1）",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 20,
+          "preset_source": "social_identities",
+          "page_size": 5
+        },
+        {
+          "key": "sect",
+          "label": "选择门派",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 20,
+          "preset_source": "sect_presets",
+          "page_size": 5
+        },
+        {
+          "key": "martial_flow",
+          "label": "选择主修武学流派（提供合计+3）",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 20,
+          "preset_source": "martial_flows",
+          "page_size": 5
+        },
+        {
+          "key": "secondary_martial_flow",
+          "label": "选择辅修武学流派",
+          "type": "preset_select",
+          "required": false,
+          "private": false,
+          "max_chars": 20,
+          "preset_source": "secondary_martial_flows",
+          "page_size": 5,
+          "must_differ_from": "martial_flow"
+        },
+        {
+          "key": "mystic_art",
+          "label": "选择一项起始奇术",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 20,
+          "preset_source": "mystic_arts",
+          "page_size": 5
+        },
+        {
+          "key": "life_skill_primary",
+          "label": "选择第一项百业专长",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 20,
+          "preset_source": "life_skills",
+          "page_size": 5
+        },
+        {
+          "key": "life_skill_secondary",
+          "label": "选择第二项百业专长",
+          "type": "preset_select",
+          "required": false,
+          "private": false,
+          "max_chars": 20,
+          "preset_source": "life_skills",
+          "page_size": 5,
+          "must_differ_from": "life_skill_primary"
+        },
+        {
+          "key": "background",
+          "label": "个人来历与能力来源",
+          "type": "textarea",
+          "required": true,
+          "private": false,
+          "max_chars": 700
+        },
+        {
+          "key": "goal",
+          "label": "来到临潮渡的当前目标",
+          "type": "textarea",
+          "required": true,
+          "private": false,
+          "max_chars": 300
+        },
+        {
+          "key": "belief",
+          "label": "行走江湖的原则",
+          "type": "textarea",
+          "required": true,
+          "private": false,
+          "max_chars": 300
+        },
+        {
+          "key": "bond",
+          "label": "一项牵挂或江湖关系",
+          "type": "textarea",
+          "required": true,
+          "private": false,
+          "max_chars": 300
+        },
+        {
+          "key": "flaw",
+          "label": "性格缺陷或现实弱点",
+          "type": "textarea",
+          "required": true,
+          "private": false,
+          "max_chars": 300
+        },
+        {
+          "key": "secret",
+          "label": "私人秘密",
+          "type": "textarea",
+          "required": false,
+          "private": true,
+          "max_chars": 600
+        }
+      ],
+      "stats": {
+        "mode": "preset_stack",
+        "budget": 31,
+        "calculation_rule": "preset_stack：体/御/敏/势/劲各5 + 地区出身合计2 + 江湖身份1 + 主修武学流派合计3，由插件自动结算",
+        "review_requires_preset_recalculation": false,
+        "attributes": [
+          {
+            "key": "ti",
+            "label": "体",
+            "minimum": 5,
+            "maximum": 9,
+            "default": 5,
+            "description": "体魄、耐力、气血、抗毒、负伤、游水与承受。由插件按预设自动结算。"
+          },
+          {
+            "key": "yu",
+            "label": "御",
+            "minimum": 5,
+            "maximum": 9,
+            "default": 5,
+            "description": "防御、格挡、卸势、守阵、护人和抵抗冲击。由插件按预设自动结算。"
+          },
+          {
+            "key": "min",
+            "label": "敏",
+            "minimum": 5,
+            "maximum": 9,
+            "default": 5,
+            "description": "身法、追踪、潜行、观察、听辨与精细操作。由插件按预设自动结算。"
+          },
+          {
+            "key": "shi",
+            "label": "势",
+            "minimum": 5,
+            "maximum": 9,
+            "default": 5,
+            "description": "气势、交涉、定力、号令和声律影响。由插件按预设自动结算。"
+          },
+          {
+            "key": "jin",
+            "label": "劲",
+            "minimum": 5,
+            "maximum": 9,
+            "default": 5,
+            "description": "劲力、破甲、角力、重械、抬闸与结构破坏。由插件按预设自动结算。"
+          }
+        ],
+        "modifier_table": {
+          "0": -3,
+          "1": -2,
+          "2": -2,
+          "3": -1,
+          "4": -1,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "10": 2,
+          "11": 3,
+          "12": 3,
+          "13": 4,
+          "14": 4,
+          "15": 5,
+          "16": 5
+        }
+      },
+      "stat_generation": {
+        "mode": "preset_stack",
+        "base_stats": {
+          "ti": 5,
+          "yu": 5,
+          "min": 5,
+          "shi": 5,
+          "jin": 5
+        },
+        "bonus_sources": [
+          "origin_region",
+          "social_identity",
+          "martial_flow"
+        ],
+        "bonus_source_rules": {
+          "origin_region": {
+            "expected_bonus_total": 2
+          },
+          "social_identity": {
+            "expected_bonus_total": 1
+          },
+          "martial_flow": {
+            "expected_bonus_total": 3
+          }
+        },
+        "expected_total": 31,
+        "min_per_stat": 5,
+        "max_per_stat": 9,
+        "allow_manual_edit": false
+      },
+      "preset_dimensions": [
+        {
+          "id": "gender",
+          "label": "性别与称谓",
+          "description": "只影响称谓、代词与世界内身份表达，不默认改变数值。",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 10,
+          "options": [
+            {
+              "id": "gender_female",
+              "value": "女",
+              "label": "女性",
+              "pronouns": {
+                "subject": "她",
+                "possessive": "她的"
+              },
+              "knowledge_profile_ref": "knowledge.common_wanderer",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "gender_male",
+              "value": "男",
+              "label": "男性",
+              "pronouns": {
+                "subject": "他",
+                "possessive": "他的"
+              },
+              "knowledge_profile_ref": "knowledge.common_wanderer",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "gender_unspecified",
+              "value": "未明示",
+              "label": "不公开说明",
+              "pronouns": {
+                "subject": "其人",
+                "possessive": "其"
+              },
+              "knowledge_profile_ref": "knowledge.common_wanderer",
+              "content_profile_ref": "content.default_player"
+            }
+          ]
+        },
+        {
+          "id": "personality",
+          "label": "性格倾向",
+          "description": "影响表达和行为倾向，不替玩家作决定。",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 20,
+          "options": [
+            {
+              "id": "calm_reserved",
+              "value": "沉静寡言",
+              "label": "沉静寡言",
+              "behavior_rules": [
+                "言语简短，先观察再行动",
+                "很少主动暴露情绪"
+              ],
+              "dialogue_style": [
+                "言语简短，先观察再行动"
+              ],
+              "hard_limits": [
+                "不得替玩家自动决定重要立场、感情或主动台词"
+              ],
+              "content_profile_ref": "content.default_player",
+              "knowledge_profile_ref": "knowledge.common_wanderer"
+            },
+            {
+              "id": "bright_open",
+              "value": "外向爽朗",
+              "label": "外向爽朗",
+              "behavior_rules": [
+                "愿意主动开启对话",
+                "常用轻快语气缓和紧张"
+              ],
+              "dialogue_style": [
+                "愿意主动开启对话"
+              ],
+              "hard_limits": [
+                "不得替玩家自动决定重要立场、感情或主动台词"
+              ],
+              "content_profile_ref": "content.default_player",
+              "knowledge_profile_ref": "knowledge.common_wanderer"
+            },
+            {
+              "id": "cautious",
+              "value": "谨慎多疑",
+              "label": "谨慎多疑",
+              "behavior_rules": [
+                "先核实消息来源",
+                "面对陌生承诺倾向保留退路"
+              ],
+              "dialogue_style": [
+                "先核实消息来源"
+              ],
+              "hard_limits": [
+                "不得替玩家自动决定重要立场、感情或主动台词"
+              ],
+              "content_profile_ref": "content.default_player",
+              "knowledge_profile_ref": "knowledge.common_wanderer"
+            },
+            {
+              "id": "chivalrous",
+              "value": "侠义热忱",
+              "label": "侠义热忱",
+              "behavior_rules": [
+                "重视眼前的不平与求助",
+                "不会因此自动替全队承诺"
+              ],
+              "dialogue_style": [
+                "重视眼前的不平与求助"
+              ],
+              "hard_limits": [
+                "不得替玩家自动决定重要立场、感情或主动台词"
+              ],
+              "content_profile_ref": "content.default_player",
+              "knowledge_profile_ref": "knowledge.common_wanderer"
+            },
+            {
+              "id": "shrewd",
+              "value": "圆滑机敏",
+              "label": "圆滑机敏",
+              "behavior_rules": [
+                "擅长观察场面与留有余地",
+                "不等同于自动识破谎言"
+              ],
+              "dialogue_style": [
+                "擅长观察场面与留有余地"
+              ],
+              "hard_limits": [
+                "不得替玩家自动决定重要立场、感情或主动台词"
+              ],
+              "content_profile_ref": "content.default_player",
+              "knowledge_profile_ref": "knowledge.common_wanderer"
+            },
+            {
+              "id": "unyielding",
+              "value": "执拗刚烈",
+              "label": "执拗刚烈",
+              "behavior_rules": [
+                "认定原则后不轻易退让",
+                "重大决定仍必须由玩家确认"
+              ],
+              "dialogue_style": [
+                "认定原则后不轻易退让"
+              ],
+              "hard_limits": [
+                "不得替玩家自动决定重要立场、感情或主动台词"
+              ],
+              "content_profile_ref": "content.default_player",
+              "knowledge_profile_ref": "knowledge.common_wanderer"
+            }
+          ]
+        },
+        {
+          "id": "origin_region",
+          "label": "地区出身",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 30,
+          "page_size": 5,
+          "options": [
+            {
+              "id": "origin_qinghe",
+              "value": "清河",
+              "label": "清河",
+              "summary": "乡野、猎场与旧盟遗迹之间长大。",
+              "stat_bonus": {
+                "ti": 1,
+                "yu": 1
+              },
+              "common_knowledge": [
+                "乡野路径",
+                "狩猎基础",
+                "旧盟遗迹传闻"
+              ],
+              "limitations": "不自动认识清河正传人物，也不拥有旧盟机密。",
+              "knowledge_profile_ref": "knowledge.origin_regions.origin_qinghe",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "origin_kaifeng",
+              "value": "开封",
+              "label": "开封",
+              "summary": "熟悉坊市、行会、官府手续与流动人情。",
+              "stat_bonus": {
+                "min": 1,
+                "shi": 1
+              },
+              "common_knowledge": [
+                "坊市规矩",
+                "官府文书",
+                "城市消息路数"
+              ],
+              "limitations": "不自动拥有官府身份、权贵关系或禁城权限。",
+              "knowledge_profile_ref": "knowledge.origin_regions.origin_kaifeng",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "origin_hexi",
+              "value": "河西",
+              "label": "河西",
+              "summary": "在军镇、商道、沙地与多族往来中成长。",
+              "stat_bonus": {
+                "ti": 1,
+                "jin": 1
+              },
+              "common_knowledge": [
+                "军旅行止",
+                "商队路线",
+                "荒地辨向"
+              ],
+              "limitations": "不自动拥有军职、军令或边军调动权。",
+              "knowledge_profile_ref": "knowledge.origin_regions.origin_hexi",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "origin_bujianshan",
+              "value": "不见山",
+              "label": "不见山",
+              "summary": "熟悉百工、矿石、营造和机关常识。",
+              "stat_bonus": {
+                "yu": 1,
+                "jin": 1
+              },
+              "common_knowledge": [
+                "百工术语",
+                "机关安全",
+                "材料辨识"
+              ],
+              "limitations": "不自动掌握墨门秘械或大型机关图纸。",
+              "knowledge_profile_ref": "knowledge.origin_regions.origin_bujianshan",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "origin_qingzhou",
+              "value": "青州",
+              "label": "青州",
+              "summary": "受海岱文教、乡约、商港与乐舞熏陶。",
+              "stat_bonus": {
+                "yu": 1,
+                "shi": 1
+              },
+              "common_knowledge": [
+                "乡约礼法",
+                "海贸常识",
+                "齐鲁文教"
+              ],
+              "limitations": "不自动拥有士族谱系、官学名籍或海商船队。",
+              "knowledge_profile_ref": "knowledge.origin_regions.origin_qingzhou",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "origin_jiangnan",
+              "value": "江南",
+              "label": "江南",
+              "summary": "熟悉舟船、潮汐、园林、乐舞和水路商业。",
+              "stat_bonus": {
+                "min": 1,
+                "shi": 1
+              },
+              "common_knowledge": [
+                "舟船潮汐",
+                "水乡市井",
+                "江南商路"
+              ],
+              "limitations": "不自动知道临潮渡暗渠或本案幕后网络。",
+              "knowledge_profile_ref": "knowledge.origin_regions.origin_jiangnan",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "origin_wandering",
+              "value": "漂泊无籍",
+              "label": "漂泊无籍",
+              "summary": "长期随商旅、艺班、难民或江湖队伍迁徙。",
+              "stat_bonus": {
+                "ti": 1,
+                "min": 1
+              },
+              "common_knowledge": [
+                "道路求生",
+                "客栈黑话",
+                "多地风俗碎片"
+              ],
+              "limitations": "消息广而不深，缺少稳定户籍与官方担保。",
+              "knowledge_profile_ref": "knowledge.origin_regions.origin_wandering",
+              "content_profile_ref": "content.default_player"
+            }
+          ]
+        },
+        {
+          "id": "social_identity",
+          "label": "江湖身份",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 40,
+          "page_size": 5,
+          "options": [
+            {
+              "id": "identity_escort",
+              "value": "镖客",
+              "label": "镖客",
+              "summary": "擅长护送、警戒、辨路与维护雇约。",
+              "stat_bonus": {
+                "yu": 1
+              },
+              "permissions": [
+                "判断常规护送阵形",
+                "识别商路风险"
+              ],
+              "obligations": [
+                "重视雇约与同行安全"
+              ],
+              "knowledge_profile_ref": "knowledge.social_identities.identity_escort",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "identity_healer",
+              "value": "医者",
+              "label": "医者",
+              "summary": "能够处置常见伤势，辨认药材、毒物与病症。",
+              "stat_bonus": {
+                "ti": 1
+              },
+              "permissions": [
+                "普通急救",
+                "常见药毒辨识"
+              ],
+              "obligations": [
+                "紧急现场优先救治伤者"
+              ],
+              "knowledge_profile_ref": "knowledge.social_identities.identity_healer",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "identity_artisan",
+              "value": "工匠",
+              "label": "工匠",
+              "summary": "熟悉船体、机关、工具和材料受力。",
+              "stat_bonus": {
+                "jin": 1
+              },
+              "permissions": [
+                "维修常规器械",
+                "判断结构损坏"
+              ],
+              "obligations": [
+                "需要材料与工具，不能凭空造物"
+              ],
+              "knowledge_profile_ref": "knowledge.social_identities.identity_artisan",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "identity_scholar",
+              "value": "文士",
+              "label": "文士",
+              "summary": "熟悉账册、律令、文书、典故与声律考据。",
+              "stat_bonus": {
+                "shi": 1
+              },
+              "permissions": [
+                "核对文书",
+                "辨析常见典故"
+              ],
+              "obligations": [
+                "重大指控需要依据"
+              ],
+              "knowledge_profile_ref": "knowledge.social_identities.identity_scholar",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "identity_scout",
+              "value": "斥候",
+              "label": "斥候",
+              "summary": "擅长潜行、追踪、观察与地形判断。",
+              "stat_bonus": {
+                "min": 1
+              },
+              "permissions": [
+                "读常见踪迹",
+                "选择隐蔽路线"
+              ],
+              "obligations": [
+                "不能凭一次观察看穿全部埋伏"
+              ],
+              "knowledge_profile_ref": "knowledge.social_identities.identity_scout",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "identity_merchant",
+              "value": "商旅",
+              "label": "商旅",
+              "summary": "熟悉估价、货路、契约与市井人情。",
+              "stat_bonus": {
+                "shi": 1
+              },
+              "permissions": [
+                "辨常见货价",
+                "寻找商路联系人"
+              ],
+              "obligations": [
+                "没有无限钱财或随叫随到的人脉"
+              ],
+              "knowledge_profile_ref": "knowledge.social_identities.identity_merchant",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "identity_performer",
+              "value": "乐伎",
+              "label": "乐伎",
+              "summary": "熟悉声律、演艺、场面观察和后台规矩。",
+              "stat_bonus": {
+                "min": 1
+              },
+              "permissions": [
+                "辨认节拍与音律",
+                "混入普通演艺场合"
+              ],
+              "obligations": [
+                "身份不能自动换取任何人的真心或信任"
+              ],
+              "knowledge_profile_ref": "knowledge.social_identities.identity_performer",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "identity_hunter",
+              "value": "猎户",
+              "label": "猎户",
+              "summary": "擅长野外、兽踪、陷阱和简易取食。",
+              "stat_bonus": {
+                "min": 1
+              },
+              "permissions": [
+                "读兽踪",
+                "布置普通陷阱"
+              ],
+              "obligations": [
+                "城市暗线与罕见异兽仍需调查"
+              ],
+              "knowledge_profile_ref": "knowledge.social_identities.identity_hunter",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "identity_boatman",
+              "value": "船工",
+              "label": "船工",
+              "summary": "熟悉水性、潮汐、风向、缆绳与船只操作。",
+              "stat_bonus": {
+                "ti": 1
+              },
+              "permissions": [
+                "操纵常见舟船",
+                "判断水流变化"
+              ],
+              "obligations": [
+                "暴潮、毒水和大型船损仍可能需要检定"
+              ],
+              "knowledge_profile_ref": "knowledge.social_identities.identity_boatman",
+              "content_profile_ref": "content.default_player"
+            }
+          ]
+        },
+        {
+          "id": "sect",
+          "label": "门派",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 50,
+          "page_size": 5,
+          "options": [
+            {
+              "id": "sect_none",
+              "value": "无门无派",
+              "label": "无门无派",
+              "summary": "不受门规约束，可自定两项合理江湖人脉。",
+              "permissions": [
+                "自由处理门派事务"
+              ],
+              "rules": [
+                "不得借无门无派获得全门派权限"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_none",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "sect_tianquan",
+              "value": "天泉",
+              "label": "天泉",
+              "summary": "重行侠、护送与赈济。",
+              "permissions": [
+                "向基层同门请求普通护送情报"
+              ],
+              "rules": [
+                "不得坐视弱者在眼前受害"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_tianquan",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "sect_qingxi",
+              "value": "青溪",
+              "label": "青溪",
+              "summary": "重医治、药理与救援。",
+              "permissions": [
+                "使用基层医者联络与常规药理资源"
+              ],
+              "rules": [
+                "危急时应优先救人"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_qingxi",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "sect_sangengtian",
+              "value": "三更天",
+              "label": "三更天",
+              "summary": "擅潜入、断罪和刺杀情报。",
+              "permissions": [
+                "辨认基层断罪暗记"
+              ],
+              "rules": [
+                "断罪需要证据或明确理由"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_sangengtian",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "sect_jiuliu",
+              "value": "九流门",
+              "label": "九流门",
+              "summary": "擅骗术、伪装、黑市与街头智慧。",
+              "permissions": [
+                "识别常见骗局与黑市切口"
+              ],
+              "rules": [
+                "不得以门派之名欺压无辜；失手须承担门规后果"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_jiuliu",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "sect_zuihuayin",
+              "value": "醉花阴",
+              "label": "醉花阴",
+              "summary": "擅乐舞、风月场交际与隐秘消息。",
+              "permissions": [
+                "接触普通演艺与风月场线人"
+              ],
+              "rules": [
+                "重视真心、承诺与体面"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_zuihuayin",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "sect_kuanglan",
+              "value": "狂澜",
+              "label": "狂澜",
+              "summary": "重军阵、豪饮、袍泽和正面担当。",
+              "permissions": [
+                "识别军阵与狂澜基层信物"
+              ],
+              "rules": [
+                "不可临阵弃友"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_kuanglan",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "sect_momen",
+              "value": "墨门",
+              "label": "墨门",
+              "summary": "重机关、营造、守御与兼爱。",
+              "permissions": [
+                "判断普通机关与营造逻辑"
+              ],
+              "rules": [
+                "不得以器械滥杀无辜"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_momen",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "sect_liyuan",
+              "value": "梨园",
+              "label": "梨园",
+              "summary": "重戏乐、易装、声律与公开演出。",
+              "permissions": [
+                "进入普通戏班后台与辨认行规"
+              ],
+              "rules": [
+                "维护同门与戏班声誉"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_liyuan",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "sect_wenjinguan",
+              "value": "文津馆",
+              "label": "文津馆",
+              "summary": "重文书、辩论、考据和师出有名。",
+              "permissions": [
+                "请求基层学人协助考据"
+              ],
+              "rules": [
+                "重大指控必须给出依据"
+              ],
+              "knowledge_profile_ref": "knowledge.sect_presets.sect_wenjinguan",
+              "content_profile_ref": "content.default_player"
+            }
+          ]
+        },
+        {
+          "id": "martial_flow",
+          "label": "主修武学流派",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 60,
+          "page_size": 5,
+          "options": [
+            {
+              "id": "flow_mingjin_hong",
+              "value": "鸣金·虹",
+              "label": "鸣金·虹",
+              "summary": "无名剑法＋无名枪法；均衡进退、剑气与正面压制。",
+              "stat_bonus": {
+                "shi": 2,
+                "jin": 1
+              },
+              "martial_arts": [
+                "无名剑法",
+                "无名枪法"
+              ],
+              "combat_tags": [
+                "均衡",
+                "剑气",
+                "正面进退"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_mingjin_hong",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_mingjin_ying",
+              "value": "鸣金·影",
+              "label": "鸣金·影",
+              "summary": "积矩九剑＋九曲惊神枪；流血、持续压制与连携。",
+              "stat_bonus": {
+                "jin": 2,
+                "min": 1
+              },
+              "martial_arts": [
+                "积矩九剑",
+                "九曲惊神枪"
+              ],
+              "combat_tags": [
+                "流血",
+                "持续压制",
+                "连携"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_mingjin_ying",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_qiansi_yu",
+              "value": "牵丝·玉",
+              "label": "牵丝·玉",
+              "summary": "青山执笔＋九重春色；远程牵制、定身与浮空。",
+              "stat_bonus": {
+                "min": 2,
+                "shi": 1
+              },
+              "martial_arts": [
+                "青山执笔",
+                "九重春色"
+              ],
+              "combat_tags": [
+                "远程",
+                "定身",
+                "浮空"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_qiansi_yu",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_qiansi_yi",
+              "value": "牵丝·翊",
+              "label": "牵丝·翊",
+              "summary": "文动霓裳＋杏游草野；声律、群攻与战场辅助。",
+              "stat_bonus": {
+                "shi": 2,
+                "min": 1
+              },
+              "martial_arts": [
+                "文动霓裳",
+                "杏游草野"
+              ],
+              "combat_tags": [
+                "声律",
+                "群攻",
+                "辅助"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_qiansi_yi",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_qiansi_lin",
+              "value": "牵丝·霖",
+              "label": "牵丝·霖",
+              "summary": "明川药典＋千香引魂蛊；治疗、复苏与蛊术支援。",
+              "stat_bonus": {
+                "ti": 2,
+                "shi": 1
+              },
+              "martial_arts": [
+                "明川药典",
+                "千香引魂蛊"
+              ],
+              "combat_tags": [
+                "治疗",
+                "复苏",
+                "支援"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_qiansi_lin",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_lieshi_wei",
+              "value": "裂石·威",
+              "label": "裂石·威",
+              "summary": "嗟夫刀法＋八方风雷枪；格挡、蓄势与正面承压。",
+              "stat_bonus": {
+                "yu": 2,
+                "jin": 1
+              },
+              "martial_arts": [
+                "嗟夫刀法",
+                "八方风雷枪"
+              ],
+              "combat_tags": [
+                "格挡",
+                "承压",
+                "蓄势"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_lieshi_wei",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_lieshi_jun",
+              "value": "裂石·钧",
+              "label": "裂石·钧",
+              "summary": "斩雪刀法＋十方破阵；卸势反击、破甲与重击。",
+              "stat_bonus": {
+                "jin": 2,
+                "yu": 1
+              },
+              "martial_arts": [
+                "斩雪刀法",
+                "十方破阵"
+              ],
+              "combat_tags": [
+                "反击",
+                "破甲",
+                "重击"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_lieshi_jun",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_pozhu_yuan",
+              "value": "破竹·鸢",
+              "label": "破竹·鸢",
+              "summary": "天志垂象＋千机索天；手甲短打、绳镖控敌与追索。",
+              "stat_bonus": {
+                "jin": 2,
+                "min": 1
+              },
+              "martial_arts": [
+                "天志垂象",
+                "千机索天"
+              ],
+              "combat_tags": [
+                "短打",
+                "追索",
+                "控敌"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_pozhu_yuan",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_pozhu_feng",
+              "value": "破竹·风",
+              "label": "破竹·风",
+              "summary": "泥犁三垢＋栗子游尘；双刀、闪避与快速连击。",
+              "stat_bonus": {
+                "min": 2,
+                "jin": 1
+              },
+              "martial_arts": [
+                "泥犁三垢",
+                "栗子游尘"
+              ],
+              "combat_tags": [
+                "双刀",
+                "闪避",
+                "连击"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_pozhu_feng",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_pozhu_chen",
+              "value": "破竹·尘",
+              "label": "破竹·尘",
+              "summary": "醉梦游春＋粟子行云；伞与绳镖的范围控制。",
+              "stat_bonus": {
+                "shi": 2,
+                "min": 1
+              },
+              "martial_arts": [
+                "醉梦游春",
+                "粟子行云"
+              ],
+              "combat_tags": [
+                "范围",
+                "牵引",
+                "移形"
+              ],
+              "knowledge_profile_ref": "knowledge.martial_flows.flow_pozhu_chen",
+              "content_profile_ref": "content.default_player"
+            }
+          ]
+        },
+        {
+          "id": "secondary_martial_flow",
+          "label": "辅修武学流派",
+          "selection": {
+            "mode": "single",
+            "min": 0,
+            "max": 1
+          },
+          "required": false,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 70,
+          "page_size": 5,
+          "options": [
+            {
+              "id": "flow_none",
+              "value": "暂不辅修",
+              "label": "暂不辅修",
+              "summary": "开局只掌握主修流派。",
+              "martial_arts": [],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_none",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "flow_mingjin_hong",
+              "value": "鸣金·虹",
+              "label": "鸣金·虹",
+              "summary": "无名剑法＋无名枪法；均衡进退、剑气与正面压制。",
+              "stat_bonus": {
+                "shi": 2,
+                "jin": 1
+              },
+              "martial_arts": [
+                "无名剑法",
+                "无名枪法"
+              ],
+              "combat_tags": [
+                "均衡",
+                "剑气",
+                "正面进退"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_mingjin_hong",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_mingjin_hong"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "flow_mingjin_ying",
+              "value": "鸣金·影",
+              "label": "鸣金·影",
+              "summary": "积矩九剑＋九曲惊神枪；流血、持续压制与连携。",
+              "stat_bonus": {
+                "jin": 2,
+                "min": 1
+              },
+              "martial_arts": [
+                "积矩九剑",
+                "九曲惊神枪"
+              ],
+              "combat_tags": [
+                "流血",
+                "持续压制",
+                "连携"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_mingjin_ying",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_mingjin_ying"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "flow_qiansi_yu",
+              "value": "牵丝·玉",
+              "label": "牵丝·玉",
+              "summary": "青山执笔＋九重春色；远程牵制、定身与浮空。",
+              "stat_bonus": {
+                "min": 2,
+                "shi": 1
+              },
+              "martial_arts": [
+                "青山执笔",
+                "九重春色"
+              ],
+              "combat_tags": [
+                "远程",
+                "定身",
+                "浮空"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_qiansi_yu",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_qiansi_yu"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "flow_qiansi_yi",
+              "value": "牵丝·翊",
+              "label": "牵丝·翊",
+              "summary": "文动霓裳＋杏游草野；声律、群攻与战场辅助。",
+              "stat_bonus": {
+                "shi": 2,
+                "min": 1
+              },
+              "martial_arts": [
+                "文动霓裳",
+                "杏游草野"
+              ],
+              "combat_tags": [
+                "声律",
+                "群攻",
+                "辅助"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_qiansi_yi",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_qiansi_yi"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "flow_qiansi_lin",
+              "value": "牵丝·霖",
+              "label": "牵丝·霖",
+              "summary": "明川药典＋千香引魂蛊；治疗、复苏与蛊术支援。",
+              "stat_bonus": {
+                "ti": 2,
+                "shi": 1
+              },
+              "martial_arts": [
+                "明川药典",
+                "千香引魂蛊"
+              ],
+              "combat_tags": [
+                "治疗",
+                "复苏",
+                "支援"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_qiansi_lin",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_qiansi_lin"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "flow_lieshi_wei",
+              "value": "裂石·威",
+              "label": "裂石·威",
+              "summary": "嗟夫刀法＋八方风雷枪；格挡、蓄势与正面承压。",
+              "stat_bonus": {
+                "yu": 2,
+                "jin": 1
+              },
+              "martial_arts": [
+                "嗟夫刀法",
+                "八方风雷枪"
+              ],
+              "combat_tags": [
+                "格挡",
+                "承压",
+                "蓄势"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_lieshi_wei",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_lieshi_wei"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "flow_lieshi_jun",
+              "value": "裂石·钧",
+              "label": "裂石·钧",
+              "summary": "斩雪刀法＋十方破阵；卸势反击、破甲与重击。",
+              "stat_bonus": {
+                "jin": 2,
+                "yu": 1
+              },
+              "martial_arts": [
+                "斩雪刀法",
+                "十方破阵"
+              ],
+              "combat_tags": [
+                "反击",
+                "破甲",
+                "重击"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_lieshi_jun",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_lieshi_jun"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "flow_pozhu_yuan",
+              "value": "破竹·鸢",
+              "label": "破竹·鸢",
+              "summary": "天志垂象＋千机索天；手甲短打、绳镖控敌与追索。",
+              "stat_bonus": {
+                "jin": 2,
+                "min": 1
+              },
+              "martial_arts": [
+                "天志垂象",
+                "千机索天"
+              ],
+              "combat_tags": [
+                "短打",
+                "追索",
+                "控敌"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_pozhu_yuan",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_pozhu_yuan"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "flow_pozhu_feng",
+              "value": "破竹·风",
+              "label": "破竹·风",
+              "summary": "泥犁三垢＋栗子游尘；双刀、闪避与快速连击。",
+              "stat_bonus": {
+                "min": 2,
+                "jin": 1
+              },
+              "martial_arts": [
+                "泥犁三垢",
+                "栗子游尘"
+              ],
+              "combat_tags": [
+                "双刀",
+                "闪避",
+                "连击"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_pozhu_feng",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_pozhu_feng"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "flow_pozhu_chen",
+              "value": "破竹·尘",
+              "label": "破竹·尘",
+              "summary": "醉梦游春＋粟子行云；伞与绳镖的范围控制。",
+              "stat_bonus": {
+                "shi": 2,
+                "min": 1
+              },
+              "martial_arts": [
+                "醉梦游春",
+                "粟子行云"
+              ],
+              "combat_tags": [
+                "范围",
+                "牵引",
+                "移形"
+              ],
+              "knowledge_profile_ref": "knowledge.secondary_martial_flows.flow_pozhu_chen",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "martial_flow",
+                  "values": [
+                    "flow_pozhu_chen"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mystic_art",
+          "label": "起始奇术",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 80,
+          "page_size": 5,
+          "options": [
+            {
+              "id": "mystic_taiji",
+              "value": "太极",
+              "label": "太极",
+              "summary": "借力化力、推移物体；通常使用御，连续强用会调息。",
+              "default_attribute": "yu",
+              "knowledge_profile_ref": "knowledge.mystic_arts.mystic_taiji",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "mystic_acupoint",
+              "value": "点穴",
+              "label": "点穴",
+              "summary": "短暂封阻行动或止血；通常使用敏，需接近并辨位。",
+              "default_attribute": "min",
+              "knowledge_profile_ref": "knowledge.mystic_arts.mystic_acupoint",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "mystic_roar",
+              "value": "狮吼正声",
+              "label": "狮吼正声",
+              "summary": "震慑、破胆或远距传声；通常使用势，易暴露位置。",
+              "default_attribute": "shi",
+              "knowledge_profile_ref": "knowledge.mystic_arts.mystic_roar",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "mystic_fire",
+              "value": "神龙吐火",
+              "label": "神龙吐火",
+              "summary": "借火源点燃或制造爆燃；通常使用劲，受环境限制。",
+              "default_attribute": "jin",
+              "knowledge_profile_ref": "knowledge.mystic_arts.mystic_fire",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "mystic_wind",
+              "value": "冯虚御风",
+              "label": "冯虚御风",
+              "summary": "短距离凌空、越障或脱险；通常使用敏，不能长期飞行。",
+              "default_attribute": "min",
+              "knowledge_profile_ref": "knowledge.mystic_arts.mystic_wind",
+              "content_profile_ref": "content.default_player"
+            }
+          ]
+        },
+        {
+          "id": "life_skill_primary",
+          "label": "第一百业专长",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 90,
+          "page_size": 5,
+          "options": [
+            {
+              "id": "life_fishing",
+              "value": "悬壶钓客",
+              "label": "悬壶钓客",
+              "summary": "识水、垂钓与水边耐心观察。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_fishing",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "life_cooking",
+              "value": "庖厨",
+              "label": "庖厨",
+              "summary": "辨食材、掌火候并稳定队伍补给。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_cooking",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "life_music",
+              "value": "乐律",
+              "label": "乐律",
+              "summary": "辨音、记调与还原声场。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_music",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "life_architecture",
+              "value": "营造",
+              "label": "营造",
+              "summary": "判断结构、木石与水工设施。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_architecture",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "life_trade",
+              "value": "行商",
+              "label": "行商",
+              "summary": "估价、议价与辨货路。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_trade",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "life_medicine",
+              "value": "药理",
+              "label": "药理",
+              "summary": "辨常见药材、毒物与配伍。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_medicine",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "life_tracking",
+              "value": "游猎",
+              "label": "游猎",
+              "summary": "追踪、扎营与野外取食。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_tracking",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "life_performance",
+              "value": "戏乐",
+              "label": "戏乐",
+              "summary": "表演、易装与场面调度。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_performance",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "life_craft",
+              "value": "匠作",
+              "label": "匠作",
+              "summary": "维护工具、武具与普通机关。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_craft",
+              "content_profile_ref": "content.default_player"
+            },
+            {
+              "id": "life_calligraphy",
+              "value": "文墨",
+              "label": "文墨",
+              "summary": "读写、抄录、账册与印鉴辨析。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_calligraphy",
+              "content_profile_ref": "content.default_player"
+            }
+          ]
+        },
+        {
+          "id": "life_skill_secondary",
+          "label": "第二百业专长",
+          "selection": {
+            "mode": "single",
+            "min": 0,
+            "max": 1
+          },
+          "required": false,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 100,
+          "page_size": 5,
+          "options": [
+            {
+              "id": "life_fishing",
+              "value": "悬壶钓客",
+              "label": "悬壶钓客",
+              "summary": "识水、垂钓与水边耐心观察。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_fishing",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_fishing"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "life_cooking",
+              "value": "庖厨",
+              "label": "庖厨",
+              "summary": "辨食材、掌火候并稳定队伍补给。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_cooking",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_cooking"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "life_music",
+              "value": "乐律",
+              "label": "乐律",
+              "summary": "辨音、记调与还原声场。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_music",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_music"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "life_architecture",
+              "value": "营造",
+              "label": "营造",
+              "summary": "判断结构、木石与水工设施。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_architecture",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_architecture"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "life_trade",
+              "value": "行商",
+              "label": "行商",
+              "summary": "估价、议价与辨货路。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_trade",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_trade"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "life_medicine",
+              "value": "药理",
+              "label": "药理",
+              "summary": "辨常见药材、毒物与配伍。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_medicine",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_medicine"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "life_tracking",
+              "value": "游猎",
+              "label": "游猎",
+              "summary": "追踪、扎营与野外取食。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_tracking",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_tracking"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "life_performance",
+              "value": "戏乐",
+              "label": "戏乐",
+              "summary": "表演、易装与场面调度。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_performance",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_performance"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "life_craft",
+              "value": "匠作",
+              "label": "匠作",
+              "summary": "维护工具、武具与普通机关。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_craft",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_craft"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "life_calligraphy",
+              "value": "文墨",
+              "label": "文墨",
+              "summary": "读写、抄录、账册与印鉴辨析。",
+              "knowledge_profile_ref": "knowledge.life_skills.life_calligraphy",
+              "content_profile_ref": "content.default_player",
+              "conflicts": [
+                {
+                  "dimension": "life_skill_primary",
+                  "values": [
+                    "life_calligraphy"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "resolution": {
+      "mode": "attribute",
+      "dice_system": "d20",
+      "unknown_attribute": "reject",
+      "allowed_attributes": [
+        "ti",
+        "yu",
+        "min",
+        "shi",
+        "jin"
+      ],
+      "generic_check": {
+        "enabled": false,
+        "label": "通用",
+        "modifier": 0
+      },
+      "difficulty_policy": {
+        "safe": null,
+        "controlled": 9,
+        "dangerous": 13,
+        "desperate": 17,
+        "lethal": 21
+      },
+      "outcome_policy": {
+        "natural_20_critical": true,
+        "natural_1_critical": true,
+        "critical_success_margin": 10,
+        "cost_success_min_margin": -4,
+        "failure_min_margin": -9
+      },
+      "parameter_authority": "plugin_rule_engine",
+      "ai_role": "narrative_only_after_locked_receipt"
+    },
+    "danger_levels": [
+      {
+        "id": "safe",
+        "label": "安全",
+        "requires_visible_consequence": false
+      },
+      {
+        "id": "controlled",
+        "label": "可控",
+        "requires_visible_consequence": false
+      },
+      {
+        "id": "dangerous",
+        "label": "危险",
+        "requires_visible_consequence": false
+      },
+      {
+        "id": "desperate",
+        "label": "绝境",
+        "requires_visible_consequence": false
+      },
+      {
+        "id": "lethal",
+        "label": "致命",
+        "requires_visible_consequence": true
+      }
+    ],
+    "option_presentation": {
+      "annotation": {
+        "enabled": true,
+        "show_danger": true,
+        "show_check_attribute": true,
+        "show_failure_consequence": true,
+        "check_template": "需“{attribute}”检定",
+        "separator": " · "
+      }
+    },
+    "dice_rules": {
+      "system": "d20",
+      "advantage": "2d20_keep_high",
+      "disadvantage": "2d20_keep_low",
+      "stacking": false,
+      "opposites_cancel": true,
+      "outcome_bands": true,
+      "visibility": "public"
+    },
+    "inspiration": {
+      "initial": 1,
+      "maximum": 3,
+      "uses": [
+        "advantage_before_roll",
+        "reroll_full_pool"
+      ]
+    },
+    "npc_policy": {
+      "enabled": true,
+      "auto_register": true,
+      "max_new_per_turn": 2,
+      "require_named_or_relevant": true,
+      "generated_requires_review": true,
+      "archive_after_inactive_rounds": 12
+    },
+    "context_budget": {
+      "recent_turns": 6,
+      "memories": 6,
+      "active_npcs": 6,
+      "ledger_items": 8,
+      "locked_facts_always_include": true
+    },
+    "time_rules": {
+      "card_code_ttl_seconds": 1800,
+      "card_draft_ttl_seconds": 604800,
+      "card_completion_timeout_seconds": null,
+      "preparation_timeout_seconds": null,
+      "ready_timeout_seconds": null,
+      "turn_timeout_seconds": null,
+      "turn_reminder_seconds": null,
+      "max_consecutive_timeouts": -1,
+      "standby_timeout_seconds": null,
+      "delegation_ttl_seconds": null,
+      "vote_round_one_seconds": null,
+      "vote_round_two_seconds": null,
+      "vote_reminder_seconds": null,
+      "all_idle_pause_seconds": null,
+      "pause_stops_clock": true,
+      "announce_timeouts": false,
+      "turn_timeout_action": "hold",
+      "card_timeout_action": "remind",
+      "ready_timeout_action": "remind"
+    },
+    "opening_choices": [
+      {
+        "key": "A",
+        "text": "留在渡口询问看见空船归来的船工，并核对差役身份",
+        "danger_id": "safe",
+        "requires_check": false,
+        "check": null,
+        "collective": false
+      },
+      {
+        "key": "B",
+        "text": "登上空船检查舱底、水显账目与十种兵刃痕迹",
+        "danger_id": "controlled",
+        "requires_check": true,
+        "check_type": "standard",
+        "check_stat": "敏",
+        "difficulty": 9,
+        "known_consequences": "失败会令部分水显字迹消退，并让可疑差役提高戒心",
+        "check": {
+          "required": true,
+          "attribute_id": "min",
+          "type": "standard",
+          "difficulty": 9,
+          "known_consequences": "失败会令部分水显字迹消退，并让可疑差役提高戒心"
+        },
+        "collective": false
+      },
+      {
+        "key": "C",
+        "text": "沿赤脚血印追入程记客栈后院，寻找受伤或被带走的人",
+        "danger_id": "dangerous",
+        "requires_check": true,
+        "check_type": "standard",
+        "check_stat": "敏",
+        "difficulty": 13,
+        "known_consequences": "失败可能暴露追踪、惊走关键目击者或留下可恢复伤势",
+        "check": {
+          "required": true,
+          "attribute_id": "min",
+          "type": "standard",
+          "difficulty": 13,
+          "known_consequences": "失败可能暴露追踪、惊走关键目击者或留下可恢复伤势"
+        },
+        "collective": false
+      },
+      {
+        "key": "D",
+        "text": "赶往起火义仓破开卡死的侧门，先把困在烟里的仓工救出来",
+        "danger_id": "dangerous",
+        "requires_check": true,
+        "check_type": "standard",
+        "check_stat": "劲",
+        "difficulty": 13,
+        "known_consequences": "失败会吸入浓烟、延误救援并推进赈粮损耗",
+        "check": {
+          "required": true,
+          "attribute_id": "jin",
+          "type": "standard",
+          "difficulty": 13,
+          "known_consequences": "失败会吸入浓烟、延误救援并推进赈粮损耗"
+        },
+        "collective": false
+      }
+    ],
+    "event_pool": [
+      {
+        "id": "a1_empty_bell",
+        "title": "空舱余铃",
+        "description": "船舱夹层传出一声极轻的铜铃响。它可能来自被水浸胀的货箱，也可能是有人留下的定位信号。调查可得到一枚被赈粮麻绳磨亮的铜环；拖延则潮水继续灌入舱底。",
+        "weight": 4,
+        "minimum_round": 1,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a1_wet_ledger",
+        "title": "水显残字",
+        "description": "雨水重新打湿舱板，几行残缺数目短暂浮现：三处地名被刮去，只留下入库量与实际吃水不符的痕迹。玩家可抄录、拓印或寻找让字迹稳定的方法。",
+        "weight": 5,
+        "minimum_round": 1,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a1_false_blade",
+        "title": "不合手的兵痕",
+        "description": "一处看似重刀劈出的裂口边缘却有细密锯齿，说明兵痕可能由器具二次加工。懂工匠、武学或船体者可从不同角度确认，但一次判断不能直接锁定幕后者。",
+        "weight": 4,
+        "minimum_round": 2,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a1_grain_fire",
+        "title": "义仓复燃",
+        "description": "义仓湿梁深处突然复燃，火势与烟道方向相反。玩家必须在救困者、保住账房与追查屋后身影之间取舍；未选中的目标不会自动毁灭，但相应时钟应推进。",
+        "weight": 6,
+        "minimum_round": 2,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a1_bloody_foot",
+        "title": "血印断处",
+        "description": "客栈后院的赤脚血印在一口空水缸前中断，缸沿有新鲜药油。血量不足以致死，更像有人被搀扶或换鞋离开。程鹭娘明显认得药油气味，却不愿当众说明。",
+        "weight": 5,
+        "minimum_round": 2,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a1_tax_runners",
+        "title": "先到的差役",
+        "description": "两名差役早于正式报案抵达，要求封船并收走黑竹牌。他们手续不全，可能只是急于维持秩序，也可能受人指使。交涉失败只会提高戒心，不可直接判定其为共犯。",
+        "weight": 4,
+        "minimum_round": 3,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a1_survivor_cough",
+        "title": "雨棚下的咳声",
+        "description": "码头雨棚下传来压抑咳声，一名湿透的脚夫藏着船队号牌。他受惊且吸入毒烟，只能提供片段证词；若被粗暴逼问，证词会变得含混并引来监视。",
+        "weight": 5,
+        "minimum_round": 3,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a1_cut_mooring",
+        "title": "被割断的旧缆",
+        "description": "一截旧缆从上游漂来，切口平整却混有黑竹纤维。船工能确认它来自失踪船队之一，但必须进一步比对绳结与船号，不能凭此证明谁转移了赈粮。",
+        "weight": 3,
+        "minimum_round": 3,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a1_crowd_rumor",
+        "title": "水鬼流言",
+        "description": "围观者开始指认某一门派招式造成兵痕，百家猜忌正在升高。玩家可公开纠错、压下流言、借势套话或先保存证据；简单威吓人群会留下反感。",
+        "weight": 6,
+        "minimum_round": 4,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a1_night_watch",
+        "title": "第一夜守船",
+        "description": "入夜后有人试图从水下拔走卡在船底的铜制标尺。此人只负责收尾，不知道全案；若抓获可获得交货切口，若逃脱也会遗下一段通往青篁坞的油布。",
+        "weight": 5,
+        "minimum_round": 4,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第一幕·空船归潮"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_three_marks",
+        "title": "三痕同源",
+        "description": "三种貌似不同流派的兵痕在入木角度上完全相同，说明施痕者依靠固定夹具而非三名高手。玩家可据此降低一部分门派猜忌，但仍需找到夹具或制作者。",
+        "weight": 5,
+        "minimum_round": 6,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_bamboo_shavings",
+        "title": "青篁黑屑",
+        "description": "青篁坞废料沟里出现只在潮湿时泛黑的竹屑，与黑竹牌材质相符。工匠坚持这种竹材多用于船钉防潮垫，牌子可能只是边角料。",
+        "weight": 4,
+        "minimum_round": 6,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_false_apprentice",
+        "title": "冒名学徒",
+        "description": "一名自称门派学徒的人兜售“无字潮谱残招”，动作却只学到外形。揭穿他可追出散布流言的中间人；公开羞辱则可能让真正买家提前撤离。",
+        "weight": 5,
+        "minimum_round": 7,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_market_token",
+        "title": "无灯市门钱",
+        "description": "进入无灯市需要交出一件能证明自己不属于官差的物件，或完成一桩不伤无辜的小差事。玩家也可寻找暗门、伪装或让九流门关系担保，任何方法都应留下不同后果。",
+        "weight": 6,
+        "minimum_round": 7,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_stolen_forms",
+        "title": "失窃的兵形木",
+        "description": "船坞发现一箱用于校正船板的兵形木被盗，形状恰可伪造多类兵刃痕迹。陆三停承认木箱出自旧闸工程，却隐瞒了交付名单。",
+        "weight": 5,
+        "minimum_round": 8,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_masked_bid",
+        "title": "蒙面竞价",
+        "description": "无灯市临时拍卖一页遇水显字的货单。三方买家分别代表漕社、义仓和未知门派掮客；玩家可竞买、调包、跟踪或公开搅局，但不能同时无代价获得货单与全部尾随线索。",
+        "weight": 6,
+        "minimum_round": 8,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_scent_thread",
+        "title": "毒香余线",
+        "description": "一名售香人认出空船上的气味来自混入湿木后才发作的迟香，可使人眩晕、肌肉僵直并留下类似点穴的症状。配方不致命，但大量使用可能令落水者溺亡。",
+        "weight": 4,
+        "minimum_round": 9,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_broken_reed",
+        "title": "折断的簧片",
+        "description": "假兵痕器具中藏有一枚用于控制节奏的簧片，吹动时会发出十六声中的前三声。它是操作暗号，也是后续声律机关的早期伏笔，不能直接证明超自然。",
+        "weight": 4,
+        "minimum_round": 9,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_witness_price",
+        "title": "证人的价码",
+        "description": "中间人愿意交代黑竹牌买家，却要求玩家先保证家人离开临潮渡。答应会增加救援负担，拒绝可换用证据施压，威胁则让其证词可信度下降。",
+        "weight": 5,
+        "minimum_round": 10,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a2_rooftop_pursuit",
+        "title": "雨瓦追影",
+        "description": "一名携货单副本的人越过湿滑屋脊逃向河边。追逐可用敏，封路可用势或团队协作，破坏落脚点可用劲但可能伤及下方摊贩；失败只改变获取证据的方式。",
+        "weight": 5,
+        "minimum_round": 10,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第二幕·百家疑痕"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_tide_window",
+        "title": "半刻退潮",
+        "description": "旧闸入口只在半刻退潮内露出，队伍需要决定先运装备、先送潜水者还是先固定返程绳。充分准备可延缓潮位代价，仓促强闯会让撤退更困难。",
+        "weight": 6,
+        "minimum_round": 12,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_air_pocket",
+        "title": "石腹气室",
+        "description": "暗渠上方存在旧工匠留下的气室，墙上刻有修闸工名而非武谱。这里可安全整队，并首次证明“潮谱”与水工有关，但刻名中缺了关键一行。",
+        "weight": 5,
+        "minimum_round": 12,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_poisoned_eels",
+        "title": "毒水浮鳗",
+        "description": "暗渠中浮起被迟香毒死的鳗鱼，说明毒香经水路扩散。玩家可取样、绕行或封住排水孔；粗暴点火可能引发缺氧与爆燃。",
+        "weight": 4,
+        "minimum_round": 13,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_sunken_manifest",
+        "title": "沉舱货簿",
+        "description": "一艘半沉驳船中夹着两份不同货簿：官面记赈粮，私账记“竹、盐、旧铁”。比对船体吃水可证明私账仍在遮掩粮食，但需要保存原件或可靠见证。",
+        "weight": 5,
+        "minimum_round": 13,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_trapped_porters",
+        "title": "闸腹呼救",
+        "description": "三名失踪脚夫被困在高水位石室，身边有一部分赈粮和看守留下的绳梯。救人会消耗退潮时间，却能获得直接证词；继续追图可能保住更多证据。",
+        "weight": 6,
+        "minimum_round": 14,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_old_engine",
+        "title": "十六齿水轮",
+        "description": "废闸核心有一座十六齿水轮，每转一齿便带动不同簧管。它能解释大部分古调，也能控制暗门；缺失的第十三齿却在无水时仍偶尔自鸣。",
+        "weight": 5,
+        "minimum_round": 14,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_lu_confession",
+        "title": "陆三停的旧事",
+        "description": "陆三停承认年轻时参与修闸，并因工程被用于私运而封死一条暗渠。他害怕旧罪牵连船坞。耐心取证可换得完整路线，逼迫过急会让他只交出残图。",
+        "weight": 5,
+        "minimum_round": 15,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_marked_anchor",
+        "title": "反挂的铁锚",
+        "description": "沉船铁锚被故意反挂，表明船只并非遇难而是被固定在水下装卸。锚链上有义仓编号，但编号也可能来自被盗物资，需要其他证据互证。",
+        "weight": 4,
+        "minimum_round": 15,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_drowned_guard",
+        "title": "未亡的守闸人",
+        "description": "一名被认为溺亡的守闸人从暗仓醒来，记忆因毒香断裂。他只记得十六声之后有人喊“换旗”，以及梁姓上司的袖口；证词必须经医治与物证补强。",
+        "weight": 6,
+        "minimum_round": 16,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a3_collapsing_gate",
+        "title": "旧闸崩栓",
+        "description": "腐朽闸栓开始断裂。队伍可用劲抬闸、用御撑护、用敏重穿缆索或撤离保全证据。失败应推进潮位或造成可恢复伤势，不得一次团灭。",
+        "weight": 6,
+        "minimum_round": 16,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "critical",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第三幕·沉闸旧事"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_sealed_notice",
+        "title": "三方封口令",
+        "description": "官差、漕社和一名门派代表同时要求封存潮谱，各自理由都部分合理。玩家必须判断合作条件、证据保全与公开范围，任何结盟都会让另一方提高戒心。",
+        "weight": 6,
+        "minimum_round": 19,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_shen_hunted",
+        "title": "告密者被猎",
+        "description": "沈孤篷的藏身处遭两拨人同时搜索，一拨要灭口，一拨想抢先带走他。玩家可救人、设假证、分组引开或借双方冲突脱身；沈孤篷不会自动信任救他的人。",
+        "weight": 6,
+        "minimum_round": 19,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_public_duel",
+        "title": "门前问招",
+        "description": "有人以被伪造的门派名誉为由要求公开问招。玩家可应战、验痕、请证人或揭露器具；胜负只能影响声望与发言权，不能替代案件证据。",
+        "weight": 5,
+        "minimum_round": 20,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_missing_page",
+        "title": "潮谱缺页",
+        "description": "拼合河图时发现听潮台下方一页被单独撕走。缺页标记的是紧急泄洪线与一处无名沉井，持有者可能用它救人，也可能毁掉全渡口。",
+        "weight": 5,
+        "minimum_round": 20,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_faction_offer",
+        "title": "各取所需",
+        "description": "不同势力分别开出条件：换取证人安全、粮食归还、门派洗冤或玩家合法身份。交易可以成立，但必须明确交出什么、保留什么以及谁承担后果。",
+        "weight": 4,
+        "minimum_round": 21,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_tide_stage",
+        "title": "听潮台试音",
+        "description": "听潮台上的石槽在风雨中自动奏出前十五声，第十六声来自台下而非簧管。声律身份、乐律百业或敏检定可定位来源，却不能立刻断言是人是鬼。",
+        "weight": 5,
+        "minimum_round": 21,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_false_evidence",
+        "title": "反咬的账册",
+        "description": "梁晦一方抛出伪账，试图证明沈孤篷私吞赈粮。伪账印鉴是真的、纸张也旧，只有数字与潮汐时刻矛盾。玩家需用已获知识拆穿，而不是凭“知道反派”直接否定。",
+        "weight": 6,
+        "minimum_round": 22,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_split_routes",
+        "title": "双路赴台",
+        "description": "通往听潮台的石阶与水洞同时开放，却会在下一次涨潮后封闭其一。人数足够时可分组，人数不足时必须取舍；两路分别偏向取得证据与抢占机关。",
+        "weight": 5,
+        "minimum_round": 22,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_captured_broker",
+        "title": "掮客翻供",
+        "description": "无灯市掮客被另一方抓获后愿意翻供，但要求免去自身责任。接受能快速补齐交易链，拒绝则需从货单和证人重建；玩家可提出有限豁免而非全盘放过。",
+        "weight": 4,
+        "minimum_round": 23,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a4_third_watch",
+        "title": "三更前的截杀",
+        "description": "第三更前，一支训练有素却不佩门派标记的小队在芦荡截路。他们优先夺卷而非杀人。战斗、诱敌、卸势夺械或交涉均可解决，并能从装备查出义仓采购渠道。",
+        "weight": 6,
+        "minimum_round": 23,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "critical",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第四幕·十六声局"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_sixteen_notes",
+        "title": "十六声齐",
+        "description": "水轮、听潮台与沉井在同一刻奏齐十六声，旧闸所有暗门开始换位。玩家需先决定救援、证据或控制闸门的优先级；无人古调时钟满格时，另有一声来自封死石壁后。",
+        "weight": 6,
+        "minimum_round": 27,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "critical",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_grain_barges",
+        "title": "暗河粮舟",
+        "description": "三艘藏粮小舟被水流推向不同岔道：一处通灾民码头，一处通漕社私仓，一处将撞上闸栓。队伍可分工或舍一保二，结果影响赈粮结局。",
+        "weight": 6,
+        "minimum_round": 27,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_hostage_chain",
+        "title": "缚在闸链上的人",
+        "description": "梁晦手下把关键证人与闸链绑在一起，强开闸会危及他们。玩家可精细解缚、谈判拖延、以机关反制或先稳住水势；不得把人质当作纯粹战斗血条。",
+        "weight": 6,
+        "minimum_round": 28,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "critical",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_liang_terms",
+        "title": "梁晦的条件",
+        "description": "梁晦提出以完整转运名单换取离开临潮渡，并声称上层另有人。名单可能真实但不完整。玩家可核验、设局、接受有限交易或公开对质，不强制接受也不强制杀死。",
+        "weight": 6,
+        "minimum_round": 28,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_gate_choice",
+        "title": "开闸之问",
+        "description": "泄洪可救上游船工却冲毁部分证据与私仓；封闸能保全卷宗却让低位暗渠继续进水。这是影响全队和渡口的群体决定，必须公开已知代价并发起投票。",
+        "weight": 7,
+        "minimum_round": 29,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "critical",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_people_at_dock",
+        "title": "渡口众声",
+        "description": "灾民、船工家属、门派来客与差役聚集渡口，要求不同答案。玩家可公开多少证据、保护哪些证人、如何处置粮食，将直接改变民心与百家猜忌。",
+        "weight": 5,
+        "minimum_round": 29,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_last_forgery",
+        "title": "最后一道假痕",
+        "description": "梁晦试图用一处新鲜伪痕把罪责推给玩家所属门派。若玩家保留了兵形木、簧片或船钉证据即可拆穿；否则仍可通过时间、见证与受力逻辑反证。",
+        "weight": 5,
+        "minimum_round": 30,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_well_whisper",
+        "title": "沉井回声",
+        "description": "无名沉井传出与任何簧管都不同的回应，像有人隔水敲击。探索可获得留白结局的关键见闻，却会消耗最后救援时间；忽略它不会阻止人为案件闭环。",
+        "weight": 4,
+        "minimum_round": 30,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_map_owner",
+        "title": "潮谱归谁",
+        "description": "完整潮谱只能由一方持有、公开抄录、分拆保存或彻底毁去。不同方案影响未来追索、渡口水利和势力平衡，必须群体投票且允许玩家提出第五种自定义处置。",
+        "weight": 7,
+        "minimum_round": 31,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "critical",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "a5_after_rain",
+        "title": "雨后点名",
+        "description": "风雨停歇前需要核对获救者、赈粮、证人、伤者与失踪名单。每名玩家应得到一个基于其背景、门派、武学和实际选择的个人余波，不得用统一庆功词草草结束。",
+        "weight": 5,
+        "minimum_round": 32,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [
+            "章节已进入：第五幕·潮退人归"
+          ],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "scale_solo_companion",
+        "title": "一盏同行灯",
+        "description": "一人局中，当前最相关且已获信任的原创NPC可提出一种有限协助：照明、传话、急救或看守其中之一。NPC只提供方法与代价，绝不代选A—D、不替玩家完成关键检定。",
+        "weight": 3,
+        "minimum_round": 1,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 1
+        }
+      },
+      {
+        "id": "scale_solo_second_chance",
+        "title": "独行者的退路",
+        "description": "一人局遇到需要并行处理的危机时，应出现可预先布置的绳索、信号、机关延时或NPC托付方案，让玩家能作有代价的先后选择，而不是因缺少队友被硬性封路。",
+        "weight": 3,
+        "minimum_round": 4,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 1
+        }
+      },
+      {
+        "id": "scale_solo_witness",
+        "title": "有人替你记着",
+        "description": "一人局取得重大证据时，一名已建立关系的原创NPC愿意担任见证，但会提出保护、署名或暂缓公开的条件。玩家可以拒绝并选择其他证据保全方式。",
+        "weight": 3,
+        "minimum_round": 10,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 1,
+          "maximum_players": 1
+        }
+      },
+      {
+        "id": "scale_small_pair",
+        "title": "一明一暗",
+        "description": "2—3人队伍获得一次双线机会：一人公开交涉吸引注意，另一人调查或布置退路。只有实际分工成立时才给予协助优势，不能因人数自动成功。",
+        "weight": 3,
+        "minimum_round": 3,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 2,
+          "maximum_players": 3
+        }
+      },
+      {
+        "id": "scale_small_shared_load",
+        "title": "共担一索",
+        "description": "2—3人队伍可通过一人主行动、一人协助处理重物、伤者或水下路线。协助者需要说明具体方法，成功后两人共享由此产生的场景后果。",
+        "weight": 3,
+        "minimum_round": 8,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 2,
+          "maximum_players": 3
+        }
+      },
+      {
+        "id": "scale_small_conflicting_clues",
+        "title": "两证相左",
+        "description": "2—3人队伍同时获得两条表面矛盾的线索，应允许角色分别陈述依据后合并判断；不能由叙事者直接宣布哪条为真。",
+        "weight": 3,
+        "minimum_round": 14,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 2,
+          "maximum_players": 3
+        }
+      },
+      {
+        "id": "scale_standard_split",
+        "title": "三路雨幕",
+        "description": "4—6人队伍可把当前危机拆成最多三组：调查、救援、牵制。每组至少有明确负责人、地点和目标；合流前分别维护知识边界。",
+        "weight": 3,
+        "minimum_round": 4,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 4,
+          "maximum_players": 6
+        }
+      },
+      {
+        "id": "scale_standard_assist",
+        "title": "同门不同招",
+        "description": "4—6人队伍可把不同武学或身份组合成一次协作：一人制造位置、一人控制局面、一人完成关键动作。协作改变条件而非直接增加伤害数字。",
+        "weight": 3,
+        "minimum_round": 9,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 4,
+          "maximum_players": 6
+        }
+      },
+      {
+        "id": "scale_standard_vote",
+        "title": "众口定路",
+        "description": "4—6人队伍出现两条都合理的主路线。主持人应给出已知收益与代价并发起群体投票；投票不消耗个人行动回合。",
+        "weight": 3,
+        "minimum_round": 16,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 4,
+          "maximum_players": 6
+        }
+      },
+      {
+        "id": "scale_large_parallel",
+        "title": "四处同时起火",
+        "description": "7—8人队伍应出现四个可并行处理的局部目标，每组1—2人，目标分别偏向救援、证据、追踪与稳场。不得让八人围着同一个门锁轮流检定。",
+        "weight": 3,
+        "minimum_round": 3,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "serious",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 7,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "scale_large_information",
+        "title": "消息尚未合流",
+        "description": "7—8人分组后，一组取得的线索不能立刻出现在另一组角色知识中。可用信使、烟火、鼓点或会合完成传递，传递本身可能受环境影响。",
+        "weight": 3,
+        "minimum_round": 8,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 7,
+          "maximum_players": 8
+        }
+      },
+      {
+        "id": "scale_large_consensus",
+        "title": "八方一议",
+        "description": "7—8人遇到阵营、开闸或潮谱归属问题时，先允许每组提交一个建议，再合并为不超过四个投票选项。不得由先发言者自动代表全队。",
+        "weight": 3,
+        "minimum_round": 18,
+        "cooldown_rounds": 99,
+        "once": true,
+        "severity": "standard",
+        "conditions": {
+          "locations": [],
+          "required_facts": [],
+          "excluded_facts": [],
+          "minimum_players": 7,
+          "maximum_players": 8
+        }
+      }
+    ],
+    "safe_exit_templates": [
+      "{character}在临潮渡安全处留下联络方式，带走个人物品并暂时离队；其掌握的公共线索已交还队伍。",
+      "{character}因门派召令或私人急事离开当前行动线，未完成的关键职责由队伍公开重新分配。",
+      "{character}护送伤者或证人前往安全地点，暂时退出回合队列，之后可凭新的故事条件返场。"
+    ],
+    "return_rules": {
+      "allow_return": true,
+      "allow_resurrection": false,
+      "requires_vote": true,
+      "requires_story_condition": true
+    },
+    "setting_modules": {
+      "chapter_facts": [
+        "章节已进入：第一幕·空船归潮",
+        "章节已进入：第二幕·百家疑痕",
+        "章节已进入：第三幕·沉闸旧事",
+        "章节已进入：第四幕·十六声局",
+        "章节已进入：第五幕·潮退人归"
+      ],
+      "milestones": [
+        "空船归潮",
+        "百家疑痕",
+        "沉闸旧事",
+        "十六声局",
+        "潮退人归"
+      ],
+      "main_locations": [
+        {
+          "name": "临潮渡",
+          "use": "开场、消息、人群与公开冲突"
+        },
+        {
+          "name": "回澜旧闸",
+          "use": "水下探索、暗渠、沉船与终局开闸"
+        },
+        {
+          "name": "青篁坞",
+          "use": "船材、器具、黑竹牌与陆三停旧事"
+        },
+        {
+          "name": "无灯市",
+          "use": "黑市、假身份、禁药、残招和中间人"
+        },
+        {
+          "name": "听潮台",
+          "use": "潮汐声律、势力争卷与终局机关"
+        }
+      ],
+      "official_content_lock": {
+        "selectable_flows": [
+          "鸣金·虹",
+          "鸣金·影",
+          "牵丝·玉",
+          "牵丝·翊",
+          "牵丝·霖",
+          "裂石·威",
+          "裂石·钧",
+          "破竹·鸢",
+          "破竹·风",
+          "破竹·尘"
+        ],
+        "reserved_not_selectable": [
+          "破竹·樽",
+          "孤云门派玩法"
+        ],
+        "reason": "截至2026-08-02尚未正式开放对应可选玩法"
+      }
+    },
+    "capabilities": {
+      "character_stats": true,
+      "attribute_checks": true,
+      "dice_resolution": true,
+      "option_risk_labels": true,
+      "group_decisions": true,
+      "npc_generation": true,
+      "world_events": true,
+      "generic_character_presets": true,
+      "world_knowledge_boundaries": true,
+      "world_content_boundaries": true,
+      "dm_control_mode": true
+    },
+    "knowledge_boundary": {
+      "policy": "strict",
+      "global_rules": [
+        "角色不得知道标记为导演秘密、其他角色私人秘密或尚未在剧情中公开的事实。",
+        "角色不得用现代科技概念解释本世界现象。",
+        "未接触某地区、组织或事件前，只能使用预设档案明确授予的公开知识。",
+        "聪明、见多识广或武功高强不能自动突破知识授权。"
+      ],
+      "forbidden_domains": [
+        "导演秘密",
+        "其他角色私人秘密",
+        "正传主角私人经历",
+        "幕后网络完整真相"
+      ],
+      "metagame_policy": "deny",
+      "unknown_fact_behavior": "表现为不知道、误解、传闻认知或请求调查/检定"
+    },
+    "content_boundary": {
+      "rating": "teen",
+      "hard_denials": [
+        "露骨性内容",
+        "针对未成年人的性内容",
+        "详细自残过程"
+      ],
+      "fade_to_black": [
+        "亲密行为",
+        "酷刑细节",
+        "严重伤口的持续性细节"
+      ],
+      "allowed_with_limits": {
+        "violence": "允许武侠战斗与伤势，但避免持续性的器官和肢解细节。",
+        "horror": "允许中度惊悚、追逐与压迫感，不进行重口味肉体恐怖描写。",
+        "player_conflict": "玩家角色之间的不可逆伤害、背叛或强制关系需要明确同意。",
+        "character_death": "角色永久死亡需要世界规则成立并由玩家确认。"
+      },
+      "narrative_rules": [
+        "不得替玩家声明思想、感情、立场或主动台词。",
+        "安全暂停优先于主持人指令和剧情推进。"
+      ],
+      "player_may_tighten": true,
+      "player_may_relax": false,
+      "legacy_policy": {
+        "character_death": "ask",
+        "player_conflict": "consent",
+        "romance": "fade_to_black",
+        "horror": "moderate",
+        "sexual_content": "blocked",
+        "safety_pause": true
+      }
+    },
+    "content_profiles": {
+      "default_player": {
+        "additional_denials": [
+          "以性格或背景预设强制替玩家作出关键决定"
+        ],
+        "fade_to_black": [],
+        "narrative_rules": [
+          "性格仅影响倾向与表达，不决定玩家选择。"
+        ]
+      },
+      "war_scarred": {
+        "additional_denials": [
+          "用创伤经历强制操控角色当前情绪或立场"
+        ],
+        "fade_to_black": [
+          "角色过去遭受酷刑或屠杀的细节"
+        ],
+        "narrative_rules": [
+          "可以提及创伤背景，但具体反应由玩家决定。"
+        ]
+      }
+    },
+    "knowledge_profiles": {
+      "common_wanderer": {
+        "label": "江湖普通成年人",
+        "domains": {
+          "临潮渡公开信息": "basic",
+          "江湖公开常识": "basic",
+          "幕后网络": "unknown"
+        },
+        "known_facts": [
+          "知道当前公开的江湖秩序与常见生活规则"
+        ],
+        "unknown_facts": [
+          "不知道临潮渡案件幕后网络的完整真相"
+        ]
+      },
+      "origin_regions.origin_qinghe": {
+        "label": "清河",
+        "domains": {
+          "出身地区地理与风俗": "familiar",
+          "周边道路与市井常识": "basic"
+        },
+        "known_facts": [
+          "乡野路径",
+          "狩猎基础",
+          "旧盟遗迹传闻"
+        ],
+        "unknown_facts": [
+          "不自动认识清河正传人物，也不拥有旧盟机密。"
+        ]
+      },
+      "origin_regions.origin_kaifeng": {
+        "label": "开封",
+        "domains": {
+          "出身地区地理与风俗": "familiar",
+          "周边道路与市井常识": "basic"
+        },
+        "known_facts": [
+          "坊市规矩",
+          "官府文书",
+          "城市消息路数"
+        ],
+        "unknown_facts": [
+          "不自动拥有官府身份、权贵关系或禁城权限。"
+        ]
+      },
+      "origin_regions.origin_hexi": {
+        "label": "河西",
+        "domains": {
+          "出身地区地理与风俗": "familiar",
+          "周边道路与市井常识": "basic"
+        },
+        "known_facts": [
+          "军旅行止",
+          "商队路线",
+          "荒地辨向"
+        ],
+        "unknown_facts": [
+          "不自动拥有军职、军令或边军调动权。"
+        ]
+      },
+      "origin_regions.origin_bujianshan": {
+        "label": "不见山",
+        "domains": {
+          "出身地区地理与风俗": "familiar",
+          "周边道路与市井常识": "basic"
+        },
+        "known_facts": [
+          "百工术语",
+          "机关安全",
+          "材料辨识"
+        ],
+        "unknown_facts": [
+          "不自动掌握墨门秘械或大型机关图纸。"
+        ]
+      },
+      "origin_regions.origin_qingzhou": {
+        "label": "青州",
+        "domains": {
+          "出身地区地理与风俗": "familiar",
+          "周边道路与市井常识": "basic"
+        },
+        "known_facts": [
+          "乡约礼法",
+          "海贸常识",
+          "齐鲁文教"
+        ],
+        "unknown_facts": [
+          "不自动拥有士族谱系、官学名籍或海商船队。"
+        ]
+      },
+      "origin_regions.origin_jiangnan": {
+        "label": "江南",
+        "domains": {
+          "出身地区地理与风俗": "familiar",
+          "周边道路与市井常识": "basic"
+        },
+        "known_facts": [
+          "舟船潮汐",
+          "水乡市井",
+          "江南商路"
+        ],
+        "unknown_facts": [
+          "不自动知道临潮渡暗渠或本案幕后网络。"
+        ]
+      },
+      "origin_regions.origin_wandering": {
+        "label": "漂泊无籍",
+        "domains": {
+          "出身地区地理与风俗": "familiar",
+          "周边道路与市井常识": "basic"
+        },
+        "known_facts": [
+          "道路求生",
+          "客栈黑话",
+          "多地风俗碎片"
+        ],
+        "unknown_facts": [
+          "消息广而不深，缺少稳定户籍与官方担保。"
+        ]
+      },
+      "social_identities.identity_escort": {
+        "label": "镖客",
+        "domains": {
+          "江湖身份专业常识": "familiar",
+          "地方公开规则": "basic"
+        },
+        "known_facts": [
+          "判断常规护送阵形",
+          "识别商路风险"
+        ],
+        "unknown_facts": [
+          "重视雇约与同行安全"
+        ]
+      },
+      "social_identities.identity_healer": {
+        "label": "医者",
+        "domains": {
+          "江湖身份专业常识": "familiar",
+          "地方公开规则": "basic"
+        },
+        "known_facts": [
+          "普通急救",
+          "常见药毒辨识"
+        ],
+        "unknown_facts": [
+          "紧急现场优先救治伤者"
+        ]
+      },
+      "social_identities.identity_artisan": {
+        "label": "工匠",
+        "domains": {
+          "江湖身份专业常识": "familiar",
+          "地方公开规则": "basic"
+        },
+        "known_facts": [
+          "维修常规器械",
+          "判断结构损坏"
+        ],
+        "unknown_facts": [
+          "需要材料与工具，不能凭空造物"
+        ]
+      },
+      "social_identities.identity_scholar": {
+        "label": "文士",
+        "domains": {
+          "江湖身份专业常识": "familiar",
+          "地方公开规则": "basic"
+        },
+        "known_facts": [
+          "核对文书",
+          "辨析常见典故"
+        ],
+        "unknown_facts": [
+          "重大指控需要依据"
+        ]
+      },
+      "social_identities.identity_scout": {
+        "label": "斥候",
+        "domains": {
+          "江湖身份专业常识": "familiar",
+          "地方公开规则": "basic"
+        },
+        "known_facts": [
+          "读常见踪迹",
+          "选择隐蔽路线"
+        ],
+        "unknown_facts": [
+          "不能凭一次观察看穿全部埋伏"
+        ]
+      },
+      "social_identities.identity_merchant": {
+        "label": "商旅",
+        "domains": {
+          "江湖身份专业常识": "familiar",
+          "地方公开规则": "basic"
+        },
+        "known_facts": [
+          "辨常见货价",
+          "寻找商路联系人"
+        ],
+        "unknown_facts": [
+          "没有无限钱财或随叫随到的人脉"
+        ]
+      },
+      "social_identities.identity_performer": {
+        "label": "乐伎",
+        "domains": {
+          "江湖身份专业常识": "familiar",
+          "地方公开规则": "basic"
+        },
+        "known_facts": [
+          "辨认节拍与音律",
+          "混入普通演艺场合"
+        ],
+        "unknown_facts": [
+          "身份不能自动换取任何人的真心或信任"
+        ]
+      },
+      "social_identities.identity_hunter": {
+        "label": "猎户",
+        "domains": {
+          "江湖身份专业常识": "familiar",
+          "地方公开规则": "basic"
+        },
+        "known_facts": [
+          "读兽踪",
+          "布置普通陷阱"
+        ],
+        "unknown_facts": [
+          "城市暗线与罕见异兽仍需调查"
+        ]
+      },
+      "social_identities.identity_boatman": {
+        "label": "船工",
+        "domains": {
+          "江湖身份专业常识": "familiar",
+          "地方公开规则": "basic"
+        },
+        "known_facts": [
+          "操纵常见舟船",
+          "判断水流变化"
+        ],
+        "unknown_facts": [
+          "暴潮、毒水和大型船损仍可能需要检定"
+        ]
+      },
+      "sect_presets.sect_none": {
+        "label": "无门无派",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "自由处理门派事务"
+        ],
+        "unknown_facts": [
+          "不得借无门无派获得全门派权限"
+        ]
+      },
+      "sect_presets.sect_tianquan": {
+        "label": "天泉",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "向基层同门请求普通护送情报"
+        ],
+        "unknown_facts": [
+          "不得坐视弱者在眼前受害"
+        ]
+      },
+      "sect_presets.sect_qingxi": {
+        "label": "青溪",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "使用基层医者联络与常规药理资源"
+        ],
+        "unknown_facts": [
+          "危急时应优先救人"
+        ]
+      },
+      "sect_presets.sect_sangengtian": {
+        "label": "三更天",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "辨认基层断罪暗记"
+        ],
+        "unknown_facts": [
+          "断罪需要证据或明确理由"
+        ]
+      },
+      "sect_presets.sect_jiuliu": {
+        "label": "九流门",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "识别常见骗局与黑市切口"
+        ],
+        "unknown_facts": [
+          "不得以门派之名欺压无辜；失手须承担门规后果"
+        ]
+      },
+      "sect_presets.sect_zuihuayin": {
+        "label": "醉花阴",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "接触普通演艺与风月场线人"
+        ],
+        "unknown_facts": [
+          "重视真心、承诺与体面"
+        ]
+      },
+      "sect_presets.sect_kuanglan": {
+        "label": "狂澜",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "识别军阵与狂澜基层信物"
+        ],
+        "unknown_facts": [
+          "不可临阵弃友"
+        ]
+      },
+      "sect_presets.sect_momen": {
+        "label": "墨门",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "判断普通机关与营造逻辑"
+        ],
+        "unknown_facts": [
+          "不得以器械滥杀无辜"
+        ]
+      },
+      "sect_presets.sect_liyuan": {
+        "label": "梨园",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "进入普通戏班后台与辨认行规"
+        ],
+        "unknown_facts": [
+          "维护同门与戏班声誉"
+        ]
+      },
+      "sect_presets.sect_wenjinguan": {
+        "label": "文津馆",
+        "domains": {
+          "本门派公开规矩": "familiar",
+          "其他门派公开传闻": "rumor"
+        },
+        "known_facts": [
+          "请求基层学人协助考据"
+        ],
+        "unknown_facts": [
+          "重大指控必须给出依据"
+        ]
+      },
+      "martial_flows.flow_mingjin_hong": {
+        "label": "鸣金·虹",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "无名剑法",
+          "无名枪法"
+        ],
+        "unknown_facts": []
+      },
+      "martial_flows.flow_mingjin_ying": {
+        "label": "鸣金·影",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "积矩九剑",
+          "九曲惊神枪"
+        ],
+        "unknown_facts": []
+      },
+      "martial_flows.flow_qiansi_yu": {
+        "label": "牵丝·玉",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "青山执笔",
+          "九重春色"
+        ],
+        "unknown_facts": []
+      },
+      "martial_flows.flow_qiansi_yi": {
+        "label": "牵丝·翊",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "文动霓裳",
+          "杏游草野"
+        ],
+        "unknown_facts": []
+      },
+      "martial_flows.flow_qiansi_lin": {
+        "label": "牵丝·霖",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "明川药典",
+          "千香引魂蛊"
+        ],
+        "unknown_facts": []
+      },
+      "martial_flows.flow_lieshi_wei": {
+        "label": "裂石·威",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "嗟夫刀法",
+          "八方风雷枪"
+        ],
+        "unknown_facts": []
+      },
+      "martial_flows.flow_lieshi_jun": {
+        "label": "裂石·钧",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "斩雪刀法",
+          "十方破阵"
+        ],
+        "unknown_facts": []
+      },
+      "martial_flows.flow_pozhu_yuan": {
+        "label": "破竹·鸢",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "天志垂象",
+          "千机索天"
+        ],
+        "unknown_facts": []
+      },
+      "martial_flows.flow_pozhu_feng": {
+        "label": "破竹·风",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "泥犁三垢",
+          "栗子游尘"
+        ],
+        "unknown_facts": []
+      },
+      "martial_flows.flow_pozhu_chen": {
+        "label": "破竹·尘",
+        "domains": {
+          "所选武学流派": "expert",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "醉梦游春",
+          "粟子行云"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_none": {
+        "label": "暂不辅修",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_mingjin_hong": {
+        "label": "鸣金·虹",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "无名剑法",
+          "无名枪法"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_mingjin_ying": {
+        "label": "鸣金·影",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "积矩九剑",
+          "九曲惊神枪"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_qiansi_yu": {
+        "label": "牵丝·玉",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "青山执笔",
+          "九重春色"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_qiansi_yi": {
+        "label": "牵丝·翊",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "文动霓裳",
+          "杏游草野"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_qiansi_lin": {
+        "label": "牵丝·霖",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "明川药典",
+          "千香引魂蛊"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_lieshi_wei": {
+        "label": "裂石·威",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "嗟夫刀法",
+          "八方风雷枪"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_lieshi_jun": {
+        "label": "裂石·钧",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "斩雪刀法",
+          "十方破阵"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_pozhu_yuan": {
+        "label": "破竹·鸢",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "天志垂象",
+          "千机索天"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_pozhu_feng": {
+        "label": "破竹·风",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "泥犁三垢",
+          "栗子游尘"
+        ],
+        "unknown_facts": []
+      },
+      "secondary_martial_flows.flow_pozhu_chen": {
+        "label": "破竹·尘",
+        "domains": {
+          "所选武学流派": "familiar",
+          "其他武学流派": "rumor"
+        },
+        "known_facts": [
+          "醉梦游春",
+          "粟子行云"
+        ],
+        "unknown_facts": []
+      },
+      "mystic_arts.mystic_taiji": {
+        "label": "太极",
+        "domains": {
+          "所选奇术的公开用法": "familiar",
+          "奇术隐秘源流": "rumor"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "mystic_arts.mystic_acupoint": {
+        "label": "点穴",
+        "domains": {
+          "所选奇术的公开用法": "familiar",
+          "奇术隐秘源流": "rumor"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "mystic_arts.mystic_roar": {
+        "label": "狮吼正声",
+        "domains": {
+          "所选奇术的公开用法": "familiar",
+          "奇术隐秘源流": "rumor"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "mystic_arts.mystic_fire": {
+        "label": "神龙吐火",
+        "domains": {
+          "所选奇术的公开用法": "familiar",
+          "奇术隐秘源流": "rumor"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "mystic_arts.mystic_wind": {
+        "label": "冯虚御风",
+        "domains": {
+          "所选奇术的公开用法": "familiar",
+          "奇术隐秘源流": "rumor"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_fishing": {
+        "label": "悬壶钓客",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_cooking": {
+        "label": "庖厨",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_music": {
+        "label": "乐律",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_architecture": {
+        "label": "营造",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_trade": {
+        "label": "行商",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_medicine": {
+        "label": "药理",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_tracking": {
+        "label": "游猎",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_performance": {
+        "label": "戏乐",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_craft": {
+        "label": "匠作",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      },
+      "life_skills.life_calligraphy": {
+        "label": "文墨",
+        "domains": {
+          "所选百业专长": "familiar"
+        },
+        "known_facts": [],
+        "unknown_facts": []
+      }
+    }
+  },
+  "initial_state": {
+    "location": "江南·临潮渡石阶码头",
+    "time": "五代末宋初，梅雨第八日清晨，退潮前约一个时辰",
+    "scene_summary": "无人赈粮船逆潮撞岸，舱内粮食消失，水显账目将褪，十类兵痕互相矛盾；赤脚血印通向程记客栈，义仓同时起火，两名腰牌不全的差役要求封船。",
+    "progress": {
+      "chapter": "第一幕：空船归潮",
+      "current_objective": "在空船、义仓与血迹三条线中取得第一组可靠证据",
+      "completed_milestones": 0,
+      "total_milestones": 5
+    },
+    "facts": [
+      "章节已进入：第一幕·空船归潮",
+      "玩家共同卷入临潮渡赈粮空船案",
+      "空船内存在遇水显字、离水无痕的残缺账目",
+      "船舱存在十类表面属于不同武学的兵刃痕迹",
+      "黑竹牌刻有“潮退人归”",
+      "赤脚血印通向程记客栈后门",
+      "临潮义仓在空船归来时起火",
+      "所有具体案件人物均为原创人物，正传主角和原作剧情NPC不会介入"
+    ],
+    "inventory": {
+      "party_supplies": {
+        "临潮渡简图": 1,
+        "普通火折": 2,
+        "麻绳（十五丈）": 1,
+        "止血布与常用伤药": 1
+      },
+      "quest_items": {
+        "空船上取下的黑竹牌": 1
+      }
+    },
+    "relationships": {
+      "临潮渡居民": "观望，愿意向真正救人者提供有限帮助",
+      "临潮渡差役": "尚未确认来者身份，保持戒备",
+      "江湖各门派": "尚未正式卷入，但百家兵痕正在制造猜忌"
+    },
+    "check_modifiers": {
+      "advantages": [
+        "行动与角色出身、身份、门派权限、主修武学或百业专长明确匹配且方法具体",
+        "事先取得可靠工具、证人协助或完整路线"
+      ],
+      "disadvantages": [
+        "在涨潮、浓烟、黑暗或负伤状态下仓促行动",
+        "试图凭门派名号、武学名称或玩家常识直接知道未取得的案件真相"
+      ]
+    }
+  },
+  "world_schema_version": 4,
+  "world_content_version": "2.0.0",
+  "capabilities": {
+    "character_stats": true,
+    "attribute_checks": true,
+    "dice_resolution": true,
+    "option_risk_labels": true,
+    "group_decisions": true,
+    "npc_generation": true,
+    "world_events": true,
+    "generic_character_presets": true,
+    "world_knowledge_boundaries": true,
+    "world_content_boundaries": true,
+    "dm_control_mode": true
+  },
+  "minimum_plugin_version": "0.10.0"
+}

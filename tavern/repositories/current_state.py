@@ -125,87 +125,6 @@ class CurrentStateRepositoryMixin:
                         ),
                     )
 
-            # TWP 世界 NPC 播种。当世界没有 characters 表常驻角色时，
-            # 从冻结世界快照 rules.npc_lifecycle 生成会话 NPC，
-            # 避免“NPC 信息”层为空；内置世界已由 characters 表播种，不再重复。
-            if not preset_rows:
-                npc_module = (
-                    world.get("rules", {}).get("npc_lifecycle")
-                    if isinstance(world.get("rules"), Mapping)
-                    else None
-                )
-                npc_defs = (
-                    npc_module.get("npcs")
-                    if isinstance(npc_module, Mapping)
-                    else None
-                )
-                if isinstance(npc_defs, list):
-                    for npc in npc_defs:
-                        if not isinstance(npc, Mapping):
-                            continue
-                        npc_id = str(npc.get("id") or "").strip()
-                        npc_name = str(npc.get("name") or "").strip()
-                        if not npc_id or not npc_name:
-                            continue
-                        stable_key = f"twpnpc:{npc_id}"
-                        initial_scene = str(npc.get("initial_scene") or "")
-                        profile = {
-                            "identity": "",
-                            "organization": "",
-                            "location": initial_scene,
-                            "intent": str(npc.get("intent") or ""),
-                        }
-                        connection.execute(
-                            """
-                            INSERT INTO session_characters(
-                                id, session_id, stable_key, name, aliases_json,
-                                role_type, public_profile_json, known_facts_json,
-                                misconceptions_json, source, review_status,
-                                lifecycle_status, persistent, first_turn, last_turn,
-                                revision, created_at, updated_at
-                            ) VALUES (?, ?, ?, ?, '[]', 'npc', ?, '[]', '[]',
-                                      'world_preset', 'approved', 'active', 1,
-                                      0, ?, 1, ?, ?)
-                            ON CONFLICT(session_id, stable_key) DO NOTHING
-                            """,
-                            (
-                                new_id("snpc"),
-                                session["id"],
-                                stable_key,
-                                npc_name,
-                                json_dump(profile),
-                                session["turn_no"],
-                                now,
-                                now,
-                            ),
-                        )
-                        row = connection.execute(
-                            """
-                            SELECT id FROM session_characters
-                            WHERE session_id = ? AND stable_key = ?
-                            """,
-                            (session["id"], stable_key),
-                        ).fetchone()
-                        if row:
-                            connection.execute(
-                                """
-                                INSERT INTO session_character_states(
-                                    character_id, state_json, revision, updated_at
-                                ) VALUES (?, ?, 1, ?)
-                                ON CONFLICT(character_id) DO NOTHING
-                                """,
-                                (
-                                    row["id"],
-                                    json_dump(
-                                        {
-                                            "location": initial_scene,
-                                            "status": "active",
-                                        }
-                                    ),
-                                    now,
-                                ),
-                            )
-
             if session["state"] == SESSION_FINISHED:
                 archived = connection.execute(
                     "SELECT 1 FROM session_archives WHERE session_id = ?",
@@ -296,3 +215,4 @@ class CurrentStateRepositoryMixin:
             """,
             (now,),
         )
+

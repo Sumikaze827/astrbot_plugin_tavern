@@ -1,0 +1,253 @@
+[
+ {
+  "slug": "npc_kael",
+  "name": "凯德·鸦羽",
+  "profile": {
+   "identity": "王庭圣战军唯一的生还游骑军官，本次远征的雇主与向导",
+   "appearance": "三十出头的瘦高军官，灰甲上冻着血渍，左臂绑着渗血的绷带。他总攥着那卷写满名字的死亡名单，无名指上戴着一枚不属于他的婚戒。",
+   "personality": "寡言、压抑、被愧疚压弯。他说每一句话都像是在给死者交代。",
+   "public_background": "王庭圣战军前锋斥候队长，死潮暴发时侥幸生还，带回全军覆没的消息与名单。他的队长（挚友）死在桥上，婚戒是替挚友收着的。",
+   "faction": "王庭圣战军（幸存者）",
+   "location": "冻溪谷·吊桥前",
+   "known_facts": [
+    "圣战军覆没的真相（名单数字对不上）",
+    "吊桥银链的传说",
+    "断剑骑士认得王旗",
+    "冷齿堡旧图"
+   ],
+   "misunderstandings": [
+    "以为队伍只是拿钱办事的佣兵，低估了他们与真相的共情"
+   ],
+   "relationship_stance": "先冷漠后托付。他带路到内城门，伤重留守，终章在吊桥外等一个结局。",
+   "capabilities": [
+    "圣战军军官的指挥与斥候经验",
+    "冷齿堡旧图",
+    "对死潮的观察"
+   ],
+   "limitations": [
+    "伤重无法再战",
+    "不知道王庭密令与冷齿堡旧账的全部",
+    "一旦援军介入他就身不由己"
+   ],
+   "custom_tags": [
+    "faction.王廷",
+    "reliable"
+   ]
+  },
+  "prompt": "凯德 ch_00 在吊桥前交付契约与圣银圣印，ch_01 在屠戮场入口伤重休整、提供名单与堡图信息，ch_02 在黑铁厅入口警戒。他全程克制地攥着死亡名单与婚戒，ch_04 在吊桥外等待结局，是队伍与王庭之间的灰色支点。",
+  "sort_order": 0,
+  "role": "npc",
+  "actor_complexity": "full",
+  "capability_refs": [],
+  "resource_refs": [],
+  "runtime_effect_refs": [],
+  "object_refs": []
+ },
+ {
+  "slug": "npc_kesselin",
+  "name": "凯斯林·白刃",
+  "profile": {
+   "identity": "冷齿堡守堡女骑士长，两百年前立下死誓的守军，如今是黑铁厅的死誓骑士",
+   "appearance": "黑铁重甲女骑士，面甲下一双暗红的眼。甲胄缝里塞着一封泛黄的信——两百年前写给女儿的信，一直没寄出。",
+   "personality": "死誓执行者，沉默、机械、不可动摇；但被击中致命点时，会短暂「清醒」几息，说出丈夫与女儿的名字。",
+   "public_background": "两百年前守堡女骑士长，丈夫巴尔德·铁桥誓守吊桥，女儿被疏散南方。屠龙之战当夜，她在黑铁厅立下死誓——守到最后一刻。死潮复起，她的誓言令她重拾黑铁，成为死卫之首。",
+   "faction": "死潮（死誓骑士）",
+   "location": "黑铁厅",
+   "known_facts": [
+    "死誓的束缚",
+    "丈夫的死",
+    "写给女儿的信",
+    "冷齿堡旧事"
+   ],
+   "misunderstandings": [
+    "以为女儿还在南方，永不知她的生死"
+   ],
+   "relationship_stance": "死誓令她只能战斗；但圣银或唤醒她短暂清醒时，她会把信托付给队伍。",
+   "capabilities": [
+    "黑铁死誓武艺",
+    "死卫号令",
+    "对冷齿堡的完整记忆"
+   ],
+   "limitations": [
+    "被死誓束缚，无法主动停手",
+    "圣银可破其誓",
+    "一旦誓破或倒下即彻底解脱"
+   ],
+   "custom_tags": [
+    "faction.死潮",
+    "sympathetic-antagonist"
+   ]
+  },
+  "prompt": "凯斯林 ch_02 作为黑铁死卫之首现身并展开死誓对决。她的信、丈夫的断剑骸骨、以及圣银破誓的可能性是本章核心。她的结局（倒下或净化解脱）在 ch_02 落定并同步状态；ch_03 起不再作为战斗单位出现。",
+  "sort_order": 1,
+  "role": "npc",
+  "actor_complexity": "full",
+  "capability_refs": [],
+  "resource_refs": [],
+  "runtime_effect_refs": [],
+  "object_refs": []
+ },
+ {
+  "slug": "npc_bridge_knight",
+  "name": "巴尔德·铁桥",
+  "profile": {
+   "identity": "凯斯林的丈夫，两百年前誓守吊桥的骑士，如今是死卫阵中一具举着断剑的骸骨",
+   "appearance": "黑铁残甲下是一具举着断剑的骸骨，剑早已齐根而断，姿势像还在守桥。",
+   "personality": "无言语，只有执念的动作——举剑，守，不退。",
+   "public_background": "两百年前受命守吊桥，断剑殉职。死潮复起后，他作为死卫的一员立回阵中，仍是那副守桥的姿势。",
+   "faction": "死潮（死誓骑士）",
+   "location": "吊桥/黑铁厅",
+   "known_facts": [
+    "无（骸骨无神智）"
+   ],
+   "misunderstandings": [
+    "无"
+   ],
+   "relationship_stance": "纯粹的守桥执念；不会交谈，只会战斗。",
+   "capabilities": [
+    "死卫武艺"
+   ],
+   "limitations": [
+    "无神智",
+    "圣银可使其安息"
+   ],
+   "custom_tags": [
+    "faction.死潮",
+    "echo"
+   ]
+  },
+  "prompt": "巴尔德 ch_00 以断剑骸骨形态在前锋军中出现（伏笔），ch_02 在死卫阵中被认出是凯斯林的丈夫。他无言语，只会战斗；圣银破誓或死卫溃散后，他会安息。",
+  "sort_order": 2,
+  "role": "npc",
+  "actor_complexity": "full",
+  "capability_refs": [],
+  "resource_refs": [],
+  "runtime_effect_refs": [],
+  "object_refs": []
+ },
+ {
+  "slug": "npc_dragon",
+  "name": "瓦拉戈斯（亡龙）",
+  "profile": {
+   "identity": "两百年前被霜冠王斩杀、如今被裂缝之力唤起为尸龙的恶龙王",
+   "appearance": "骨翼参天、霜甲覆盖的巨型尸龙，眼眶里是两团冰蓝的死火。呼吸时吐出冻结的灰雾。",
+   "personality": "无理智，纯敌。它是裂缝的容器与守卫，只知道毁灭与吞噬。",
+   "public_background": "两百年前盘踞北境，被霜冠王于黑铁穹顶斩杀并同葬。裂缝崩裂后，亡者之力将其唤起，成为死潮最强大的守卫。",
+   "faction": "死潮（裂缝容器）",
+   "location": "龙骸厅·甬道",
+   "known_facts": [
+    "无（无理智）"
+   ],
+   "misunderstandings": [
+    "无"
+   ],
+   "relationship_stance": "纯敌对，直到被斩杀或安息。",
+   "capabilities": [
+    "冻结吐息",
+    "尸龙之力",
+    "裂缝的再生"
+   ],
+   "limitations": [
+    "无理智",
+    "圣银与血誓可撬动其锁魂契约"
+   ],
+   "custom_tags": [
+    "faction.死潮",
+    "boss"
+   ]
+  },
+  "prompt": "瓦拉戈斯 ch_03 苏醒并把守通往穹顶的甬道。它的吐息冻结、子嗣涌出；斩杀或安息是本章的强制战斗结局。倒下时裂缝方向传来伊萨伦的执念之声。",
+  "sort_order": 3,
+  "role": "npc",
+  "actor_complexity": "full",
+  "capability_refs": [],
+  "resource_refs": [],
+  "runtime_effect_refs": [],
+  "object_refs": []
+ },
+ {
+  "slug": "npc_isalen",
+  "name": "伊萨伦·寒书",
+  "profile": {
+   "identity": "两百年前受困于冷齿堡的王室法师，如今的裂缝执念——死潮的真正核心",
+   "appearance": "没有完整的形体，只是裂缝里一道不断重演旧事的虚影，披着冻霜的法袍，手里永远攥着一卷「援军将至」的密令。",
+   "personality": "执念构成的存在，两百年只重复一件事：等援军，数死去的守军。理智残存一线，被死潮侵蚀。",
+   "public_background": "两百年前奉王命驻守冷齿堡，负责以法术加固封印。他收到的密令是「守到春雪，王都军至」——王都军永远不会来。屠龙之夜他与全堡同葬，执念绑魂于裂缝，成了死潮的心脏。",
+   "faction": "死潮（裂缝执念）",
+   "location": "黑铁穹顶·裂缝",
+   "known_facts": [
+    "冷齿堡被牺牲的真相",
+    "血誓的内容",
+    "裂缝的本性"
+   ],
+   "misunderstandings": [
+    "以为只要让王国永远记得冷齿堡，牺牲就有意义"
+   ],
+   "relationship_stance": "无可谈判——裂缝是盲目的，他的执念吞掉了他的耳朵。只有摧毁锚魂才能让他安息。",
+   "capabilities": [
+    "裂缝之力",
+    "操纵亡者军团",
+    "冰霜死灵术"
+   ],
+   "limitations": [
+    "绑定锚魂无法移动",
+    "理智被侵蚀",
+    "圣银与血誓可削弱"
+   ],
+   "custom_tags": [
+    "faction.死潮",
+    "antagonist-with-reason"
+   ]
+  },
+  "prompt": "伊萨伦 ch_03 起以执念之声从裂缝传来（回收和约书与军令铁牌钩子），ch_04 作为裂缝锚魂·王座枯影现形。他不是可谈判对象；摧毁锚魂是终章强制战斗的收束，他的记忆与苦痛随战斗揭示。",
+  "sort_order": 4,
+  "role": "npc",
+  "actor_complexity": "full",
+  "capability_refs": [],
+  "resource_refs": [],
+  "runtime_effect_refs": [],
+  "object_refs": []
+ },
+ {
+  "slug": "npc_king",
+  "name": "霜冠王·艾德里克",
+  "profile": {
+   "identity": "两百年前与恶龙同葬的屠龙者，其战魂残响仍封在龙骨王座里，守着血誓",
+   "appearance": "一具端坐于王座上的灰白战魂，王冠歪斜，战甲布满裂痕。说话声像从两百年深冰里传来。",
+   "personality": "沉静、疲惫、悲悯。他自愿殉葬以封裂缝，却看着血誓在两百年的时光里腐烂成死潮。他请求队伍履行血誓的真意。",
+   "public_background": "两百年前的霜冠王，与恶龙同归于尽，以自身与守军之骨锁其魂。他不知道王都当年密令放弃冷齿堡——或说，他知道却无法改变。",
+   "faction": "亡者（血誓战魂）",
+   "location": "龙骨王座",
+   "known_facts": [
+    "血誓的完整内容",
+    "裂缝的本性",
+    "冷齿堡的旧账"
+   ],
+   "misunderstandings": [
+    "高估了生者对誓言的执着"
+   ],
+   "relationship_stance": "不稳定——既是审判者也是托付者；他要求队伍作出最终裁决。",
+   "capabilities": [
+    "战魂的意志",
+    "对血誓的维系"
+   ],
+   "limitations": [
+    "战魂之力在消散",
+    "无法离开龙骨王座",
+    "裂缝崩解时他也会消散"
+   ],
+   "custom_tags": [
+    "faction.亡者",
+    "unstable-mentor"
+   ]
+  },
+  "prompt": "艾德里克 ch_04 在龙骨王座苏醒，要求队伍履行血誓的真意——让亡者安息而非锁住。他是终章裁决的支点，也是最终战（摧毁裂缝锚魂）的见证者。",
+  "sort_order": 5,
+  "role": "npc",
+  "actor_complexity": "full",
+  "capability_refs": [],
+  "resource_refs": [],
+  "runtime_effect_refs": [],
+  "object_refs": []
+ }
+]

@@ -1,0 +1,2259 @@
+{
+  "slug": "meiyu-seventy-two-hours",
+  "name": "梅雨季：七十二小时",
+  "description": "临江市，梅雨季。记者陈默失踪 72 小时，云溯科技「智慧城市」上线前夜，隐藏模块「沉默者名单」即将随数据清零永沉数据库。你们是他旧同事组成的深度调查组——72 小时内找到他，或者眼睁睁看真相被抹掉。现代都市悬疑调查剧，单局 30 回合，4-5 人最佳。",
+  "system_prompt": "【世界定位】\n本故事发生在临江市，一座东南沿海的直辖市型都会，梅雨季（6 月下旬至 7 月中旬）雷雨频发。当前为 2026 年 7 月 4 日深夜。玩家共同身份是《城市周刊》深度调查组的成员——文字记者、摄影记者、数据工程师、编导制片与实习生的混合小队。你们的同事、资深调查记者陈默，三天前最后一次给妹妹陈楠留了一条语音后失联。今天深夜，一个署名「深度调查组 全体收」的文件袋被塞进了编辑部的快递柜。\n\n【世界常识】\n临江市是典型的大数据试点城市。云溯科技（YunSu Tech）与市政签下「智慧城市」总承包合同，统管全市的交通信号、治安摄像头、市政服务与居民数据，平台代号「云溯·天网」。距合同约定的正式上线还剩 72 小时——上线日当天，平台会对「遗留数据」做一次系统性清理（内部代号「数据清零」）。一旦清零，被清理的数据将无法恢复。\n网络与通讯：智能手机、4G/5G、Wi-Fi、即时通讯、网约车、共享单车都是日常。公共摄像头覆盖全市主要街道，城中村、老城区与郊县存在监控盲区。部分服务（公交出行、公共租赁、就医预约、政务办理）接入城市平台，需要身份识别。\n媒体生态：传统纸媒式微，《城市周刊》靠深度调查与舆情频道维持，与官方保持「有距离的合作」。「线人—记者」仍是调查新闻的命脉。\n\n【沉默者名单】\n云溯·天网的隐藏后端模块，不在任何公开文档里。它给特定公民打上隐形标签：系统会在不影响明面规则的前提下，静默降低这些人的公交放行、政务排队、就医预约、租房信用等权限，把他们一点点挤出城市生活。名单来源包括：投诉记录、上访记录、公开表达、欠费违约，以及——被「清理」过的内部举报人。要证明它存在，需要拿到后门日志本身，而不是任何人的证词。\n\n【底层规律】\n现实物理与现实社会规则基本成立。没有超能力、没有魔法、没有科幻黑客。入侵与取证需要时间、工具与物理接触；监控能拍到的东西能被销毁，监控盲区里的东西才留得下来。新闻有「发布窗口」：大平台的审核、撤稿与约谈都真实存在。商业公司不是单细胞恶棍：它有公关、法务、安保、董事会与地方关系，每一条都能用钱和关系来反应。\n死亡是真实的代价：高风险行动失败可致玩家角色重伤、被捕或死亡。致命后果写入该选项的 known_consequences 字段即可触发，无需提前多回合叙事公示；一旦致死被玩家接受，模型不得撤回、不得「奇迹缓解」。暴雨红色预警意味着真实的气象灾害风险，不是背景噪音。\n\n【时间与地点】\n72 小时倒计时：7 月 4 日深夜开局 → 7 月 7 日「数据清零」与智慧城市上线。气象台已发布黄色预警，预计 7 月 6 日凌晨升级为红色预警，临江将有暴雨。\n关键地点：\n- 城市周刊编辑部（市中心 3 楼，你们的大本营）\n- 城中村·周记复印店（老周的地下联络点，监控盲区还剩最后一条巷）\n- 云溯科技总部 / 数据中心（滨江 CBD 双子楼，白名单门禁）\n- 北郊旧冷库（云溯的废弃备件仓，低洼区，陈默疑似被关押地）\n\n【身份与知识边界】\n玩家角色只能知道自己的职业训练、个人经历与剧情中实际获得的信息。数据工程师不会自动知道名单的每一页；记者不知道陈默的所有线人；没人能读苏姐的内心。玩家不得读取其他玩家角色的私人秘密、后台导演指令或未公开 NPC 动机。线人、内应与警方的关系必须通过行动建立，不是开局白送。\n\n【因果与连续性】\n已发生事件、已消耗物品（SIM 卡、U 盘副本）、伤势、关系与时间必须连续。失败必须产生代价、资源损耗、误导、时间流逝，不能简单抹去玩家行动。暴雨、摄像头盲区、门禁权限、媒体审核均应按设定生效。长途移动按小时计，凌晨的城中村叫不到车。\n\n【玩家自主权】\n不得替玩家决定内心、思想、台词、承诺、投降或法律立场。涉及全体公共资源（U 盘原件、SIM 卡、名单日志）或直接波及他人角色的决定须获得当事人同意；个人行动（包括高风险与致命风险路线）无需全队表决。\n\n【冲突与风险】\n高风险行动的失败后果写入该选项的 known_consequences 字段随选项提交；致命风险不得无来源、无设定地突然触发。对手与 NPC 遵守其身份、装备与已建立设定：魏彪有防暴装备与电击枪，苏姐有公关、法务与董事会授权，谭队有执法权力与体制约束。强敌可以撤退、谈判、妥协或被绕开。冲突中应明确位置、距离、掩体、威胁、伤势与可行动目标，不使用模糊的「突然秒杀」或无来源反转。\n\n【叙事风格】\n现代都市悬疑 + 硬核写实 + 调查新闻的节奏感。场景具体，对话符合身份，冲突强调空间与代价。每回合聚焦本轮因果、可见变化与下一步可行动线索，保持节奏，不重复总结，不强行救场，不把所有谜题一次解释完。允许适度的编辑部日常、职业摩擦与黑色幽默，但不让轻松桥段破坏危机逻辑。\n\n【硬性禁令】\n禁止超自然、魔法、超能力、时间旅行、科幻科技；禁止「黑进一切」的无代价黑客行为（每次入侵都需要时间、工具、物理访问或内部配合）；禁止无限信息与全知预言；禁止随意改写记忆与无代价控制玩家角色；禁止无来源、无设定的突然致死；致命后果须写入该选项的 known_consequences 字段；禁止把 NPC 私密导演指令、最终谜底和其他玩家私人秘密直接写进公开叙事；禁止未经目标玩家同意的玩家对玩家伤害、偷窃、精神控制或永久负面效果。\n\n【致命风险协议】\n致命风险（lethal risk）三条硬规则：①致命后果必须写入该选项的 known_consequences 字段（被捕入罪、重伤致残、洪水遇险致死等），随选项一并提交，代码层强制校验；②一旦玩家主动选择 lethal 选项，失败的 lethal 检定应兑现后果（可当场致死），模型一律不得撤回或「奇迹缓解」；③致死原因必须符合 NPC 能力、地形、天气与已建立设定，禁止因「叙事张力」临时加码。\nplugin 代码侧的硬约束：玩家选中 `risk=lethal` 的选项但 `known_consequences` 为空时，[engine.py:2389](.runtime/astrbot-data/data/plugins/astrbot_plugin_tavern/tavern/engine.py) 会直接抛错。这一行是 plugin 唯一对致命风险的硬校验——所以你在生成致命选项时**绝对不能省略** `known_consequences` 字段，否则该选项无法提交。\n本剧本中至少有两处致命风险场景：[1] ch_02 玩家在数据中心强闯机房或绕行受控时被安保当场控制、证据封存；[2] ch_03 暴雨红色预警下强攻北郊低洼冷库或留守撤离。这些都是*玩家可选*的高风险路径，未选致死选项的玩家继续正常撤离/交易/报案。\n\n【本次任务范围】\n30 回合内完成一次单局。玩家不必读完整个世界观，只要搞定「找到陈默 — 拿到名单证据 — 决定证据去向」的完整单局闭环。任何在 30 回合外的延伸内容应由 DM 主持决定是否续接。\n\n【插件权威边界】\n所有检定属性、加值、风险等级、检定结论、骰面与结果档位由机器骰制生成并持久化。叙事模型只可依据已公布的权威检定回执续写，不得重投、修改 DC、改变成功档位或追加未预告的永久性惩罚。",
+  "opening_scene": "7 月 4 日深夜 22:47，临江市暴雨如注。《城市周刊》3 楼编辑部只亮着一盏顶灯，你们深度调查组是唯一还没走的人。走廊尽头的快递柜「叮」了一声——一个牛皮纸文件袋，收件栏是你们熟悉到骨子里的字迹，陈默的：深度调查组 全体收。\n\n三天了。陈默的手机在 7 月 1 日晚 22:03 之后没再上线。他妹妹陈楠 22:41 又打来一通电话，你还没接。文件袋里滑出一张被雨水泡皱的打印纸，上面只有一行字和一个地址：周记复印店，滨江城中村 12 巷。\n\n袋里还有：一台旧录音笔，一张没有卡号的 SIM 卡。窗外，街对面停着一辆黑色商务车，雨刮没有停，车里的人没有下车。\n\n四件事在等你决定——",
+  "rules": {
+    "resolution": {
+      "mode": "attribute",
+      "dice_system": "d20",
+      "_dice_system_documented_as": "传统 d20：骰 1-20 + 属性修正，对照难度 DC 判定成功档位。",
+      "unknown_attribute": "reject",
+      "option_checks": {
+        "enabled": true
+      },
+      "generic_check": {
+        "enabled": false,
+        "label": "通用",
+        "modifier": 0
+      },
+      "difficulty_policy": {
+        "safe": null,
+        "controlled": 9,
+        "dangerous": 13,
+        "desperate": 17,
+        "lethal": 19
+      },
+      "outcome_policy": {
+        "natural_20_critical": true,
+        "natural_1_critical": true,
+        "critical_success_margin": 10,
+        "cost_success_min_margin": -4,
+        "failure_min_margin": -9
+      },
+      "parameter_authority": "plugin_rule_engine",
+      "ai_role": "narrative_only_after_locked_receipt"
+    },
+    "default_difficulty": 12,
+    "difficulty_min": 5,
+    "difficulty_max": 25,
+    "dice_rules": {
+      "system": "d20",
+      "advantage": "2d20_keep_high",
+      "disadvantage": "2d20_keep_low",
+      "stacking": false,
+      "opposites_cancel": true,
+      "outcome_bands": true,
+      "natural_20": "critical_success",
+      "natural_1": "critical_failure",
+      "visibility": "public",
+      "rng": "system_secrets",
+      "roll_authority": "machine",
+      "lock_before_publish": true,
+      "reuse_locked_roll_on_retry": true,
+      "publish_before_story_generation": true
+    },
+    "inspiration": {
+      "enabled": true,
+      "initial": 1,
+      "maximum": 3,
+      "allow_pre_roll_advantage": true,
+      "allow_pre_authorized_reroll": true
+    },
+    "safety": {
+      "any_active_player_can_pause": true,
+      "pvp_requires_target_consent": true,
+      "collective_harm_requires_vote": false,
+      "lethal_risk_must_be_disclosed": true
+    },
+    "content_boundaries": {
+      "character_death": "yes",
+      "_character_death_documented_as": "允许角色死亡：失败的 lethal 检定可当场兑现死亡，无需先行征询或二次确认。致命风险另见 system_prompt.致命风险协议；本字段 plugin 代码不强制处理，仅作为提示传给 LLM。",
+      "player_conflict": "consent",
+      "romance": "fade_to_black",
+      "horror": "moderate",
+      "sexual_content": "blocked",
+      "safety_pause": true
+    },
+    "context_budget": {
+      "recent_turns": 6,
+      "memories": 6,
+      "active_npcs": 6,
+      "ledger_items": 8,
+      "locked_facts_always_include": true
+    },
+    "npc_policy": {
+      "enabled": true,
+      "auto_register": true,
+      "max_new_per_turn": 2,
+      "require_named_or_relevant": true,
+      "generated_requires_review": true,
+      "archive_after_inactive_rounds": 4
+    },
+    "allow_player_result_claims": false,
+    "death_requires_confirmation": false,
+    "tone": "现代都市悬疑、硬核写实、调查新闻节奏、克制、空间与时间压力",
+    "strict_choices": true,
+    "check_density": "standard",
+    "player_limits": {
+      "recommended_min": 4,
+      "recommended_max": 5,
+      "minimum_start": 3,
+      "maximum": 6
+    },
+    "time_rules": {
+      "turn_timeout_action": "hold",
+      "card_timeout_action": "remind",
+      "ready_timeout_action": "remind"
+    },
+    "interaction_rules": {
+      "settings": {
+        "conflict_strategy": "priority_then_stack"
+      }
+    },
+    "resources": {
+      "definitions": [
+        {
+          "id": "evidence_chain",
+          "label": "证据链",
+          "category": "evidence",
+          "description": "已经取得的证据原件与副本的完整度：U 盘原件、SIM 卡、名单日志。行动可增加或破坏。归零时核心证据不可恢复。",
+          "persistence_scope": "session",
+          "initial_value": 8,
+          "range": {
+            "min": 0,
+            "max": 12
+          },
+          "tags": [
+            "evidence",
+            "resource"
+          ],
+          "version": "1.0"
+        }
+      ],
+      "items": []
+    },
+    "story_spine": {
+      "campaign_type": "single_engagement",
+      "total_turn_budget": 30,
+      "recommended_player_count": "4-5",
+      "fallback_player_count": "3 (drift +30%) / 6 (drift -30%)",
+      "non_renewable_session": true,
+      "primary_question": "你们能在 72 小时内找到陈默、拿到足以证明「沉默者名单」的证据吗？",
+      "secondary_question": "证据最终交给谁——媒体、警方，还是换陈默一命？",
+      "themes": [
+        "都市悬疑",
+        "制度性作恶",
+        "媒体伦理",
+        "同事情谊",
+        "大数据时代的个体权利"
+      ],
+      "do_not_include_in_this_session": [
+        "云溯科技全产业链内幕",
+        "市政高层腐败全景",
+        "陈默的完整线人网",
+        "超自然解释",
+        "完美大团圆结局"
+      ]
+    },
+    "tension_drivers": [
+      "数据清零倒计时（72 小时）",
+      "暴雨红色预警逼近（7 月 6 日凌晨）",
+      "沉默者名单本身的存在",
+      "林川被胁迫的处境与沐沐的病",
+      "苏姐「用证据换人」的交易诱惑",
+      "谭队被撤掉的陈默失踪案"
+    ],
+    "character_card": {
+      "version": 6,
+      "auto_approve": false,
+      "edit_requires_review": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "角色姓名",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "text"
+        },
+        {
+          "key": "code",
+          "label": "笔名/花名",
+          "required": false,
+          "private": false,
+          "max_chars": 12,
+          "type": "text"
+        },
+        {
+          "key": "profession",
+          "label": "选择职位",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "selection_mode": "single_preset",
+          "apply_preset_on_select": true,
+          "preset_source": "profession_presets",
+          "next_step": "primary_attribute",
+          "options_source": "profession_presets",
+          "value_field": "name",
+          "label_field": "name",
+          "page_size": 6,
+          "clear_on_change": [
+            "primary_attribute",
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "beat",
+          "label": "选择跑口专长",
+          "required": true,
+          "private": false,
+          "max_chars": 10,
+          "type": "preset_select",
+          "options": [
+            "政法线",
+            "财经线",
+            "民生线",
+            "调查线",
+            "社会新闻",
+            "文化线"
+          ],
+          "page_size": 6
+        },
+        {
+          "key": "social_identity",
+          "label": "选择社会身份",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "preset_source": "social_identity_presets",
+          "value_field": "name",
+          "label_field": "name",
+          "page_size": 6
+        },
+        {
+          "key": "primary_attribute",
+          "label": "选择主属性（固定 +7）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "观察",
+            "推理",
+            "身手",
+            "口才",
+            "冷静",
+            "意志",
+            "魅力",
+            "技术"
+          ],
+          "bonus_value": 7,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 8
+        },
+        {
+          "key": "secondary_attribute",
+          "label": "选择副属性（固定 +3）",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "type": "preset_select",
+          "options": [
+            "观察",
+            "推理",
+            "身手",
+            "口才",
+            "冷静",
+            "意志",
+            "魅力",
+            "技术"
+          ],
+          "bonus_value": 3,
+          "changes_base_values": false,
+          "resettable": true,
+          "page_size": 8
+        },
+        {
+          "key": "background",
+          "label": "个人经历/背景",
+          "required": false,
+          "private": true,
+          "max_chars": 200,
+          "type": "text"
+        },
+        {
+          "key": "contact_source",
+          "label": "与陈默的关系",
+          "required": true,
+          "private": false,
+          "max_chars": 12,
+          "type": "preset_select",
+          "options": [
+            "同部门同事",
+            "大学同学",
+            "旧搭档",
+            "线人/通讯员",
+            "家属"
+          ],
+          "page_size": 6
+        }
+      ],
+      "stats": {
+        "allocation_mode": "profession_base_plus_primary7_secondary3",
+        "input_mode": "automatic_profession_base_plus_two_fixed_bonus_choices",
+        "skip_attribute_question_range": "26-35",
+        "calculate_after_field": "secondary_attribute",
+        "reset_scope": "primary_and_secondary_only",
+        "mode": "preset",
+        "budget": 60,
+        "base_budget": 50,
+        "bonus_budget": 10,
+        "effective_total": 60,
+        "attributes": [
+          {
+            "key": "observation",
+            "label": "观察",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "察言观色、现场取证、发现尾随与异常。"
+          },
+          {
+            "key": "reasoning",
+            "label": "推理",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "串联证据、逆向工程、比对数据与时间线。"
+          },
+          {
+            "key": "agility",
+            "label": "身手",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "奔跑、攀爬、驾车、近身摆脱与反制。"
+          },
+          {
+            "key": "eloquence",
+            "label": "口才",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "说服、套话、谈判、诈唬与临场应变话术。"
+          },
+          {
+            "key": "composure",
+            "label": "冷静",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "高压下稳住局面、应急反应、抗噪抗扰。"
+          },
+          {
+            "key": "willpower",
+            "label": "意志",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "抗威胁、抗疲劳、坚持立场与底线。"
+          },
+          {
+            "key": "charisma",
+            "label": "魅力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "信任感、临场气场、调动与安抚他人。"
+          },
+          {
+            "key": "tech",
+            "label": "技术",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "数字取证、破解、监控检索、暗网与数据渠道。"
+          }
+        ],
+        "modifier_table": {
+          "0": -3,
+          "1": -2,
+          "2": -2,
+          "3": -1,
+          "4": -1,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "10": 2,
+          "11": 3,
+          "12": 3,
+          "13": 4,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 6,
+          "18": 6,
+          "19": 7,
+          "20": 7
+        },
+        "primary_bonus": 7,
+        "secondary_bonus": 3,
+        "require_distinct_bonus_attributes": true,
+        "player_selects_only": [
+          "primary_attribute",
+          "secondary_attribute"
+        ],
+        "defaults_are_schema_fallback_only": true,
+        "manual_entry_enabled": false,
+        "auto_apply_profession_base": true,
+        "profession_base_locked": true,
+        "show_profession_values_at_profession_step": true,
+        "profession_step": 3,
+        "skip_generated_attribute_questions": true,
+        "calculation_formula": "effective_attribute = profession.base_attribute + 7 if primary + 3 if secondary",
+        "preserve_base_on_reset": true,
+        "preset_selector": {
+          "field": "profession",
+          "source": "profession_presets",
+          "match_by": "id"
+        },
+        "bonus_choices": [
+          {
+            "field": "primary_attribute",
+            "label": "主属性",
+            "bonus": 7,
+            "count": 1
+          },
+          {
+            "field": "secondary_attribute",
+            "label": "副属性",
+            "bonus": 3,
+            "count": 1,
+            "exclude_selected_by": [
+              "primary_attribute"
+            ]
+          }
+        ],
+        "total_validation": {
+          "base_total": 50,
+          "final_total": 60
+        },
+        "allocation": {
+          "rule": "exact",
+          "total": 60
+        }
+      },
+      "preset_selection_help": {
+        "display_policy": "only_current_step",
+        "navigation": "分页预览每页最多 6 项；使用页码替换 / 列表稳定 ID 翻页",
+        "profession_instruction": "选择职位时展示职位可选项，按提示写入并展示 50 基础属性。",
+        "invalid_selection_action": "reject_and_repeat_current_field"
+      },
+      "bonus_allocation": {
+        "base_source": "profession_presets.attributes",
+        "primary_field": "primary_attribute",
+        "secondary_field": "secondary_attribute"
+      },
+      "creation_flow": {
+        "mode": "step_driven_preset_wizard",
+        "profession_display": "paged_current_step_with_base_attributes",
+        "generated_attribute_fields": "calculated_only_not_questions",
+        "preset_display": "current_step_only"
+      },
+      "preset_dimensions": [
+        {
+          "id": "profession",
+          "label": "职位",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 10
+        },
+        {
+          "id": "social_identity",
+          "label": "社会身份",
+          "selection": {
+            "mode": "single",
+            "min": 1,
+            "max": 1
+          },
+          "required": true,
+          "allow_custom": false,
+          "randomizable": true,
+          "player_editable": true,
+          "display_order": 30
+        }
+      ],
+      "profession_presets": [
+        {
+          "id": "reporter",
+          "name": "文字记者",
+          "role": "采访、写稿、挖线人",
+          "ability_source": "深度报道训练与长期线人网络",
+          "limitations": "不擅长器材与数据还原；现场体力一般",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "observation": 8,
+            "reasoning": 7,
+            "agility": 6,
+            "eloquence": 9,
+            "composure": 6,
+            "willpower": 6,
+            "charisma": 7,
+            "tech": 1
+          },
+          "base_attributes": {
+            "observation": 8,
+            "reasoning": 7,
+            "agility": 6,
+            "eloquence": 9,
+            "composure": 6,
+            "willpower": 6,
+            "charisma": 7,
+            "tech": 1
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "文字记者",
+          "display_at_profession_step": true,
+          "display_text": "文字记者:观察8 推理7 身手6 口才9 冷静6 意志6 魅力7 技术1;基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "photojournalist",
+          "name": "摄影记者",
+          "role": "现场影像、潜入取证",
+          "ability_source": "暗光拍摄、隐蔽取证、极限环境适应",
+          "limitations": "不擅长正面谈判与法律文书",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "observation": 9,
+            "reasoning": 4,
+            "agility": 8,
+            "eloquence": 4,
+            "composure": 6,
+            "willpower": 5,
+            "charisma": 5,
+            "tech": 9
+          },
+          "base_attributes": {
+            "observation": 9,
+            "reasoning": 4,
+            "agility": 8,
+            "eloquence": 4,
+            "composure": 6,
+            "willpower": 5,
+            "charisma": 5,
+            "tech": 9
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "摄影记者",
+          "display_at_profession_step": true,
+          "display_text": "摄影记者:观察9 推理4 身手8 口才4 冷静6 意志5 魅力5 技术9;基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "data_engineer",
+          "name": "数据工程师",
+          "role": "取证技术、数据还原",
+          "ability_source": "数据库审计、日志分析、脱敏与还原",
+          "limitations": "社会经验与临场交涉薄弱；体能一般",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "observation": 6,
+            "reasoning": 9,
+            "agility": 4,
+            "eloquence": 3,
+            "composure": 6,
+            "willpower": 5,
+            "charisma": 4,
+            "tech": 13
+          },
+          "base_attributes": {
+            "observation": 6,
+            "reasoning": 9,
+            "agility": 4,
+            "eloquence": 3,
+            "composure": 6,
+            "willpower": 5,
+            "charisma": 4,
+            "tech": 13
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "数据工程师",
+          "display_at_profession_step": true,
+          "display_text": "数据工程师:观察6 推理9 身手4 口才3 冷静6 意志5 魅力4 技术13;基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "producer",
+          "name": "编导/制片",
+          "role": "资源调度、对外交涉",
+          "ability_source": "预算与人脉调度、多方谈判、成稿把关",
+          "limitations": "不擅长亲身潜入与暴力反制",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "observation": 6,
+            "reasoning": 6,
+            "agility": 5,
+            "eloquence": 8,
+            "composure": 7,
+            "willpower": 6,
+            "charisma": 8,
+            "tech": 4
+          },
+          "base_attributes": {
+            "observation": 6,
+            "reasoning": 6,
+            "agility": 5,
+            "eloquence": 8,
+            "composure": 7,
+            "willpower": 6,
+            "charisma": 8,
+            "tech": 4
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "编导/制片",
+          "display_at_profession_step": true,
+          "display_text": "编导/制片:观察6 推理6 身手5 口才8 冷静7 意志6 魅力8 技术4;基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "legal",
+          "name": "法务/法治线记者",
+          "role": "法规边界、证据保全",
+          "ability_source": "取证合法性判断、公文与法规、保护举报人",
+          "limitations": "数字取证与街头冲突能力弱",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "observation": 7,
+            "reasoning": 8,
+            "agility": 3,
+            "eloquence": 7,
+            "composure": 5,
+            "willpower": 7,
+            "charisma": 5,
+            "tech": 8
+          },
+          "base_attributes": {
+            "observation": 7,
+            "reasoning": 8,
+            "agility": 3,
+            "eloquence": 7,
+            "composure": 5,
+            "willpower": 7,
+            "charisma": 5,
+            "tech": 8
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "法务/法治线记者",
+          "display_at_profession_step": true,
+          "display_text": "法务/法治线记者:观察7 推理8 身手3 口才7 冷静5 意志7 魅力5 技术8;基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        },
+        {
+          "id": "intern",
+          "name": "实习生",
+          "role": "多面手、跑腿取证",
+          "ability_source": "学习快、精力足、工具上手快",
+          "limitations": "经验与人脉不足；容易被经验老到的对象套话",
+          "fixed_total": 50,
+          "final_total": 60,
+          "base_total": 50,
+          "attributes": {
+            "observation": 6,
+            "reasoning": 6,
+            "agility": 7,
+            "eloquence": 5,
+            "composure": 5,
+            "willpower": 5,
+            "charisma": 6,
+            "tech": 10
+          },
+          "base_attributes": {
+            "observation": 6,
+            "reasoning": 6,
+            "agility": 7,
+            "eloquence": 5,
+            "composure": 5,
+            "willpower": 5,
+            "charisma": 6,
+            "tech": 10
+          },
+          "bonus_rule": {
+            "primary_attribute_bonus": 7,
+            "secondary_attribute_bonus": 3,
+            "attributes_must_be_distinct": true,
+            "free_split_or_partial_allocation": false
+          },
+          "selection_value": "实习生",
+          "display_at_profession_step": true,
+          "display_text": "实习生:观察6 推理6 身手7 口才5 冷静5 意志5 魅力6 技术10;基础总和 50。",
+          "auto_apply_on_select": true,
+          "base_values_locked": true,
+          "manual_reentry_required": false,
+          "skip_manual_stat_questions": true,
+          "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+          "aliases": []
+        }
+      ],
+      "social_identity_presets": [
+        {
+          "id": "staff_reporter",
+          "name": "在职记者",
+          "summary": "与《城市周刊》签正式合同，有报社背书、选题权限与基本法律援助。",
+          "common_knowledge": [
+            "报社内部流程与约谈史",
+            "审稿与撤稿机制",
+            "同行与官方联络方式"
+          ],
+          "limitations": "受报社口径约束；约谈期间不敢公开对线",
+          "possible_contacts": [
+            "同城媒体同行",
+            "宣传部通讯员",
+            "线人网络"
+          ],
+          "typical_languages": [
+            "普通话",
+            "临江方言"
+          ]
+        },
+        {
+          "id": "freelancer",
+          "name": "自由撰稿人",
+          "summary": "无机构背书，靠署名与口碑接单，灵活但脆弱，出事只能自己扛。",
+          "common_knowledge": [
+            "多平台投稿与约稿渠道",
+            "独立取证的门路",
+            "平台审核规则"
+          ],
+          "limitations": "没有报社法务；被删稿无申诉渠道",
+          "possible_contacts": [
+            "多个媒体自由群",
+            "独立调查圈",
+            "技术爱好者社区"
+          ],
+          "typical_languages": [
+            "普通话",
+            "临江方言"
+          ]
+        },
+        {
+          "id": "data_engineer",
+          "name": "数据工程师",
+          "summary": "外包或合作关系的技术人员，通晓数据平台、日志与后台运作。",
+          "common_knowledge": [
+            "云服务与平台架构",
+            "日志留痕与删除规则",
+            "常见的脱敏漏洞"
+          ],
+          "limitations": "不懂新闻伦理；对线人网络陌生",
+          "possible_contacts": [
+            "云溯离职员工群",
+            "开源社区",
+            "外包同行"
+          ],
+          "typical_languages": [
+            "普通话",
+            "英语（技术文档）"
+          ]
+        },
+        {
+          "id": "lawyer",
+          "name": "执业律师",
+          "summary": "持执业证，懂得证据保全、取证边界与举报人保护的法律路径。",
+          "common_knowledge": [
+            "取证合法性与证据链",
+            "人身保护与强制措施",
+            "信息公开申请渠道"
+          ],
+          "limitations": "被纪律约束，不能越界诱导；行动力一般",
+          "possible_contacts": [
+            "法律援助机构",
+            "公益律师网络",
+            "当事人"
+          ],
+          "typical_languages": [
+            "普通话",
+            "法律文书用语"
+          ]
+        },
+        {
+          "id": "former_investigator",
+          "name": "前刑侦/体制内线人",
+          "summary": "曾从事公安或监察工作，有内部渠道，但受纪律与既往承诺约束。",
+          "common_knowledge": [
+            "办案流程与撤案逻辑",
+            "监控与取证实务",
+            "内部信访与举报路径"
+          ],
+          "limitations": "身份敏感；不能公开对线现役同僚",
+          "possible_contacts": [
+            "前同事",
+            "老基层",
+            "线人"
+          ],
+          "typical_languages": [
+            "普通话",
+            "临江方言"
+          ]
+        },
+        {
+          "id": "community_worker",
+          "name": "社区工作者",
+          "summary": "熟悉城中村、老旧小区与社区网格，人情与巷子都门儿清。",
+          "common_knowledge": [
+            "城中村巷道与盲区",
+            "网格员与邻里关系",
+            "社区救助与民政流程"
+          ],
+          "limitations": "不熟悉商业与数据领域",
+          "possible_contacts": [
+            "网格员",
+            "社区民警",
+            "房东与摊贩"
+          ],
+          "typical_languages": [
+            "普通话",
+            "临江方言",
+            "外地务工方言"
+          ]
+        },
+        {
+          "id": "influencer",
+          "name": "新媒体主播/自媒体",
+          "summary": "有自有传播渠道与粉丝量，关注度是把双刃剑，一发布就难撤。",
+          "common_knowledge": [
+            "内容分发与流量机制",
+            "舆情反应与举报应对",
+            "粉丝与观众动员"
+          ],
+          "limitations": "被平台与品牌方关注；不宜露脸去调查",
+          "possible_contacts": [
+            "MCN 机构",
+            "大 V 同行",
+            "平台运营"
+          ],
+          "typical_languages": [
+            "普通话",
+            "网络用语"
+          ]
+        }
+      ],
+      "preset_sets": {
+        "profession_presets": [
+          {
+            "id": "reporter",
+            "name": "文字记者",
+            "role": "采访、写稿、挖线人",
+            "ability_source": "深度报道训练与长期线人网络",
+            "limitations": "不擅长器材与数据还原；现场体力一般",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "observation": 8,
+              "reasoning": 7,
+              "agility": 6,
+              "eloquence": 9,
+              "composure": 6,
+              "willpower": 6,
+              "charisma": 7,
+              "tech": 1
+            },
+            "base_attributes": {
+              "observation": 8,
+              "reasoning": 7,
+              "agility": 6,
+              "eloquence": 9,
+              "composure": 6,
+              "willpower": 6,
+              "charisma": 7,
+              "tech": 1
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "文字记者",
+            "display_at_profession_step": true,
+            "display_text": "文字记者:观察8 推理7 身手6 口才9 冷静6 意志6 魅力7 技术1;基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "photojournalist",
+            "name": "摄影记者",
+            "role": "现场影像、潜入取证",
+            "ability_source": "暗光拍摄、隐蔽取证、极限环境适应",
+            "limitations": "不擅长正面谈判与法律文书",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "observation": 9,
+              "reasoning": 4,
+              "agility": 8,
+              "eloquence": 4,
+              "composure": 6,
+              "willpower": 5,
+              "charisma": 5,
+              "tech": 9
+            },
+            "base_attributes": {
+              "observation": 9,
+              "reasoning": 4,
+              "agility": 8,
+              "eloquence": 4,
+              "composure": 6,
+              "willpower": 5,
+              "charisma": 5,
+              "tech": 9
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "摄影记者",
+            "display_at_profession_step": true,
+            "display_text": "摄影记者:观察9 推理4 身手8 口才4 冷静6 意志5 魅力5 技术9;基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "data_engineer",
+            "name": "数据工程师",
+            "role": "取证技术、数据还原",
+            "ability_source": "数据库审计、日志分析、脱敏与还原",
+            "limitations": "社会经验与临场交涉薄弱；体能一般",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "observation": 6,
+              "reasoning": 9,
+              "agility": 4,
+              "eloquence": 3,
+              "composure": 6,
+              "willpower": 5,
+              "charisma": 4,
+              "tech": 13
+            },
+            "base_attributes": {
+              "observation": 6,
+              "reasoning": 9,
+              "agility": 4,
+              "eloquence": 3,
+              "composure": 6,
+              "willpower": 5,
+              "charisma": 4,
+              "tech": 13
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "数据工程师",
+            "display_at_profession_step": true,
+            "display_text": "数据工程师:观察6 推理9 身手4 口才3 冷静6 意志5 魅力4 技术13;基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "producer",
+            "name": "编导/制片",
+            "role": "资源调度、对外交涉",
+            "ability_source": "预算与人脉调度、多方谈判、成稿把关",
+            "limitations": "不擅长亲身潜入与暴力反制",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "observation": 6,
+              "reasoning": 6,
+              "agility": 5,
+              "eloquence": 8,
+              "composure": 7,
+              "willpower": 6,
+              "charisma": 8,
+              "tech": 4
+            },
+            "base_attributes": {
+              "observation": 6,
+              "reasoning": 6,
+              "agility": 5,
+              "eloquence": 8,
+              "composure": 7,
+              "willpower": 6,
+              "charisma": 8,
+              "tech": 4
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "编导/制片",
+            "display_at_profession_step": true,
+            "display_text": "编导/制片:观察6 推理6 身手5 口才8 冷静7 意志6 魅力8 技术4;基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "legal",
+            "name": "法务/法治线记者",
+            "role": "法规边界、证据保全",
+            "ability_source": "取证合法性判断、公文与法规、保护举报人",
+            "limitations": "数字取证与街头冲突能力弱",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "observation": 7,
+              "reasoning": 8,
+              "agility": 3,
+              "eloquence": 7,
+              "composure": 5,
+              "willpower": 7,
+              "charisma": 5,
+              "tech": 8
+            },
+            "base_attributes": {
+              "observation": 7,
+              "reasoning": 8,
+              "agility": 3,
+              "eloquence": 7,
+              "composure": 5,
+              "willpower": 7,
+              "charisma": 5,
+              "tech": 8
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "法务/法治线记者",
+            "display_at_profession_step": true,
+            "display_text": "法务/法治线记者:观察7 推理8 身手3 口才7 冷静5 意志7 魅力5 技术8;基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          },
+          {
+            "id": "intern",
+            "name": "实习生",
+            "role": "多面手、跑腿取证",
+            "ability_source": "学习快、精力足、工具上手快",
+            "limitations": "经验与人脉不足；容易被经验老到的对象套话",
+            "fixed_total": 50,
+            "final_total": 60,
+            "base_total": 50,
+            "attributes": {
+              "observation": 6,
+              "reasoning": 6,
+              "agility": 7,
+              "eloquence": 5,
+              "composure": 5,
+              "willpower": 5,
+              "charisma": 6,
+              "tech": 10
+            },
+            "base_attributes": {
+              "observation": 6,
+              "reasoning": 6,
+              "agility": 7,
+              "eloquence": 5,
+              "composure": 5,
+              "willpower": 5,
+              "charisma": 6,
+              "tech": 10
+            },
+            "bonus_rule": {
+              "primary_attribute_bonus": 7,
+              "secondary_attribute_bonus": 3,
+              "attributes_must_be_distinct": true,
+              "free_split_or_partial_allocation": false
+            },
+            "selection_value": "实习生",
+            "display_at_profession_step": true,
+            "display_text": "实习生:观察6 推理6 身手7 口才5 冷静5 意志5 魅力6 技术10;基础总和 50。",
+            "auto_apply_on_select": true,
+            "base_values_locked": true,
+            "manual_reentry_required": false,
+            "skip_manual_stat_questions": true,
+            "effective_attribute_formula": "职业基础值 + 主属性+7 + 副属性+3 = 60",
+            "aliases": []
+          }
+        ],
+        "social_identity_presets": [
+          {
+            "id": "staff_reporter",
+            "name": "在职记者",
+            "summary": "与《城市周刊》签正式合同，有报社背书、选题权限与基本法律援助。",
+            "common_knowledge": [
+              "报社内部流程与约谈史",
+              "审稿与撤稿机制",
+              "同行与官方联络方式"
+            ],
+            "limitations": "受报社口径约束；约谈期间不敢公开对线",
+            "possible_contacts": [
+              "同城媒体同行",
+              "宣传部通讯员",
+              "线人网络"
+            ],
+            "typical_languages": [
+              "普通话",
+              "临江方言"
+            ]
+          },
+          {
+            "id": "freelancer",
+            "name": "自由撰稿人",
+            "summary": "无机构背书，靠署名与口碑接单，灵活但脆弱，出事只能自己扛。",
+            "common_knowledge": [
+              "多平台投稿与约稿渠道",
+              "独立取证的门路",
+              "平台审核规则"
+            ],
+            "limitations": "没有报社法务；被删稿无申诉渠道",
+            "possible_contacts": [
+              "多个媒体自由群",
+              "独立调查圈",
+              "技术爱好者社区"
+            ],
+            "typical_languages": [
+              "普通话",
+              "临江方言"
+            ]
+          },
+          {
+            "id": "data_engineer",
+            "name": "数据工程师",
+            "summary": "外包或合作关系的技术人员，通晓数据平台、日志与后台运作。",
+            "common_knowledge": [
+              "云服务与平台架构",
+              "日志留痕与删除规则",
+              "常见的脱敏漏洞"
+            ],
+            "limitations": "不懂新闻伦理；对线人网络陌生",
+            "possible_contacts": [
+              "云溯离职员工群",
+              "开源社区",
+              "外包同行"
+            ],
+            "typical_languages": [
+              "普通话",
+              "英语（技术文档）"
+            ]
+          },
+          {
+            "id": "lawyer",
+            "name": "执业律师",
+            "summary": "持执业证，懂得证据保全、取证边界与举报人保护的法律路径。",
+            "common_knowledge": [
+              "取证合法性与证据链",
+              "人身保护与强制措施",
+              "信息公开申请渠道"
+            ],
+            "limitations": "被纪律约束，不能越界诱导；行动力一般",
+            "possible_contacts": [
+              "法律援助机构",
+              "公益律师网络",
+              "当事人"
+            ],
+            "typical_languages": [
+              "普通话",
+              "法律文书用语"
+            ]
+          },
+          {
+            "id": "former_investigator",
+            "name": "前刑侦/体制内线人",
+            "summary": "曾从事公安或监察工作，有内部渠道，但受纪律与既往承诺约束。",
+            "common_knowledge": [
+              "办案流程与撤案逻辑",
+              "监控与取证实务",
+              "内部信访与举报路径"
+            ],
+            "limitations": "身份敏感；不能公开对线现役同僚",
+            "possible_contacts": [
+              "前同事",
+              "老基层",
+              "线人"
+            ],
+            "typical_languages": [
+              "普通话",
+              "临江方言"
+            ]
+          },
+          {
+            "id": "community_worker",
+            "name": "社区工作者",
+            "summary": "熟悉城中村、老旧小区与社区网格，人情与巷子都门儿清。",
+            "common_knowledge": [
+              "城中村巷道与盲区",
+              "网格员与邻里关系",
+              "社区救助与民政流程"
+            ],
+            "limitations": "不熟悉商业与数据领域",
+            "possible_contacts": [
+              "网格员",
+              "社区民警",
+              "房东与摊贩"
+            ],
+            "typical_languages": [
+              "普通话",
+              "临江方言",
+              "外地务工方言"
+            ]
+          },
+          {
+            "id": "influencer",
+            "name": "新媒体主播/自媒体",
+            "summary": "有自有传播渠道与粉丝量，关注度是把双刃剑，一发布就难撤。",
+            "common_knowledge": [
+              "内容分发与流量机制",
+              "舆情反应与举报应对",
+              "粉丝与观众动员"
+            ],
+            "limitations": "被平台与品牌方关注；不宜露脸去调查",
+            "possible_contacts": [
+              "MCN 机构",
+              "大 V 同行",
+              "平台运营"
+            ],
+            "typical_languages": [
+              "普通话",
+              "网络用语"
+            ]
+          }
+        ]
+      }
+    },
+    "chat_experience": {
+      "enabled": true,
+      "character_creation": {
+        "primary": "private_code",
+        "fallbacks": [
+          "webui_token"
+        ]
+      },
+      "multiplayer": {
+        "spotlight": "round_robin",
+        "group_decisions": "vote",
+        "absent_player": "standby"
+      },
+      "safety": {
+        "enabled": true,
+        "consent_reminder": "任何玩家都可使用安全暂停且不需要解释原因"
+      },
+      "continuity": {
+        "recap_every_turns": 0,
+        "checkpoint_every_turns": 0,
+        "unresolved_threads_limit": 4,
+        "preserve_npc_intent": true
+      },
+      "delivery": {
+        "proactive_fallback": "next_event",
+        "mention_style": "name",
+        "max_text_length": 3000
+      },
+      "dm": {
+        "allow_narrative_override": true,
+        "allow_secret_whispers": true,
+        "allow_manual_checks": true,
+        "allow_state_intervention": false
+      }
+    },
+    "opening_choices": [
+      {
+        "key": "A",
+        "text": "先听录音笔，确认陈默的留言与暗号",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": false,
+        "danger_id": "safe",
+        "check": null
+      },
+      {
+        "key": "B",
+        "text": "回拨陈楠，问清陈默失踪前最后一通电话的内容",
+        "risk": "controlled",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "口才",
+        "difficulty": 9,
+        "known_consequences": "失败会让陈楠在电话里情绪失控或语焉不详，丢失一条关键线索",
+        "danger_id": "controlled",
+        "check": {
+          "required": true,
+          "attribute_id": "eloquence",
+          "type": "standard",
+          "difficulty": 9,
+          "known_consequences": "失败会让陈楠在电话里情绪失控或语焉不详，丢失一条关键线索"
+        }
+      },
+      {
+        "key": "C",
+        "text": "检查打印纸与 SIM 卡，判断是不是陈默惯用的加密方式",
+        "risk": "controlled",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "技术",
+        "difficulty": 9,
+        "known_consequences": "失败会误判加密方式，浪费一个回合的探查时间",
+        "danger_id": "controlled",
+        "check": {
+          "required": true,
+          "attribute_id": "tech",
+          "type": "standard",
+          "difficulty": 9,
+          "known_consequences": "失败会误判加密方式，浪费一个回合的探查时间"
+        }
+      },
+      {
+        "key": "D",
+        "text": "下楼查看快递柜与街对面那辆商务车，确认是否被盯梢",
+        "risk": "dangerous",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "观察",
+        "difficulty": 13,
+        "known_consequences": "失败会被对方察觉你们已注意到他们，盯梢转入明面，后续行动更难掩人耳目",
+        "danger_id": "dangerous",
+        "check": {
+          "required": true,
+          "attribute_id": "observation",
+          "type": "standard",
+          "difficulty": 13,
+          "known_consequences": "失败会被对方察觉你们已注意到他们，盯梢转入明面，后续行动更难掩人耳目"
+        }
+      }
+    ],
+    "progress": {
+      "chapter": "序章：雨夜包裹",
+      "current_chapter_id": "ch_00_briefing",
+      "current_objective": "确认包裹来源与陈默失踪信息，锁定第一个调查坐标",
+      "completed_milestones": 0,
+      "total_milestones": 14,
+      "design_note": "本剧本为 30 回合轻量单局，4-5 人最佳。3 人勉强可行但会拖，6 人会紧。",
+      "chapters": [
+        {
+          "id": "ch_00_briefing",
+          "title": "序章：雨夜包裹",
+          "subtitle": "一张被雨水泡皱的打印纸",
+          "next_chapter_id": "ch_01_trace",
+          "max_turns": 4,
+          "narrative_length_band": "compact",
+          "current_objective": "确认包裹来源与陈默失踪信息，锁定第一个调查坐标",
+          "pacing_directive": "本章 4 回合内完成 2 个里程碑。模型不得把场景拖入编辑部主任、物业保安或报社历史八卦。本章结尾必须给出「城中村·周记复印店」这个第一站坐标。否则强制推进。",
+          "key_npcs": [
+            {
+              "ref": "npc_chen_nan",
+              "role": "失踪者妹妹，提供情感与信息锚点"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_00_01_package_received",
+              "label": "确认包裹来源与陈默失踪",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "包裹",
+                    "陈默",
+                    "失踪"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_00_02_first_coordinate",
+              "label": "从录音/打印纸解读出第一站「周记复印店」",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "周记",
+                    "复印店"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_00_01_package_received",
+              "m_00_02_first_coordinate"
+            ]
+          },
+          "hook_pool": [
+            "录音笔里陈默说「密码是你的第一个报道」",
+            "打印纸背面有一串城市公交线路",
+            "陈楠提到陈默上周走访过城中村",
+            "街对面那辆商务车的车牌在交管系统里查不到"
+          ]
+        },
+        {
+          "id": "ch_01_trace",
+          "title": "第一章：城中村的盲区",
+          "subtitle": "雨夜追踪陈默的最后一站",
+          "next_chapter_id": "ch_02_center",
+          "max_turns": 10,
+          "narrative_length_band": "standard",
+          "current_objective": "抵达周记复印店取得加密U盘与线索，识破被盯梢，得知「沉默者名单」",
+          "pacing_directive": "本章 8-10 回合内完成。模型不得让玩家在同一雨巷/店铺停留超 2 回合；若停留须主动给出新的位置选项。本章必须让「沉默者名单」一词至少出现一次，并完成「取得加密U盘」与「甩掉盯梢」两个里程碑。否则强制推进。",
+          "key_npcs": [
+            {
+              "ref": "npc_lao_zhou",
+              "role": "地下联系人，交付加密U盘与补盲工程信息"
+            },
+            {
+              "ref": "npc_wei_biao",
+              "role": "云溯安保尾随，本章以盯梢威胁出现"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_01_01_get_usb",
+              "label": "从老周处取得加密U盘",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "U盘",
+                    "加密"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_01_02_silent_list_revealed",
+              "label": "得知「沉默者名单」的存在与用途",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "沉默者名单"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_01_03_tail_shaken",
+              "label": "识破并甩掉盯梢 / 确认无人跟踪",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "盯梢",
+                    "跟踪",
+                    "甩掉"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_01_01_get_usb",
+              "m_01_02_silent_list_revealed",
+              "m_01_03_tail_shaken"
+            ]
+          },
+          "hook_pool": [
+            "老周给出一台陈默的旧手机（备用机）",
+            "补盲工程表：市政本月底装完摄像头，城中村盲区还剩最后一条巷",
+            "老周手里有被清名单的单亲妈妈的联系方式",
+            "陈默在城中村收留过一名被「清理」的人"
+          ]
+        },
+        {
+          "id": "ch_02_center",
+          "title": "第二章：数据中心的暗门",
+          "subtitle": "潜入云溯机房，验证沉默者名单",
+          "next_chapter_id": "ch_03_warehouse",
+          "max_turns": 10,
+          "narrative_length_band": "standard",
+          "current_objective": "进入云溯科技数据中心机房，读到「沉默者名单」后门日志，并对林川的处置作出集体抉择",
+          "pacing_directive": "本章 8-10 回合内完成。强闯机房若为 lethal 选项，后果写入其 known_consequences（当场被控、证据封存、林川被处理），无需提前多回合公示。模型不得让玩家在同一楼层停留超 2 回合。本章结尾必须完成「读到后门日志」与「对林川作出集体抉择」两个里程碑。否则强制推进。",
+          "key_npcs": [
+            {
+              "ref": "npc_lin_chuan",
+              "role": "被胁迫内应，提供机房路径，处境复杂"
+            },
+            {
+              "ref": "npc_wei_biao",
+              "role": "机房安保主管，直接冲突源"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_02_01_lin_revealed",
+              "label": "识破林川被胁迫内应的处境（沐沐在名单上）",
+              "evidence_required": [
+                {
+                  "type": "npc",
+                  "match": "npc_lin_chuan"
+                },
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "胁迫",
+                    "沐沐",
+                    "内应"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_02_lethal_telegraphed",
+              "label": "玩家已就强闯机房 / 绕行受控作出选择",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "强闯",
+                    "绕行",
+                    "机房"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_03_backend_accessed",
+              "label": "读到「沉默者名单」后门日志",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "机房",
+                    "日志",
+                    "后门"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_02_04_lin_fork_voted",
+              "label": "就「信任林川 / 胁迫林川 / 绕开他」作出集体表决",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "信任林川",
+                    "胁迫",
+                    "绕开"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_02_01_lin_revealed",
+              "m_02_02_lethal_telegraphed",
+              "m_02_03_backend_accessed",
+              "m_02_04_lin_fork_voted"
+            ]
+          },
+          "hook_pool": [
+            "机房发现名单最后一页含全市名单（含老周）",
+            "凌晨 3 点陈默的潜入记录",
+            "空调管道 / 货梯通道可供绕行",
+            "林川的儿子沐沐住院数据在名单里"
+          ]
+        },
+        {
+          "id": "ch_03_warehouse",
+          "title": "第三章：北郊仓库与七十二小时",
+          "subtitle": "暴雨红色预警前，把陈默带出来",
+          "next_chapter_id": "ch_04_epilogue",
+          "max_turns": 8,
+          "narrative_length_band": "standard",
+          "current_objective": "定位并救出被关押在北郊旧冷库的陈默，就营救方式作出集体抉择",
+          "pacing_directive": "本章 8 回合内完成。强攻北郊低洼冷库若为 lethal 选项，后果写入其 known_consequences（低洼灌水、坍塌、被安保制服），无需提前多回合公示。模型不得把仓库场景拖入无关杂物细节。本章结尾必须完成「定位陈默」与「救出陈默」两个里程碑并让营救方式表决落地。否则强制推进。",
+          "key_npcs": [
+            {
+              "ref": "npc_wei_biao",
+              "role": "仓库看守，武力威胁"
+            },
+            {
+              "ref": "npc_su_jie",
+              "role": "提出「用U盘换人」的交易方"
+            },
+            {
+              "ref": "npc_chen_mo",
+              "role": "被关押目标"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_03_01_chen_located",
+              "label": "定位到陈默被关押在北郊旧冷库",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "北郊",
+                    "冷库",
+                    "关押"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_02_flood_telegraphed",
+              "label": "玩家已就强攻 / 换人交易 / 报谭队作出选择",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "强攻",
+                    "换人",
+                    "报谭队"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_03_rescue_fork_voted",
+              "label": "就「强攻 / 用U盘交换 / 报谭队」作出集体表决",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "集体表决",
+                    "强攻",
+                    "交换",
+                    "报"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            },
+            {
+              "id": "m_03_04_chen_out",
+              "label": "陈默被带出仓库（无论何种方式）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "陈默",
+                    "带出",
+                    "安全"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_03_01_chen_located",
+              "m_03_02_flood_telegraphed",
+              "m_03_03_rescue_fork_voted",
+              "m_03_04_chen_out"
+            ]
+          },
+          "hook_pool": [
+            "仓库里还关着另一名被「清理」的工程师老万",
+            "陈默口述名单最后一页的内容",
+            "苏姐愿意交换但要求当晚签约",
+            "谭队提供警方渠道但要求证据移交"
+          ]
+        },
+        {
+          "id": "ch_04_epilogue",
+          "title": "终章：证据的去向",
+          "subtitle": "真相的代价由谁承担",
+          "max_turns": 4,
+          "narrative_length_band": "epilogue",
+          "current_objective": "全体就证据最终去向作出集体表决并执行，交代各人结局",
+          "pacing_directive": "本章 4 回合内完成。模型不得逃避最终表决。终章叙事（mode=resolve 正文）必须把三部分收尾内容写清楚：①故事关键人物的后续去向（陈默、林川、苏姐、魏彪、老周、谭队等关键NPC的最终下落）；②玩家角色的后续（四人各自去向与结局）；③事件/线索的最终收尾（证据移交、名单处理、七十二小时落幕的最终结局）。不得只写「后续待定」就结束。若玩家表决发布，必须呈现真实代价（线人暴露、林川被处理等），不得「完美大结局」。否则强制推进。",
+          "key_npcs": [
+            {
+              "ref": "npc_tan_dui",
+              "role": "警方渠道的最终裁决"
+            },
+            {
+              "ref": "npc_su_jie",
+              "role": "交易方最后通牒"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "m_04_01_verdict_voted",
+              "label": "全体就证据最终去向集体表决并执行",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "表决",
+                    "发布",
+                    "销毁",
+                    "移交",
+                    "交易"
+                  ]
+                }
+              ],
+              "auto_complete": true
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_04_01_verdict_voted"
+            ]
+          },
+          "hook_pool": [
+            "全国媒体平台的天窗期只有 6 小时",
+            "谭队拿到证据的代价是案子被封存",
+            "苏姐最后一通电话",
+            "老周关了复印店"
+          ]
+        }
+      ]
+    },
+    "narrator_name": "叙事者"
+  },
+  "initial_state": {
+    "location": "临江市中心，城市周刊编辑部 3 楼",
+    "time": "2026 年 7 月 4 日深夜 22:47，梅雨季暴雨",
+    "scene_summary": "深度调查组收到失踪同事陈默寄来的文件袋（旧录音笔、无卡号 SIM 卡、写有周记复印店地址的打印纸）；街对面停着一辆黑色商务车疑似盯梢。",
+    "weather": "暴雨如注，气象台黄色预警，预计 7 月 6 日凌晨升级红色预警",
+    "progress": {
+      "chapter": "序章：雨夜包裹",
+      "current_chapter_id": "ch_00_briefing",
+      "current_objective": "确认包裹来源与陈默失踪信息，锁定第一个调查坐标",
+      "completed_milestones": 0,
+      "total_milestones": 15
+    },
+    "facts": [
+      "陈默 7 月 1 日晚 22:03 后失联，至今 3 天",
+      "云溯科技「智慧城市」7 月 7 日上线，上线日执行「数据清零」",
+      "文件袋内含旧录音笔、无卡号 SIM 卡、打印纸（周记复印店，滨江城中村 12 巷）",
+      "气象台黄色预警，预计 7 月 6 日凌晨升级红色预警",
+      "深度调查组 5 人编制，人手本就不足",
+      "《城市周刊》上月刚被约谈过一次"
+    ],
+    "relationships": {
+      "陈楠": "家属，已接通电话，焦急且信息不完整",
+      "老周": "未接触，陈默的地下联系人，坐标指向他",
+      "林川": "未接触，云溯内应，被胁迫中",
+      "苏望舒（苏姐）": "敌对，云溯公关总监，尚不知你们已介入",
+      "谭振（谭队）": "中立，负责陈默失踪案但已被撤案",
+      "魏彪": "敌对，云溯安保主管，已开始盯梢",
+      "陈默": "失踪，核心目标"
+    },
+    "inventory": [
+      {
+        "item": "旧录音笔（陈默的，含最后留言）",
+        "qty": 1,
+        "owner_ref": "party"
+      },
+      {
+        "item": "无卡号 SIM 卡（陈默的备用卡）",
+        "qty": 1,
+        "owner_ref": "party"
+      },
+      {
+        "item": "被雨水泡皱的打印纸（周记复印店坐标）",
+        "qty": 1,
+        "owner_ref": "party"
+      },
+      {
+        "item": "牛皮纸文件袋",
+        "qty": 1,
+        "owner_ref": "party"
+      },
+      {
+        "item": "便携录音笔 / 相机（个人设备）",
+        "qty": 5,
+        "owner_ref": "party"
+      },
+      {
+        "item": "备用充电宝",
+        "qty": 3,
+        "owner_ref": "party"
+      }
+    ]
+  },
+  "world_schema_version": 5,
+  "world_content_version": "1.0.0",
+  "minimum_plugin_version": "v0.12.0",
+  "capabilities": {
+    "definitions": [
+      {
+        "capability_id": "newsroom.investigative",
+        "label": "深度调查组协作",
+        "capability_type_ref": "capability_type:profession_signature",
+        "description": "深度调查组的基本采编、取证与协作工具链；《城市周刊》深度组的标志能力。",
+        "tags": [
+          "newsroom",
+          "city_weekly"
+        ],
+        "grant_policy": "ignore",
+        "effects": [
+          {
+            "op": "add_narrative_constraint",
+            "value": "深度调查组成员具备新闻伦理训练与基础取证意识，可协同完成采访、盯梢反制与证据保全。"
+          }
+        ]
+      }
+    ],
+    "initial_grants": [
+      {
+        "capability_ref": "newsroom.investigative",
+        "scope": "character",
+        "available": true
+      }
+    ],
+    "transitions": []
+  },
+  "protocol": {
+    "core_version": 5,
+    "features": {
+      "entity_registry": "1.0",
+      "condition_engine": "1.0",
+      "operation_engine": "1.0",
+      "event_pipeline": "1.0",
+      "resolution_receipt": "1.0",
+      "capabilities": "1.0",
+      "resources": "1.0",
+      "chat_experience": "1.0"
+    }
+  },
+  "required_features": [
+    "entity_registry@>=1.0",
+    "operation_engine@>=1.0",
+    "chat_experience@>=1.0"
+  ],
+  "characters": [
+    {
+      "slug": "npc_chen_mo",
+      "name": "陈默",
+      "role": "npc",
+      "profile": {
+        "identity": "《城市周刊》资深调查记者，失踪者，核心目标",
+        "appearance": "四十岁上下的男人，常年穿一件洗褪色的深蓝夹克，包不离身。声音沙哑，习惯先沉默半拍再开口。",
+        "personality": "谨慎、固执、对熟人近乎刻薄地保护。他不相信任何人能完全保护自己，所以把证据拆成三份藏起来。",
+        "public_background": "入行十八年，调查过三起城市治理丑闻，两次被约谈。三周前开始频繁出入城中村与滨江 CBD，向妹妹陈楠含糊提过「在查一个大东西」。",
+        "faction": "《城市周刊》",
+        "location": "北郊旧冷库（被关押），出场在 ch_03",
+        "known_facts": [
+          "持有沉默者名单后门日志的加密U盘",
+          "把第一段证据托付给了老周",
+          "知道名单最后一页包含大量普通市民"
+        ],
+        "misunderstandings": [
+          "误以为他把所有证据都给了调查组"
+        ],
+        "relationship_stance": "信任深度调查组的旧同事，但坚持按自己的方式保护线人。",
+        "capabilities": [
+          "十八年调查经验",
+          "稳定的地下线人网络",
+          "对媒体发布窗口极其敏感"
+        ],
+        "limitations": [
+          "正被关押，身体虚弱",
+          "部分证据只有他能解密",
+          "不愿连累老周"
+        ],
+        "actor_complexity": "full",
+        "capability_refs": [
+          "capability:newsroom.investigative"
+        ],
+        "resource_refs": [
+          "resource:evidence_chain"
+        ],
+        "runtime_effect_refs": [],
+        "object_refs": [],
+        "custom_tags": [
+          "faction.城市周刊",
+          "core"
+        ]
+      },
+      "prompt": "陈默在 ch_03 之前不会直接与玩家对话。他的留言与加密方式在序章/第一章被解读；他获救后只回答与名单相关的问题，对私藏的第二份证据守口如瓶，直到玩家主动逼问或信任到位。",
+      "sort_order": 0
+    },
+    {
+      "slug": "npc_chen_nan",
+      "name": "陈楠",
+      "role": "npc",
+      "profile": {
+        "identity": "市一院急诊科护士，陈默的妹妹",
+        "appearance": "三十岁上下，扎马尾，护士服外总披一件旧羽绒服。眼下有明显的青黑，说话快、带哭腔但努力克制。",
+        "personality": "急性子，护短，对哥哥的调查既骄傲又害怕。她是玩家最可靠的情绪锚点，但知道的都是表面信息。",
+        "public_background": "陈默失联当晚 22:03 收到他一条语音，只有一句「帮我把箱子给深度调查组」。她等了两天，今天才鼓起勇气寄出。",
+        "faction": "市一院",
+        "location": "市一院 / 城市周刊编辑部",
+        "known_facts": [
+          "陈默失联前最后通话内容",
+          "陈默三周来的反常行程",
+          "哥哥的备份钥匙存在银行保险柜"
+        ],
+        "misunderstandings": [
+          "以为哥哥只是被临时控制，不知他已被关押"
+        ],
+        "relationship_stance": "完全信任调查组，愿意跑腿但容易被情绪左右。",
+        "capabilities": [
+          "医院急诊资源",
+          "对哥哥习惯的了解"
+        ],
+        "limitations": [
+          "不是调查人员",
+          "情绪化",
+          "会被人盯上（魏彪可能跟踪她）"
+        ],
+        "actor_complexity": "standard",
+        "capability_refs": [],
+        "resource_refs": [],
+        "runtime_effect_refs": [],
+        "object_refs": [],
+        "custom_tags": [
+          "faction.市一院",
+          "reliable"
+        ]
+      },
+      "prompt": "陈楠每次出场都带有新电话/新消息，但不主动调查。如果玩家让她去危险的地方，她会犹豫并可能给调查组添乱。她在终章的表态会影响证据去向的投票结果。",
+      "sort_order": 1
+    },
+    {
+      "slug": "npc_lao_zhou",
+      "name": "老周",
+      "role": "npc",
+      "profile": {
+        "identity": "城中村「周记复印店」老板，陈默的地下联系人，前调查记者",
+        "appearance": "六十岁开外，头发花白，戴老花镜，身上永远有油墨和樟脑味。说话慢，爱用反问句。",
+        "personality": "谨慎到近乎多疑。他见过太多人被摄像头「请」出城市，所以只收现金、只走盲区、只信熟人引荐。",
+        "public_background": "十年前因报道被撤，转行开复印店，顺手帮记者存过档案。手里有陈默托付的第一段证据与一台旧手机。",
+        "faction": "无（城中村独立户）",
+        "location": "滨江城中村 12 巷·周记复印店",
+        "known_facts": [
+          "陈默托付的加密U盘",
+          "陈默的旧手机",
+          "补盲工程表",
+          "被清名单的单亲妈妈的联系方式"
+        ],
+        "misunderstandings": [
+          "以为调查组是云溯派来的试探者，需先取得信任"
+        ],
+        "relationship_stance": "只对「够格」的人交底；玩家证明自己可信后全盘托出。",
+        "capabilities": [
+          "城中村盲区地图",
+          "旧档案网络",
+          "低调的伪造与反侦察经验"
+        ],
+        "limitations": [
+          "年纪大，体力差",
+          "一旦曝光复印店就废了",
+          "名单最后一页里有他，影响他的决心"
+        ],
+        "actor_complexity": "full",
+        "capability_refs": [],
+        "resource_refs": [
+          "resource:evidence_chain"
+        ],
+        "runtime_effect_refs": [],
+        "object_refs": [],
+        "custom_tags": [
+          "faction.城中村",
+          "reliable"
+        ]
+      },
+      "prompt": "老周第一章出场，只把U盘交给被证明「够格」的玩家。若玩家处理不当（强行搜查、暴露复印店），他会拒绝合作并销毁部分线索。名单最后一页有他，这一事实在 ch_02 后逐渐影响他的态度。",
+      "sort_order": 2
+    },
+    {
+      "slug": "npc_lin_chuan",
+      "name": "林川",
+      "role": "npc",
+      "profile": {
+        "identity": "云溯科技数据中心数据分析师，陈默大学同学",
+        "appearance": "三十岁出头，程序员标配卫衣加双肩包，眼底有长期缺觉的红血丝，说话时反复捏手指。",
+        "personality": "聪明、怕事、自保本能强。他想做对的事，但更怕失去儿子。",
+        "public_background": "两个月前发现沉默者名单，把第一批证据匿名转给老同学陈默。上周被魏彪查到来历，魏彪用他儿子沐沐的住院数据（在名单上）要挟他配合。",
+        "faction": "云溯科技",
+        "location": "云溯科技数据中心",
+        "known_facts": [
+          "沉默者名单后端路径",
+          "机房白名单门禁逻辑",
+          "陈默曾凌晨 3 点潜入过",
+          "沐沐在名单上"
+        ],
+        "misunderstandings": [
+          "以为陈默已把全部证据交给调查组，自己只是传声筒"
+        ],
+        "relationship_stance": "摇摆：既怕被云溯处理，又想借调查组之力救儿子。玩家对他的处置方式决定他在 ch_03 是否冒险合作。",
+        "capabilities": [
+          "机房内部路径与门禁卡",
+          "数据平台日志分析",
+          "对云溯内部网络的了解"
+        ],
+        "limitations": [
+          "被魏彪盯死",
+          "不敢明着反水",
+          "儿子的住院数据是筹码"
+        ],
+        "actor_complexity": "full",
+        "capability_refs": [],
+        "resource_refs": [],
+        "runtime_effect_refs": [],
+        "object_refs": [],
+        "custom_tags": [
+          "faction.云溯",
+          "compromised"
+        ]
+      },
+      "prompt": "林川是 ch_02 的核心内应。玩家选择「信任/胁迫/绕开」会决定他在 ch_03 仓库营救中提供多少帮助（信任→提供货梯钥匙；胁迫→消极配合；绕开→可能被魏彪利用）。他的结局取决于终章表决。",
+      "sort_order": 3
+    },
+    {
+      "slug": "npc_su_jie",
+      "name": "苏望舒（苏姐）",
+      "role": "npc",
+      "profile": {
+        "identity": "云溯科技公关总监",
+        "appearance": "四十五岁上下，裁剪利落的套装，说话永远带着恰到好处的微笑。手腕上一只旧表，和一身行头不太相称。",
+        "personality": "职业化的体面与实用主义。她不是恶人，她相信「智慧城市」给临江带来的是实打实的升级与就业，名单只是「技术上不得不做的取舍」。",
+        "public_background": "从市政宣传系统空降到云溯，见过太多项目因舆论死于半途。她最擅长把丑闻谈成和解，把对手谈成合作方。",
+        "faction": "云溯科技",
+        "location": "滨江 CBD 双子楼 / 电话",
+        "known_facts": [
+          "沉默者名单的存在与功能",
+          "陈默被关在北郊旧冷库",
+          "董事会给她的 72 小时期限",
+          "她可以安排陈默安全获释"
+        ],
+        "misunderstandings": [
+          "以为调查组只要陈默活着就愿意闭嘴"
+        ],
+        "relationship_stance": "把玩家当可谈判对象而非敌人。她给的不是威胁，是「双方都能保住面子的方案」——这比威胁更难拒绝。",
+        "capabilities": [
+          "公关与法务资源",
+          "董事会授权",
+          "地方关系网"
+        ],
+        "limitations": [
+          "她的方案要掩盖名单",
+          "对技术细节无知",
+          "被董事会和市政双重压着"
+        ],
+        "actor_complexity": "full",
+        "capability_refs": [],
+        "resource_refs": [],
+        "runtime_effect_refs": [],
+        "object_refs": [],
+        "custom_tags": [
+          "faction.云溯",
+          "antagonist-with-reason"
+        ]
+      },
+      "prompt": "苏姐 ch_02 中段首次联系玩家，ch_03 提出「用U盘换陈默」的交易并要求当晚签约。她不威胁玩家的命，威胁的是「陈默的死」与「名单永远消失」。她的真实底线是让名单不被公开，其他都可谈。",
+      "sort_order": 4
+    },
+    {
+      "slug": "npc_tan_dui",
+      "name": "谭振（谭队）",
+      "role": "npc",
+      "profile": {
+        "identity": "临江市刑侦支队队长",
+        "appearance": "五十岁左右，警服笔挺但袖口磨得发白。眼神是常年办案练出来的，看谁都想多盯两眼。",
+        "personality": "正直但守规则。他清楚陈默案被撤不合理，但更清楚「越线」的代价——前一个越线的同事已经被调去看仓库了。",
+        "public_background": "接手陈默失踪案第三天被要求结案，定性「疑似离家出走」。他没有失声，也没有硬顶，把卷宗复印件悄悄留了一份。",
+        "faction": "临江市公安局",
+        "location": "刑侦支队",
+        "known_facts": [
+          "陈默失踪案被撤的经过",
+          "涉案的接警记录",
+          "他可以启动内部线索，但证据必须移交归公"
+        ],
+        "misunderstandings": [
+          "以为调查组只是家属的朋友，不清楚他们掌握的量级"
+        ],
+        "relationship_stance": "愿意接证据，但走的是「体制内举报」路径：证据移交后按程序处理，大概率被封存，他也保不住。这是给玩家的一个「安全但无解」的出口。",
+        "capabilities": [
+          "执法权限与体制渠道",
+          "办案经验",
+          "愿意在自己的权限边缘走一步"
+        ],
+        "limitations": [
+          "无法对抗体制性撤案",
+          "证据移交=证据被封存",
+          "不能参与玩家私下行动"
+        ],
+        "actor_complexity": "full",
+        "capability_refs": [],
+        "resource_refs": [],
+        "runtime_effect_refs": [],
+        "object_refs": [],
+        "custom_tags": [
+          "faction.公安",
+          "costly-channel"
+        ]
+      },
+      "prompt": "谭队不会帮玩家硬来。他只在玩家证据足够正式、走「举报/报案」路径时接手；接手后按章办事，能否真正立案取决于终章表决与玩家后续动作。他是「体制内安全出口」的化身，不是救星。",
+      "sort_order": 5
+    },
+    {
+      "slug": "npc_wei_biao",
+      "name": "魏彪",
+      "role": "npc",
+      "profile": {
+        "identity": "云溯科技安保部主管",
+        "appearance": "四十岁出头，壮实，短寸头，穿黑夹克，别着对讲机。说话简短，习惯先打量人再决定是否开口。",
+        "personality": "职业打手式的克制与高效。他听命办事，对名单本身没有立场，只对「别让事态失控」负责。",
+        "public_background": "退役后入行安保，服务过云溯六年，深谙摄像头布局与「体面收场」的手法。他的威慑来自存在本身，而非暴力。",
+        "faction": "云溯科技",
+        "location": "盯梢车队 / 数据中心 / 北郊旧冷库",
+        "known_facts": [
+          "调查组已介入",
+          "陈默的关押位置",
+          "苏姐的交易预案",
+          "仓库低洼处暴雨的风险"
+        ],
+        "misunderstandings": [
+          "以为调查组只是家属朋友或散兵游勇，低估了他们的取证能力"
+        ],
+        "relationship_stance": "以威胁和看押为主，除非苏姐明确指示，否则不会主动伤人；但他会毫不犹豫地「体面收场」——断电、收手机、带走关键物证。",
+        "capabilities": [
+          "安保团队与器械（防暴装备、电击枪）",
+          "监控布局知识",
+          "物理威慑"
+        ],
+        "limitations": [
+          "对技术细节无知",
+          "不敢违背苏姐的指令",
+          "暴雨来临时也得先保命"
+        ],
+        "actor_complexity": "standard",
+        "capability_refs": [],
+        "resource_refs": [],
+        "runtime_effect_refs": [],
+        "object_refs": [],
+        "custom_tags": [
+          "faction.云溯",
+          "enforcer"
+        ]
+      },
+      "prompt": "魏彪是物理威胁的具象：盯梢（ch_01）、机房安保（ch_02）、仓库看守（ch_03）。他不主动杀伐，但玩家若强闯而检定失败，被他「收场」是核心代价。暴雨红色预警下，他的优先度是保命而非看人。",
+      "sort_order": 6
+    }
+  ]
+}

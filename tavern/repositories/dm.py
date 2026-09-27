@@ -9,25 +9,8 @@ from __future__ import annotations
 from collections.abc import Mapping
 from typing import Any
 
-from ..database_support import (
-    DatabaseNotFoundError,
-    json_dump,
-    json_load,
-    story_progress_meta,
-    utc_now,
-)
-from ..resolution_receipts import content_hash
+from ..database_support import new_id, json_dump, json_load, utc_now
 from ..resolution import apply_state_patch
-from ..story_pacing import compute_turn_progress_indicators
-from .events import append_event
-from ..contracts.narrative_document import (
-    NARRATIVE_DOCUMENT_SCHEMA_ID,
-    NarrativeDocument,
-    canonical_narrative_json,
-    narrative_document_to_plain_text,
-    narrative_text_sha256,
-    parse_narrative_document,
-)
 
 
 class DmRepositoryMixin:
@@ -43,28 +26,40 @@ class DmRepositoryMixin:
         meta: Any = None,
         turn_no: int | None = None,
     ) -> str:
+        event_id = new_id("event")
+        now = utc_now()
         if turn_no is None:
             row = connection.execute(
                 "SELECT turn_no FROM sessions WHERE id = ?",
                 (session_id,),
             ).fetchone()
             turn_no = int(row["turn_no"]) if row else 0
-        return append_event(
-            connection,
-            session_id=session_id,
-            turn_no=turn_no,
-            role=role,
-            actor_id=actor_id,
-            actor_name=actor_name,
-            content=content,
-            meta=meta,
+        connection.execute(
+            """
+            INSERT INTO events(
+                id, session_id, turn_no, role, actor_id, actor_name,
+                content, meta_json, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                event_id,
+                session_id,
+                turn_no,
+                role,
+                actor_id,
+                actor_name,
+                content,
+                json_dump(meta or {}),
+                now,
+            ),
         )
+        return event_id
 
     # ── 剧情控制 ──────────────────────────────────────────────────
     async def insert_dm_narrative(
         self,
         session_id: str,
-        narrative_document: NarrativeDocument | Mapping[str, Any],
+        narrative: str,
         actor_id: str,
         mode: str = "append",
     ) -> dict[str, Any]:
@@ -72,11 +67,7 @@ class DmRepositoryMixin:
         return await self._run(
             self._insert_dm_narrative,
             session_id,
-            (
-                narrative_document.to_dict()
-                if isinstance(narrative_document, NarrativeDocument)
-                else dict(narrative_document)
-            ),
+            str(narrative or "").strip(),
             actor_id,
             str(mode or "append").strip(),
         )
@@ -84,48 +75,17 @@ class DmRepositoryMixin:
     def _insert_dm_narrative(
         self,
         session_id: str,
-        narrative_document: dict[str, Any],
+        narrative: str,
         actor_id: str,
         mode: str,
     ) -> dict[str, Any]:
-        document = parse_narrative_document(
-            narrative_document,
-            dialogue_expected=False,
-        )
-        narrative = narrative_document_to_plain_text(document)
-        document_json = canonical_narrative_json(document)
-        document_text_hash = narrative_text_sha256(document)
+        if not narrative:
+            raise ValueError("剧情正文不能为空")
         if mode not in {"append", "override"}:
             raise ValueError("模式必须为 append 或 override")
         with self._connect() as connection:
             connection.execute("BEGIN IMMEDIATE")
             try:
-                session = connection.execute(
-                    "SELECT revision, turn_no, world_state_json FROM sessions WHERE id = ?",
-                    (session_id,),
-                ).fetchone()
-                if not session:
-                    raise LookupError("副本不存在")
-                story_meta = story_progress_meta(
-                    connection,
-                    session_id,
-                    source="dm",
-                    session_revision=int(session["revision"] or 0),
-                    extra={
-                        "edited_by_dm": True,
-                        "mode": mode,
-                    },
-                )
-                story_meta["progress"] = compute_turn_progress_indicators(
-                    {}, {}
-                )
-                story_meta["scene_ref"] = str(
-                    json_load(session["world_state_json"], {}).get(
-                        "current_scene"
-                    )
-                    or ""
-                )
-                story_meta["roleplay_active"] = True
                 event_id = self._insert_event(
                     connection,
                     session_id,
@@ -133,26 +93,7 @@ class DmRepositoryMixin:
                     content=narrative,
                     actor_id=actor_id,
                     actor_name="DM",
-                    meta=story_meta,
-                )
-                now = utc_now()
-                connection.execute(
-                    """
-                    INSERT INTO story_documents(
-                        event_id, session_id, turn_no, schema,
-                        document_json, plain_text, text_sha256, created_at
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                    """,
-                    (
-                        event_id,
-                        session_id,
-                        int(session["turn_no"] or 0),
-                        NARRATIVE_DOCUMENT_SCHEMA_ID,
-                        document_json,
-                        narrative,
-                        document_text_hash,
-                        now,
-                    ),
+                    meta={"edited_by_dm": True, "mode": mode},
                 )
                 self._insert_audit(
                     connection,
@@ -166,16 +107,7 @@ class DmRepositoryMixin:
             except Exception:
                 connection.execute("ROLLBACK")
                 raise
-        return {
-            "session_id": session_id,
-            "event_id": event_id,
-            "operation_id": event_id,
-            "revision": int(session["revision"] or 0),
-            "turn_no": int(session["turn_no"] or 0),
-            "mode": mode,
-            "narrative": narrative,
-            "narrative_document": document.to_dict(),
-        }
+        return {"event_id": event_id, "mode": mode}
 
     async def publish_announcement(
         self,
@@ -222,20 +154,13 @@ class DmRepositoryMixin:
         text: str,
         participant_id: str,
         actor_id: str,
-        delivery_record: Mapping[str, Any] | None = None,
     ) -> dict[str, Any]:
-        """主持密语：领域事件 + 审计 + 待投递记录在同一事务内原子写入。
-
-        D1-DEL-010：任一写入失败整笔回滚，不允许出现“事件已落库但投递
-        缺失”或“投递已入队但事件丢失”的中间状态。
-        """
         return await self._run(
             self._whisper_to,
             session_id,
             str(text or "").strip(),
             str(participant_id or "").strip(),
             actor_id,
-            dict(delivery_record) if delivery_record is not None else None,
         )
 
     def _whisper_to(
@@ -244,12 +169,9 @@ class DmRepositoryMixin:
         text: str,
         participant_id: str,
         actor_id: str,
-        delivery_record: Mapping[str, Any] | None,
     ) -> dict[str, Any]:
         if not text or not participant_id:
             raise ValueError("密语内容与目标角色不能为空")
-        if not isinstance(delivery_record, Mapping) or not delivery_record:
-            raise ValueError("密语必须携带待投递记录（D1-DEL-010 原子入队）")
         with self._connect() as connection:
             connection.execute("BEGIN IMMEDIATE")
             try:
@@ -260,14 +182,7 @@ class DmRepositoryMixin:
                     content=text,
                     actor_id=actor_id,
                     actor_name="DM",
-                    meta={
-                        "visibility": "private",
-                        "kind": "dm.whisper",
-                        "target_participant_id": participant_id,
-                        "title": "主持人密语",
-                        "summary": "主持人向指定角色发送了一条私密消息",
-                        "affected_modules": ["deliveries"],
-                    },
+                    meta={"visibility": "private", "target_participant_id": participant_id},
                 )
                 self._insert_audit(
                     connection,
@@ -277,22 +192,11 @@ class DmRepositoryMixin:
                     event_id,
                     {"participant_id": participant_id},
                 )
-                outbox = self._create_delivery_locked(
-                    connection,
-                    dict(delivery_record),
-                )
                 connection.execute("COMMIT")
             except Exception:
                 connection.execute("ROLLBACK")
                 raise
-        queued = str(outbox.get("status") or "") != "webui_only"
-        return {
-            "event_id": event_id,
-            "participant_id": participant_id,
-            "delivery_id": str(outbox.get("delivery_id") or ""),
-            "status": "queued" if queued else "webui_only",
-            "queued": queued,
-        }
+        return {"event_id": event_id, "participant_id": participant_id}
 
     # ── 行动 / 输入锁定 ───────────────────────────────────────────
     async def set_action_lock(
@@ -418,58 +322,14 @@ class DmRepositoryMixin:
                         + " / ".join(sorted(valid_keys))
                     )
                 now = utc_now()
-                session = connection.execute(
-                    "SELECT revision FROM sessions WHERE id=?",
-                    (session_id,),
-                ).fetchone()
-                if session is None:
-                    raise DatabaseNotFoundError("副本不存在")
-                operation_id = f"vote-resolution:{vote_row['id']}"
                 connection.execute(
                     """
                     UPDATE group_votes
-                    SET status = 'decided', decision_status='decided',
-                        resolution_status='pending',
-                        resolution_operation_id=?, decision_revision=?,
-                        winner_key = ?, decided_at = ?, updated_at = ?
+                    SET status = 'passed', winner_key = ?, ended_at = ?,
+                        updated_at = ?
                     WHERE id = ?
                     """,
-                    (
-                        operation_id,
-                        int(session["revision"] or 0),
-                        winner_key,
-                        now,
-                        now,
-                        vote_row["id"],
-                    ),
-                )
-                request_payload = {
-                    "vote_id": str(vote_row["id"]),
-                    "winner_key": winner_key,
-                    "decision_revision": int(session["revision"] or 0),
-                    "suspended_user_id": str(vote_row["suspended_user_id"] or ""),
-                }
-                connection.execute(
-                    """
-                    INSERT INTO operation_receipts(
-                        operation_id, session_id, operation_type,
-                        request_json, result_json, status, phase,
-                        input_hash, created_at, updated_at
-                    ) VALUES (?, ?, 'vote_resolution', ?, ?, 'reserved',
-                              'decision_locked', ?, ?, ?)
-                    ON CONFLICT(operation_id) DO NOTHING
-                    """,
-                    (
-                        operation_id,
-                        session_id,
-                        json_dump(request_payload),
-                        json_dump(
-                            {"phase": "decision_locked", "vote_id": str(vote_row["id"])}
-                        ),
-                        content_hash(request_payload),
-                        now,
-                        now,
-                    ),
+                    (winner_key, now, now, vote_row["id"]),
                 )
                 self._insert_audit(
                     connection,

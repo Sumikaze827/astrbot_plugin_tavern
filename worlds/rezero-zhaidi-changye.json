@@ -1,0 +1,976 @@
+{
+  "world_schema_version": 5,
+  "minimum_plugin_version": "0.12.0",
+  "world_content_version": "1.0.0",
+  "protocol": {
+    "core_version": 5,
+    "features": {
+      "chat_experience": "1.0"
+    }
+  },
+  "required_features": [],
+  "slug": "rezero-zhaidi-changye",
+  "name": "宅邸长夜",
+  "description": "原作第二章《动荡的一周》改编的一命速通多人本：玩家共同取代菜月昴，从罗兹瓦尔宅邸客房醒来，在没有死亡回归的前提下用 4 天 5 夜摸清宅邸与村庄的异常，亲手活过第 4 夜的暗杀。推荐 3–5 人，支持 1–6 人；7 种现代职业基础预设，保留主副属性加点。5 章 9 个成果里程碑，约 96 次个人行动，失败即死亡，无轮回复活。本局仅截取原作 chapter020 §01–§13 + §17 改编，砍掉原作的三次循环结构，玩家不能回滚已发生的对话、决策和死亡。",
+  "system_prompt": "【本局约定】\n这是 Re:从零开始的异世界生活 第二章《动荡的一周》的一命速通多人改编。玩家共同取代菜月昴的位置；菜月昴不作为 NPC、前任穿越者或幕后救世主存在。玩家从王都脱险后的当天夜里醒来，发现自己躺在亲龙王国露格尼卡边侯罗兹瓦尔・L・梅扎思的宅邸客房中。\n\n本局无死亡回归、读档、预知循环、无限复活或死亡后保留的未来记忆。原作里昴在第 4 夜被暗杀后回到第一天清晨的循环结构全部砍掉——玩家被暗杀就是真的死了。本局没有「诅咒之爱」式的提示者，玩家不能用密语召唤菜月昴或任何前任穿越者。不存在通过死亡获得情报后重新开始的捷径，所有调查必须亲自动手并接受后果。\n\n【开局与能力】\n玩家能听懂本地口语，但不会自动读写当地文字；现代常识可用于有限观察、急救、机械和谈判，不等于知道异世界真相。职业是穿越前的训练背景，不是降临后获得的超能力。职业基础属性固定 50 点，由玩家另选不同的主属性 +7、副属性 +3，总计 60 点；拒绝自由补充授予额外属性、武器、魔法、加护或原作人物关系。初始共有上一章保留的：一部电量只剩一半、能拍照但不能联网的手机、两袋零食、一瓶饮水、外加可重复使用的本地洗漱用品。无本地钱币、枪械、医疗器械箱或魔法装备。共同物品的出售与赠送须全队同意。手机拍照不是时间魔法，其交易价值须现场演示和议价，不能无限复制、充电或重复出售。\n\n【宅邸与人物（只介绍第一次出场，玩家可见的近况与立场）】\n宅邸主人是罗兹瓦尔・L・梅扎思，亲龙王国露格尼卡边侯、宫廷首席魔术师，平时不在家，外出多日，刚刚归来。宅邸现由两位双胞胎女仆拉姆（粉发）与雷姆（青发）打理；碧翠丝是禁书库管理员，自我封闭、言语刻薄，掌控着连接所有房门的魔法「渡门」，任何人不经她允许无法稳定进入禁书库。银发半精灵少女艾米莉娅是国王候补者之一，目前暂住此宅邸接受罗兹瓦尔的支持，她身边有一只灰猫形精灵帕克。帕克能在被呼唤后现身，并能以「读心」判断对方是否有恶意，但每天的现身时段有限，且大量施法后会疲倦。\n玩家看不见的人物动向：拉姆与雷姆会在夜里有一次单独向罗兹瓦尔汇报当日情况；罗兹瓦尔办公桌上常年有一份盖着家族印章的密信；村中幼犬从第 2 天起开始躁动，第 4 天起对所有进入村庄的外来者龇牙；艾米莉娅背负的压力比她表面流露的更重，与「嫉妒魔女」的历史相关。\n\n【固定因果，导演知情不等于角色知情】\n原作未发生于本时间线的循环不是本局历史。原作中昴在第二次、第 N 次循环才调查清楚的事情，本局会按合理顺序在 4 天内一次性铺开，玩家可用的线索比原作昴「第一次」循环多，但比原作昴「第三次」循环少——玩家既不能靠读档知道谁是暗杀者，也不能保证在第 4 夜前识破一切。\n艾米莉娅善良、谨慎且背负王选压力，可能先用假名保持距离，取得信任后可提前说出王选身份，不必卡到结尾。帕克能在被呼唤后现身，能以读心判断对方是否有恶意；但每天能现身的时间有限、施法会疲倦，提前打盹或大量施法后会失踪一段时间，不能为强行还原战斗突然退场。\n拉姆与雷姆看上去一致对待玩家，但实际职责有别——拉姆主导对外交涉与清扫，雷姆主导厨房、衣物与采购；雷姆外出采购的路线固定，村庄内部异常由她先察觉。双胞胎对罗兹瓦尔的汇报内容不会主动告知玩家，玩家只能从她们的言行反推。\n碧翠丝掌控禁书库的「渡门」，未经她允许，任何人无法稳定进入禁书库；玩家求助于她，需要先付出对等代价（安静守规则、不重复打扰、回答她关于现代世界的奇闻问题等），不能靠强硬闯关或一次性求情获得帮助。罗兹瓦尔能瞬间鉴定玩家的魔法属性，但会在玩家主动接受检查后才说结果；他掌握的部分情报（关于艾米莉娅、龙盟约、王选）会按实际对话分阶段披露，玩家不能用单次追问一次性问出全部。\n\n【暗杀与第 4 夜】\n原作里让昴死过一次才会暴露的「衰弱诅咒 + 锁链声 + 暗杀者」组合，本局按原作「第二次循环第 4 夜」的形态一次性摆在第 4 夜里。玩家在第 1-3 天通过调查能获得指向威胁的零散线索（村庄幼犬躁动、村中孩子的不寻常反应、雷姆采购路线上的结界薄弱点、艾米莉娅近期的恶寒、罗兹瓦尔办公桌上的密信内容），但不保证这些线索能拼成完整的「暗杀者画像」。第 4 夜里如果玩家已找到防御手段（帕克持久形态、罗兹瓦尔守护、碧翠丝的渡门转移、玩家自身检测），则可以提前识破并反制；如未找到，则玩家可能在夜里出现「四肢无力、极度寒冷、伴随金属撞击声」的诅咒反应，进而被斩首。死亡即结束本局，不复活、不读档、不给「下次再来」的机会。\n帕克能在夜里以消耗自己存在时间为代价发动长时间防护，但这是他在「大量施法后会疲倦」约束下的最后一次王牌；他读心能识别「当前的恶意」，不能识别「明日才动手的暗杀」。碧翠丝的渡门是空间魔法不是防护结界，不能直接抵挡暗杀者；玩家用它可以临时避险，但不能把渡门当作「无敌传送门」反复横跳。罗兹瓦尔具备一战之力但被原作设定为「不在第 4 夜主动现身」——除非玩家已经在白天里向他提供了可信的预警与证据，否则他不会在夜里巡逻。\n\n【信息与时间】\n不保留原作轮回才能知道的信息：暗杀者身份、碧翠丝的真实身份、艾米莉娅与嫉妒魔女的关系、玩家自己的魔法属性等须有当场询问、对话、配合检测或可靠证词。不要求角色先死一次才有权警戒。原作里的「读书识字」进度不会因为玩家想快就快，伊文字基础约需要 2 天的练习才能看懂菜单、便条和简短情报；不能通过「明天就识破暗杀者」的剧情硬约束跳过学习时间。时间按实际旅行、对话与调查推进，并在行动前说明明显耗时；个人消息次数和现实等待不等于剧情时间。已成立的联系、已展示的善意、已察觉的异常不能为还原小说而复位。\n\n【叙事与多人】\n先写玩家看得见的空间、人物行动和可用机会，再补少量气氛。主线是摸清自己处境、争取宅邸成员的有限信任、识别第 4 夜的威胁并活到第 5 天清晨，不是听王国史。开场即提供联系，不让玩家反复确认自己是否穿越。愿意交谈、求助、救人和观察所得的可靠事实应兑现，不把所有线索都锁在单次成功检定后。玩家可以拉姆路线、雷姆路线、艾米莉娅路线、碧翠丝路线、村庄路线、罗兹瓦尔路线中并行多条，但每条路线的进度受每天时间约束，玩家不能在同一天里完整跑完所有路线。个人行动只移动本人，集体行为须授权。玩家不必喜欢艾米莉娅、辱骂艾尔莎、牺牲手机或替人挡刀，更不必仿照昴的台词和恋爱反应；不必向每个宅邸成员强行告白或答谢。\n\n【风险、治疗与死亡】\n无真实不确定性的走路、传话和拿取已交付物品免检。存在不确定性的行动按机器回执结算；在检定前将不可能的目标说明为不可行，不在成功后偷偷改成失败。重伤、致残、死亡等严重后果须在相应选项 known_consequences 中明确，危险等级依现有规则。普通创伤、疲惫和出血有清楚的急救/休息/雷姆包扎/艾米莉娅治愈路径；医护职业可按条件急救，不能无器材再生断肢。已治愈状态用既有 condition_ops 解除或减轻，不新增同名惩罚抵消治疗。本包不设计剧情锁定的永久 debuff，也不私设 HP 与全队共享精神消耗。NPC 伤亡随实际事件同步 npc_ops，玩家生死由正式流程处理。死亡即结束本局，无自动复活。\n\n【结尾边界】\n默认成功线在第 4 夜的暗杀威胁被识破或反制、所有玩家活到第 5 天清晨、艾米莉娅/帕克未受致命伤之后收束；具体走出宅邸还是留守观察由玩家在第 5 天清晨的安置选择决定。玩家可以拒绝受雇为佣人、拒绝与艾米莉娅定下约定、拒绝帮雷姆跑腿，但这些选择会相应关掉后续章节的某些分支。本包不进入原作 chapter021 的村庄魔兽事件，不展开村庄大结界真相，不交代艾米莉娅王选的后续；玩家完成第 5 天清晨的「全员活着 + 知晓第 4 夜威胁的形态」即收笔。结尾交代核心承诺及可见的关键人物去向即可，不逐人询问后日谈，不强迫恋爱结局。",
+  "opening_scene": "醒来时的天花板不是自家的天花板。\n\n魔刻结晶的柔光把整面天花板照得均匀无影，空气里有淡淡的香料味——和便利店门口那股混着塑料与咖啡的气息完全不同。枕头柔软得过火，被子厚实得像要把人封进云里。二十榻大小的房间里只摆着一张大床，床脚、地板、门扉全是暖色调的实木。\n\n掀开被子坐起来时你发现：身上穿的是一套陌生的白色衬衣和长裤，尺码不太对——略大，但干净。床头柜上没有日历、没有手机充电线、没有闹钟；只有一颗正在发出淡绿色微光的魔刻结晶，大概相当于某种本地时钟。\n\n推门出去是一段长得看不到尽头的走廊，左右两条通道一模一样。墙上的挂画是同一幅：沉浸在夜色中的森林。地板冰凉，脚下穿的是一双临时摆放的木屐。\n\n走了一阵，挂画还是同一幅画，房间还是同一个房间。走廊像一条吞下时间的环形蛇。",
+  "rules": {
+    "world_schema_version": 5,
+    "resolution": {
+      "mode": "attribute",
+      "dice_system": "d20",
+      "unknown_attribute": "reject",
+      "option_checks": {
+        "enabled": true
+      },
+      "generic_check": {
+        "enabled": false,
+        "label": "通用",
+        "modifier": 0
+      },
+      "allowed_attributes": [
+        "strength",
+        "agility",
+        "vitality",
+        "intellect",
+        "willpower",
+        "perception",
+        "charisma"
+      ],
+      "difficulty_policy": {
+        "safe": null,
+        "controlled": 9,
+        "dangerous": 13,
+        "desperate": 17,
+        "lethal": 19
+      },
+      "outcome_policy": {
+        "natural_20_critical": true,
+        "natural_1_critical": true,
+        "critical_success_margin": 10,
+        "cost_success_min_margin": -4,
+        "failure_min_margin": -9
+      }
+    },
+    "default_difficulty": 12,
+    "difficulty_min": 5,
+    "difficulty_max": 25,
+    "dice_rules": {
+      "system": "d20",
+      "advantage": "2d20_keep_high",
+      "disadvantage": "2d20_keep_low",
+      "stacking": false,
+      "opposites_cancel": true,
+      "outcome_bands": true,
+      "visibility": "public"
+    },
+    "strict_choices": true,
+    "check_density": "standard",
+    "allow_player_result_claims": false,
+    "death_requires_confirmation": false,
+    "content_boundaries": {
+      "character_death": "yes",
+      "player_conflict": "consent",
+      "romance": "fade_to_black",
+      "horror": "moderate",
+      "sexual_content": "blocked",
+      "safety_pause": true
+    },
+    "safety": {
+      "any_active_player_can_pause": true,
+      "pvp_requires_target_consent": true,
+      "collective_harm_requires_vote": false,
+      "lethal_risk_must_be_disclosed": true
+    },
+    "player_limits": {
+      "recommended_min": 3,
+      "recommended_max": 5,
+      "minimum_start": 1,
+      "maximum": 6
+    },
+    "time_rules": {
+      "turn_timeout_action": "hold",
+      "card_timeout_action": "remind",
+      "ready_timeout_action": "remind",
+      "pause_stops_clock": true
+    },
+    "context_budget": {
+      "recent_turns": 6,
+      "memories": 6,
+      "active_npcs": 8,
+      "ledger_items": 10
+    },
+    "npc_policy": {
+      "enabled": true,
+      "auto_register": true,
+      "max_new_per_turn": 2,
+      "require_named_or_relevant": true,
+      "generated_requires_review": true,
+      "archive_after_inactive_rounds": 12
+    },
+    "chat_experience": {
+      "enabled": true,
+      "character_creation": {
+        "primary": "private_code",
+        "fallbacks": [
+          "webui_token"
+        ]
+      },
+      "multiplayer": {
+        "spotlight": "round_robin",
+        "group_decisions": "vote",
+        "absent_player": "standby"
+      },
+      "continuity": {
+        "recap_every_turns": 0,
+        "checkpoint_every_turns": 3,
+        "unresolved_threads_limit": 5,
+        "preserve_npc_intent": true
+      },
+      "delivery": {
+        "proactive_fallback": "next_event",
+        "mention_style": "name",
+        "max_text_length": 1800
+      },
+      "safety": {
+        "enabled": true,
+        "anonymous_pause": false,
+        "consent_reminder": "本局一命速通，无死亡回归，正式死亡会退场；严重风险在选择前说明，玩家可暂停。",
+        "lines": [
+          "未经同意的玩家互害",
+          "性暴力"
+        ],
+        "veils": [
+          "内脏与肢解的长篇细节"
+        ]
+      }
+    },
+    "character_card": {
+      "version": 6,
+      "auto_approve": false,
+      "edit_requires_review": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "角色姓名",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 12
+        },
+        {
+          "key": "code",
+          "label": "副本代号",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 12
+        },
+        {
+          "key": "profession",
+          "label": "选择穿越前职业（固定50点基础）",
+          "type": "preset_select",
+          "preset_source": "profession_presets",
+          "page_size": 8,
+          "required": true,
+          "private": false,
+          "max_chars": 30,
+          "clear_on_change": [
+            "primary_attribute",
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "primary_attribute",
+          "label": "选择主属性（固定+7）",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "page_size": 7,
+          "bonus_value": 7,
+          "clear_on_change": [
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "secondary_attribute",
+          "label": "选择副属性（固定+3）",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "page_size": 7,
+          "bonus_value": 3,
+          "must_differ_from": "primary_attribute"
+        },
+        {
+          "key": "supplement",
+          "label": "补充说明（可留空，不授予额外能力）",
+          "type": "text",
+          "required": false,
+          "private": false,
+          "max_chars": 300
+        }
+      ],
+      "stats": {
+        "allocation_mode": "profession_base_plus_primary7_secondary3",
+        "input_mode": "automatic_profession_base_plus_two_fixed_bonus_choices",
+        "calculate_after_field": "secondary_attribute",
+        "reset_scope": "primary_and_secondary_only",
+        "mode": "preset",
+        "budget": 60,
+        "base_budget": 50,
+        "bonus_budget": 10,
+        "effective_total": 60,
+        "attributes": [
+          {
+            "key": "strength",
+            "label": "力量",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "近身发力、破门、搬运、压制和承受冲击。"
+          },
+          {
+            "key": "agility",
+            "label": "敏捷",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "闪避、攀爬、潜行、追逐与精细操作。"
+          },
+          {
+            "key": "vitality",
+            "label": "体质",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "抵抗疲劳、失血、毒物与身体损伤。"
+          },
+          {
+            "key": "intellect",
+            "label": "智力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "医学常识、器物分析、逻辑推理与技术判断。"
+          },
+          {
+            "key": "willpower",
+            "label": "意志",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "忍痛、抗恐惧、抵抗神经干扰、保持专注和守住立场。"
+          },
+          {
+            "key": "perception",
+            "label": "感知",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "发现埋伏、搜索线索、识别伪造、追踪和判断异常。"
+          },
+          {
+            "key": "charisma",
+            "label": "魅力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "谈判、威慑、欺骗、领导和争取信任。"
+          }
+        ],
+        "modifier_table": {
+          "0": -3,
+          "1": -2,
+          "2": -2,
+          "3": -1,
+          "4": -1,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "10": 2,
+          "11": 3,
+          "12": 3,
+          "13": 4,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 6,
+          "18": 6,
+          "19": 7,
+          "20": 7
+        },
+        "primary_bonus": 7,
+        "secondary_bonus": 3,
+        "require_distinct_bonus_attributes": true,
+        "player_selects_only": [
+          "primary_attribute",
+          "secondary_attribute"
+        ],
+        "defaults_are_schema_fallback_only": true,
+        "manual_entry_enabled": false,
+        "auto_apply_profession_base": true,
+        "profession_base_locked": true,
+        "show_profession_values_at_profession_step": true,
+        "profession_step": 2,
+        "skip_generated_attribute_questions": true,
+        "calculation_formula": "effective_attribute = profession.base_attribute + 7 if primary + 3 if secondary",
+        "preserve_base_on_reset": true,
+        "preset_selector": {
+          "field": "profession",
+          "source": "profession_presets",
+          "match_by": "id"
+        },
+        "bonus_choices": [
+          {
+            "field": "primary_attribute",
+            "label": "主属性",
+            "bonus": 7,
+            "count": 1
+          },
+          {
+            "field": "secondary_attribute",
+            "label": "副属性",
+            "bonus": 3,
+            "count": 1,
+            "exclude_selected_by": [
+              "primary_attribute"
+            ]
+          }
+        ],
+        "total_validation": {
+          "base_total": 50,
+          "final_total": 60
+        },
+        "allocation": {
+          "rule": "exact",
+          "total": 60
+        }
+      },
+      "profession_presets": [
+        {
+          "id": "combat_coach",
+          "name": "格斗教练",
+          "description": "搬运、护卫与近身牵制。对宅邸暗杀者硬拼仍危险。",
+          "base_attributes": {
+            "strength": 11,
+            "agility": 9,
+            "vitality": 10,
+            "intellect": 4,
+            "willpower": 6,
+            "perception": 6,
+            "charisma": 4
+          }
+        },
+        {
+          "id": "parkour_runner",
+          "name": "跑酷运动员",
+          "description": "追踪路线、攀爬和脱险。能比宅邸暗杀者更快，但要先进他视野里才算数。",
+          "base_attributes": {
+            "strength": 6,
+            "agility": 12,
+            "vitality": 9,
+            "intellect": 4,
+            "willpower": 6,
+            "perception": 8,
+            "charisma": 5
+          }
+        },
+        {
+          "id": "first_aider",
+          "name": "急救员",
+          "description": "辨伤、止血、搬运指导。需要材料，不能施展魔法或起死回生。",
+          "base_attributes": {
+            "strength": 5,
+            "agility": 6,
+            "vitality": 7,
+            "intellect": 11,
+            "willpower": 8,
+            "perception": 8,
+            "charisma": 5
+          }
+        },
+        {
+          "id": "mechanic",
+          "name": "维修技师",
+          "description": "器物鉴别、简易修理和利用结构。没有工具箱和现代工厂。",
+          "base_attributes": {
+            "strength": 6,
+            "agility": 7,
+            "vitality": 7,
+            "intellect": 12,
+            "willpower": 6,
+            "perception": 8,
+            "charisma": 4
+          }
+        },
+        {
+          "id": "field_reporter",
+          "name": "调查记者",
+          "description": "询问、核对证词、识别利益关系。不自带当地历史知识。",
+          "base_attributes": {
+            "strength": 4,
+            "agility": 6,
+            "vitality": 6,
+            "intellect": 10,
+            "willpower": 7,
+            "perception": 10,
+            "charisma": 7
+          }
+        },
+        {
+          "id": "negotiator",
+          "name": "商务谈判员",
+          "description": "估价、交换条件、降低误解。说服不是精神控制。",
+          "base_attributes": {
+            "strength": 4,
+            "agility": 5,
+            "vitality": 6,
+            "intellect": 9,
+            "willpower": 8,
+            "perception": 7,
+            "charisma": 11
+          }
+        },
+        {
+          "id": "stage_actor",
+          "name": "舞台演员",
+          "description": "表演、临场应变与吸引注意。不能伪造真正的贵族身份。",
+          "base_attributes": {
+            "strength": 5,
+            "agility": 8,
+            "vitality": 6,
+            "intellect": 6,
+            "willpower": 7,
+            "perception": 7,
+            "charisma": 11
+          }
+        },
+        {
+          "id": "sleight_artist",
+          "name": "近景魔术师",
+          "description": "手法、物品交接与察觉藏物。魔术是技巧，不是异世界法术。",
+          "base_attributes": {
+            "strength": 4,
+            "agility": 11,
+            "vitality": 5,
+            "intellect": 8,
+            "willpower": 6,
+            "perception": 10,
+            "charisma": 6
+          }
+        }
+      ]
+    },
+    "story_spine": {
+      "campaign_type": "single_engagement",
+      "total_turn_budget": 96,
+      "non_renewable": true,
+      "primary_question": "在没有任何重来的余地之前，你们能不能在 4 天里识破第 4 夜的暗杀、并让所有队员活到第 5 天清晨？",
+      "secondary_questions": [
+        "谁值得信任，谁只是顺水推舟？",
+        "村庄的躁动、罗兹瓦尔的密信、艾米莉娅的恶寒，这三条线索能不能拼到一起？",
+        "要不要把自己绑在艾米莉娅身边，还是单独去找碧翠丝要禁书库的答案？"
+      ],
+      "do_not_include_in_this_session": [
+        "死亡回归、读档、预知循环",
+        "菜月昴本人及其隐藏替身",
+        "原作 chapter021 之后的村庄魔兽、村庄大结界、王选公开剧情",
+        "幕后雇主的全部真相",
+        "强制玩家恋爱或表白",
+        "为了足够长而重复干家务和NPC独白",
+        "玩家死亡后复活并保留未来记忆"
+      ]
+    },
+    "tension_drivers": [
+      "宅邸成员各有边界：碧翠丝不容许被反复打扰，帕克不会因为紧张而长时间在线，罗兹瓦尔不会主动巡逻。",
+      "村庄线索必须玩家亲自跑腿才能拿到，雷姆采购的路线就是默认调查路线但不是唯一路径。",
+      "诅咒反应在第 4 夜里以不可逆方式呈现，玩家既不能靠读档重来，也不能凭单次赌博过关。",
+      "艾米莉娅的身份压力比表面流露的更重，王选徽章仍在玩家身上或身边流转，被错认即招来杀身之祸。",
+      "核心承诺是 5 天内全员活着且知晓第 4 夜威胁的形态，不展开原作 chapter021 的村庄魔兽事件。"
+    ],
+    "opening_choices": [
+      {
+        "key": "A",
+        "text": "沿走廊往左走，敲最近的门问问有没有人",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": false
+      },
+      {
+        "key": "B",
+        "text": "沿走廊往右走，沿路看挂画、门牌与脚下木板",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": false
+      },
+      {
+        "key": "C",
+        "text": "返回自己刚醒来的房间，仔细翻床头柜和床底",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": false
+      },
+      {
+        "key": "D",
+        "text": "提议全队一起沿走廊往一端走，先确认这是不是一个死循环",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": true,
+        "vote_scope": "party"
+      }
+    ],
+    "progress": {
+      "chapter": "第一幕：宅邸的第一个早晨",
+      "current_chapter_id": "ch_01_awakening",
+      "current_objective": "弄清楚自己身处何处、与谁交谈是安全的，离开环形走廊并接触到至少一位愿意回应的宅邸成员。",
+      "completed_milestones": 0,
+      "total_milestones": 9,
+      "design_note": "5章预算16+20+20+20+20=96次个人行动，仅用于节奏提醒；每章最短体验1。章节检查点不是死亡回归存档，是剧情递进的里程碑。队伍成果允许累计和提前完成，不按人数重复。原作范围chapter020 §01–§13 + §17，砍掉原作全部死亡回归循环。失败分支据真实结果结算，不虚报原作成功。",
+      "chapters": [
+        {
+          "id": "ch_01_awakening",
+          "title": "第一幕：宅邸的第一个早晨",
+          "subtitle": "先找到一个愿意回应的人",
+          "next_chapter_id": "ch_02_servant",
+          "min_turns": 1,
+          "max_turns": 16,
+          "narrative_length_band": "standard",
+          "current_objective": "弄清楚自己身处何处，与至少一位宅邸成员建立可用联系，并发现值得追查的安全异常。",
+          "pacing_directive": "环形走廊、碧翠丝试炼、拉姆雷姆出现、艾米莉娅来访都按原作顺序自然推进，玩家不必通过死亡或单次赌博才能遇见她们。走廊走动免检，但与碧翠丝、雷姆、艾米莉娅的初次接触按常规社会检定结算；佩带无礼或强行闯门会招致明确反制。玩家在第 1 天可以主动探索禁书库，但必须付出对等代价或证明自己不会打扰贝蒂（不重复敲同一扇门、不大声喧哗、能安静回答她关于现代世界的奇闻之一），不是靠单次求情获得允许。庭院散步、广播体操、与微精灵互动按原作可选发生，不强迫玩家学体操才能进入下一节。",
+          "key_npcs": [
+            {
+              "ref": "npc_beatrice",
+              "role": "掌控渡门并主持禁书库；第一次出场可以施压，不主动帮助。"
+            },
+            {
+              "ref": "npc_ram",
+              "role": "桃发女仆，管家路线主导；先观察玩家再决定态度。"
+            },
+            {
+              "ref": "npc_rem",
+              "role": "青发女仆，采购与厨艺路线主导；对玩家有距离但不会敌对。"
+            },
+            {
+              "ref": "npc_emilia",
+              "role": "银发半精灵国王候补；上午会来访宅邸，但未必立刻说出王选身份。"
+            }
+          ],
+          "hook_pool": [
+            "核心：碧翠丝的渡门魔法让走廊成环，玩家必须找到突破口才能离开客房。",
+            "核心：双胞胎女仆的分工不同，拉姆主导外事、雷姆主导内务，接触不同人会触发不同支线。",
+            "可选：帕克清晨现身读心，证明玩家无恶意，是后续夜间求援的前置条件之一。"
+          ],
+          "milestones": [
+            {
+              "id": "m_01_01_trust",
+              "label": "队伍通过实际交流与至少一位宅邸成员建立可用联系（获得回应、引导或承诺帮助之一即可，不要求每人重复）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "回答",
+                    "指路",
+                    "帮忙",
+                    "同行",
+                    "约定"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_01_02_anomaly",
+              "label": "队伍已实际发现宅邸内一项值得追查的安全异常（渡门魔法、禁书库封印、村庄幼犬躁动、艾米莉娅的恶寒之一即可，不要求识别凶手）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "渡门",
+                    "禁书库",
+                    "幼犬",
+                    "恶寒",
+                    "密信"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_01_01_trust",
+              "m_01_02_anomaly"
+            ]
+          }
+        },
+        {
+          "id": "ch_02_servant",
+          "title": "第二幕：佣人生活的开端",
+          "subtitle": "用一上午决定自己是谁",
+          "next_chapter_id": "ch_03_village",
+          "min_turns": 1,
+          "max_turns": 20,
+          "narrative_length_band": "standard",
+          "current_objective": "在罗兹瓦尔归来后的早餐桌上摸清处境（王选、徽章、国情），并为自己争取一个可在宅邸合法停留的身份。",
+          "pacing_directive": "早餐桌是本章核心：艾米莉娅的王选身份、徽章真相、罗兹瓦尔的边侯与首席魔术师身份都按原作节奏分阶段披露，玩家不必单次追问全部问出。玩家可以选择受雇为佣人、只做客、或者干脆拒绝合作；拒绝合作会关闭后续章节的某些支线，但不触发自动死亡。量尺寸、学伊文字、穿制服等原作日常按可选项发生，玩家可以拒绝男仆制服（改为穿便服）或主动要求先学伊文字再工作。帕克的读心按原作自然发生，玩家不能在没接受读心前就要求帕克帮忙。",
+          "key_npcs": [
+            {
+              "ref": "npc_roswaal",
+              "role": "边侯与首席魔术师；按实际对话分阶段披露王选、徽章、龙盟约等情报。"
+            },
+            {
+              "ref": "npc_emilia",
+              "role": "首次主动披露王选身份；按实际对话回应玩家的请求。"
+            },
+            {
+              "ref": "npc_puck",
+              "role": "读心验证善意；只在被呼唤且未疲倦时现身。"
+            },
+            {
+              "ref": "npc_beatrice",
+              "role": "掌控禁书库与渡门；按玩家是否遵守她的边界给出回应。"
+            }
+          ],
+          "hook_pool": [
+                "核心：艾米莉娅首次披露国王候补身份和徽章真相。",
+                "核心：玩家必须选一个可以在宅邸合法停留的身份（受雇/做客/拒绝），每种选择开启不同的章节分支。",
+                "可选：拉姆在第 1 夜单独向罗兹瓦尔汇报，玩家可在汇报前后偷听/守候。"
+          ],
+          "milestones": [
+            {
+              "id": "m_02_01_status",
+              "label": "队伍已取得在罗兹瓦尔宅邸合法停留的明确身份（受雇为佣人、留作客或被明示拒绝之一），并知晓艾米莉娅国王候补身份与徽章大致意义",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "受雇",
+                    "做客",
+                    "拒绝",
+                    "国王候补",
+                    "徽章"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_02_02_trail",
+              "label": "队伍已取得调查村庄或宅邸异常的合理理由（采购需求、雷姆轮班、艾米莉娅的口信、罗兹瓦尔的任务之一即可）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "村庄",
+                    "采购",
+                    "调查",
+                    "口信",
+                    "任务"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_02_01_status",
+              "m_02_02_trail"
+            ]
+          }
+        },
+        {
+          "id": "ch_03_village",
+          "title": "第三幕：村庄的异常",
+          "subtitle": "幼犬、孩子与结界的薄处",
+          "next_chapter_id": "ch_04_countdown",
+          "min_turns": 1,
+          "max_turns": 20,
+          "narrative_length_band": "standard",
+          "current_objective": "通过雷姆采购、村中小孩互动、村庄外围观察，取得指向村庄异常的可信证据，并为第 4 夜的威胁建立基本假设。",
+          "pacing_directive": "村庄调查是本章核心：玩家按雷姆采购路线或自己另行安排进入阿拉姆村，可与村民建立有限关系，可与村中三名孩子互动。村中幼犬从本章起明显躁动，对所有进入村庄的外来者龇牙，玩家可抚慰、回避或喂食，结果影响雷姆与村民对玩家的态度。村庄外围结界在雷姆采购路线的某段出现一处肉眼可见的薄弱点（结晶体颜色变浅、空气温度骤降），但玩家不走到那里就看不到。玩家在本章可以找到 1-2 个「值得告诉罗兹瓦尔」的线索，但不必把所有事查清；本章结束时不强制触发任何决战。",
+          "key_npcs": [
+            {
+              "ref": "npc_rem",
+              "role": "采购与厨艺路线主导；首次察觉村庄异常并与玩家分享。"
+            },
+            {
+              "ref": "npc_ram",
+              "role": "管家路线主导；提供外围结界知识与守卫排班。"
+            },
+            {
+              "ref": "npc_aram_village",
+              "role": "阿拉姆村，提供村庄背景信息与外围结界地图。"
+            },
+            {
+              "ref": "npc_village_kids",
+              "role": "村庄中的孩子们，能在第 4 夜前预警玩家。"
+            }
+          ],
+          "hook_pool": [
+            "核心：村中幼犬的躁动是第 4 夜威胁的早期信号。",
+            "核心：村庄外围结界有可见薄弱点，是暗杀者的潜在突破口。",
+            "可选：与三名孩子互动建立信任，能在第 4 夜获得额外预警。"
+          ],
+          "milestones": [
+            {
+              "id": "m_03_01_signal",
+              "label": "队伍已实际发现村庄异常信号（幼犬躁动、孩子的不寻常反应、结界薄弱点之一即可），并由在场者确认该信号值得上报",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "幼犬",
+                    "躁动",
+                    "孩子",
+                    "结界",
+                    "薄弱"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_03_02_evidence",
+              "label": "队伍已取得至少一项指向宅邸外威胁的可信证据（外物痕迹、村民证词、目击报告之一），能向罗兹瓦尔或艾米莉娅陈述",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "证词",
+                    "痕迹",
+                    "目击",
+                    "结界",
+                    "报告"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_03_01_signal",
+              "m_03_02_evidence"
+            ]
+          }
+        },
+        {
+          "id": "ch_04_countdown",
+          "title": "第四幕：第四天的倒计时",
+          "subtitle": "阴属性、月下幽会与一张密信",
+          "next_chapter_id": "ch_05_nightfall",
+          "min_turns": 1,
+          "max_turns": 20,
+          "narrative_length_band": "standard",
+          "current_objective": "完成阴属性鉴定、与艾米莉娅/拉姆/雷姆确认至少一项关键关系，并提交一项可被罗兹瓦尔采信的夜间威胁预警。",
+          "pacing_directive": "本章横跨第 4 天：白天完成阴属性鉴定（罗兹瓦尔主动提出，不需玩家冒险）、玩家可以与艾米莉娅在庭院定下至少一项口头约定、与拉姆/雷姆在夜陪前确认至少一项情报交换。玩家必须在本章内把村庄调查的证据正式提交给罗兹瓦尔或艾米莉娅，否则罗兹瓦尔不会在第 4 夜主动巡逻；可以提交零碎线索（密信内容 + 幼犬躁动 + 结界薄弱点）即可触发罗兹瓦尔夜间进入戒备状态。帕克在本章末段允许玩家预约第 4 夜的防护协助，但仅限白天主动询问的玩家；未询问的玩家不能事后要求帕克临时现身。月下幽会与原作节奏一致，可拒绝也可赴约；不强迫恋爱。",
+          "key_npcs": [
+            {
+              "ref": "npc_roswaal",
+              "role": "边侯与首席魔术师；接受村庄证据后调整第 4 夜戒备。"
+            },
+            {
+              "ref": "npc_emilia",
+              "role": "在庭院定下口头约定；可向玩家披露王选与嫉妒魔女的关系。"
+            },
+            {
+              "ref": "npc_puck",
+              "role": "白天现身处理日常事务；按玩家预约决定是否在第 4 夜协助防护。"
+            },
+            {
+              "ref": "npc_ram",
+              "role": "夜陪与汇报；与玩家交换至少一项情报后，玩家获得拉姆线夜陪加成。"
+            }
+          ],
+          "hook_pool": [
+            "核心：罗兹瓦尔鉴定玩家的阴属性，是原作给玩家「最弱属性」的关键设定。",
+            "核心：玩家必须在本章内把村庄证据正式提交，否则第 4 夜失去罗兹瓦尔支持。",
+            "可选：与艾米莉娅在庭院定下约会/协作约定，是后续章节的关系基础。"
+          ],
+          "milestones": [
+            {
+              "id": "m_04_01_attr",
+              "label": "队伍中至少一名玩家完成魔法属性鉴定，并知晓自己在阴/阳/火/水/风/土五属性中的归属（不强制揭示最弱属性背后的全部含义）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "属性",
+                    "阴",
+                    "阳",
+                    "火",
+                    "水",
+                    "风",
+                    "土"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_04_02_warning",
+              "label": "队伍已向罗兹瓦尔或艾米莉娅正式提交至少一项可被采信的夜间威胁预警，且对方承诺在第 4 夜进入戒备状态",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "戒备",
+                    "预警",
+                    "夜间",
+                    "巡逻",
+                    "接受"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_04_01_attr",
+              "m_04_02_warning"
+            ]
+          }
+        },
+        {
+          "id": "ch_05_nightfall",
+          "title": "终幕：第四夜·黎明之前",
+          "subtitle": "活到第 5 天清晨就是胜利",
+          "min_turns": 1,
+          "max_turns": 20,
+          "narrative_length_band": "epilogue",
+          "current_objective": "实际结束第 4 夜的暗杀威胁，让所有队员活到第 5 天清晨，并提交一次完整收束。",
+          "pacing_directive": "承接第 4 章的实际准备情况，不重开证据采集。第 4 夜的暗杀以「衰弱诅咒 + 锁链声 + 斩首」组合出现，按原作第二次循环第 4 夜的形态一次性铺开。玩家是否触发诅咒症状取决于本章前四天累积的戒备等级——已提交预警并得到罗兹瓦尔或艾米莉娅响应、罗兹瓦尔/帕克/碧翠丝中至少一者处于戒备状态、玩家不单独离开大部队的，玩家可在诅咒发作前察觉；未满足的，玩家可能直接进入诅咒症状。诅咒发作本身就是已知风险，须在玩家确认前 known_consequences 中明确告知「被斩首即结束本局」。成功线中，暗杀者被识破或反制（罗兹瓦尔出战、帕克持久形态防护、碧翠丝渡门转移玩家避难、雷姆与拉姆的协同护卫、玩家自身检测任意一种成立），且全员活到第 5 天清晨。结尾交代核心承诺及可见的关键人物去向即可，不逐人询问后日谈，不描写村庄魔兽事件，不展开王选后续，不进入原作 chapter021。",
+          "key_npcs": [
+            {
+              "ref": "npc_emilia",
+              "role": "在成功线中未受致命伤；可按实际戒备状态选择是否出手。"
+            },
+            {
+              "ref": "npc_roswaal",
+              "role": "在玩家提交预警并得到采信的前提下，于第 4 夜进入戒备并出战。"
+            },
+            {
+              "ref": "npc_puck",
+              "role": "在玩家白天预约的前提下，能以消耗自己存在时间为代价发动长时间防护。"
+            },
+            {
+              "ref": "npc_ram",
+              "role": "与雷姆协同护卫玩家；夜陪期间可察觉异常。"
+            },
+            {
+              "ref": "npc_rem",
+              "role": "与拉姆协同护卫玩家；夜陪期间可察觉异常。"
+            },
+            {
+              "ref": "npc_beatrice",
+              "role": "在玩家已建立对等关系的前提下，渡门可作为临时避难手段。"
+            }
+          ],
+          "hook_pool": [
+            "核心回收：第 4 夜威胁的真实形态是什么，玩家准备到什么程度决定能不能活。",
+            "可选余韵：罗兹瓦尔对玩家提交证据的反应，暗示宅邸之外仍有更深层的势力。"
+          ],
+          "milestones": [
+            {
+              "id": "m_05_01_alive",
+              "label": "所有玩家实际活到第 5 天清晨，且艾米莉娅/帕克未受致命伤；不允许任何「读到档」的复活",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "清晨",
+                    "全员",
+                    "活着",
+                    "醒来",
+                    "未受致命"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_05_02_threat_known",
+              "label": "队伍已实际知晓第 4 夜威胁的形态（暗杀者武器、诅咒类型、突破点之一即可），可向罗兹瓦尔或宅邸成员陈述，不再处于完全未知",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "锁链",
+                    "暗杀者",
+                    "诅咒",
+                    "衰弱",
+                    "突破"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_05_03_epilogue",
+              "label": "第 4 夜事件已给出一次完整收束，交代威胁形态、玩家去向与宅邸关系变化，止于第 5 天清晨；不要求逐人后日谈，不进入原作 chapter021",
+              "ending_milestone": true,
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "清晨",
+                    "安置",
+                    "去向",
+                    "收束",
+                    "宅邸"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_05_01_alive",
+              "m_05_02_threat_known",
+              "m_05_03_epilogue"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "initial_state": {
+    "location": "罗兹瓦尔宅邸·客房走廊",
+    "time": "罗兹瓦尔宅邸第 1 天清晨，距离日落尚有数小时",
+    "scene_summary": "玩家在罗兹瓦尔宅邸的陌生客房中醒来，身穿临时衬衣，发现走廊呈环形无法直接离开。身上携带上一章保留的手机（半电）、两袋零食和一瓶水，但没有本地钱币、武器或魔法装备。",
+    "facts": [
+      "玩家均刚从现代世界来到这里，与原作菜月昴的关系由补充与实际互动决定。",
+      "本地口语可以听懂，文字尚不认识，现代钱币不能直接购物。",
+      "本局一命速通，正式死亡不会自动复活。",
+      "宅邸主人罗兹瓦尔外出归来，正在赶回宅邸的路上；双胞胎女仆拉姆与雷姆已在宅邸。",
+      "艾米莉娅与帕克暂住此宅邸，是国王候补者之一，玩家尚未确认其身份。",
+      "共有物品按队伍共同授权处置，个人不自动出售。"
+    ],
+    "inventory": {
+      "可拍照的手机（公用，电量约一半，无网络与充电条件）": 1,
+      "密封零食": 2,
+      "饮水瓶": 1,
+      "本地临时衬衣与木屐": 1
+    },
+    "relationships": {},
+    "check_modifiers": {
+      "advantages": [],
+      "disadvantages": []
+    }
+  }
+}

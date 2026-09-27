@@ -1,0 +1,937 @@
+{
+  "world_schema_version": 5,
+  "minimum_plugin_version": "0.12.0",
+  "world_content_version": "1.0.0",
+  "protocol": {
+    "core_version": 5,
+    "features": {
+      "chat_experience": "1.0"
+    }
+  },
+  "required_features": [],
+  "slug": "rezero-first-day-no-return",
+  "name": "王都第一日",
+  "description": "原作第一章《怒涛般的第一天》的无死亡回归多人改编。你们取代菜月昴，从现代街头突然来到露格尼卡王都：陌生的钱币、被偷的徽章，以及一场不能靠重来挽救的交易。推荐3–5人，支持1–6人；8种现代职业基础预设，保留主副属性加点。5章9个成果里程碑，参考约24–32次个人行动，灵活结束，不进入第二章宅邸生活。角色可以死亡，但没有必死过场或自动复活。",
+  "system_prompt": "【本局约定】\n这是Re:从零开始的异世界生活第一章《怒涛般的第一天》的多人分支改编。玩家共同取代菜月昴的位置；菜月昴不作为NPC、前任穿越者或幕后救世主存在。所有玩家刚从现代世界来到亲龙王国露格尼卡的王都。没有死亡回归、读档、预知循环、无限复活或死亡后保留的未来记忆，也没有因取消权能而自动附带的魔女气味、告密禁制或心脏惩罚。原作未发生于本时间线的轮回不是本局历史。\n\n【开局与能力】\n玩家能听懂本地口语，但不会自动读写当地文字；现代常识可用于有限观察、急救、机械和谈判，不等于知道异世界真相。职业是穿越前的训练背景，不是降临后获得的超能力。职业基础属性固定50点，由玩家另选不同的主属性+7、副属性+3，总计60点；拒绝自由补充授予额外属性、武器、魔法、加护或原作人物关系。初始共有一部能拍照但不能联网或充电的手机、两袋零食和一瓶饮水，没有本地钱币、枪械、医疗器械箱或魔法装备。共同物品的出售与赠送须全队同意。手机拍照不是时间魔法，其交易价值须现场演示和议价，不能无限复制、充电或重复出售。\n\n【固定因果，导演知情不等于角色知情】\n艾米莉娅的龙纹徽章被金发少女菲鲁特偷走，菲鲁特受一名黑衣女买家委托，在罗姆爷的赃物库交货。菲鲁特想攒钱离开贫民窟，把罗姆爷当家人，不知道完整政治意义，也不是自愿给杀人犯当祭品。罗姆爷护着她，能鉴别稀奇器物，但不是全知情报商。买家艾尔莎是危险的佣兵杀手，目标是得到徽章；失主介入或身份败露时可能转向暴力。她不是谈价成功就自动善良，也不是无论情势如何都会杀光所有人的计时炸弹。幕后雇主与第二章以后的真相不是本局待解目标。\n艾米莉娅善良、谨慎且不愿声张徽章的事，可能先用假名疏远陌生人；得到信任或被直接诚恳询问后可以提前说出真名，不必卡到结尾。银发半妖精受到的偏见是当地人的偏见，不是她有罪的证据。帕克是与她同行的猫形精灵，擅长冰与防护，接近傍晚或大量施法后会疲倦，须先通过对话和表现给出限制，不能为凑高潮突然消失。治疗使用原作可见的治愈术，不必向玩家讲授属性分类。\n莱因哈鲁特今日休假在王都活动，是可通过呼救、卫兵转告或菲鲁特送信联系的强援，不是自动传送的旁白按钮。他不知道没有送达的消息；求援成功要记录联系人、地点和已采取的响应，不要求玩家重复求援。艾尔莎明显强于新手穿越者；玩家可用环境、警戒、营救、牵制、移交和撤离改变局面，不能靠一次普通挥拳打败她。莱因哈鲁特强大但优先保护现场人员，玩家的救援、提供情报、排除误伤和开放路线会实际影响结果，不用十轮NPC对打取代玩家行动。\n\n【信息与时间】\n不保留原作轮回才能知道的信息：买家身份、携带备用刀、帕克疲倦、手机价值等须有当场观察、演示、询问或可靠证词。第二把刀可通过衣下刀鞘、拔刀动作或骑士警告发现；不要求角色先死一次才有权警戒。白天的完整交易线是初始局势，首次进入赃物库不会无条件变成尸体展览。时间按实际旅行、谈判与交战推进，并在行动前说明明显耗时；个人消息次数和现实等待不等于剧情时间。大幅拖延可能使交货提前完成或错过支援，后果须源自已在进行的活动。停止的警报、已转移的徽章、成功的交涉和被阻止的袭击不得为还原小说而复位。\n\n【叙事与多人】\n先写玩家看得见的空间、人物行动和可用机会，再补少量气氛。主线是帮谁、相信谁、怎样拿回徽章并活到当天结束，不是听王国史。开场即提供联系，不让玩家反复确认自己是否穿越。愿意交谈、求助、救人和观察所得的可靠事实应兑现，不把所有线索都锁在单次成功检定后。同行、分头都可行，无职业、人数或固定站位谜题；个人行动只移动本人，集体行为须授权，分队发现经交流后才成为队友知识。玩家不必喜欢艾米莉娅、辱骂艾尔莎、牺牲手机或替人挡刀，更不必仿照昴的台词和恋爱反应。低风险有效方案可以成功；对已解决对象重复同样方法只简述结果。\n\n【风险、治疗与死亡】\n无真实不确定性的走路、传话和拿取已交付物品免检。存在不确定性的行动按机器回执结算；在检定前将不可能的目标说明为不可行，不在成功后偷偷改成失败。重伤、致残、死亡等严重后果须在相应选项known_consequences中明确，危险等级依现有规则。只接受引擎正式死亡结算，不由小说分镜、正文一句宣布或NPC暗示创造系统死亡；失败不统一等于死亡，死亡也不触发复活。不要为了还原第一次坏结局无预警杀死刚进入屋内的玩家，不设置需要死人解锁的里程碑。普通创伤、疲惫和出血有清楚的急救/休息/艾米莉娅治疗路径；医护职业可按条件急救，不能无器材再生断肢。已治愈状态用既有condition_ops解除或减轻，不新增同名惩罚抵消治疗。本包不设计剧情锁定的永久debuff，也不私设HP与全队共享精神消耗。NPC伤亡随实际事件同步npc_ops，玩家生死由正式流程处理。\n\n【结尾边界】\n默认成功线在赃物库危机解除、徽章归还及急救完成后，接第一章幕间的善后：艾米莉娅致谢并可邀请无处落脚的玩家接受照护；若菲鲁特与徽章均在且莱因哈鲁特见到宝珠对她发光，他因重要身份线索带她进一步确认，徽章仍归还艾米莉娅。只点到即止，不解释后续王选，不进宅邸、不引入双胞胎女仆或新任务。玩家可拒绝邀请，安置由已成立选择决定；不要自动让全体受伤、昏迷、恋爱或承诺效忠。若徽章失去、重要人物伤亡或敌人未被击败，按实际代价收束本次事件，不复活人物来凑原作镜头，不把撤离写成击败杀手。身处险境的救援、战斗和表决未结束时不能宣告完结；事件已结束则一次完整尾声，不逐人询问后日谈。",
+  "opening_scene": "便利店的门铃还在耳边，下一步却踩在陌生的石板路上。\n\n一辆巨蜥拉着货车擦身而过，长着兽耳的行人对你们的衣服投来好奇目光。口袋里的钱还在，果摊老板却摇头：这种硬币他不收。你们能听懂他的话，摊牌上的文字却一个也不认识。同行者能凑出的，是一部手机、两袋零食和一瓶水。\n\n一名金发少女突然从人缝里钻过，手心闪过一点红光，转眼便越上巷边矮墙。银发少女追到岔口，披风旁浮着一只灰猫。她看向你们，急切却仍压低声音：\n“刚刚那个孩子往哪边去了？她拿走了对我很重要的东西。”\n\n果摊老板皱眉望向那条巷子。巷里有三个闲汉，另一侧的大路则通向巡逻卫兵常经过的路口。你们还不知道这座城叫什么，却已经有人需要一个回答。",
+  "rules": {
+    "world_schema_version": 5,
+    "resolution": {
+      "mode": "attribute",
+      "dice_system": "d20",
+      "unknown_attribute": "reject",
+      "option_checks": {
+        "enabled": true
+      },
+      "generic_check": {
+        "enabled": false,
+        "label": "通用",
+        "modifier": 0
+      },
+      "allowed_attributes": [
+        "strength",
+        "agility",
+        "vitality",
+        "intellect",
+        "willpower",
+        "perception",
+        "charisma"
+      ],
+      "difficulty_policy": {
+        "safe": null,
+        "controlled": 9,
+        "dangerous": 13,
+        "desperate": 17,
+        "lethal": 19
+      },
+      "outcome_policy": {
+        "natural_20_critical": true,
+        "natural_1_critical": true,
+        "critical_success_margin": 10,
+        "cost_success_min_margin": -4,
+        "failure_min_margin": -9
+      }
+    },
+    "default_difficulty": 12,
+    "difficulty_min": 5,
+    "difficulty_max": 25,
+    "dice_rules": {
+      "system": "d20",
+      "advantage": "2d20_keep_high",
+      "disadvantage": "2d20_keep_low",
+      "stacking": false,
+      "opposites_cancel": true,
+      "outcome_bands": true,
+      "visibility": "public"
+    },
+    "strict_choices": true,
+    "check_density": "standard",
+    "allow_player_result_claims": false,
+    "death_requires_confirmation": false,
+    "content_boundaries": {
+      "character_death": "yes",
+      "player_conflict": "consent",
+      "romance": "fade_to_black",
+      "horror": "moderate",
+      "sexual_content": "blocked",
+      "safety_pause": true
+    },
+    "safety": {
+      "any_active_player_can_pause": true,
+      "pvp_requires_target_consent": true,
+      "collective_harm_requires_vote": false,
+      "lethal_risk_must_be_disclosed": true
+    },
+    "player_limits": {
+      "recommended_min": 3,
+      "recommended_max": 5,
+      "minimum_start": 1,
+      "maximum": 6
+    },
+    "time_rules": {
+      "turn_timeout_action": "hold",
+      "card_timeout_action": "remind",
+      "ready_timeout_action": "remind",
+      "pause_stops_clock": true
+    },
+    "context_budget": {
+      "recent_turns": 6,
+      "memories": 6,
+      "active_npcs": 8,
+      "ledger_items": 10
+    },
+    "npc_policy": {
+      "enabled": true,
+      "auto_register": true,
+      "max_new_per_turn": 2,
+      "require_named_or_relevant": true,
+      "generated_requires_review": true,
+      "archive_after_inactive_rounds": 12
+    },
+    "chat_experience": {
+      "enabled": true,
+      "character_creation": {
+        "primary": "private_code",
+        "fallbacks": [
+          "webui_token"
+        ]
+      },
+      "multiplayer": {
+        "spotlight": "round_robin",
+        "group_decisions": "vote",
+        "absent_player": "standby"
+      },
+      "continuity": {
+        "recap_every_turns": 0,
+        "checkpoint_every_turns": 3,
+        "unresolved_threads_limit": 5,
+        "preserve_npc_intent": true
+      },
+      "delivery": {
+        "proactive_fallback": "next_event",
+        "mention_style": "name",
+        "max_text_length": 1800
+      },
+      "safety": {
+        "enabled": true,
+        "anonymous_pause": false,
+        "consent_reminder": "本局无死亡回归，正式死亡会退场；严重风险在选择前说明，玩家可暂停。",
+        "lines": [
+          "未经同意的玩家互害",
+          "性暴力"
+        ],
+        "veils": [
+          "内脏与肢解的长篇细节"
+        ]
+      }
+    },
+    "character_card": {
+      "version": 6,
+      "auto_approve": false,
+      "edit_requires_review": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "角色姓名",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 12
+        },
+        {
+          "key": "code",
+          "label": "副本代号",
+          "type": "text",
+          "required": true,
+          "private": false,
+          "max_chars": 12
+        },
+        {
+          "key": "profession",
+          "label": "选择穿越前职业（固定50点基础）",
+          "type": "preset_select",
+          "preset_source": "profession_presets",
+          "page_size": 8,
+          "required": true,
+          "private": false,
+          "max_chars": 30,
+          "clear_on_change": [
+            "primary_attribute",
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "primary_attribute",
+          "label": "选择主属性（固定+7）",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "page_size": 7,
+          "bonus_value": 7,
+          "clear_on_change": [
+            "secondary_attribute"
+          ]
+        },
+        {
+          "key": "secondary_attribute",
+          "label": "选择副属性（固定+3）",
+          "type": "preset_select",
+          "required": true,
+          "private": false,
+          "max_chars": 8,
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "page_size": 7,
+          "bonus_value": 3,
+          "must_differ_from": "primary_attribute"
+        },
+        {
+          "key": "supplement",
+          "label": "补充说明（可留空，不授予额外能力）",
+          "type": "text",
+          "required": false,
+          "private": false,
+          "max_chars": 300
+        }
+      ],
+      "stats": {
+        "allocation_mode": "profession_base_plus_primary7_secondary3",
+        "input_mode": "automatic_profession_base_plus_two_fixed_bonus_choices",
+        "calculate_after_field": "secondary_attribute",
+        "reset_scope": "primary_and_secondary_only",
+        "mode": "preset",
+        "budget": 60,
+        "base_budget": 50,
+        "bonus_budget": 10,
+        "effective_total": 60,
+        "attributes": [
+          {
+            "key": "strength",
+            "label": "力量",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "近身发力、破门、搬运、压制和承受冲击。"
+          },
+          {
+            "key": "agility",
+            "label": "敏捷",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "闪避、攀爬、潜行、追逐与精细操作。"
+          },
+          {
+            "key": "vitality",
+            "label": "体质",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "抵抗疲劳、失血、毒物与身体损伤。"
+          },
+          {
+            "key": "intellect",
+            "label": "智力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "医学常识、器物分析、逻辑推理与技术判断。"
+          },
+          {
+            "key": "willpower",
+            "label": "意志",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "忍痛、抗恐惧、抵抗神经干扰、保持专注和守住立场。"
+          },
+          {
+            "key": "perception",
+            "label": "感知",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "发现埋伏、搜索线索、识别伪造、追踪和判断异常。"
+          },
+          {
+            "key": "charisma",
+            "label": "魅力",
+            "minimum": 0,
+            "maximum": 20,
+            "default": 5,
+            "description": "谈判、威慑、欺骗、领导和争取信任。"
+          }
+        ],
+        "modifier_table": {
+          "0": -3,
+          "1": -2,
+          "2": -2,
+          "3": -1,
+          "4": -1,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "10": 2,
+          "11": 3,
+          "12": 3,
+          "13": 4,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 6,
+          "18": 6,
+          "19": 7,
+          "20": 7
+        },
+        "primary_bonus": 7,
+        "secondary_bonus": 3,
+        "require_distinct_bonus_attributes": true,
+        "player_selects_only": [
+          "primary_attribute",
+          "secondary_attribute"
+        ],
+        "defaults_are_schema_fallback_only": true,
+        "manual_entry_enabled": false,
+        "auto_apply_profession_base": true,
+        "profession_base_locked": true,
+        "show_profession_values_at_profession_step": true,
+        "profession_step": 2,
+        "skip_generated_attribute_questions": true,
+        "calculation_formula": "effective_attribute = profession.base_attribute + 7 if primary + 3 if secondary",
+        "preserve_base_on_reset": true,
+        "preset_selector": {
+          "field": "profession",
+          "source": "profession_presets",
+          "match_by": "id"
+        },
+        "bonus_choices": [
+          {
+            "field": "primary_attribute",
+            "label": "主属性",
+            "bonus": 7,
+            "count": 1
+          },
+          {
+            "field": "secondary_attribute",
+            "label": "副属性",
+            "bonus": 3,
+            "count": 1,
+            "exclude_selected_by": [
+              "primary_attribute"
+            ]
+          }
+        ],
+        "total_validation": {
+          "base_total": 50,
+          "final_total": 60
+        },
+        "allocation": {
+          "rule": "exact",
+          "total": 60
+        }
+      },
+      "profession_presets": [
+        {
+          "id": "combat_coach",
+          "name": "格斗教练",
+          "description": "搬运、护卫与近身牵制。对持刀超人硬拼仍危险。",
+          "base_attributes": {
+            "strength": 11,
+            "agility": 9,
+            "vitality": 10,
+            "intellect": 4,
+            "willpower": 6,
+            "perception": 6,
+            "charisma": 4
+          }
+        },
+        {
+          "id": "parkour_runner",
+          "name": "跑酷运动员",
+          "description": "追踪路线、攀爬和脱险。速度并不等于菲鲁特的加护。",
+          "base_attributes": {
+            "strength": 6,
+            "agility": 12,
+            "vitality": 9,
+            "intellect": 4,
+            "willpower": 6,
+            "perception": 8,
+            "charisma": 5
+          }
+        },
+        {
+          "id": "first_aider",
+          "name": "急救员",
+          "description": "辨伤、止血、搬运指导。需要材料，不能施展魔法或起死回生。",
+          "base_attributes": {
+            "strength": 5,
+            "agility": 6,
+            "vitality": 7,
+            "intellect": 11,
+            "willpower": 8,
+            "perception": 8,
+            "charisma": 5
+          }
+        },
+        {
+          "id": "mechanic",
+          "name": "维修技师",
+          "description": "器物鉴别、简易修理和利用结构。没有工具箱和现代工厂。",
+          "base_attributes": {
+            "strength": 6,
+            "agility": 7,
+            "vitality": 7,
+            "intellect": 12,
+            "willpower": 6,
+            "perception": 8,
+            "charisma": 4
+          }
+        },
+        {
+          "id": "field_reporter",
+          "name": "调查记者",
+          "description": "询问、核对证词、识别利益关系。不自带当地历史知识。",
+          "base_attributes": {
+            "strength": 4,
+            "agility": 6,
+            "vitality": 6,
+            "intellect": 10,
+            "willpower": 7,
+            "perception": 10,
+            "charisma": 7
+          }
+        },
+        {
+          "id": "negotiator",
+          "name": "商务谈判员",
+          "description": "估价、交换条件、降低误解。说服不是精神控制。",
+          "base_attributes": {
+            "strength": 4,
+            "agility": 5,
+            "vitality": 6,
+            "intellect": 9,
+            "willpower": 8,
+            "perception": 7,
+            "charisma": 11
+          }
+        },
+        {
+          "id": "stage_actor",
+          "name": "舞台演员",
+          "description": "表演、临场应变与吸引注意。不能伪造真正的贵族身份。",
+          "base_attributes": {
+            "strength": 5,
+            "agility": 8,
+            "vitality": 6,
+            "intellect": 6,
+            "willpower": 7,
+            "perception": 7,
+            "charisma": 11
+          }
+        },
+        {
+          "id": "sleight_artist",
+          "name": "近景魔术师",
+          "description": "手法、物品交接与察觉藏物。魔术是技巧，不是异世界法术。",
+          "base_attributes": {
+            "strength": 4,
+            "agility": 11,
+            "vitality": 5,
+            "intellect": 8,
+            "willpower": 6,
+            "perception": 10,
+            "charisma": 6
+          }
+        }
+      ]
+    },
+    "story_spine": {
+      "campaign_type": "single_engagement",
+      "total_turn_budget": 32,
+      "non_renewable": true,
+      "primary_question": "没有重来的机会，你们会怎样处理陌生少女失去的徽章，并为自己争取一个活下来的夜晚？",
+      "secondary_questions": [
+        "能用什么换取本地人的信任？",
+        "菲鲁特在保护钱财，还是在保护她唯一的家人？",
+        "求助强者之前，自己可以完成哪件真正有用的事？"
+      ],
+      "do_not_include_in_this_session": [
+        "死亡回归或预知循环",
+        "菜月昴本人及其隐藏替身",
+        "第二章宅邸、女仆和咒术事件",
+        "幕后雇主调查任务",
+        "强制玩家受伤昏迷或恋爱",
+        "为了足够长而重复交易、追人和NPC对打"
+      ]
+    },
+    "tension_drivers": [
+      "刚穿越没有本地钱币，却有人先提供帮助；回报恩情、寻找落脚处或争取报酬均可成为玩家动机。",
+      "手机是联系旧世界的最后纪念，也是可能换回徽章的稀有器物；交易真实可行但不是唯一办法。",
+      "菲鲁特想要钱，也在乎罗姆爷的安全；赢得信任可以改变她对交易与求援的选择。",
+      "强援不是结局按钮：让消息送达、使受伤者脱离交战范围、避免误伤都能改变结果。",
+      "核心承诺是当日徽章事件的结果；徽章对菲鲁特的反应只是幕间余韵，不开启王选支线。"
+    ],
+    "opening_choices": [
+      {
+        "key": "A",
+        "text": "告诉银发少女金发孩子逃走的方向，问清她丢了什么",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": false
+      },
+      {
+        "key": "B",
+        "text": "向果摊老板询问城名和巡逻卫兵的位置",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": false
+      },
+      {
+        "key": "C",
+        "text": "留在大路边观察金发孩子跨墙后的去向",
+        "risk": "controlled",
+        "requires_check": true,
+        "collective": false,
+        "check_type": "standard",
+        "check_stat": "perception",
+        "difficulty": 9,
+        "known_consequences": "失败会失去她的直接踪迹，需要改向目击者问路；不会凭空受伤或被迫进巷。"
+      },
+      {
+        "key": "D",
+        "text": "提议全队留在大路，一起与银发少女商量找回失物",
+        "risk": "safe",
+        "requires_check": false,
+        "collective": true,
+        "vote_scope": "party"
+      }
+    ],
+    "progress": {
+      "chapter": "第一幕：异乡的第一个回答",
+      "current_chapter_id": "ch_00_arrival",
+      "current_objective": "建立一个可用的本地联系，实际接触徽章事件并取得下一步线索。",
+      "completed_milestones": 0,
+      "total_milestones": 9,
+      "design_note": "5章预算5+7+7+9+4=32次个人行动，仅用于节奏提醒；每章最短体验1。章节检查点不是死亡回归存档。队伍成果允许累计和提前完成，不按人数重复。原作范围chapter010/01至23，含幕间；失败分支据真实结果结算，不虚报原作成功。",
+      "chapters": [
+        {
+          "id": "ch_00_arrival",
+          "title": "第一幕：异乡的第一个回答",
+          "subtitle": "先认识一个愿意说话的人",
+          "next_chapter_id": "ch_01_trail",
+          "min_turns": 1,
+          "max_turns": 5,
+          "narrative_length_band": "compact",
+          "current_objective": "在果摊和街口建立联系，了解徽章失窃并得到可以采取行动的线索。",
+          "pacing_directive": "果摊、大路、巷口在同一可见街区，普通移动免检。艾米莉娅追物但会顾及危险中的旁人；卡多蒙可用简短回答提供城名、货币和求助方向，不强迫打工买水果才给主线。混混只在有机会时勒索，不强制围殴全队；呼救、避开、示警和抵抗均可。银发少女的善意可由实际互动建立，不要求玩家先昏倒获救。两条里程碑由队伍累计，不逐个介绍、不讲王国史；已经确认线索就进入追查。",
+          "key_npcs": [
+            {
+              "ref": "npc_emilia",
+              "role": "寻找徽章，提供共同目标；按实际互动建立信任。"
+            },
+            {
+              "ref": "npc_kadomon",
+              "role": "提供有限但可靠的本地常识和求助方向。"
+            },
+            {
+              "ref": "npc_puck",
+              "role": "保护同伴，用简短对话展示精灵而非授课。"
+            }
+          ],
+          "hook_pool": [
+            "可选：果摊老板一边嘴硬一边提醒别进偏巷。",
+            "核心：银发少女愿意为别人停步，却急于找回失物。"
+          ],
+          "milestones": [
+            {
+              "id": "m_00_01_contact",
+              "label": "队伍通过实际交流与至少一位当地人建立可用联系（获得回答、帮助或合作之一即可，不要求每人重复）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "回答",
+                    "指路",
+                    "帮忙",
+                    "同行",
+                    "约定"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_00_02_case",
+              "label": "队伍已实际接触徽章失窃事件，并取得一条可执行的追查或求助线索（目击方向、失主说明、卫兵回应之一即可）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "徽章",
+                    "金发",
+                    "目击",
+                    "卫兵",
+                    "巷口"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_00_01_contact",
+              "m_00_02_case"
+            ]
+          }
+        },
+        {
+          "id": "ch_01_trail",
+          "title": "第二幕：通往赃物库的路",
+          "subtitle": "人情也是路标",
+          "next_chapter_id": "ch_02_bargain",
+          "min_turns": 1,
+          "max_turns": 7,
+          "narrative_length_band": "standard",
+          "current_objective": "取得定位菲鲁特或赃物库的可靠信息，不把追人写成反复绕路。",
+          "pacing_directive": "调查目标是找到能处理失物的人，不是把地图所有点踩一遍。目击者、果摊、街区卫兵或菲鲁特本人都能提供真实方向；玩家帮忙处理迷路孩子可以获得人情和线索，但这是可选遭遇，不能另开寻亲长支线。菲鲁特可能戒备或绕一次路，察觉或诚实交谈后须改变反应，不能继续无尽试探。莱因哈鲁特可以在路口被求助，也可以由卫兵转达；明确联系办法，不要求玩家分头寻找。已找到人或提前取得徽章，直接承接交易/保护，不让玩家回去再问同一条路。",
+          "key_npcs": [
+            {
+              "ref": "npc_felt",
+              "role": "把陌生人看作潜在买家，担心暴露罗姆爷。"
+            },
+            {
+              "ref": "npc_reinhard",
+              "role": "可联系的休假骑士，依据真正收到的消息行动。"
+            },
+            {
+              "ref": "npc_kadomon",
+              "role": "有限情报与传话入口，不索取无限跑腿。"
+            }
+          ],
+          "hook_pool": [
+            "核心：菲鲁特的交易地点也是她信任的人所在之处。",
+            "可选：迷路孩子获助后归家，侧面展示艾米莉娅的选择。"
+          ],
+          "milestones": [
+            {
+              "id": "m_01_01_route",
+              "label": "队伍已取得定位菲鲁特或赃物库的可靠可用信息，或已实际接触其一（证词、带路、查访或现场找到均可，不要求到遍所有地点）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "赃物库",
+                    "带路",
+                    "菲鲁特",
+                    "确切位置",
+                    "找到"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_01_01_route"
+            ]
+          }
+        },
+        {
+          "id": "ch_02_bargain",
+          "title": "第三幕：徽章与买家",
+          "subtitle": "东西有价，人的底线也有",
+          "next_chapter_id": "ch_03_crisis",
+          "min_turns": 1,
+          "max_turns": 7,
+          "narrative_length_band": "standard",
+          "current_objective": "让徽章的交易或保护产生实际结果，并依据证据应对危险买家。",
+          "pacing_directive": "默认在赃物库交涉；若提前截获、移交或改变地点，就在实际所在地承接。罗姆爷可鉴定手机的拍照效果；原作约二十枚圣金币的估价只作参考，不要求现场拥有硬币或卖手机。向菲鲁特坦诚目的、提供合适交换、调解误会、联系失主或骑士均可，不能所有路线最终强制付款。谈判失败要给明确拒绝原因和可改变的条件，或真正的关系/交货结果，不能重复同一问价。菲鲁特可说出受黑衣女买家委托和约定交货，可靠描述可让骑士识别危险；玩家不必知道名字才可防备。艾尔莎按交货消息与当前地点到来，不瞬移追到任何位置；谈成不保证她善良，但玩家先移走徽章、求援或开放撤离路线的成果必须生效。刀鞘、接近动作与警告提供响应窗口，不用第一次进门必死作悬念。",
+          "key_npcs": [
+            {
+              "ref": "npc_felt",
+              "role": "钱财、戒心与罗姆爷的安全影响交易。"
+            },
+            {
+              "ref": "npc_rom",
+              "role": "鉴价和保护，不为剧情强行否定合理交换。"
+            },
+            {
+              "ref": "npc_elsa",
+              "role": "接近交货目标，依据被发现或被阻止的情势行动。"
+            },
+            {
+              "ref": "npc_emilia",
+              "role": "要求物归原主，但救助可优先于追责。"
+            }
+          ],
+          "hook_pool": [
+            "核心：手机换徽章是真正的交换选择，不是标准答案。",
+            "核心：黑衣买家的温和态度与武装、动作形成可验证的不协调。"
+          ],
+          "milestones": [
+            {
+              "id": "m_02_01_disposition",
+              "label": "徽章的交易、归还、保护或移交已产生明确实际结果；也可为谈判确实破裂并改变了交货或关系状态，不把仅提出方案算完成",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "交付",
+                    "换取",
+                    "归还",
+                    "移交",
+                    "拒绝",
+                    "保管"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_02_02_threat_response",
+              "label": "危险买家的威胁已由实际观察或可靠消息确认，且一项应对已执行（求援消息送达、布置防护、转移或掩护等之一；不要求先有人受伤）",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "艾尔莎",
+                    "黑衣",
+                    "刀",
+                    "示警",
+                    "送达",
+                    "转移",
+                    "防护"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_02_01_disposition",
+              "m_02_02_threat_response"
+            ]
+          }
+        },
+        {
+          "id": "ch_03_crisis",
+          "title": "第四幕：把这一刻活过去",
+          "subtitle": "强者的剑与你们做成的事",
+          "next_chapter_id": "ch_04_nightfall",
+          "min_turns": 1,
+          "max_turns": 9,
+          "narrative_length_band": "standard",
+          "current_objective": "实际结束这次针对徽章与现场人员的即时威胁；不以杀死艾尔莎为唯一胜利条件。",
+          "pacing_directive": "危机围绕保护人、徽章与出路。普通穿越者的贡献是警戒备用刀、掩护传信者、挪开障碍、协助治疗、争取空间或撤离，不强迫正面对砍。菲鲁特可为罗姆爷出去求援，玩家也可联络骑士或让消息经街坊送达；她不会因正文要求就自动代表某玩家分队。求援已送达且路线允许时，兑现支援，不能再拖成数轮门槛。帕克的疲倦按时段与已发生施法变化，提前处置可避免最差时机。莱因哈鲁特到场后仍让玩家完成有价值的保护与判断，但不等待每人表演才制止敌人。艾尔莎可逃走或被迫放弃本次袭击，不用杀死她才通关；已可靠束缚或隔离就不能再演原作最后一刀。只有现场仍有未排除危险时才继续，不因预设反转让已清场处再起必杀。撤离成功只说明脱离本次追击，不伪称杀敌；若发生损失或任务失败，记录实际结果并收束当日事件。",
+          "key_npcs": [
+            {
+              "ref": "npc_elsa",
+              "role": "现实威胁与可识别的武器手段，受到已成立战果约束。"
+            },
+            {
+              "ref": "npc_reinhard",
+              "role": "因明确求援/查访来到现场，完成制止与保护。"
+            },
+            {
+              "ref": "npc_puck",
+              "role": "有限时段和施法余力，先提示再兑现限制。"
+            },
+            {
+              "ref": "npc_emilia",
+              "role": "保护与治愈，不能被强制留在危险位等玩家挡刀。"
+            },
+            {
+              "ref": "npc_felt",
+              "role": "保护罗姆爷，能在实际机会下求援。"
+            },
+            {
+              "ref": "npc_rom",
+              "role": "依实际身体状态协助或接受救治。"
+            }
+          ],
+          "hook_pool": [
+            "核心：玩家争取的机会让救援发生，而不是看NPC独演。",
+            "可选：未摧毁的家当、受保护的旁人或及时送到的消息，成为具体获得感。"
+          ],
+          "milestones": [
+            {
+              "id": "m_03_01_threat_closed",
+              "label": "艾尔莎对本次徽章事件的即时袭击或追击已实际结束（被制止、击退、隔离、确认甩脱，或已经发生的失败使冲突终止）；准备撤离、短暂退后或未结算的攻击不算",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "撤退",
+                    "逃离",
+                    "制止",
+                    "甩脱",
+                    "隔离",
+                    "停止追击",
+                    "失败"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_03_01_threat_closed"
+            ]
+          }
+        },
+        {
+          "id": "ch_04_nightfall",
+          "title": "终幕：月亮高挂的第一夜",
+          "subtitle": "今天结束，生活才开始",
+          "min_turns": 1,
+          "max_turns": 4,
+          "narrative_length_band": "epilogue",
+          "current_objective": "交代徽章结果、现场紧急救助与当夜安置，完成第一章幕间范围的一次结尾，不进入第二章。",
+          "pacing_directive": "承接实际结果，不重开交易和战斗。徽章已经归还就确认归属，不再次要求送一遍。急救和治愈在条件充足时完整兑现，不强迫每人都带伤或昏迷。只询问真正尚未决定且影响全队的安置选择一次；已有决定直接写结果。成功线中，若菲鲁特持过徽章且骑士亲见发光，简短写他因此带她进一步确认身份；缺少条件就不能伪造该镜头。艾米莉娅可告知真名、感谢并提出照护，玩家拒绝也可在王都取得合理安置；已知真名不当新谜底。最后里程碑是一次尾声，不需玩家逐个交感想。结尾交代核心承诺及可见的关键人物去向即可；只以将获照护/当夜落脚收笔，不描写宅邸醒来，不引入雷姆、拉姆、贝蒂或王选任务。若败退或有人死亡，明确损失，尊重已结算事实，不能从轻描写成全员平安。",
+          "key_npcs": [
+            {
+              "ref": "npc_emilia",
+              "role": "感谢、治愈和提出照护，不替玩家接受。"
+            },
+            {
+              "ref": "npc_reinhard",
+              "role": "当日善后；按真正见到的徽章反应处理菲鲁特。"
+            },
+            {
+              "ref": "npc_felt",
+              "role": "她与罗姆爷的去向按事实交代，不另开营救支线。"
+            },
+            {
+              "ref": "npc_rom",
+              "role": "伤情、家当与后续安置按实际结果结算。"
+            }
+          ],
+          "hook_pool": [
+            "核心回收：徽章最终去了哪里，这些陌生人如何度过第一夜。",
+            "可选余韵：徽章的光让骑士神情改变，只暗示更大的世界。"
+          ],
+          "milestones": [
+            {
+              "id": "m_04_01_badge_result",
+              "label": "徽章最终归属已实际确定（归还、合法移交、明确他人持有、遗失或毁损之一），不是仅承诺以后处理",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "徽章",
+                    "归还",
+                    "收下",
+                    "移交",
+                    "遗失",
+                    "毁损"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_04_02_aftermath",
+              "label": "现场紧急救助与脱险处置已经完成或明确无需/无法救援，相关即时危险和待决表决不再悬空；不要求全员受伤或逐人演治疗",
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "治疗完成",
+                    "脱离危险",
+                    "救助",
+                    "安置",
+                    "无人受伤",
+                    "无法救援"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "m_04_03_epilogue",
+              "label": "当日事件已经给出一次完整结尾叙事，交代徽章结果、关键人物去向与玩家当夜安置，止于第一章幕间，不要求逐人后日谈",
+              "ending_milestone": true,
+              "evidence_required": [
+                {
+                  "type": "clue_keyword_any",
+                  "match": [
+                    "夜幕",
+                    "第一天",
+                    "安置",
+                    "护送",
+                    "照护",
+                    "月亮"
+                  ]
+                }
+              ]
+            }
+          ],
+          "exits_when": {
+            "all_milestones": [
+              "m_04_01_badge_result",
+              "m_04_02_aftermath",
+              "m_04_03_epilogue"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "initial_state": {
+    "location": "露格尼卡王都·果摊街口",
+    "time": "穿越当日午后，距离日落尚有数小时",
+    "scene_summary": "玩家刚抵达陌生王都，金发孩子持一件发红光的小物逃进巷道；银发少女在街口询问去向。尚无人受伤，尚未交付徽章或求援。",
+    "facts": [
+      "玩家均刚从现代世界来到这里，彼此关系由补充与实际互动决定。",
+      "本地口语可以听懂，文字尚不认识，现代钱币不能直接购物。",
+      "本局无死亡回归，正式死亡不会自动复活。",
+      "银发少女正在追查一件失物；玩家只看见金发孩子逃走，尚不知道她们的名字与物品真相。",
+      "共有物品按队伍共同授权处置，个人不自动出售。"
+    ],
+    "inventory": {
+      "可拍照的手机（公用，无网络与充电条件）": 1,
+      "密封零食": 2,
+      "饮水瓶": 1
+    },
+    "relationships": {},
+    "check_modifiers": {
+      "advantages": [],
+      "disadvantages": []
+    }
+  }
+}

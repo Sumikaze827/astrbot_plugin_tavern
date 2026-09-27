@@ -1,0 +1,1249 @@
+{
+  "description": "re0王选篇",
+  "initial_state": {
+    "facts": [],
+    "inventory": {},
+    "location": "",
+    "relationships": {},
+    "scene_summary": "罗兹瓦尔邸的清晨，草叶上还挂着露水。\n\n练习场上的木桩换过一轮，伤口结了疤。你记得那天结束时的样子——被那个紫发青年按在地上，差距大到连愤怒都显得可笑。你没有低头。那句「不会，低头的呐」还在耳边，像一枚钉进墙里的钉子。\n\n今天不是去报仇的日子。今天是出发前的最后一天。\n\n孩子们该在村子广场等着了，你答应过带他们做广播体操；雷姆补好的外套叠在床边，拉姆一早就端着托盘从走廊尽头走过，眼神的意思是「别磨",
+    "time": ""
+  },
+  "minimum_plugin_version": "v0.12.0",
+  "name": "re0王选篇",
+  "opening_scene": "罗兹瓦尔邸的清晨，草叶上还挂着露水。\n\n练习场上的木桩换过一轮，伤口结了疤。你记得那天结束时的样子——被那个紫发青年按在地上，差距大到连愤怒都显得可笑。你没有低头。那句「不会，低头的呐」还在耳边，像一枚钉进墙里的钉子。\n\n今天不是去报仇的日子。今天是出发前的最后一天。\n\n孩子们该在村子广场等着了，你答应过带他们做广播体操；雷姆补好的外套叠在床边，拉姆一早就端着托盘从走廊尽头走过，眼神的意思是「别磨蹭」；宅邸正门的方向，有件你还没去看的事。\n\n半天时间，怎么用，全在你手上。",
+  "protocol": {
+    "core_version": 5,
+    "features": {
+      "chat_experience": "1.0",
+      "entity_registry": "1.0"
+    }
+  },
+  "required_features": [
+    "entity_registry@>=1.0"
+  ],
+  "revision": 5,
+  "rules": {
+    "allow_player_result_claims": true,
+    "character_card": {
+      "auto_approve": false,
+      "edit_requires_review": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "角色姓名",
+          "max_chars": 12,
+          "private": false,
+          "required": true,
+          "type": "text"
+        },
+        {
+          "key": "code",
+          "label": "副本代号",
+          "max_chars": 12,
+          "private": false,
+          "required": true,
+          "type": "text"
+        },
+        {
+          "key": "supplement",
+          "label": "自拟设定（写清你的背景与能力，系统据此生成基础属性）",
+          "max_chars": 600,
+          "private": false,
+          "required": true,
+          "type": "textarea"
+        },
+        {
+          "bonus_value": 7,
+          "clear_on_change": [
+            "secondary_attribute"
+          ],
+          "key": "primary_attribute",
+          "label": "选择主属性（固定+7）",
+          "max_chars": 8,
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "page_size": 7,
+          "private": false,
+          "required": true,
+          "type": "preset_select"
+        },
+        {
+          "bonus_value": 3,
+          "key": "secondary_attribute",
+          "label": "选择副属性（固定+3）",
+          "max_chars": 8,
+          "must_differ_from": "primary_attribute",
+          "options": [
+            "力量",
+            "敏捷",
+            "体质",
+            "智力",
+            "意志",
+            "感知",
+            "魅力"
+          ],
+          "page_size": 7,
+          "private": false,
+          "required": true,
+          "type": "preset_select"
+        }
+      ],
+      "profession_presets": [
+        {
+          "base_attributes": {
+            "agility": 9,
+            "charisma": 4,
+            "intellect": 4,
+            "perception": 6,
+            "strength": 11,
+            "vitality": 10,
+            "willpower": 6
+          },
+          "description": "搬运、护卫与近身牵制。对宅邸暗杀者硬拼仍危险。",
+          "id": "combat_coach",
+          "name": "格斗教练"
+        },
+        {
+          "base_attributes": {
+            "agility": 12,
+            "charisma": 5,
+            "intellect": 4,
+            "perception": 8,
+            "strength": 6,
+            "vitality": 9,
+            "willpower": 6
+          },
+          "description": "追踪路线、攀爬和脱险。能比宅邸暗杀者更快，但要先进他视野里才算数。",
+          "id": "parkour_runner",
+          "name": "跑酷运动员"
+        },
+        {
+          "base_attributes": {
+            "agility": 6,
+            "charisma": 5,
+            "intellect": 11,
+            "perception": 8,
+            "strength": 5,
+            "vitality": 7,
+            "willpower": 8
+          },
+          "description": "辨伤、止血、搬运指导。需要材料，不能施展魔法或起死回生。",
+          "id": "first_aider",
+          "name": "急救员"
+        },
+        {
+          "base_attributes": {
+            "agility": 7,
+            "charisma": 4,
+            "intellect": 12,
+            "perception": 8,
+            "strength": 6,
+            "vitality": 7,
+            "willpower": 6
+          },
+          "description": "器物鉴别、简易修理和利用结构。没有工具箱和现代工厂。",
+          "id": "mechanic",
+          "name": "维修技师"
+        },
+        {
+          "base_attributes": {
+            "agility": 6,
+            "charisma": 7,
+            "intellect": 10,
+            "perception": 10,
+            "strength": 4,
+            "vitality": 6,
+            "willpower": 7
+          },
+          "description": "询问、核对证词、识别利益关系。不自带当地历史知识。",
+          "id": "field_reporter",
+          "name": "调查记者"
+        },
+        {
+          "base_attributes": {
+            "agility": 5,
+            "charisma": 11,
+            "intellect": 9,
+            "perception": 7,
+            "strength": 4,
+            "vitality": 6,
+            "willpower": 8
+          },
+          "description": "估价、交换条件、降低误解。说服不是精神控制。",
+          "id": "negotiator",
+          "name": "商务谈判员"
+        },
+        {
+          "base_attributes": {
+            "agility": 8,
+            "charisma": 11,
+            "intellect": 6,
+            "perception": 7,
+            "strength": 5,
+            "vitality": 6,
+            "willpower": 7
+          },
+          "description": "表演、临场应变与吸引注意。不能伪造真正的贵族身份。",
+          "id": "stage_actor",
+          "name": "舞台演员"
+        },
+        {
+          "base_attributes": {
+            "agility": 11,
+            "charisma": 6,
+            "intellect": 8,
+            "perception": 10,
+            "strength": 4,
+            "vitality": 5,
+            "willpower": 6
+          },
+          "description": "手法、物品交接与察觉藏物。魔术是技巧，不是异世界法术。",
+          "id": "sleight_artist",
+          "name": "近景魔术师"
+        }
+      ],
+      "stats": {
+        "allocation": {
+          "rule": "exact",
+          "total": 60
+        },
+        "allocation_mode": "authored_base_plus_primary7_secondary3",
+        "attributes": [
+          {
+            "default": 5,
+            "description": "近身发力、破门、搬运、压制和承受冲击。",
+            "key": "strength",
+            "label": "力量",
+            "maximum": 20,
+            "minimum": 0
+          },
+          {
+            "default": 5,
+            "description": "闪避、攀爬、潜行、追逐与精细操作。",
+            "key": "agility",
+            "label": "敏捷",
+            "maximum": 20,
+            "minimum": 0
+          },
+          {
+            "default": 5,
+            "description": "抵抗疲劳、失血、毒物与身体损伤。",
+            "key": "vitality",
+            "label": "体质",
+            "maximum": 20,
+            "minimum": 0
+          },
+          {
+            "default": 5,
+            "description": "医学常识、器物分析、逻辑推理与技术判断。",
+            "key": "intellect",
+            "label": "智力",
+            "maximum": 20,
+            "minimum": 0
+          },
+          {
+            "default": 5,
+            "description": "忍痛、抗恐惧、抵抗神经干扰、保持专注和守住立场。",
+            "key": "willpower",
+            "label": "意志",
+            "maximum": 20,
+            "minimum": 0
+          },
+          {
+            "default": 5,
+            "description": "发现埋伏、搜索线索、识别伪造、追踪和判断异常。",
+            "key": "perception",
+            "label": "感知",
+            "maximum": 20,
+            "minimum": 0
+          },
+          {
+            "default": 5,
+            "description": "谈判、威慑、欺骗、领导和争取信任。",
+            "key": "charisma",
+            "label": "魅力",
+            "maximum": 20,
+            "minimum": 0
+          }
+        ],
+        "auto_apply_profession_base": true,
+        "base_budget": 50,
+        "bonus_budget": 10,
+        "bonus_choices": [
+          {
+            "bonus": 7,
+            "count": 1,
+            "field": "primary_attribute",
+            "label": "主属性"
+          },
+          {
+            "bonus": 3,
+            "count": 1,
+            "exclude_selected_by": [
+              "primary_attribute"
+            ],
+            "field": "secondary_attribute",
+            "label": "副属性"
+          }
+        ],
+        "budget": 60,
+        "calculate_after_field": "secondary_attribute",
+        "calculation_formula": "effective_attribute = generated.base_attribute + 7 if primary + 3 if secondary",
+        "defaults_are_schema_fallback_only": true,
+        "effective_total": 60,
+        "input_mode": "authored_base_plus_two_fixed_bonus_choices",
+        "manual_entry_enabled": false,
+        "mode": "authored",
+        "modifier_table": {
+          "0": -3,
+          "1": -2,
+          "10": 2,
+          "11": 3,
+          "12": 3,
+          "13": 4,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 6,
+          "18": 6,
+          "19": 7,
+          "2": -2,
+          "20": 7,
+          "3": -1,
+          "4": -1,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2
+        },
+        "player_selects_only": [
+          "primary_attribute",
+          "secondary_attribute"
+        ],
+        "preserve_base_on_reset": true,
+        "preset_selector": {
+          "field": "profession",
+          "match_by": "id",
+          "source": "profession_presets"
+        },
+        "primary_bonus": 7,
+        "profession_base_locked": true,
+        "profession_step": 2,
+        "require_distinct_bonus_attributes": true,
+        "reset_scope": "primary_and_secondary_only",
+        "secondary_bonus": 3,
+        "show_profession_values_at_profession_step": true,
+        "skip_generated_attribute_questions": true,
+        "stat_generation": {
+          "expected_total": 50,
+          "guide": "按设定的具体程度给分：明确写出的专长给对应属性高分，没写到的属性不要高于中位；设定与属性含义冲突时以属性含义为准；设定里超出本世界规则的能力照写，但不额外加分。",
+          "max_per_stat": 13,
+          "min_per_stat": 2,
+          "mode": "authored",
+          "source_field": "supplement"
+        },
+        "total_validation": {
+          "base_total": 50,
+          "final_total": 60
+        }
+      },
+      "version": 8
+    },
+    "check_density": "standard",
+    "content_boundaries": {
+      "character_death": "yes"
+    },
+    "death_requires_confirmation": false,
+    "npc_direction": {
+      "core_profiles": {
+        "威尔海姆・范・阿斯特雷亚": {
+          "actor_complexity": "full",
+          "personality": "克制、坚韧、经验丰富，对亡妻的深情支撑其追猎白鲸的执念",
+          "private_direction": "表现为有目的的观察、行动和必要建议，不是每轮重复报出仇恨口号。战场判断依赖现场观察，不能预知分身与未来伤亡。尊重真正作出贡献的同伴。"
+        },
+        "尤里乌斯・尤克里乌斯": {
+          "actor_complexity": "full",
+          "appearance": "紫发青年，端正优雅的骑士装束",
+          "behavior_contract": {
+            "never": [
+              "混同其他候补的骑士",
+              "无理由强迫决斗"
+            ],
+            "values": [
+              "主君安娜塔西娅",
+              "骑士职责",
+              "保护秩序与生命"
+            ]
+          },
+          "capabilities": [
+            "剑术",
+            "与精灵的协作；具体术式按已明确的世界规则使用"
+          ],
+          "identity": "近卫骑士、安娜塔西娅的骑士，擅长剑术与精灵协同",
+          "personality": "守礼、自律、重视骑士职责，有判断和保护他人的动机，不是机械羞辱玩家的反派",
+          "private_direction": "效忠对象是安娜塔西娅，不是库珥修；菲利克斯是库珥修的骑士。对骑士身份的争执因真实言行而起，可澄清或调停，不强制所有玩家挑战并惨败。合作条件满足时可以放下私人摩擦，不因剧情任务永久敌对。"
+        },
+        "库珥修・卡尔斯滕": {
+          "actor_complexity": "full",
+          "behavior_contract": {
+            "values": [
+              "责任",
+              "对等承诺",
+              "实际可执行的方案"
+            ]
+          },
+          "identity": "卡尔斯腾家当主、王选候补，菲利克斯效忠的主君",
+          "personality": "正直、果断、重视责任与实际承诺",
+          "private_direction": "会核实援助条件和利益，不会只因一句恳求放弃职责，也不会无理由重复拒绝有效筹码。白鲸讨伐及联盟按已有准备和本局信息推进，绝非知道未来。"
+        },
+        "普莉希拉・巴里耶尔": {
+          "actor_complexity": "full",
+          "appearance": "鲜明的橙色长发、华丽衣着，气势高傲",
+          "personality": "自信、傲慢、好恶鲜明，按自己的价值和兴致判断，不是温顺的任务发布者",
+          "private_direction": "原作街头苹果赌局对应她而非菲鲁特；本局过去的错接不得通过重演或改写历史修复。当前互动保持身份清晰，接受或拒绝有自身理由，不按玩家恳求自动服从，也不为了推进强制原作羞辱桥段。"
+        },
+        "罗姆爷": {
+          "actor_complexity": "full",
+          "behavior_contract": {
+            "never": [
+              "仅因受辱而抛弃菲鲁特",
+              "把刻意演戏变成毫无目的的循环求饶"
+            ],
+            "values": [
+              "菲鲁特的安全与未来"
+            ]
+          },
+          "identity": "巨人族老人，贫民街赃物库经营者，菲鲁特的家人和监护者",
+          "personality": "粗豪、重情，愿意牺牲体面保护菲鲁特",
+          "private_direction": "优先保护菲鲁特及被自己牵连的人。求饶、谩骂或撇清关系可能是保护对方的表演，不代表关系被永久切断；须结合当前已知事实说明动机。不能在殿外凭空听清殿内对话。"
+        },
+        "艾米莉娅": {
+          "actor_complexity": "full",
+          "behavior_contract": {
+            "never": [
+              "自动与玩家恋爱",
+              "为复制原作强制决裂"
+            ],
+            "values": [
+              "公平",
+              "保护他人",
+              "自己的意愿"
+            ]
+          },
+          "identity": "罗兹瓦尔支持的银发半精灵王选候补，不是罗兹瓦尔宅邸所有者",
+          "personality": "温柔、认真、有自己的原则，面对偏见会紧张但仍能坦然表达愿望",
+          "private_direction": "尊重同伴，也要求自己的意愿被尊重；有能力解释、拒绝和保护，而不是只等玩家替她做主。关系变化依据本局行为，不把昴的恋爱和争吵经历强加给玩家。对公平与他人的安全有真实关切。"
+        },
+        "莱因哈鲁特": {
+          "actor_complexity": "full",
+          "appearance": "红发青年，骑士装束",
+          "identity": "阿斯特雷亚家族的剑圣、近卫骑士，与菲鲁特的主从关系以本局已经建立的事实为准",
+          "limitations": [
+            "不知道没有传达给自己的事件",
+            "不能凭空把本局关系升级为既成主从",
+            "不可为了演示力量消除所有玩家选择"
+          ],
+          "personality": "谦逊、礼貌、正直，重视守护与责任，不以强大为恃欺压弱者",
+          "private_direction": "重视菲鲁特的自主意愿与安全。能在职责允许范围内主动保护、解释、调停，不是任由重要之人遭无意义羞辱的背景板。能力强不代表全知，也不能无视当前位置自动出现在王城。"
+        },
+        "菲鲁特": {
+          "actor_complexity": "full",
+          "appearance": "金发红瞳。不是与昴进行苹果赌局的橙发普莉希拉；本局已发生的赌局不撤销，但不能据此改变她的身份。",
+          "behavior_contract": {
+            "change_requires": "具体处境、可行保护办法与自主判断",
+            "never": [
+              "把求饶自动当作背叛",
+              "为等玩家猜台词而无限沉默"
+            ],
+            "values": [
+              "不抛弃家人",
+              "不愿受人支配"
+            ]
+          },
+          "identity": "贫民街出身、持有王选资格的少女；罗姆爷视若家人的孩子",
+          "limitations": [
+            "不具备王宫政治的全知视角",
+            "莱因哈鲁特的支持不是任意调动所有骑士的权限"
+          ],
+          "personality": "直率、倔强、反感贵族的压迫与虚伪，珍惜家人和贫民街的联系",
+          "private_direction": "保护罗姆爷和自主选择比面子重要。能看穿熟悉家人的逞强和笨拙表演，不因他一时求饶就真心抛弃他。她会主动追问、提出条件、采取保护行动，而不是无理由反复沉默。参选与否由本局处境和她的价值选择决定，不由原作结局直接指定。"
+        }
+      },
+      "enabled": true,
+      "interaction": {
+        "evidence_ids": [
+          "gm:royal_hall_review_226"
+        ],
+        "location_map": {
+          "王城偏廊左侧石阶下段尽头矮木门外（双手反绑，左脚踝扭伤）": {
+            "evidence_id": "gm:royal_hall_review_226",
+            "scene_id": "castle_side_stairs",
+            "zone_id": "lower_door"
+          },
+          "王座之间内左侧立柱旁（五条悟、拉姆并排，随员位）": {
+            "evidence_id": "gm:royal_hall_review_226",
+            "scene_id": "royal_throne_hall",
+            "zone_id": "left_column"
+          },
+          "王座之间内左侧立柱旁（艾米莉娅随员位，与拉姆并排）": {
+            "evidence_id": "gm:royal_hall_review_226",
+            "scene_id": "royal_throne_hall",
+            "zone_id": "left_column"
+          },
+          "王座之间内左侧（候补者等候区）": {
+            "evidence_id": "gm:royal_hall_review_226",
+            "scene_id": "royal_throne_hall",
+            "zone_id": "candidate_area"
+          },
+          "王座之间内殿中央偏右（被卫兵押住处）": {
+            "evidence_id": "gm:royal_hall_review_226",
+            "scene_id": "royal_throne_hall",
+            "zone_id": "center_right"
+          },
+          "王座之间内红地毯外侧（柏辰、短线擒龙大王并排，骑士团线外）": {
+            "evidence_id": "gm:royal_hall_review_226",
+            "scene_id": "royal_throne_hall",
+            "zone_id": "carpet_edge"
+          },
+          "王座之间内红地毯边缘（候补者队列侧后方，被骑士团拦下处）": {
+            "evidence_id": "gm:royal_hall_review_226",
+            "scene_id": "royal_throne_hall",
+            "zone_id": "carpet_edge"
+          },
+          "王座之间殿外廊下（被卫兵押住处，额头磕破）": {
+            "evidence_id": "gm:royal_hall_review_226",
+            "scene_id": "throne_outer_corridor",
+            "zone_id": "door"
+          }
+        },
+        "relations": [],
+        "scenes": {
+          "castle_side_stairs": {
+            "display_name": "王城偏廊石阶",
+            "public_hearing": true
+          },
+          "royal_throne_hall": {
+            "display_name": "王座之间内殿",
+            "public_hearing": true,
+            "whisper_same_zone": false
+          },
+          "throne_outer_corridor": {
+            "display_name": "殿外廊下",
+            "public_hearing": true
+          }
+        }
+      },
+      "version": 1
+    },
+    "npc_policy": {
+      "auto_npc_keys": "npc_*"
+    },
+    "opening_choices": [
+      {
+        "collective": false,
+        "key": "A",
+        "requires_check": false,
+        "risk": "safe",
+        "text": "先去村子广场，带孩子们做完那场广播体操，把芋印一枚枚盖好"
+      },
+      {
+        "collective": false,
+        "key": "B",
+        "requires_check": false,
+        "risk": "safe",
+        "text": "在宅邸里找到同行的人，把出发前该确认的装束、行装与随行安排当面对一遍"
+      },
+      {
+        "collective": false,
+        "key": "C",
+        "requires_check": false,
+        "risk": "safe",
+        "text": "绕到正门前去看一眼——听说今天有东西停在那儿"
+      },
+      {
+        "collective": true,
+        "key": "D",
+        "requires_check": true,
+        "risk": "dangerous",
+        "text": "带全队一起走村路，把孩子们、艾米莉娅、正门那件事按顺序一并处理"
+      }
+    ],
+    "player_limits": {
+      "maximum": 5,
+      "minimum_start": 1,
+      "recommended_max": 5,
+      "recommended_min": 3
+    },
+    "progress": {
+      "chapter": "『安稳的早上与出发的准备』",
+      "chapters": [
+        {
+          "current_objective": "在出发前往王都之前，把罗兹瓦尔邸周围的安稳日常走到终点——确认队伍仍被村子里的人和艾米莉娅接纳，并在正门前确认那辆由地龙牵引的龙车就是启程的乘具。",
+          "exits_when": {
+            "all_milestones": [
+              "m_01_01_chapter",
+              "m_01_02_chapter",
+              "m_01_03_chapter",
+              "m_01_04_chapter"
+            ]
+          },
+          "hook_pool": [
+            "早晨广播体操与芋印约定——明日是否还要回村子的时间钩子",
+            "mayonnaise在村中传播带来的名声（『智慧的大』而非英雄）",
+            "帕克与艾米莉娅之间的精灵誓约，限制了与她独处的时间",
+            "正门前那辆地龙车的目的地与乘客——留待下一章的出发接口"
+          ],
+          "id": "ch_01_chapter",
+          "key_npcs": [
+            {
+              "ref": "npc_ram",
+              "role": "在宅邸内维持日常运转的立场，作为玩家小队尚不能参加晨间作业的背景存在，不亲赴村中"
+            }
+          ],
+          "max_turns": 10,
+          "milestones": [
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "不会，低头的呐",
+                    "赌上全部也没法填补的差距",
+                    "不管几次，无论几次，都要继续"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_01_01_chapter",
+              "label": "确认败北的既成事实与绝不低头的姿态：玩家小队以任何可核验的方式（回想、同行者转述、伤情残留或练习场留下的痕迹）承认那次对峙实力差距不可填补，但立场没有被撤回"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "Victory",
+                    "芋印",
+                    "月曜日的パック",
+                    "明天广播体操"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_01_02_chapter",
+              "label": "完成一段可核验的村中恢复日常：玩家小队在村中做完一场广播体操并为孩子们盖上芋印，至少一个孩子当面报出所盖图案或索要明日约定"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "但是我，是那样认可的",
+                    "昴的努力，我可是非常清楚的",
+                    "不可以消沉"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_01_03_chapter",
+              "label": "在归途上取得艾米莉娅的当面认可：玩家小队至少一人听到她亲口说出『努力的事情，我可是非常清楚的』一类认可，并确认这份日常仍会继续"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "停着龙车",
+                    "由地龙牵引车体",
+                    "龙车的正门前"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_01_04_chapter",
+              "label": "在罗兹瓦尔邸正门前发现并确认龙车：玩家小队亲眼看到那辆由地龙牵引的乘具，并由队员或艾米莉娅任一方确认它是通向王都的出发乘具——安稳日常到此结束，下一章才真正登车出发"
+            }
+          ],
+          "min_turns": 2,
+          "narrative_length_band": "standard",
+          "next_chapter_id": "ch_02_chapter",
+          "pacing_directive": "本章是出发前的最后一段安稳日常，节奏宜慢、宜暖。开篇以一段回想或同伴转述确认演练场那次败北的既成事实，不重演战斗。若玩家小队在村中多做停留——继续盖芋印、与孩子约定明日的广播体操、沿村路慢行——则日常温情加深，艾米莉娅的认可更明确，但正门前龙车的出现相对推迟；若玩家小队直接结束晨间返回宅邸，则村中互动留白，龙车更早进入视野，随行人员对出发的紧迫感更重。宅邸与村庄之间的往返不设强制遭遇，是否路遇追兵由此前章节结果决定。无论如何，本章的终点是：玩家小队亲眼看到那辆由地龙牵引的龙车，并确认它是通向王都的乘具——安稳日常到此结束，登车留待下一章。",
+          "subtitle": "出发前最后一日的广播体操、芋印与门前那辆地龙车",
+          "title": "『安稳的早上与出发的准备』"
+        },
+        {
+          "current_objective": "完成从罗兹瓦尔邸到王都的移动并履行旧约，在街头遭遇中带着与莱因哈鲁特或菲鲁特一方相关的联络线索离开",
+          "exits_when": {
+            "all_milestones": [
+              "m_02_01_chapter",
+              "m_02_02_chapter",
+              "m_02_03_chapter"
+            ]
+          },
+          "hook_pool": [
+            "水果店店主卡德蒙的市价看板与『多怀疑别人』忠告",
+            "袋子里的第十一个苹果",
+            "小巷中被拖走者及其同行者的去向",
+            "贵族街前已成瓦砾的卫兵值班所"
+          ],
+          "id": "ch_02_chapter",
+          "key_npcs": [
+            {
+              "ref": "npc_ram",
+              "role": "留守者：在出发时以模范女仆之礼送行，并把雷姆托付给玩家小队"
+            }
+          ],
+          "max_turns": 14,
+          "milestones": [
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "避风",
+                    "加护",
+                    "保险索",
+                    "龙车"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_02_01_chapter",
+              "label": "玩家小队完成从罗兹瓦尔邸到王都的移动，全队生还抵达王都：途中若发生避风加护失效的意外，须由保险索与同伴救援（雷姆的铁球、车体抓握、或任意等价手段）化解并全员存活；若未触发出界，则以平稳抵达结算"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "苹果",
+                    "约定的苹果",
+                    "银币",
+                    "铜币",
+                    "市价看板"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_02_02_chapter",
+              "label": "玩家小队在王都商业街完成对卡德蒙水果店的旧约履行，取走约定的苹果（含多出的一个）并付足货款，至少取得一条关于市价看板或『多怀疑别人』的商人忠告"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "值班所",
+                    "卫兵",
+                    "联络",
+                    "莱因哈鲁特",
+                    "菲鲁特"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_02_03_chapter",
+              "label": "玩家小队在贵族街前的卫兵值班所一带目击并确认小巷中的拖拽现场，至少掌握一条可用的联络线索（被拖走者的衣着或声音、同行者的去向、遗留物证任一即可），并带着该线索离开现场"
+            }
+          ],
+          "min_turns": 3,
+          "narrative_length_band": "standard",
+          "next_chapter_id": "ch_03_chapter",
+          "pacing_directive": "本章承担从宅邸到王都的过渡，以『出发—途中—入城第一遭遇』三拍推进，段落间允许跳切，不在龙车行驶细节上停留过久。若玩家小队在行驶中把身体探出『避风』加护范围，则加护失效、被风卷出车外，由保险索与同伴的即时救援决定是否生还；若未探出，行程平稳。王都街头的旧约履行不宜拖成谈价拉锯，一次交涉即应推进到可取果离开。小巷拖拽现场是全章关键：若玩家小队暴露或介入，持有联络线索的一方可能被惊动或阻断；若只记录特征不介入，线索以旁证形式保留。无论路径，『取得一条可用的联络线索并带离现场』是硬性推进条件。",
+          "subtitle": "避风加护下的意外、旧约兑现的苹果、以及街上被拖走的少女",
+          "title": "『通往王都的旅途』"
+        },
+        {
+          "current_objective": "玩家小队在贫民街完成与橙色少女的赌局并脱出追兵，借罗姆爷的掩护取得入城与联络线索，随后潜入王城摸清王选候补者与贤人会的运作机制，全程不被当场扣留。",
+          "exits_when": {
+            "all_milestones": [
+              "m_03_01_chapter",
+              "m_03_02_chapter",
+              "m_03_03_chapter"
+            ]
+          },
+          "hook_pool": [
+            "橙色少女对自身命运的绝对确信与赌局中暴露的一丝动摇",
+            "罗姆爷与菲鲁特之间的托付关系及其背后的盗品库崩溃",
+            "桶庆康三人组因莱因哈鲁特名号而积累的怨恨",
+            "阿尔与傲慢少女一方的立场与后续可接触渠道"
+          ],
+          "id": "ch_03_chapter",
+          "key_npcs": [],
+          "max_turns": 12,
+          "milestones": [
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "七连胜",
+                    "苹果，只剩下三个了",
+                    "最后的胜负"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_03_01_chapter",
+              "label": "玩家小队与橙色少女的赌局在巷中完成并分出结果：少女的每一个赌约都被逐一结算，最终苹果的归属被明确（可由玩家小队的胜负组合、少女主动认输、或赌局被追兵打断的任何一种收场达成，人数要求：至少一人亲历赌局全程并确认结算结果）"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "罗姆爷",
+                    "救助大爷",
+                    "克罗梅鲁"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_03_02_chapter",
+              "label": "玩家小队在追兵封巷前被罗姆爷以巨躯掩护藏入废材堆，躲过盘问；随后双方在宽阔处正式再会，罗姆爷向玩家小队开放后续联络渠道，并留下与菲鲁特下落相关的托付"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "王城",
+                    "贤人会",
+                    "候补者"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_03_03_chapter",
+              "label": "玩家小队完成潜入王城的行动并取得王选相关情报：进入王城内部、摸清王选候补者与贤人会的运作机制，或至少带出足以判断各候补者立场的物证与见闻，且未被当场扣留"
+            }
+          ],
+          "min_turns": 3,
+          "narrative_length_band": "standard",
+          "next_chapter_id": "ch_04_chapter",
+          "pacing_directive": "本章节奏应紧凑：赌局、掩护、潜入三段连成一气，段落切换干脆，不设长时间静场。若玩家小队在赌局中持续拖延或回避，少女的胜负欲与追兵规模随之上升，追兵更早封住巷口；若在罗姆爷掩护下保持安静，追兵的盘问将停留在罗姆爷与菲鲁特的话题上并自行散去；若主动询问少女身份或罗姆爷关于菲鲁特下落，则获得加强钩子但暴露踪迹的风险同步上升。潜入王城的路径由玩家小队选定的门路决定，守卫密度与暴露风险随所选路径浮动，任何路径都不设必被扣留的结局。",
+          "subtitle": "从橙色少女的赌局到罗姆爷的掩护，再到潜入王城摸清王选机制",
+          "title": "『贫民街的汇合与潜入王城』"
+        },
+        {
+          "current_objective": "在王座之间完成对四名候补者、贤人会与近卫骑士三方立场的在场确认，并取得艾米莉娅坦然报出自己名字、不逊于其他候补者的关键信号，全程不被当场扣留或逐出。",
+          "exits_when": {
+            "all_milestones": [
+              "m_04_01_chapter",
+              "m_04_02_chapter",
+              "m_04_03_chapter"
+            ]
+          },
+          "hook_pool": [
+            "龙珠徽章各色光芒——谁的龙珠对应哪一位候补者",
+            "龙历石上『五人』之数与第五人空缺",
+            "艾米莉娅被安娜塔西娅当面恶意对待后玩家小队的立场",
+            "制服内侧鹰纹与罗兹瓦尔事先缝入的记号",
+            "贤人会与骑士团围绕王选正当性的分歧"
+          ],
+          "id": "ch_04_chapter",
+          "key_npcs": [],
+          "max_turns": 12,
+          "milestones": [
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "龙珠",
+                    "徽章",
+                    "贤人会",
+                    "候补者"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_04_01_chapter",
+              "label": "玩家小队完成入城并抵达王座之间，取得足以判断四名候补者立场的见闻或物证且未被当场扣留——可由搭乘普莉希拉龙车的通行、罗姆爷一线的联络或自行摸索缝隙任一路径达成，人数要求：至少一人掌握候补者情报并带出王座之间"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "卡拉拉基",
+                    "时间就是金钱",
+                    "酒宴",
+                    "王选"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_04_02_chapter",
+              "label": "王选正式开幕，四名候补者在贤人会前完成所信表明——普莉希拉的傲慢演说、安娜塔西娅的欲望宣言、库珥修的饮酒会误会与更正依次落地，玩家小队在场确认三人立场并携带各自的可再接触线索离场"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "艾米莉娅",
+                    "红色",
+                    "所信表明"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_04_03_chapter",
+              "label": "艾米莉娅坦然报出自己的名字、不逊于其他候补者这一关键信号被玩家小队当场接收——她自报家门并与其他候补者当堂并列，玩家小队完成作为其一方的在场亮相，无论此前是否被骑士团或列席者孤立"
+            }
+          ],
+          "min_turns": 1,
+          "narrative_length_band": "standard",
+          "next_chapter_id": "ch_05_chapter",
+          "pacing_directive": "本章是从入城到王选开幕的短促过渡，节奏宜快：入城篇幅压到一两个场景，重心放在王座之间。若玩家小队以龙车通行、罗姆爷一线或自行摸索的任一路径进入王座之间且未暴露，则候补者依次完成所信表明、艾米莉娅自报家门成立；若在普莉希拉的傲慢演说或安娜塔西娅的欲望宣言中当场介入并被点名，则由马科斯或阿尔一方的折冲决定是不被追究还是被逐出，逐出会中断本次在场确认但保留带出的见闻线索。本章不展开骑士资格质询与决斗，那属于下一章。",
+          "subtitle": "贤人会前四人亮出龙珠，各自把成为王的理由摔在同一张桌上",
+          "title": "『王选开幕与所信表明』"
+        },
+        {
+          "current_objective": "承接已发生的王选争执与玩家争取到的处理结果，让菲鲁特对参选和保护罗姆爷作出明确选择，处理在场冲突并结束王选会议，交代各地队员后续联系与去向。",
+          "exits_when": {
+            "all_milestones": [
+              "m_05_01_chapter",
+              "m_05_02_rom_result",
+              "m_05_03_selection_closed"
+            ]
+          },
+          "hook_pool": [
+            "菲鲁特看穿罗姆爷的表演，主动保护家人",
+            "莱因哈鲁特服从菲鲁特的选择",
+            "会后短暂安置与既有同伴联络，不新增调查任务"
+          ],
+          "id": "ch_05_chapter",
+          "max_turns": 10,
+          "milestones": [
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "自称骑士",
+                    "随员",
+                    "资格",
+                    "立场"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_05_01_chapter",
+              "label": "玩家在王选会场的身份与立场已公开，并已得到骑士团或贤人会的明确回应；已发生的自称骑士、随员发言及处理结果直接计入，不要求重新受审、逐条回答忠诚力量觉悟、认错或惨败。"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "医官",
+                    "处置",
+                    "释放",
+                    "保护"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_05_02_rom_result",
+              "label": "罗姆爷的受伤与拘押已经得到有权执行者明确、实际生效的处理：治疗或保护措施已落实，拘押/释放决定已明确，不再以同一问案重复拖延。已发生的玩家交涉成果直接计入，不要求重新让罗姆爷被捕或重新受辱。"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "参选",
+                    "拒选",
+                    "散场",
+                    "休会"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_05_03_selection_closed",
+              "label": "菲鲁特作出明确的王选选择并落实对罗姆爷的保护安排，王选本次会议实际散场，玩家与艾米莉娅一方的会后联系或落脚去向已交代。参选、有效营救后的自主参选、或真实分歧造成的明确拒选均接受；不要求全员在同一地点、固定台词、决斗惨败或恋爱决裂。"
+            }
+          ],
+          "min_turns": 1,
+          "narrative_length_band": "standard",
+          "next_chapter_id": "ch_06_chapter",
+          "pacing_directive": "承接当前记录，不从王选开幕重演。罗姆爷的求饶与骂人是保护亲近之人的笨拙表演，不代表他真心断绝关系。菲鲁特能看穿熟悉的家人，不肯抛下他；马科斯此前以她拒绝候补资格为由不接受放人命令，促成她主动参选、以候补身份要求释放罗姆爷，莱因哈鲁特依她意愿提供保护。这条动机必须在可见的动作和一段简短对话中落地，不再只写绷脸沉默。玩家已经争取到的撤销记档、医官治疗等结果继续有效，不再次登记处罚。若玩家已用别的有效方法救出罗姆爷，不重新抓人制造动机；由菲鲁特对贫民街和家人的责任说明她自己的选择。真实行动导致她最终拒选时同样明确结算，不拿必须参选卡关。殿中处理一有结果即安排休会/散场，不再增加新一轮批准。尤里乌斯相关冲突仅承接玩家实际言行；可澄清、道歉、协商或接受真实决斗，不能无论说什么都强制惨败、失去艾米莉娅信任。她与玩家的关系按本局事实处理，不强制恋爱争吵。场外/后厨队员仍在原处，提供已知侍从、随员联络或正常出口作为回到主线的机会，不自动解缚或瞬移；散场不要求所有人重复办理手续。转场交代会后的落脚处、雷姆/菲利斯等现有联系，为梅瑟斯领的危险消息抵达提供渠道；危险消息尚未到来时不要提前宣告灾难。",
+          "source_refs": [
+            "chapter030/20.md",
+            "chapter030/21.md",
+            "chapter030/22.md",
+            "chapter030/23.md",
+            "chapter030/24.md",
+            "chapter030/25.md"
+          ],
+          "subtitle": "守住家人，而非反复审问",
+          "title": "王选散场"
+        },
+        {
+          "current_objective": "获知梅瑟斯领面临魔女教威胁及利冯斯街道的白鲸风险，向同伴发出保护和疏散预警，与库珥修及商队力量达成可执行的共同行动安排。",
+          "exits_when": {
+            "all_milestones": [
+              "m_06_01_threat_known",
+              "m_06_02_warning_sent",
+              "m_06_03_alliance_ready"
+            ]
+          },
+          "hook_pool": [
+            "雷姆联系拉姆，领地风险需要预警而非预设死亡",
+            "威尔海姆对白鲸的执念与库珥修的既有备战",
+            "安娜塔西娅阵营的运输和商路利益"
+          ],
+          "id": "ch_06_chapter",
+          "max_turns": 14,
+          "milestones": [
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "魔女教",
+                    "拉姆",
+                    "白鲸",
+                    "商路"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_06_01_threat_known",
+              "label": "有来源的观察或联络已使玩家获知梅瑟斯领的魔女教风险及归途白鲸威胁，能够判断救援对象与大致行动方向；仅听到空泛不祥预感不算，不能要求先出现村民死亡。"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "预警",
+                    "疏散",
+                    "接应",
+                    "保护"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_06_02_warning_sent",
+              "label": "保护领地居民与艾米莉娅的预警或救援措施已实际发出/执行，并明确接应对象与路线；可经可靠联络者、派出队员或直接到场落实，不要求所有人往返或先惨败。"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "共斗",
+                    "援军",
+                    "出发",
+                    "同盟"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_06_03_alliance_ready",
+              "label": "对白鲸威胁的处置及后续驰援已有可执行安排：可用战力、运输/撤离路线和各方承诺明确，已开始行动。允许等价的真实合作结果，不要求指定谈判台词、全员起誓或所有阵营到齐。"
+            }
+          ],
+          "min_turns": 1,
+          "narrative_length_band": "standard",
+          "next_chapter_id": "ch_07_chapter",
+          "pacing_directive": "从会后的落脚或联络场景开始，以雷姆与拉姆的联系异常、既有人员传回的可核实危险消息衔接救援动机；这是移除死亡回归后必要的情报来源改编，不新增送信人支线、解谜任务或凭空证明全村已死。库珥修已有白鲸讨伐准备，威尔海姆有长期追猎经验，安娜塔西娅方有商路与运输资源。消息有盲点，不能让雷姆凭感应知道敌人所有部署。允许玩家直接发出预警、回领地保护居民或先争取援军；若分工则按各地实际行动分别推进。联合的因果是白鲸阻碍归途，解除商路威胁符合各方利益，同时取得讨伐后驰援领地的承诺。将原作靠轮回获得的白鲸位置情报改为讨伐方斥候/商路观测逐步锁定，不赋予玩家未获得的精确时间知识；观察确认并入备战，不另设调查副本。援助协商用一场有实质条件的会谈推进，筹码必须来自本局有权承诺的资源，不默认普通玩家能擅自出让罗兹瓦尔领地矿权。谈判失败可以改变援助规模、成本或路线，不能强制与所有候补谈崩后再去看尸体。无需到访每家候补、誓言逐人确认或逐匹挑地龙。结束时交代谁去哪里、何时出发、白鲸为何必须处理；下一章从已经成形的行动开始，不重复集结审批。",
+          "source_refs": [
+            "chapter030/29.md",
+            "chapter030/30.md",
+            "chapter030/53.md",
+            "chapter030/54.md",
+            "chapter030/55.md",
+            "chapter030/56.md"
+          ],
+          "subtitle": "把归乡的危机变成可行动的救援",
+          "title": "同盟的筹码"
+        },
+        {
+          "current_objective": "在利冯斯街道迎战白鲸，识破雾与分身造成的战场混乱，取得明确的讨伐结果并让救援力量真正向梅瑟斯领出发。",
+          "exits_when": {
+            "all_milestones": [
+              "m_07_01_contact",
+              "m_07_02_battle_result",
+              "m_07_03_relief_departed"
+            ]
+          },
+          "hook_pool": [
+            "雾遮断队形，观察与传讯影响救援",
+            "高处本体与分身的异常可被识破",
+            "威尔海姆的宿愿与战后驰援承诺"
+          ],
+          "id": "ch_07_chapter",
+          "max_turns": 18,
+          "milestones": [
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "白鲸",
+                    "迎击",
+                    "雾",
+                    "救援"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_07_01_contact",
+              "label": "讨伐/救援队与白鲸实际接战或完成有证据的威胁接触，已落实队员任务与保护运输的行动；集结口号不算，不要求全员身处战场中心。"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "本体",
+                    "倒下",
+                    "讨伐",
+                    "撤退"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_07_02_battle_result",
+              "label": "白鲸战役得到明确结果：本体被击杀、雾的即时威胁解除；或真实战败/撤退已经结算且有明确存亡与威胁记录。观察分身、登车或仅暂时避开一击不能冒充讨伐完成，不强制全员生还。"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "驰援",
+                    "梅瑟斯领",
+                    "接应",
+                    "出发"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_07_03_relief_departed",
+              "label": "战后伤亡及可用战力已确认，救援力量已通过打通的道路或可行替代路线向梅瑟斯领出发，联络/接应安排落实；不能只停在准备下一次开拔。"
+            }
+          ],
+          "min_turns": 1,
+          "narrative_length_band": "standard",
+          "next_chapter_id": "ch_08_chapter",
+          "pacing_directive": "承接上一章已经执行的安排，简短交代移动与抵达，不再次选坐骑、登记、起誓。战场以原作白鲸攻略战为骨架：弗琉盖尔大树附近的迎击、威尔海姆近战、雾造成的失联与记忆异常、三体分身与高处本体、协同攻击扭转战局。信息必须由战场观察和同伴传达，不让玩家生来知道谜底。普通玩家可以观测报点、护卫运输、救助伤员、诱导和组织协作，不要求肉身承受白鲸。不要照搬失败轮回中雷姆离车后被抹去的固定结果，也不要把守住龙车逃离当作已经杀死白鲸。战斗每段必须改变局势或资源，不让白鲸反复以相同追击重置距离；代价按结算，不强制关键同伴全活，也不强制死亡。识破本体后可用倒树、集中火力或等价战术解决，不强制复制昴独有能力。战后威尔海姆的感情和伤员处置用一段有分量的场景交代，随即兑现驰援承诺。若真实选择导致讨伐失败/撤退，应明确威胁仍在、代价和可用救援路线，接受已结算的失败分支继续营救，不无限重打，也不伪称胜利。",
+          "source_refs": [
+            "chapter030/57.md",
+            "chapter030/58.md",
+            "chapter030/59.md",
+            "chapter030/60.md",
+            "chapter030/61.md",
+            "chapter030/62.md"
+          ],
+          "subtitle": "打通通往领地的道路",
+          "title": "白鲸之夜"
+        },
+        {
+          "current_objective": "在梅瑟斯领保护居民与艾米莉娅，处理怠惰及其手指的持续威胁，完成撤离追击中的救援与爆炸风险处置，以本次事件结束后的安稳时刻收束。",
+          "exits_when": {
+            "all_milestones": [
+              "m_08_01_evacuation",
+              "m_08_02_sloth_resolved",
+              "m_08_03_rescue_resolved"
+            ]
+          },
+          "hook_pool": [
+            "已发出的预警改变疏散条件",
+            "一次斩首后异常仍在，揭示替身风险",
+            "尤里乌斯与精灵的协同窗口",
+            "撤离车辆的火魔石风险可以提前消除"
+          ],
+          "id": "ch_08_chapter",
+          "max_turns": 20,
+          "milestones": [
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "疏散",
+                    "护送",
+                    "居民",
+                    "保护点"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_08_01_evacuation",
+              "label": "领地居民与艾米莉娅的保护/疏散已实际展开并取得明确去向，至少主要避难群体已抵达保护点或由有效护送接管；先前预警或提前营救的成果计入，不要求先发生屠村。"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "怠惰",
+                    "手指",
+                    "附身",
+                    "解除",
+                    "撤离"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_08_02_sloth_resolved",
+              "label": "怠惰及已发现手指/附身链的即时威胁已经实际解除，有足够战场确认而非仅一次躯体斩首；或不可逆失败已结算、幸存者撤离与损失明确，允许失败结局，不强制全员存活或特定击杀方式。"
+            },
+            {
+              "evidence_required": [
+                {
+                  "match": [
+                    "火魔石",
+                    "救援",
+                    "安置",
+                    "安全",
+                    "危机解除"
+                  ],
+                  "type": "clue_keyword_any"
+                }
+              ],
+              "id": "m_08_03_rescue_resolved",
+              "label": "撤离队伍的追击与火魔石爆炸风险已经处理、有效预防或明确结算后果，主要救援对象和幸存者安置结果清楚，不再存在本次事件的即时危机。此结果完成即交给系统整体结尾叙事，不要求先读完结尾才能触发，不追加个人结局或新任务。"
+            }
+          ],
+          "min_turns": 1,
+          "narrative_length_band": "standard",
+          "pacing_directive": "到达领地前交代上章援军行程和先前预警的实际效果；及时预警必须改变居民处境，不能重置为全村尸体。以原作魔女教讨伐、怠惰替身/附身、尤里乌斯协同、撤离龙车追击与火魔石救援为核心，不增加另一个阴谋。保护/疏散与剿除据点可并行，各地人物只知道收到的情报。手指与附身危险由俘虏的有限供述、现场变化或精灵术者观察逐步暴露；一次斩首不能直接宣布总威胁结束。玩家无死亡回归，也不自动拥有魔女气味、看见不可视之手或以魔女排斥附身的能力；可依赖尤里乌斯与精灵协作、战场痕迹、队友示警，先揭示风险，再提供真正可选的防范或中断窗口，不预设必被附身/必死。相关临时协作不能被写成强制与碧翠丝缔结原作后篇正式契约。怠惰本体与替身的连续威胁得到处理后，及时核实撤离车辆与火魔石风险；若提前识破并移除，直接承认预防成功，不凭空补第二车炸药强迫追逐。若威胁实际发生，则按距离、援手和行动结算救援，不等全员轮流表态才让车走。最后交代居民与关键人物的真实去向、玩家已付出的代价、与艾米莉娅一方的关系变化；不要求表白、个人长篇后日谈、查遍每个仓库或下一次出征誓言。三个结果落实后立即进入现有整体收尾模板，结束于原作83—84节对应的危机后安稳时刻；不接暴食袭击或下一篇。不把策划中的胜利、疏散、消除炸药提前写成事实。",
+          "source_refs": [
+            "chapter030/63.md",
+            "chapter030/64.md",
+            "chapter030/67.md",
+            "chapter030/68.md",
+            "chapter030/73.md",
+            "chapter030/77.md",
+            "chapter030/78.md",
+            "chapter030/79.md",
+            "chapter030/80.md",
+            "chapter030/81.md",
+            "chapter030/82.md",
+            "chapter030/83.md",
+            "chapter030/84.md"
+          ],
+          "subtitle": "结束怠惰威胁，让救援有一个真正的结果",
+          "title": "迎来天明"
+        }
+      ],
+      "completed_milestones": 0,
+      "current_chapter_id": "ch_01_chapter",
+      "current_objective": "在出发前往王都之前，把罗兹瓦尔邸周围的安稳日常走到终点——确认队伍仍被村子里的人和艾米莉娅接纳，并在正门前确认那辆由地龙牵引的龙车就是启程的乘具。",
+      "design_note": "本局续篇校订：前四章历史保留；第五至八章按无死亡回归单线因果重写。8章25里程碑，最后结果触发现有整体收尾。",
+      "total_milestones": 25
+    },
+    "resolution": {
+      "default_difficulty": "controlled",
+      "dice_system": "d20",
+      "difficulty_max": 19,
+      "difficulty_min": 9,
+      "difficulty_policy": {
+        "controlled": 9,
+        "dangerous": 13,
+        "desperate": 17,
+        "lethal": 19
+      },
+      "mode": "attribute"
+    },
+    "safety": {
+      "collective_harm_requires_vote": false,
+      "lethal_risk_must_be_disclosed": true
+    },
+    "strict_choices": true
+  },
+  "slug": "re0-ch-chapter030",
+  "system_prompt": "你在一部以『从零开始的异世界生活』王选篇为底本的互动叙事中，跟随玩家小队的所见所闻。\n\n能力边界——『死亡回归』在本世界不成立。每一次战斗、失败与失去都只发生一次，不回溯、不读档、不以另一条时间线覆盖：人死不能复生，伤口按伤势恢复，代价按付出结算。\n\n规则运作——精灵、鬼族、地龙、加护、魔法与精灵术士的誓约均按原作规则运作且均有限制：魔力耗尽即无法施法，加护有范围与条件，精灵无法长时间离开契约者。玩家小队为普通人级别的体能与反应，除已明确获得的装备、同伴或加护协助外，不凭空获得超越自身的能力。\n\n叙事语气——克制的第三人称近景。日常段落允许温情与轻快，冲突段落不回避血腥与残酷，但不作无意义的猎奇描写。NPC 有各自的立场与底线，不会因一句话改变根本态度；他们记得玩家小队做过什么，也记得没做什么。\n\n行动原则——每个决定真实生效且不可撤回。达成目标需要具体行动：想去王都必须登上龙车，想取得情报必须到场，想救人必须抵达现场。拿不出可核验证据的成果，一律视为尚未达成。\n\n【王选篇后半程校订】从第五章起以本次校订章节为准。前四章和已经结算的行动是本局历史，不重演、不抹除、不为了贴原作而撤销成果。忠于原作人物动机与主要冲突，不忠于昴的固定台词、恋爱选择或失败方式。不要新增失踪案、秘密组织、审批手续、收集物证等独立必经支线；此前支线仅在玩家主动追问时简短交代现有结果，不再扩张。每次跨场景交代前一结果、下一行动的动机、信息由谁传来，以及实际参与者的移动；不同地点玩家不可被旁白自动传送或共享见闻。NPC在动机和条件满足时自主作决定，不等待玩家猜台词，不用沉默、记档、容后再议反复拖延。未发生的节点不能作为已知事实。普通伤势和负面状态可用适当治疗解除，不凭空设置不可治愈锁。无死亡回归，禁止把失败轮回的尸体、帕克灭世、囚禁脱出拼成必经路线；死亡遵守实际结算，不能复活。轮回情报只以现有角色的观察、斥候报告、交战中发现等最少必要改编传递，标明来源和不确定性，不凭空知道精确预言。白鲸、怠惰、附身与爆炸风险均须预警且有应对窗口，不系统杀。玩家成功预防灾难算达成相同结果，不强制重演原作损失。里程碑按已发生的结果判断，不按特定台词或关键词碰撞；不为了轮流发言、补手续或凑回合延长章节。最终危险解除后使用系统现有收尾流程完成一次整体结尾，不逐人索要结局，不开启下一篇。",
+  "world_content_version": "1.0.0",
+  "world_schema_version": 5
+}

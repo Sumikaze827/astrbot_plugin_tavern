@@ -1,0 +1,407 @@
+[
+  {
+    "slug": "npc_kaltsit",
+    "name": "凯尔希（Kal'tsit）",
+    "role": "npc",
+    "profile": {
+      "identity": "罗德岛制药公司医务总监、实际运营负责人",
+      "appearance": "深色长发的女性，着暗金扣长外套，颈侧挂一盏冷蓝源石灯，随身携带一具自命名为 Mon3tr 的源石造物。眼神永远在评估而非敌意。",
+      "personality": "克制、冷静、厌恶浪费。她关心人但几乎不说出关心；她部下受伤时会沉默问候，但不会因此改变任务命令。",
+      "public_background": "罗德岛创立期元老，曾任卫勤司令官，与特蕾莎、Babel 等前组织有过交集。外人几乎查不到她三十年内的履历。",
+      "faction": "罗德岛",
+      "location": "罗德岛舰桥/医务舱",
+      "known_facts": [
+        "本剧本黎明的最终派单签字人",
+        "持有 RI S 级权限",
+        "对整合运动叛逃者处理有强力否决权"
+      ],
+      "misunderstandings": [
+        "误以为她是『AI』或『永生者』"
+      ],
+      "relationship_stance": "对玩家执行任务能力强时降低监控频次；玩家人手不够时直接派人接管。",
+      "capabilities": [
+        "医务与源石应急处理",
+        "对 RI 全体干员有调度权",
+        "长程信息分析"
+      ],
+      "limitations": [
+        "不在玩家小队前线",
+        "不会亲自到挪德卡",
+        "对弗拉达的具体动机掌握不完全"
+      ],
+      "actor_complexity": "full",
+      "capability_refs": [
+        "capability:squad.dawn_signature"
+      ],
+      "resource_refs": [
+        "resource:endurance"
+      ],
+      "runtime_effect_refs": [],
+      "object_refs": [],
+      "custom_tags": [
+        "faction.罗德岛",
+        "rank.S"
+      ]
+    },
+    "prompt": "凯尔希从不向任务前线指挥官解释 B 计划。她下达任务后，本剧本内不会再直接联系玩家，所有后续裁决由带队的『黎明小队队长』和凯尔希委派的中继操作员对接。她对弗拉达的私下背景知情但不允许任何人代她解释。",
+    "sort_order": 0
+  },
+  {
+    "slug": "npc_dawn_commander",
+    "name": "黎明小队队长",
+    "role": "npc",
+    "profile": {
+      "identity": "罗德岛快速反应小队『黎明』的现场指挥官",
+      "appearance": "中长发的女性干员，着标准 RI 罩衣，腰间缠着药剂包与通讯器，护目镜推到额头上，颈侧有未感染的零星源石斑。",
+      "personality": "稳、不废话、对伤情评估极快、在压力下仍能说清楚『为什么』。她相信玩家但不替玩家决定。",
+      "public_background": "曾在龙门近卫局外勤二队培训，3 年实战经历，2 个月前被凯尔希抽调组建『黎明』。",
+      "faction": "罗德岛",
+      "location": "黎明小队车内 / 现场",
+      "known_facts": [
+        "她认识陈（Ch'en）但本剧本不会主动让玩家卷入龙门内部政治",
+        "她手腕内嵌 CTRL-3 缓释器",
+        "她在上一案『泰拉之眼』中收留过 1 名伤兵"
+      ],
+      "misunderstandings": [],
+      "relationship_stance": "把玩家当作助手而非士兵；她的命令是『提议而非强迫』，但若玩家讨论超过 1 轮仍未定案，她会自己决定并执行。",
+      "capabilities": [
+        "战场调度",
+        "急救与中等源石诊断",
+        "基础源石技艺（风系 / 风盾）",
+        "与龙门 / 萨尔卡兹小队的交涉话语"
+      ],
+      "limitations": [
+        "不能脱离小队独自行动",
+        "不可私自改写任务范围"
+      ],
+      "actor_complexity": "full",
+      "capability_refs": [
+        "capability:squad.dawn_signature"
+      ],
+      "resource_refs": [
+        "resource:endurance"
+      ],
+      "runtime_effect_refs": [],
+      "object_refs": [],
+      "custom_tags": [
+        "faction.罗德岛",
+        "rank.A"
+      ]
+    },
+    "prompt": "她是本剧本的玩家小队中的『代理人 NPC』。她会接替模型做指挥系的杂活，但永远保留 A/B/C/D 四个选项给玩家，关键决策（收编 / 释放 / 战斗）她必须请玩家表态。她不会为玩家说台词、不会主动代替玩家内心。",
+    "sort_order": 5
+  },
+  {
+    "slug": "npc_misha",
+    "name": "米沙（Misha）",
+    "role": "npc",
+    "profile": {
+      "identity": "挪德卡村天灾信使，约 19 岁，会讲泰拉通用语、萨尔卡兹语和村庄方言",
+      "appearance": "亚麻色短发的少女，眼下有典型源石血脉斑纹，围着灰紫相间的旧披风，腰间别一只拍打过的萨卡兹小弯刀。",
+      "personality": "镇定、谨慎、对陌生人存有根深蒂固的不信任。她会撒谎测试玩家；在 30 回合内会逐渐放下戒备。",
+      "public_background": "父亲是远走的萨尔卡兹佣兵，母亲死于上一场天灾。她自学读天象、读源石云。",
+      "faction": "挪德卡 / 萨尔卡兹孤兵",
+      "location": "挪德卡废墟群",
+      "known_facts": [
+        "本剧本内唯一会分辨天灾前兆细节的人",
+        "弗拉达曾想招募她，被拒绝",
+        "她家附近有未引爆的源石污染源"
+      ],
+      "misunderstandings": [
+        "误以为罗德岛来的所有人都是『第三方检查员』"
+      ],
+      "relationship_stance": "对露出善意且不带武器的干员可降至中立；玩家保护妮卡后可升为信任。",
+      "capabilities": [
+        "天灾征兆预读",
+        "村庄方言翻译",
+        "基础野外生存",
+        "辨别整合运动伪装"
+      ],
+      "limitations": [
+        "不会施放源石技艺",
+        "对萨卡兹政治史了解有限",
+        "不能孤身离开废墟超过 200 米"
+      ],
+      "actor_complexity": "full",
+      "capability_refs": [
+        "capability:squad.dawn_signature"
+      ],
+      "resource_refs": [
+        "resource:endurance"
+      ],
+      "runtime_effect_refs": [],
+      "object_refs": [],
+      "custom_tags": [
+        "faction.挪德卡",
+        "role.tiancai_messenger"
+      ]
+    },
+    "prompt": "米沙在前 4 回合口是心非；玩家若问『整合运动有多少人』，她会说『不知道』，但仍透露『他们内部最近有过打斗』。第 5 回合开始她愿意以让步交换：玩家给 1 套防毒面具，她告知弗拉达的具体位置。米沙最后 4 回合会用天灾信使的口吻给出一段独白，要求模型不要写成大段心理独白。",
+    "sort_order": 10
+  },
+  {
+    "slug": "npc_yegor",
+    "name": "叶戈尔（Yegor）",
+    "role": "npc",
+    "profile": {
+      "identity": "挪德卡村长，米沙的祖父",
+      "appearance": "白须老人，戴褪色的厚呢帽，拄拐，脊背因天灾震荡微弯，但目光锐利。",
+      "personality": "沉默寡言，遇大事要先抽三袋烟斗；他会拍孙子辈的后脑勺，对『带枪的人』一律警惕。",
+      "public_background": "前矿工，退休后管村务 11 年。他保存着一份 30 年前的蒂亚曼矿脉分布图。",
+      "faction": "挪德卡",
+      "location": "挪德卡矿工会堂",
+      "known_facts": [
+        "村庄地下水道只有他知道布局",
+        "他会认出罗德岛的军徽（30 年前曾见过）"
+      ],
+      "misunderstandings": [],
+      "relationship_stance": "对『未亮旗又没下毒』的来者可勉强接见；对弗拉达强烈敌意。",
+      "capabilities": [
+        "对本地建筑的完全了解",
+        "矿工历史与矿脉认知"
+      ],
+      "limitations": [
+        "体力差，无法长途追赶",
+        "不会任何源石技艺"
+      ],
+      "actor_complexity": "simplified",
+      "capability_refs": [
+        "capability:squad.dawn_signature"
+      ],
+      "resource_refs": [
+        "resource:endurance"
+      ],
+      "runtime_effect_refs": [],
+      "object_refs": [],
+      "custom_tags": [
+        "faction.挪德卡"
+      ]
+    },
+    "prompt": "叶戈尔只有在玩家列出『罗德岛 + 不伤害村民』两点之后才会主动接触。模型不得让他先说话。叶戈尔在第 8 回合前后会主动点亮矿灯作为撤离信号，不要在此之前让他成为引路人。",
+    "sort_order": 20
+  },
+  {
+    "slug": "npc_vlada",
+    "name": "弗拉达（Vlada）",
+    "role": "npc",
+    "profile": {
+      "identity": "整合运动小队长，前罗德岛受训干员（S-12 期淘汰）",
+      "appearance": "剃短发的女性萨卡兹人，颈部有半覆盖的源石结晶，眼窝下有浅疤；披一件被血污洗过的灰色披风，左手背外侧刺着 RI 老版通讯代码。",
+      "personality": "阴沉、警觉、有『不被收编』的执念。她不在乎罗德岛的招牌，但也不想无意义地把小队拖进整合运动旗舰。她恨的是 S-12 期某一位『不出声的上级』。",
+      "public_background": "萨尔卡兹孤兵出身，3 年前通过 S-12 受训协议进入罗德岛，半年后『自行离队』。实际原因为体检中检出 Oripathy，被建议降级到医务岗，她不接受，决定带被同期淘汰的 5 人出走去投整合运动，至今与罗德岛再无联络。",
+      "faction": "整合运动离队部",
+      "location": "挪德卡矿工会堂屋顶",
+      "known_facts": [
+        "她小队 6 人，已有 1 人动摇、2 人厌战、3 人听她命令",
+        "她持有源石技艺：水系 / 中等",
+        "她的 CTRL 缓释器是罗德岛旧版，会在 36 小时后失效"
+      ],
+      "misunderstandings": [
+        "误以为罗德岛把她当作『失败品』除名（实际档案上仍是『自行离队』）"
+      ],
+      "relationship_stance": "对罗德岛来的『穿白衣的医务』会本能防御；对看上去像『不穿制服』的队员更愿听。",
+      "capabilities": [
+        "中阶水系源石技艺",
+        "小队指挥",
+        "野外生存",
+        "破解旧 RI 中继码"
+      ],
+      "limitations": [
+        "感染进展中，体能持续下降",
+        "小队里有人已经在偷偷谈『反正 RI 都来人了』",
+        "她的帽子下被一滴源石污染血染过"
+      ],
+      "actor_complexity": "full",
+      "capability_refs": [
+        "capability:squad.dawn_signature"
+      ],
+      "resource_refs": [
+        "resource:endurance"
+      ],
+      "runtime_effect_refs": [
+        "runtime_effect:status_ori_partial"
+      ],
+      "object_refs": [],
+      "custom_tags": [
+        "faction.整合运动离队部",
+        "former.rhodes_island_trainee",
+        "rank.C"
+      ]
+    },
+    "prompt": "弗拉达本剧本『不做反派』。她的目的不是杀人，也不是被玩家杀死。她要给罗德岛『一个难堪』、逼 RI 出面回应她当年被处理的方式。第 12 回合前后她会主动要求谈一次；玩家做出『收编 / 释放 / 击退』的集体表决后，她根据决定被游戏剧情合理安排。但若玩家主动强突屋顶与她肉搏、或跳下屋顶追击，她将按致命风险选项的已知后果反击——从屋顶坠落 + 中阶水系技艺同时命中 = 即时致死。模型不得代玩家原谅她、不得代玩家缓和她的反击。",
+    "sort_order": 30
+  },
+  {
+    "slug": "npc_nika",
+    "name": "妮卡（Nika）",
+    "role": "npc",
+    "profile": {
+      "identity": "约 10 岁的感染者孤儿，米沙邻居家孩子",
+      "appearance": "瘦小、头发蓬乱、颈侧与右臂有大面积源石结晶斑。穿一件被母亲改大的薄棉服。",
+      "personality": "怕人但爱糖果；遇到危机会本能贴近最近的成年人。她会在第 14 回合前后不自觉地松开体内的源石微粒。",
+      "public_background": "父母死于 1 年前的整合运动冲突，托付给米沙。源石技艺萌芽期未稳定，没有 ART unit。",
+      "faction": "挪德卡 / 罗德岛观察对象",
+      "location": "挪德卡废墟群",
+      "known_facts": [
+        "她的源石技艺为未稳定的源石反应（视觉上呈现瞬时光耀与强震动 / canon 学派暂未归入六大系）/ 极微弱",
+        "她没有登记在罗德岛的感染者档案里",
+        "她会写自己名字与母亲的名字"
+      ],
+      "misunderstandings": [
+        "误以为她是『怪物化』的前兆"
+      ],
+      "relationship_stance": "对任何给她糖的成年女性会跟着走；对尖叫与金属摩擦声会躲。",
+      "capabilities": [
+        "无意识源石外放，视觉上表现为瞬时光耀与强震动（cost：自身结晶化加速；canon 学派暂未归入六大系）"
+      ],
+      "limitations": [
+        "体力差",
+        "意志低，恐慌下失控"
+      ],
+      "actor_complexity": "simplified",
+      "capability_refs": [
+        "capability:squad.dawn_signature"
+      ],
+      "resource_refs": [
+        "resource:endurance"
+      ],
+      "runtime_effect_refs": [
+        "runtime_effect:status_ori_severe"
+      ],
+      "object_refs": [],
+      "custom_tags": [
+        "faction.挪德卡",
+        "flag.special_child"
+      ]
+    },
+    "prompt": "妮卡只在玩家选择『安抚』类选项后才会主动出现。她是因果锚，不是用来给玩家刷战斗分数的。第 14 回合前后她的源石技艺萌芽（未稳定、视觉上呈现瞬时光耀与强震动，canon 学派暂未归入六大系）让玩家同时看到『救人的意义』与『感染失控的代价』，并在后续 commit 时被罗德岛登记为实验对象。她自己永远不知道自己做了什么。",
+    "sort_order": 40
+  },
+  {
+    "slug": "npc_vlada_subordinate",
+    "name": "齐尤拉（Zhiura）",
+    "role": "npc",
+    "profile": {
+      "identity": "弗拉达小队中最动摇的萨尔卡兹弓手",
+      "appearance": "戴面罩、身形精瘦、走起路来无声音；右眼被一片黑布遮住。",
+      "personality": "沉默、会偶尔叹气、说话只说短句；他不参与任何谈判也不离开弗拉达，但他会主动把武器擦亮三次。",
+      "public_background": "原伦蒂尼姆贫民窟少年，因感染被家人抛弃，跟弗拉达出走。",
+      "faction": "整合运动离队部",
+      "location": "与弗拉达同在屋顶附近",
+      "known_facts": [
+        "他偷偷往罗德岛遗弃的前哨站走了一趟",
+        "他手里那把弓是罗德岛淘汰的旧训练弓",
+        "他对弗拉达有很深的信任"
+      ],
+      "misunderstandings": [],
+      "relationship_stance": "对玩家主动释放善意（含一支箭 / 留一件干净外套）会有 1 回合的窗口期对话。",
+      "capabilities": [
+        "中程精准射击",
+        "夜视",
+        "保持低位"
+      ],
+      "limitations": [
+        "心智不稳",
+        "会替弗拉达挡第一击"
+      ],
+      "actor_complexity": "simplified",
+      "capability_refs": [
+        "capability:squad.dawn_signature"
+      ],
+      "resource_refs": [
+        "resource:endurance"
+      ],
+      "runtime_effect_refs": [],
+      "object_refs": [],
+      "custom_tags": [
+        "faction.整合运动离队部",
+        "flag.possible_defector"
+      ]
+    },
+    "prompt": "齐尤拉只在玩家同时做到以下三点之后才允许模型让他开口：①玩家至少完成 m_01_03，②玩家没有对弗拉达开火，③玩家至少 1 次让齐尤拉安静撤离。在他开口之后，他会把弗拉达的『CTRL 缓释器 36 小时失效』的信息说出来。",
+    "sort_order": 50
+  },
+  {
+    "slug": "npc_old_liaison",
+    "name": "老通讯中继员",
+    "role": "npc",
+    "profile": {
+      "identity": "罗德岛派出的临时中继操作员，负责把小队通讯接续回舰桥",
+      "appearance": "矮胖、戴着一副被缠了好几道胶带的眼镜，背着一台旧式 RI 转信器。",
+      "personality": "接电话时嗓门很大，但下命令时永远压低声线。",
+      "public_background": "罗德岛通讯部第 3 中队，5 年驻外。",
+      "faction": "罗德岛",
+      "location": "车队通讯车",
+      "known_facts": [
+        "通讯时长 30 秒左右会被天灾余波信号打断",
+        "他保存着上次『黎明』任务的全套录音"
+      ],
+      "misunderstandings": [],
+      "relationship_stance": "对不浪费频道的请求响应最快；对每次报告超过 15 秒的玩家会记小账。",
+      "capabilities": [
+        "中继通讯修复",
+        "频率跳变防截听"
+      ],
+      "limitations": [
+        "体力差",
+        "不能出门"
+      ],
+      "actor_complexity": "simplified",
+      "capability_refs": [
+        "capability:squad.dawn_signature"
+      ],
+      "resource_refs": [
+        "resource:endurance"
+      ],
+      "runtime_effect_refs": [],
+      "object_refs": [],
+      "custom_tags": [
+        "faction.罗德岛"
+      ]
+    },
+    "prompt": "老通讯中继员只在玩家主动找他时报信；模型不得让他塞信息到正文里。他的功能是『回罗德岛求援』窗口与『天灾回潮倒计时』播报。",
+    "sort_order": 60
+  },
+  {
+    "slug": "npc_reunion_grunt",
+    "name": "整合运动士兵",
+    "role": "npc",
+    "profile": {
+      "identity": "弗拉达部下的 5 名整合运动小兵之一",
+      "appearance": "普通兽人/卡特斯/沃尔珀/佩洛外观，依任务随机抽取；统一着战痕累累的灰色兜帽装。",
+      "personality": "大多数沉默服从，遇到罗德岛制服或主动亮旗的人会犹豫几秒；但不会主动投降。",
+      "public_background": "整合运动外围编外分子、流浪者和怀恨者。",
+      "faction": "整合运动离队部",
+      "location": "挪德卡散布点",
+      "known_facts": [
+        "他们大多数没参加过整编训练",
+        "他们存粮不会超过 4 小时"
+      ],
+      "misunderstandings": [],
+      "relationship_stance": "对和平退出 + 留武器选项有 50% 接受率。",
+      "capabilities": [
+        "基础近战",
+        "低阶源石技艺"
+      ],
+      "limitations": [
+        "无统一指挥",
+        "弹药紧张"
+      ],
+      "actor_complexity": "simplified",
+      "capability_refs": [
+        "capability:squad.dawn_signature"
+      ],
+      "resource_refs": [
+        "resource:endurance"
+      ],
+      "runtime_effect_refs": [],
+      "object_refs": [],
+      "custom_tags": [
+        "faction.整合运动离队部",
+        "kind.grunt"
+      ]
+    },
+    "prompt": "整合运动士兵不应被单独成 boss 处理。他们是消耗品，模型不得给他们取单字人名；遇到伤亡，他们的名字只用『剪影 + 编号』表达（例如『持弓的剪影-2』）。",
+    "sort_order": 70
+  }
+]

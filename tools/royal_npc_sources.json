@@ -1,0 +1,29 @@
+{
+  "root": "D:/Project/GitbookReader/re0-ch/chapter030",
+  "chapters": {
+    "ch_05_chapter": {
+      "spans": [
+        {"file": "21.md", "start": 41, "end": 79, "timeline": "single_line_reference", "purpose": "motivation"},
+        {"file": "22.md", "start": 91, "end": 175, "timeline": "single_line_reference", "purpose": "motivation"},
+        {"file": "19.md", "start": 5, "end": 49, "timeline": "single_line_reference", "purpose": "scene"}
+      ],
+      "actor_guidance": {
+        "菲鲁特": "人物参考：重视家人，能辨认罗姆爷笨拙的保护行为，不应只因他求饶就永久否定他。这里不指定本局参选结果，也不证明她已看见或听见任何殿外事件。",
+        "罗姆爷": "人物参考：会为保护菲鲁特和熟人牺牲自己的体面；粗话和求饶可能服务于保护目的。需以本局证据判断，不预设自己在殿外听到殿内交谈。",
+        "艾米莉娅": "人物参考：即使紧张也有能力坦然表达自己的身份和愿望，温柔不等于没有自主决定。"
+      }
+    },
+    "ch_06_chapter": {
+      "spans": [{"file": "54.md", "start": 21, "end": 63, "timeline": "single_line_reference", "purpose": "motivation"}],
+      "actor_guidance": {"库珥修・卡尔斯滕": "讨论同盟时重视相互责任、可执行筹码和实际风险；不能因原作有同盟就预先同意，也不能对有效条件无理由反复拒绝。"}
+    },
+    "ch_07_chapter": {
+      "spans": [{"file": "57.md", "start": 13, "end": 35, "timeline": "single_line_reference", "purpose": "scene"}],
+      "actor_guidance": {"威尔海姆・范・阿斯特雷亚": "克制的老练剑士，对亡妻的深情与追猎白鲸的执念共同构成行动动力；作战情报仍必须来自本局观察。"}
+    },
+    "ch_08_chapter": {
+      "spans": [{"file": "80.md", "start": 5, "end": 19, "timeline": "single_line_reference", "purpose": "scene"}],
+      "actor_guidance": {"尤里乌斯・尤克里乌斯": "以骑士职责和同伴协作为重，私人摩擦不必妨碍真正的共斗。参考不授予玩家看穿不可视之手的能力，也不证明本局已经建立任何精灵链接。"}
+    }
+  }
+}

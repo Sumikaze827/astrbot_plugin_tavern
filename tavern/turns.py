@@ -78,7 +78,6 @@ def public_world_state(
 ) -> dict[str, Any]:
     result = deepcopy(dict(world_state or {}))
     result.pop(TURN_STATE_KEY, None)
-    result.pop("inventory", None)
     return result
 
 

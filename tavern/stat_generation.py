@@ -5,29 +5,45 @@ from itertools import product
 from typing import Any
 
 from .card_wizard import PRESET_REFS_KEY, preset_options
-from .candidates import normalize_candidate_rules
-from .entity_registry import split_ref
 
 
 PRESET_STACK_MODE = "preset_stack"
 STAT_GENERATION_SNAPSHOT_KEY = "stat_generation_snapshot"
 MAX_PRESET_COMBINATIONS = 100_000
 
-# D1-DATA-005：角色确认后的职业运行状态契约。
-RUNTIME_STATE_KEYS = frozenset(
-    {
-        "profession",
-        "resources",
-        "abilities",
-        "career_specialties",
-        "runtime_states",
-        "combination_unlocks",
-        "grants",
-    }
-)
-RUNTIME_UNLOCK_KINDS = frozenset(
-    {"capability", "ability_track", "resource", "runtime_effect"}
-)
+
+def modifier_from_table(table: Any, value: Any) -> int:
+    """按修正表查修正；数值超界时钳制到最接近档位，绝不静默归零。
+
+    修正表是世界声明的「属性值 → 修正」映射。当角色的属性值超出表内
+    最大/最小键（例如表只写到 16、属性却到了 20）时，旧逻辑查表落空返回 0，
+    导致高属性判定与低属性一样——本函数钳制到最近档位：
+    - 空表 / 非法值 → 0
+    - 表内精确命中 → 该档修正
+    - 高于表最大键 → 取最大键修正（不再归零）
+    - 低于表最小键 → 取最小键修正
+    - 介于两档之间（稀疏表）→ 取不高于该值的最接近档位
+    """
+    if not isinstance(table, Mapping):
+        return 0
+    numeric: dict[int, int] = {}
+    for key, raw in table.items():
+        try:
+            numeric[int(key)] = int(raw)
+        except (TypeError, ValueError):
+            continue
+    if not numeric:
+        return 0
+    try:
+        parsed = int(value)
+    except (TypeError, ValueError):
+        return 0
+    if parsed in numeric:
+        return numeric[parsed]
+    below = [key for key in numeric if key <= parsed]
+    if below:
+        return numeric[max(below)]
+    return numeric[min(numeric)]
 
 
 def _sequence(value: Any) -> list[Any]:
@@ -252,8 +268,7 @@ def _selected_option(
             return current_matches[0]
         if len(current_matches) > 1:
             raise ValueError(
-                f"属性来源 {source_id} 的当前值对应多个同名预设，"
-                "请返回该字段重新选择具体选项"
+                f"属性来源 {source_id} 的当前值对应多个预设，请使用稳定 ID"
             )
     candidates = {
         str(ref.get("id") or "").casefold(),
@@ -317,7 +332,7 @@ def calculate_preset_stack_stats(
             raise ValueError(f"{attributes[key].get('label', key)}自动生成值 {value} 超出 {minimum}—{maximum}")
     labels = {key: str(item.get("label") or key) for key, item in attributes.items()}
     table = template.get("stats", {}).get("modifier_table") or {}
-    modifiers = {key: int(table.get(str(value), 0)) for key, value in generated.items()}
+    modifiers = {key: modifier_from_table(table, value) for key, value in generated.items()}
     snapshot = {
         "mode": PRESET_STACK_MODE,
         "base_stats": dict(base),
@@ -344,6 +359,295 @@ def clear_generated_stats(template: Mapping[str, Any], fields: dict[str, Any]) -
         fields.pop(f"stat_{key}", None)
     fields.pop("resolved_stat_total", None)
     fields.pop(STAT_GENERATION_SNAPSHOT_KEY, None)
+
+
+# ---------------------------------------------------------------------------
+# authored 模式：属性由叙事模型根据玩家自拟设定分配
+# ---------------------------------------------------------------------------
+#
+# 2026-09-20 需求（修订版）：角色卡不再由世界包预设**职业**，改由玩家在最后一段
+# 自拟设定里写背景，插件据此生成**基础属性分配**。
+#
+# **主属性 +N / 副属性 +M 仍然由玩家自己选**，与原来的 profession 模式完全一致：
+# authored 只替代"职业基础值"那一块。所以生成结果写进 `profession_base_stats`，
+# 之后由既有的 resolve_profession_stats 负责叠加主副加点与算修正。
+#
+# 与 preset_stack 的共同点是数字都进 stat_<key>；区别只在基础值从哪来（预设表
+# vs 一次模型调用）。下游检定与能力衡量不需要改。
+#
+# 模型可能返回不合规的数字（少项、越界、总和不等于基础预算），所以解析严格校验，
+# 失败时用确定性兜底分配补齐——**建卡不允许因为模型输出问题而卡住**。
+AUTHORED_MODE = "authored"
+AUTHORED_REASON_MAX = 200
+AUTHORED_BASE_FIELD = "profession_base_stats"
+
+# 自拟设定字段可用的类型。这些是玩家自由输入的文本字段。
+FREEFORM_FIELD_TYPES = frozenset({"text", "long_text", "textarea", "paragraph"})
+
+
+def uses_authored_stats(template: Mapping[str, Any]) -> bool:
+    return str(stat_generation_config(template)["mode"]).lower() == AUTHORED_MODE
+
+
+def uses_generated_stats(template: Mapping[str, Any]) -> bool:
+    """属性是否由系统生成（预设求和或模型分配），而非玩家逐步手填。"""
+    return uses_preset_stack_stats(template) or uses_authored_stats(template)
+
+
+def authored_stat_config(template: Mapping[str, Any]) -> dict[str, Any]:
+    """读取 authored 模式配置。键缺失时的语义见 validate_authored_stat_config。"""
+    config = stat_generation_config(template)
+    stats = template.get("stats")
+    stats = stats if isinstance(stats, Mapping) else {}
+    raw = stats.get("stat_generation")
+    raw = raw if isinstance(raw, Mapping) else {}
+    return {
+        "mode": AUTHORED_MODE,
+        "source_field": str(
+            raw.get("source_field") or raw.get("background_field") or ""
+        ).strip(),
+        "expected_total": config.get("expected_total"),
+        "min_per_stat": config.get("min_per_stat"),
+        "max_per_stat": config.get("max_per_stat"),
+        "base_stats": dict(config.get("base_stats") or {}),
+        "guide": str(raw.get("guide") or "").strip()[:400],
+    }
+
+
+def _authored_bounds(
+    template: Mapping[str, Any],
+    config: Mapping[str, Any],
+) -> tuple[dict[str, int], dict[str, int], dict[str, int]]:
+    """返回 (attributes, minimum, maximum)。逐项下限优先用配置，否则用模板声明。"""
+    attributes = _attribute_index(template)
+    lows: dict[str, int] = {}
+    highs: dict[str, int] = {}
+    for key, item in attributes.items():
+        low = config.get("min_per_stat")
+        high = config.get("max_per_stat")
+        lows[key] = int(low) if low is not None else int(item["minimum"])
+        highs[key] = int(high) if high is not None else int(item["maximum"])
+    return attributes, lows, highs
+
+
+def validate_authored_stat_config(template: Mapping[str, Any]) -> dict[str, Any]:
+    """发布期体检：authored 模式必须自洽，且兜底分配一定存在。"""
+    config = authored_stat_config(template)
+    attributes, lows, highs = _authored_bounds(template, config)
+    if not attributes:
+        raise ValueError("authored 模式需要 stats.attributes 声明属性表")
+    source_field = config["source_field"]
+    if not source_field:
+        raise ValueError("authored 模式必须声明 stat_generation.source_field")
+    field = _field_index(template).get(source_field)
+    if not field:
+        raise ValueError(f"source_field 引用了不存在的建卡字段：{source_field}")
+    field_type = str(field.get("type") or "text").lower()
+    if field_type not in FREEFORM_FIELD_TYPES:
+        raise ValueError(
+            f"source_field {source_field} 必须是自由输入文本字段，当前为 {field_type}"
+        )
+    if not field.get("required"):
+        raise ValueError(f"source_field {source_field} 必须设为必填")
+    total = config.get("expected_total")
+    if total is None:
+        raise ValueError("authored 模式必须声明 stat_generation.expected_total")
+    try:
+        total = int(total)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("authored 模式 expected_total 必须是整数") from exc
+    floor = sum(lows.values())
+    ceiling = sum(highs.values())
+    if not floor <= total <= ceiling:
+        raise ValueError(
+            f"authored 模式 expected_total={total} 不可达："
+            f"逐项下限合计 {floor}，上限合计 {ceiling}"
+        )
+    return {
+        "mode": AUTHORED_MODE,
+        "source_field": source_field,
+        "expected_total": total,
+        "floor": floor,
+        "ceiling": ceiling,
+        "attribute_count": len(attributes),
+    }
+
+
+def authored_fallback_allocation(template: Mapping[str, Any]) -> dict[str, int]:
+    """确定性兜底分配：先给每项下限，再把余量按顺序摊平。
+
+    模型输出不合规时用它，保证建卡永远能完成。分配结果可复现，便于排查。
+    """
+    config = authored_stat_config(template)
+    attributes, lows, highs = _authored_bounds(template, config)
+    total = int(config.get("expected_total") or sum(lows.values()))
+    allocation = {key: lows[key] for key in attributes}
+    remaining = total - sum(allocation.values())
+    if remaining < 0:
+        return allocation
+    keys = list(attributes)
+    index = 0
+    while remaining > 0 and keys:
+        key = keys[index % len(keys)]
+        if allocation[key] < highs[key]:
+            allocation[key] += 1
+            remaining -= 1
+        elif all(allocation[k] >= highs[k] for k in keys):
+            break
+        index += 1
+    return allocation
+
+
+def authored_stat_prompt(
+    template: Mapping[str, Any],
+    fields: Mapping[str, Any],
+) -> str:
+    """构造属性分配提示词。只给模型属性表、预算与玩家自拟设定，不给别的。"""
+    config = authored_stat_config(template)
+    attributes, lows, highs = _authored_bounds(template, config)
+    source_text = str(fields.get(config["source_field"]) or "").strip()
+    lines = [f"根据下面这段玩家自拟的角色设定，为这个角色分配 {len(attributes)} 项属性。"]
+    lines.append("")
+    lines.append("【角色设定】")
+    lines.append(source_text)
+    lines.append("")
+    lines.append("【属性表】")
+    for key, item in attributes.items():
+        hint = str(item.get("description") or item.get("hint") or "").strip()
+        suffix = f"（{hint}）" if hint else ""
+        lines.append(
+            f"- {key}｜{item.get('label') or key}："
+            f"{lows[key]}—{highs[key]}{suffix}"
+        )
+    total = int(config["expected_total"])
+    lines.append("")
+    lines.append(f"【要求】总和必须正好等于 {total}；每项必须落在自己的区间内。")
+    if config.get("guide"):
+        lines.append(f"【倾向】{config['guide']}")
+    lines.append(
+        "设定里明确写了的能力要给高分，没提到的不给高于中位的分；"
+        "设定与某项属性矛盾时按设定来。不要为了平均而抹平差异。"
+    )
+    lines.append("")
+    lines.append(
+        '只输出一个 JSON 对象，不要任何其他文字：{"attributes": {'
+        + ", ".join(f'"{key}": <整数>' for key in attributes)
+        + '}, "reason": "一句话说明为什么这样分配"}'
+    )
+    return "\n".join(lines)
+
+
+def parse_authored_allocation(
+    template: Mapping[str, Any],
+    payload: Any,
+) -> dict[str, int]:
+    """严格校验模型返回的分配；任何不合规都抛 ValueError（调用方走兜底）。"""
+    config = authored_stat_config(template)
+    attributes, lows, highs = _authored_bounds(template, config)
+    raw = payload
+    if isinstance(raw, Mapping) and "attributes" in raw:
+        raw = raw.get("attributes")
+    if not isinstance(raw, Mapping):
+        raise ValueError("属性分配必须是对象")
+    allocation: dict[str, int] = {}
+    for key in attributes:
+        if key not in raw:
+            raise ValueError(f"属性分配缺少 {key}")
+        value = raw[key]
+        if isinstance(value, bool) or not isinstance(value, int):
+            raise ValueError(f"属性 {key} 必须是整数")
+        if not lows[key] <= value <= highs[key]:
+            raise ValueError(
+                f"属性 {key} 为 {value}，必须在 {lows[key]}—{highs[key]} 之间"
+            )
+        allocation[key] = value
+    total = sum(allocation.values())
+    expected = int(config["expected_total"])
+    if total != expected:
+        raise ValueError(f"属性总和为 {total}，应为 {expected}")
+    return allocation
+
+
+def apply_authored_allocation(
+    template: Mapping[str, Any],
+    fields: dict[str, Any],
+    allocation: Mapping[str, int],
+    *,
+    reason: str = "",
+    provider_id: str = "",
+) -> dict[str, Any]:
+    """把**基础分配**写入卡片字段，并留下可审计的快照。
+
+    写进 `profession_base_stats`（与 profession 模式同一位置），后续由
+    `resolve_profession_stats` 叠加玩家选的主/副属性加点。这里同时把基础值先
+    落到 `stat_<key>`，这样即使玩家还没选主副属性，预览也能看到当前数值。
+
+    快照记录**依据的原文与理由**：基础值决定的最终属性会被用来衡量玩家能力，
+    出问题时必须能看出当时是按哪段设定、由哪个模型算出来的。
+    """
+    config = authored_stat_config(template)
+    attributes = _attribute_index(template)
+    base = {key: int(value) for key, value in allocation.items()}
+    clear_generated_stats(template, fields)
+    fields[AUTHORED_BASE_FIELD] = dict(base)
+    for key, value in base.items():
+        fields[f"stat_{key}"] = value
+    labels = {key: str(item.get("label") or key) for key, item in attributes.items()}
+    table = template.get("stats", {}).get("modifier_table") or {}
+    modifiers = {
+        key: modifier_from_table(table, value) for key, value in base.items()
+    }
+    total = sum(base.values())
+    fields["resolved_stat_total"] = total
+    fields[STAT_GENERATION_SNAPSHOT_KEY] = {
+        "mode": AUTHORED_MODE,
+        "source_field": config["source_field"],
+        "source_text": str(fields.get(config["source_field"]) or "").strip()[:1000],
+        "reason": str(reason or "")[:AUTHORED_REASON_MAX],
+        "provider_id": str(provider_id or ""),
+        "base_stats": dict(base),
+        "total": total,
+    }
+    return {
+        "mode": AUTHORED_MODE,
+        "base": dict(base),
+        "raw": dict(base),
+        "labels": labels,
+        "modifiers": modifiers,
+        "total": total,
+        "budget": int(config["expected_total"]),
+        "reason": str(reason or "")[:AUTHORED_REASON_MAX],
+        "provider_id": str(provider_id or ""),
+    }
+
+
+def format_authored_stat_result(resolved: Mapping[str, Any]) -> str:
+    """渲染**基础分配**结果。
+
+    这里报的是基础值（re0 为 50），主/副属性加点由玩家在后续步骤自己选，
+    所以不能把它说成最终属性值，也不该显示最终总和。
+    """
+    labels = resolved.get("labels") or {}
+    raw = resolved.get("raw") or {}
+    title = (
+        "【角色五维基础值已按设定生成】"
+        if len(raw) == 5
+        else "【角色属性基础值已按设定生成】"
+    )
+    lines = [
+        title,
+        "｜".join(
+            f"{labels.get(key, key)} {value}" for key, value in raw.items()
+        ),
+        "",
+        f"基础合计：{resolved.get('total', 0)}",
+    ]
+    reason = str(resolved.get("reason") or "").strip()
+    if reason:
+        lines.append(f"分配依据：{reason}")
+    lines.append("接下来由你自己选主属性与副属性加点，之后还能修改。")
+    return "\n".join(lines)
+
 
 
 def sync_preset_stack_fields(
@@ -445,286 +749,26 @@ def format_preset_stack_result(resolved: Mapping[str, Any]) -> str:
     return "\n".join(lines)
 
 
-# ---------------------------------------------------------------------------
-# D1-DATA-005 运行状态快照契约与资源修饰器纯应用
-# ---------------------------------------------------------------------------
-
-
-def _runtime_typed_ref(value: Any, path: str) -> str:
-    text = str(value or "").strip()
-    if not text:
-        raise ValueError(f"{path} 不能为空")
-    try:
-        split_ref(text)
-    except ValueError:
-        raise ValueError(f"{path} 必须是稳定类型化引用（如 resource:contract_echo）") from None
-    return text
-
-
-def _runtime_ref_entry(value: Any, *, path: str, allow_kind: bool = False) -> dict[str, Any]:
-    if isinstance(value, str):
-        return {
-            "ref": _runtime_typed_ref(value, path),
-            "label": "",
-        }
-    if not isinstance(value, Mapping):
-        raise ValueError(f"{path} 必须是字符串或对象")
-    allowed = {"ref", "label"}
-    if allow_kind:
-        allowed.add("kind")
-    unknown = set(value) - allowed
-    if unknown:
-        raise ValueError(
-            f"{path} 包含未知字段："
-            + "、".join(sorted(str(item) for item in unknown))
-        )
-    ref = _runtime_typed_ref(value.get("ref"), f"{path}.ref")
-    label = str(value.get("label") or "").strip()
-    entry: dict[str, Any] = {"ref": ref, "label": label}
-    if allow_kind:
-        kind = str(value.get("kind") or "").strip()
-        if kind and kind not in RUNTIME_UNLOCK_KINDS:
-            raise ValueError(
-                f"{path}.kind 必须是 " + "、".join(sorted(RUNTIME_UNLOCK_KINDS))
-            )
-        entry["kind"] = kind
-    return entry
-
-
-def normalize_runtime_state_snapshot(raw: Any) -> dict[str, Any]:
-    """Return the canonical D1-DATA-005 runtime state snapshot.
-
-    Unknown top-level keys, malformed resources and invalid refs raise
-    immediately; an empty input yields the canonical empty state.
-    """
-
-    if raw is None or raw == "":
-        raw = {}
-    if not isinstance(raw, Mapping):
-        raise ValueError("runtime state 必须是对象")
-    unknown = set(raw) - RUNTIME_STATE_KEYS
-    if unknown:
-        raise ValueError(
-            "runtime state 包含未知字段："
-            + "、".join(sorted(str(item) for item in unknown))
-        )
-    normalized: dict[str, Any] = {
-        "profession": None,
-        "resources": {},
-        "abilities": [],
-        "career_specialties": [],
-        "runtime_states": [],
-        "combination_unlocks": [],
-        "grants": [],
-    }
-    profession = raw.get("profession")
-    if profession not in (None, ""):
-        if not isinstance(profession, Mapping):
-            raise ValueError("runtime state.profession 必须是对象")
-        profession_unknown = set(profession) - {"id", "label", "specialization"}
-        if profession_unknown:
-            raise ValueError(
-                "runtime state.profession 包含未知字段："
-                + "、".join(sorted(str(item) for item in profession_unknown))
-            )
-        profession_id = str(profession.get("id") or "").strip()
-        profession_label = str(profession.get("label") or "").strip()
-        if not profession_id or not profession_label:
-            raise ValueError("runtime state.profession 必须包含 id 与 label")
-        specialization = profession.get("specialization")
-        normalized_profession: dict[str, Any] = {
-            "id": profession_id,
-            "label": profession_label,
-            "specialization": None,
-        }
-        if specialization not in (None, ""):
-            if not isinstance(specialization, Mapping):
-                raise ValueError("runtime state.profession.specialization 必须是对象")
-            specialization_unknown = set(specialization) - {"id", "label"}
-            if specialization_unknown:
-                raise ValueError(
-                    "runtime state.profession.specialization 包含未知字段："
-                    + "、".join(sorted(str(item) for item in specialization_unknown))
-                )
-            specialization_id = str(specialization.get("id") or "").strip()
-            specialization_label = str(specialization.get("label") or "").strip()
-            if not specialization_id or not specialization_label:
-                raise ValueError(
-                    "runtime state.profession.specialization 必须包含 id 与 label"
-                )
-            normalized_profession["specialization"] = {
-                "id": specialization_id,
-                "label": specialization_label,
-            }
-        normalized["profession"] = normalized_profession
-
-    resources = raw.get("resources")
-    if resources not in (None, ""):
-        if not isinstance(resources, Mapping):
-            raise ValueError("runtime state.resources 必须是对象")
-        for ref, entry in resources.items():
-            resource_ref = _runtime_typed_ref(
-                ref, f"runtime state.resources.{ref}"
-            )
-            if not isinstance(entry, Mapping):
-                raise ValueError(f"runtime state.resources.{ref} 必须是对象")
-            entry_unknown = set(entry) - {"label", "current", "maximum"}
-            if entry_unknown:
-                raise ValueError(
-                    f"runtime state.resources.{ref} 包含未知字段："
-                    + "、".join(sorted(str(item) for item in entry_unknown))
-                )
-            label = str(entry.get("label") or "").strip()
-            if not label:
-                raise ValueError(f"runtime state.resources.{ref}.label 不能为空")
-            current = entry.get("current")
-            maximum = entry.get("maximum")
-            if isinstance(current, bool) or not isinstance(current, int):
-                raise ValueError(f"runtime state.resources.{ref}.current 必须是整数")
-            if isinstance(maximum, bool) or not isinstance(maximum, int):
-                raise ValueError(f"runtime state.resources.{ref}.maximum 必须是整数")
-            if current < 0 or maximum < 0:
-                raise ValueError(
-                    f"runtime state.resources.{ref} 的数值不能为负"
-                )
-            if current > maximum:
-                raise ValueError(
-                    f"runtime state.resources.{ref} 的当前值不能超过上限"
-                )
-            normalized["resources"][resource_ref] = {
-                "label": label,
-                "current": current,
-                "maximum": maximum,
-            }
-
-    for key in ("abilities", "career_specialties", "runtime_states"):
-        raw_list = raw.get(key)
-        if raw_list in (None, ""):
-            continue
-        if not isinstance(raw_list, Sequence) or isinstance(raw_list, (str, bytes)):
-            raise ValueError(f"runtime state.{key} 必须是数组")
-        normalized[key] = [
-            _runtime_ref_entry(item, path=f"runtime state.{key}[{index}]")
-            for index, item in enumerate(raw_list)
-        ]
-    raw_unlocks = raw.get("combination_unlocks")
-    if raw_unlocks not in (None, ""):
-        if not isinstance(raw_unlocks, Sequence) or isinstance(
-            raw_unlocks, (str, bytes)
-        ):
-            raise ValueError("runtime state.combination_unlocks 必须是数组")
-        normalized["combination_unlocks"] = [
-            _runtime_ref_entry(
-                item,
-                path=f"runtime state.combination_unlocks[{index}]",
-                allow_kind=True,
-            )
-            for index, item in enumerate(raw_unlocks)
-        ]
-    raw_grants = raw.get("grants")
-    if raw_grants not in (None, ""):
-        if not isinstance(raw_grants, Sequence) or isinstance(
-            raw_grants, (str, bytes)
-        ):
-            raise ValueError("runtime state.grants 必须是数组")
-        grants: list[dict[str, Any]] = []
-        for index, item in enumerate(raw_grants):
-            if not isinstance(item, Mapping):
-                raise ValueError(f"runtime state.grants[{index}] 必须是对象")
-            grant_unknown = set(item) - {"ref", "kind", "label", "policy", "when"}
-            if grant_unknown:
-                raise ValueError(
-                    f"runtime state.grants[{index}] 包含未知字段："
-                    + "、".join(sorted(str(value) for value in grant_unknown))
-                )
-            grant_ref = _runtime_typed_ref(
-                item.get("ref"), f"runtime state.grants[{index}].ref"
-            )
-            kind = str(item.get("kind") or "").strip()
-            if kind and kind not in RUNTIME_UNLOCK_KINDS:
-                raise ValueError(
-                    f"runtime state.grants[{index}].kind 必须是 "
-                    + "、".join(sorted(RUNTIME_UNLOCK_KINDS))
-                )
-            policy = str(item.get("policy") or "").strip()
-            when = item.get("when")
-            if when is not None and not isinstance(when, Mapping):
-                raise ValueError(f"runtime state.grants[{index}].when 必须是对象")
-            grants.append(
-                {
-                    "ref": grant_ref,
-                    "kind": kind,
-                    "label": str(item.get("label") or "").strip(),
-                    "policy": policy,
-                    "when": dict(when) if isinstance(when, Mapping) else None,
-                }
-            )
-        normalized["grants"] = grants
-    return normalized
-
-
-def apply_resource_modifiers(
-    resources: Mapping[str, Any],
-    modifiers: Sequence[Mapping[str, Any]],
-) -> dict[str, Any]:
-    """Apply D1 resource modifiers purely and return a new resource table.
-
-    ``modifiers`` may be raw D1 declarations or already normalized entries;
-    they are normalized through the shared candidate-rule contract so every
-    consumer sees identical strict validation.
-    """
-
-    rules = normalize_candidate_rules({"resource_modifiers": list(modifiers)})
-    result = normalize_runtime_state_snapshot(
-        {"resources": dict(resources)}
-    )["resources"]
-    for modifier in rules["resource_modifiers"]:
-        resource_ref = str(modifier["resource_ref"])
-        if resource_ref not in result:
-            raise ValueError(
-                f"资源 {resource_ref} 尚未声明，不能应用修饰（请先由世界包声明初始资源）"
-            )
-        op = str(modifier["op"])
-        value = int(modifier["value"])
-        entry = result[resource_ref]
-        current = int(entry["current"])
-        maximum = int(entry["maximum"])
-        if op == "set":
-            current = value
-        elif op == "add":
-            current = current + value
-        elif op == "subtract":
-            current = current - value
-        elif op == "cap":
-            current = min(current, value)
-        elif op == "floor":
-            current = max(current, value)
-        else:
-            raise ValueError(f"不支持的资源修饰操作：{op}")
-        if current < 0:
-            raise ValueError(f"资源 {resource_ref} 不足，无法完成本次消耗")
-        if current > maximum:
-            raise ValueError(
-                f"资源 {resource_ref} 超过上限 {maximum}，无法应用修饰"
-            )
-        entry["current"] = current
-    return result
-
-
 __all__ = [
+    "AUTHORED_MODE",
     "MAX_PRESET_COMBINATIONS",
     "PRESET_STACK_MODE",
-    "RUNTIME_STATE_KEYS",
-    "RUNTIME_UNLOCK_KINDS",
     "STAT_GENERATION_SNAPSHOT_KEY",
-    "apply_resource_modifiers",
+    "apply_authored_allocation",
     "assess_preset_stack_migration",
+    "authored_fallback_allocation",
+    "authored_stat_config",
+    "authored_stat_prompt",
     "calculate_preset_stack_stats",
     "clear_generated_stats",
+    "format_authored_stat_result",
     "format_preset_stack_result",
-    "normalize_runtime_state_snapshot",
+    "parse_authored_allocation",
     "stat_generation_config",
     "sync_preset_stack_fields",
+    "uses_authored_stats",
+    "uses_generated_stats",
     "uses_preset_stack_stats",
+    "validate_authored_stat_config",
     "validate_stat_generation_config",
 ]

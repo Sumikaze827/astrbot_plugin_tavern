@@ -1,0 +1,175 @@
+[
+  {
+    "slug": "npc_zhao_shishu",
+    "name": "赵师叔",
+    "profile": {
+      "identity": "白渊观值守老道人，今晨横死于冲和堂丹墀",
+      "appearance": "六十来岁的清瘦道人，穿着半旧灰道袍。死时跪姿合十，面上带着微笑——像是看见了什么让他心满意足的东西。指甲干净，气色红润，瞳孔没有散光。",
+      "personality": "寡言、谨慎、爱护晚辈。生前最后的叮嘱是「若见师祖飞升回山，切勿跪拜」。",
+      "public_background": "白渊观值守道人，是师祖在世时最信任的杂役。师祖飞升后由冲真人托付看山。修真四十年未入过筑基。",
+      "faction": "白渊观（已故）",
+      "location": "冲和堂丹墀（已死）",
+      "known_facts": [
+        "师祖飞升前一夜的叮嘱",
+        "祖庭封印的日常维护",
+        "山门外每旬一次的巡山记录"
+      ],
+      "misunderstandings": [
+        "以为师祖飞升是真的飞升——其实只是斩三尸后被分寄七处"
+      ],
+      "relationship_stance": "弟子们的长辈与看护者；横死提供第一条修真常识「气色三候不沾」的矛盾线索",
+      "capabilities": [
+        "值守与巡山经验",
+        "修真入门常识"
+      ],
+      "limitations": [
+        "修真四十年未入筑基",
+        "今晨已死"
+      ],
+      "custom_tags": [
+        "faction.白渊观",
+        "deceased"
+      ]
+    },
+    "prompt": "赵师叔 ch_00 以横死状态开局，提供半卷师祖遗书与修真常识三候不沾的矛盾线索；本章后仅以遗物形式存在。",
+    "sort_order": 0,
+    "role": "npc",
+    "actor_complexity": "full",
+    "capability_refs": [],
+    "resource_refs": [],
+    "runtime_effect_refs": [],
+    "object_refs": []
+  },
+  {
+    "slug": "npc_shifu_ghost",
+    "name": "师祖（飞升者 / 斩三尸失败者）",
+    "profile": {
+      "identity": "白渊观师祖，一月前「飞升」，实为斩三尸失败被分寄七处——止观铃封其「喜」",
+      "appearance": "按弟子的印象，师祖是鹤发童颜的道人；幻象以「温和、微笑、得道之相」示人，绝不显诡异。",
+      "personality": "幻象层面：温和、慈悲、令人安心。真身层面：斩三尸失败、被分寄七处、理智残存一线。",
+      "public_background": "师祖修真八十余年，三百年前祸穴大劫时镇压一位斩三尸失败的前辈。一月前「飞升」，但修真常识说他不该飞升——他还有未斩的七情。",
+      "faction": "白渊观（已飞升 / 实为斩尸失败）",
+      "location": "止观铃 / 祸穴 / 五处未知",
+      "known_facts": [
+        "斩三尸的完整口诀",
+        "祸穴内镇压物的真身",
+        "自己「飞升」是分尸而非解脱"
+      ],
+      "misunderstandings": [
+        "弟子们相信师祖真的飞升了"
+      ],
+      "relationship_stance": "祸影形态以师祖形象示人是最大诱饵；真身需五位弟子合一止观铃与他处碎片才能显现",
+      "capabilities": [
+        "化身为弟子最信任的形象",
+        "心斋深处说话",
+        "止观铃摇晃"
+      ],
+      "limitations": [
+        "被分寄七处无法独立行动",
+        "理智残存一线",
+        "被识破即崩解"
+      ],
+      "custom_tags": [
+        "faction.白渊观",
+        "shadow",
+        "unreliable-narrator"
+      ]
+    },
+    "prompt": "师祖 ch_01 ch_02 ch_03 以「温和飞升者」形象示人，是祸的核心诱饵；ch_04 在五位弟子合一碎片后，真身才被识破。其形象须与修真常识中「得道高人」高度一致，绝不显诡异——这正是它的可怕之处。",
+    "sort_order": 1,
+    "role": "npc",
+    "actor_complexity": "full",
+    "capability_refs": [],
+    "resource_refs": [],
+    "runtime_effect_refs": [],
+    "object_refs": []
+  },
+  {
+    "slug": "npc_chong_zhenren",
+    "name": "冲真人（师父 / 观主）",
+    "profile": {
+      "identity": "白渊观观主，外号「冲和子」，三日前入祖庭至今未归",
+      "appearance": "四十来岁的道人，长眉入鬓，气度沉稳。弟子们印象中他永远穿一件洗得发白的蓝道袍，腰间别一把桃木短剑。",
+      "personality": "稳重、寡言、爱护弟子。他生前最后的叮嘱是「清点封印符阵，三日足矣」。",
+      "public_background": "师祖三年前亲点的接班人，修真三十余年，是弟子们最信任的人。三日前按师祖遗嘱入祖庭观礼封印——但三日未归。",
+      "faction": "白渊观（观主）",
+      "location": "祸穴深处（待辨真身）",
+      "known_facts": [
+        "师祖遗嘱的完整内容",
+        "祸穴封印的处置方式",
+        "他自己斩下的「三尸」之一"
+      ],
+      "misunderstandings": [
+        "弟子们相信他只是去清点封印"
+      ],
+      "relationship_stance": "弟子们最信任的长辈——这正是祸可能用以伪装他的原因。ch_03 祸穴深处的冲真人身影是真、是祸影、是师祖幻象——必须由玩家拍板辨明。",
+      "capabilities": [
+        "三十年修真功底",
+        "对祸穴封印的全部了解",
+        "斩下自己一尸（修真常识之外的真相）"
+      ],
+      "limitations": [
+        "三日未归，可能已死 / 被附身 / 主动入穴",
+        "弟子们不能凭常识断定其真身"
+      ],
+      "custom_tags": [
+        "faction.白渊观",
+        "ambiguous",
+        "trusted-mentor"
+      ]
+    },
+    "prompt": "冲真人 ch_03 以祸穴深处的身影现形——可能是真人（已主动入穴封印自己斩下的三尸之一）、可能是祸影、可能是师祖的幻象。三种可能都必须由玩家在战斗中辨明，不许模型替玩家决定。其真身真相由玩家拍板。",
+    "sort_order": 2,
+    "role": "npc",
+    "actor_complexity": "full",
+    "capability_refs": [],
+    "resource_refs": [],
+    "runtime_effect_refs": [],
+    "object_refs": []
+  },
+  {
+    "slug": "npc_huo",
+    "name": "祸穴本体（师祖斩下的「三尸」之一）",
+    "profile": {
+      "identity": "祖庭之下封印的绝地——是师祖斩下的「三尸」之一，并非修真常识中所说的「斩三尸失败的前辈」",
+      "appearance": "无定形。沉默时只是黑暗；化形时化为弟子最信任的形象（师祖、师父、双亲），从不显诡异。",
+      "personality": "沉默。能模仿任何人。被识破即崩解。",
+      "public_background": "修真常识说祸穴内封的是一位斩三尸失败的前辈；真相是师祖自己的「三尸」之一被镇压于此——所谓「祸」即师祖未斩尽的七情之一。",
+      "faction": "白渊观（祸穴本体）",
+      "location": "祸穴最深处",
+      "known_facts": [
+        "修真常识「气色三候」是师祖亲手编造的诱饵",
+        "斩三尸不是解脱是分尸",
+        "祸穴之内的真身是师祖自己的七情之一"
+      ],
+      "misunderstandings": [
+        "修真界普遍相信祸穴封的是斩三尸失败的前辈"
+      ],
+      "relationship_stance": "沉默以对，但能模仿任何人；不可谈判，只能以「合一」的方式被破",
+      "capabilities": [
+        "模仿弟子最信任的形象",
+        "止观铃摇晃",
+        "赵师叔之死的真因：召回师祖七情之一的「哀」之宿主",
+        "心斋深处说话"
+      ],
+      "limitations": [
+        "沉默",
+        "被识破即崩解",
+        "需合一才能显现真身"
+      ],
+      "custom_tags": [
+        "faction.白渊观",
+        "huo",
+        "shadow"
+      ]
+    },
+    "prompt": "祸穴本体 ch_03 ch_04 是师祖斩下的「三尸」之一（修真常识之外的真相），ch_04 在五位弟子合一碎片后才显真身。战斗不可跳过但打法可选；最终战是「合一碎片让师祖得以安息」而非「正面斩灭」。模型不得让祸以「气色青白」的常识形象示人——它以「最让你安心」的形象示人。",
+    "sort_order": 3,
+    "role": "npc",
+    "actor_complexity": "full",
+    "capability_refs": [],
+    "resource_refs": [],
+    "runtime_effect_refs": [],
+    "object_refs": []
+  }
+]
